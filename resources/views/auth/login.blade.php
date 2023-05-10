@@ -76,7 +76,7 @@
     <!-- end: LOGIN BOX -->
     <!-- start: COPYRIGHT -->
     <div class="copyright">
-        {{ date('Y') }} &copy; LSP Poliwangi by Intermediatech Corp.
+        {{ date('Y') }} &copy; Dishub Jatim by Naily.
     </div>
     <!-- end: COPYRIGHT -->
 </div>
@@ -86,7 +86,7 @@
     <script>
         document.body.classList.add('login', 'example2');
         function forgetPassword() {
-        alert("Silahkan hubungi admin lsp Politeknik Negeri Banyuwangi untuk melakukan reset password ulang!");
+        alert("Silahkan hubungi admin untuk melakukan reset password ulang!");
         }
     </script>
 @endpush

@@ -388,7 +388,7 @@
 @push('style')
 <link rel="stylesheet" href="{{asset('assets/admin/plugins/select2/select2.css')}}">
 <link rel="stylesheet" href="{{ asset('assets/admin/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css') }}">
-<link rel="stylesheet" href="assets/admin/plugins/summernote/build/summernote.css">
+<link rel="stylesheet" href="{{asset('assets/admin/plugins/summernote/build/summernote.css')}}">
 <link rel="stylesheet" href="{{asset('assets/plugins/bootstrap-social-buttons/social-buttons-3.css')}}">
 
 <style>

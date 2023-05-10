@@ -26,6 +26,7 @@ class PerusahaanController extends Controller
             $perusahaan = perusahaan::where('user_id', Auth::user()->id)
                             ->orderBy('created_at','DESC')->get();
             return view('pemohon.perusahaan.index', compact('kbli', 'perusahaan'));
+            
         } elseif (Auth::user()->role == 'petugas') {
             $data_petugas = petugas::where('user_id', Auth::user()->id)->first();
             $today = Carbon::today()->toDateString();
@@ -245,7 +246,13 @@ class PerusahaanController extends Controller
     public function cetak_surat($id){
         $today = Carbon::today()->toDateString();
         $detail = perusahaan::where('id', $id)->first();
-        $data = PDF::loadview('petugas.perusahaan.pdf-view', compact('detail', 'today'));
+        $view;
+        if($detail->kbli->kategori == 'angkutan-penumpang-umum') {
+            $view = 'petugas.perusahaan.pdf-view';
+        } else {
+            $view = 'petugas.perusahaan.pdf-view-barang';
+        }
+        $data = PDF::loadview( $view, compact('detail', 'today'));
     	 return $data->stream('laporan.pdf');
         
     }

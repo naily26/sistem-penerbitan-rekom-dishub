@@ -197,6 +197,7 @@
     jQuery(document).ready(function () {
         Main.init();
         TableData.init();
+        Index.init();
     });
 
 </script>

@@ -75,6 +75,11 @@
                                                 Data ditolak
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="#data-tertunda" data-toggle="tab">
+                                                Data tetunda
+                                            </a>
+                                        </li>
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane in active" id="data-dalam-proses">
@@ -102,7 +107,7 @@
                                                                 <td>43212</td>
                                                                 <td>1 hari</td>
                                                                 <td>
-																	<a class="btn btn-xs btn-light-grey"
+																	<a class="btn btn-xs btn-primary"
 																	href="{{route('angkutan.edit', 1)}}"><i
 																		class="fa fa-check-square-o"></i>
 																	konfirmasi status</a>
@@ -115,8 +120,8 @@
                                                                 <td>43212</td>
                                                                 <td>1 hari</td>
                                                                 <td>
-                                                                    <a class="btn btn-xs btn-light-grey"
-																	href="{{route('angkutan.edit', 1)}}"><i
+                                                                    <a class="btn btn-xs btn-primary"
+																	href="{{url('konfirmasi-angkutan')}}"><i
 																		class="fa fa-check-square-o"></i>
 																	konfirmasi status</a>
                                                                 </td>
@@ -133,7 +138,7 @@
                                                 <div class="panel-body">
                                                     <table
                                                         class="table table-striped table-bordered table-hover table-full-width"
-                                                        id="sample_1">
+                                                        id="sample_2">
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
@@ -152,7 +157,7 @@
                                                                 <td>43212</td>
                                                                 <td>1 hari</td>
                                                                 <td>
-																	<a class="btn btn-xs btn-light-grey" href="#konfirmasi-penerbitan-surat" data-toggle="modal">
+																	<a class="btn btn-xs btn-primary" href="#konfirmasi-penerbitan-surat" data-toggle="modal">
 																		<i class="fa fa-check-square-o"></i>
                                                                         konfirmasi penerbitan surat</a>
                                                                 </td>
@@ -164,7 +169,7 @@
                                                                 <td>43212</td>
                                                                 <td>1 hari</td>
                                                                 <td>
-                                                                    <a class="btn btn-xs btn-light-grey" href="#konfirmasi-penerbitan-surat" data-toggle="modal">
+                                                                    <a class="btn btn-xs btn-primary" href="#konfirmasi-penerbitan-surat" data-toggle="modal">
 																		<i class="fa fa-check-square-o"></i>
                                                                         konfirmasi penerbitan surat</a>
                                                                 </td>
@@ -212,7 +217,7 @@
                                                 <div class="panel-body">
                                                     <table
                                                         class="table table-striped table-bordered table-hover table-full-width"
-                                                        id="sample_1">
+                                                        id="sample_3">
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
@@ -231,7 +236,7 @@
                                                                 <td>43212</td>
                                                                 <td>1 hari</td>
                                                                 <td>
-                                                                    <a class="btn btn-xs btn-light-grey" href="#"><i class="fa fa-eye"></i>
+                                                                    <a class="btn btn-xs btn-success" href="#"><i class="fa fa-eye"></i>
 																		detail</a>
                                                                 </td>
                                                             </tr>
@@ -242,7 +247,53 @@
                                                                 <td>43212</td>
                                                                 <td>1 hari</td>
                                                                 <td>
-                                                                    <a class="btn btn-xs btn-light-grey" href="#"><i class="fa fa-eye"></i>
+                                                                    <a class="btn btn-xs btn-success" href="#"><i class="fa fa-eye"></i>
+																		detail</a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!-- end: DYNAMIC TABLE PANEL -->
+                                        </div>
+                                        <div class="tab-pane" id="data-tertunda">
+                                            <!-- start: DYNAMIC TABLE PANEL -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+                                                    <table
+                                                        class="table table-striped table-bordered table-hover table-full-width"
+                                                        id="sample_4">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>No</th>
+                                                                <th class="hidden-xs">Nomor Kendaraan</th>
+                                                                <th>Nama Perusahaan</th>
+                                                                <th>KBLI</th>
+                                                                <th>Lama Permohonan</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td class="hidden-xs">N 4332 DD</td>
+                                                                <td>AOE Explore</td>
+                                                                <td>43212</td>
+                                                                <td>1 hari</td>
+                                                                <td>
+                                                                    <a class="btn btn-xs btn-success" href="#"><i class="fa fa-eye"></i>
+																		detail</a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td class="hidden-xs">N 4332 DD</td>
+                                                                <td>AOE Explore</td>
+                                                                <td>43212</td>
+                                                                <td>1 hari</td>
+                                                                <td>
+                                                                    <a class="btn btn-xs btn-success" href="#"><i class="fa fa-eye"></i>
 																		detail</a>
                                                                 </td>
                                                             </tr>
@@ -267,15 +318,15 @@
 @endsection
 @push('style')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/plugins/select2/select2.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/admin/plugins/DataTables/media/css/DT_bootstrap.css') }}" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
 <link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css') }}" rel="stylesheet"
     type="text/css" />
 <link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal.css') }}" rel="stylesheet"
     type="text/css" />
 
 <style>
-    i {
-        padding: 5px;
+    .btn-xs {
+        margin-top: 4px;
     }
 
 </style>
@@ -283,10 +334,9 @@
 
 @push('script')
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script type="text/javascript" src="assets/admin/plugins/select2/select2.min.js"></script>
-<script type="text/javascript" src="assets/admin/plugins/DataTables/media/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="assets/admin/plugins/DataTables/media/js/DT_bootstrap.js"></script>
-<script src="assets/admin/js/table-data.js"></script>
+<script type="text/javascript" src="{{asset('assets/admin/plugins/select2/select2.min.js')}}"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js "></script>
 
 <script src="{{ asset('assets/admin/plugins/bootstrap-modal/js/bootstrap-modal.js') }}"></script>
 <script src="{{ asset('assets/admin/plugins/bootstrap-modal/js/bootstrap-modalmanager.js') }}"></script>
@@ -295,7 +345,11 @@
 <script>
     jQuery(document).ready(function () {
         Main.init();
-        TableData.init();
+        $("#sample_1").DataTable();
+        $("#sample_2").DataTable();
+        $("#sample_3").DataTable();
+        $("#sample_4").DataTable();
+        Index.init();
     });
 
 </script>

@@ -67,6 +67,12 @@
                 <span class="title"> Angkutan </span><span class="selected"></span>
             </a>
         </li>
+        <li class="menu-header">
+            <a class="menu-header">
+                <span class="title"> Data Penerbitan </span>
+                <span class="selected"></span>
+            </a>
+        </li>
         <!-- end: ADMIN -->
 
         @elseif (Auth::user()->role == 'petugas')

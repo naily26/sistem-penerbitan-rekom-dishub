@@ -24,7 +24,13 @@
                 <div class="page-header">
                     <h1>Detail Data <small>Permohonan surat rekomendasi peruntukan angkutan umum</small></h1>
                 </div>
-                
+                <div class="alert alert-info">
+                    <button data-dismiss="alert" class="close">
+                        &times;
+                    </button>
+                    <i class="fa fa-info-circle"></i>
+                    <strong>Perhatian!</strong> Petugas dapat melakukan edit data jika terdapat kesalahan penulisan ringan oleh pemohon
+                </div>
                 <!-- end: PAGE TITLE & BREADCRUMB -->
             </div>
         </div>

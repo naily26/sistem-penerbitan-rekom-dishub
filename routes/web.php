@@ -46,6 +46,10 @@ Route::get('/perusahaan-petugas', function () {
     return view('petugas.perusahaan.index');
 });
 
+Route::get('/konfirmasi-angkutan', function () {
+    return view('petugas.angkutan.konfirmasi');
+});
+
 
 Auth::routes();
 

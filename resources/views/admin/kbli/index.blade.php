@@ -124,9 +124,6 @@
 <link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal.css') }}" rel="stylesheet"
     type="text/css" />
 <style>
-    i {
-        padding: 5px;
-    }
 
     .btn-xs {
         margin-top: 4px;

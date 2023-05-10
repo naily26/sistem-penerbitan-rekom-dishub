@@ -128,7 +128,7 @@
                                             <div class="panel-body">
                                                 <table
                                                     class="table table-striped table-bordered table-hover table-full-width"
-                                                    id="sample_1">
+                                                    id="sample_2">
                                                     <thead>
                                                         <tr>
                                                             <th>Nama Perusahaan</th>
@@ -174,7 +174,7 @@
                                             <div class="panel-body">
                                                 <table
                                                     class="table table-striped table-bordered table-hover table-full-width"
-                                                    id="sample_1">
+                                                    id="sample_3">
                                                     <thead>
                                                         <tr>
                                                             <th>Nama Perusahaan</th>
@@ -226,7 +226,7 @@
 @endsection
 @push('style')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/plugins/select2/select2.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/admin/plugins/DataTables/media/css/DT_bootstrap.css') }}" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
 <link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css') }}" rel="stylesheet"
     type="text/css" />
 <link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal.css') }}" rel="stylesheet"
@@ -242,10 +242,8 @@
 @push('script')
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script type="text/javascript" src="{{ asset('assets/admin/plugins/select2/select2.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('assets/admin/plugins/DataTables/media/js/jquery.dataTables.min.js')}}">
-</script>
-<script type="text/javascript" src="{{ asset('assets/admin/plugins/DataTables/media/js/DT_bootstrap.js')}}"></script>
-<script src="{{asset('assets/admin/js/table-data.js')}}"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js "></script>
 
 <script src="{{ asset('assets/admin/plugins/bootstrap-modal/js/bootstrap-modal.js') }}"></script>
 <script src="{{ asset('assets/admin/plugins/bootstrap-modal/js/bootstrap-modalmanager.js') }}"></script>
@@ -253,8 +251,10 @@
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
     jQuery(document).ready(function () {
+        $('#sample_1').DataTable();
+        $('#sample_2').DataTable();
+        $('#sample_3').DataTable();
         Main.init();
-        TableData.init();
         Index.init();
     });
 

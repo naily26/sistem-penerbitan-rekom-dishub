@@ -24,6 +24,13 @@
                 <div class="page-header">
                     <h1>Edit Data <small>Permohonan surat rekomendasi peruntukan angkutan umum</small></h1>
                 </div>
+                <div class="alert alert-info">
+                    <button data-dismiss="alert" class="close">
+                        &times;
+                    </button>
+                    <i class="fa fa-info-circle"></i>
+                    <strong>Perhatian!</strong> Mohon mengubah data sesuai dengan catatan yang telah diberikan
+                </div>
 
                 <!-- end: PAGE TITLE & BREADCRUMB -->
             </div>
@@ -114,9 +121,31 @@
                                     Surat Keputusan Izin Trayek </span>
                                 </label>
                                 <div class="col-sm-7">
-                                    <a href="{{asset('assets/admin/images/image01.jpg')}}" class="btn btn-file"
-                                        target="_blank" title="Lihat Dokumen">
-                                        <i class="clip-file-2"> | Surat Keputusan Izin Trayek</i></a>
+                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                                        <div class="input-group">
+                                            <div class="form-control uneditable-input">
+                                                <i class="fa fa-file fileupload-exists"></i>
+                                                <span class="fileupload-preview"></span>
+                                            </div>
+                                            <div class="input-group-btn">
+                                                <div class="btn btn-light-grey btn-file">
+                                                    <span class="fileupload-new"><i class="fa fa-folder-open-o"></i>
+                                                        Select file</span>
+                                                    <span class="fileupload-exists"><i class="fa fa-folder-open-o"></i>
+                                                        Change</span>
+                                                    <input type="file" class="file-input" name="sertifikat_standar"
+                                                      >
+                                                </div>
+                                                <a href="#" class="btn btn-light-grey fileupload-exists"
+                                                    data-dismiss="fileupload">
+                                                    <i class="fa fa-times"></i> Remove
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <p>Dokumen yang telah terunggah pada permohonan sebelumnya <a
+                                                href="#" target="_blank">
+                                                surat-izin-trayek.pdf</i> </a> </p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -124,9 +153,31 @@
                                     STNKB </span>
                                 </label>
                                 <div class="col-sm-7">
-                                    <a href="{{asset('assets/admin/images/image01.jpg')}}" class="btn btn-file"
-                                        target="_blank" title="Lihat Dokumen">
-                                        <i class="clip-file-2"> | STNKB</i></a>
+                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                                        <div class="input-group">
+                                            <div class="form-control uneditable-input">
+                                                <i class="fa fa-file fileupload-exists"></i>
+                                                <span class="fileupload-preview"></span>
+                                            </div>
+                                            <div class="input-group-btn">
+                                                <div class="btn btn-light-grey btn-file">
+                                                    <span class="fileupload-new"><i class="fa fa-folder-open-o"></i>
+                                                        Select file</span>
+                                                    <span class="fileupload-exists"><i class="fa fa-folder-open-o"></i>
+                                                        Change</span>
+                                                    <input type="file" class="file-input" name="sertifikat_standar"
+                                                      >
+                                                </div>
+                                                <a href="#" class="btn btn-light-grey fileupload-exists"
+                                                    data-dismiss="fileupload">
+                                                    <i class="fa fa-times"></i> Remove
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <p>Dokumen yang telah terunggah pada permohonan sebelumnya <a
+                                                href="#" target="_blank">
+                                                surat-izin-trayek.pdf</i> </a> </p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -134,9 +185,31 @@
                                     Buku Uji Berkala </span>
                                 </label>
                                 <div class="col-sm-7">
-                                    <a href="{{asset('assets/admin/images/image01.jpg')}}" class="btn btn-file"
-                                        target="_blank" title="Lihat Dokumen">
-                                        <i class="clip-file-2"> | Buku Uji Berkala</i></a>
+                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                                        <div class="input-group">
+                                            <div class="form-control uneditable-input">
+                                                <i class="fa fa-file fileupload-exists"></i>
+                                                <span class="fileupload-preview"></span>
+                                            </div>
+                                            <div class="input-group-btn">
+                                                <div class="btn btn-light-grey btn-file">
+                                                    <span class="fileupload-new"><i class="fa fa-folder-open-o"></i>
+                                                        Select file</span>
+                                                    <span class="fileupload-exists"><i class="fa fa-folder-open-o"></i>
+                                                        Change</span>
+                                                    <input type="file" class="file-input" name="sertifikat_standar"
+                                                      >
+                                                </div>
+                                                <a href="#" class="btn btn-light-grey fileupload-exists"
+                                                    data-dismiss="fileupload">
+                                                    <i class="fa fa-times"></i> Remove
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <p>Dokumen yang telah terunggah pada permohonan sebelumnya <a
+                                                href="#" target="_blank">
+                                                surat-izin-trayek.pdf</i> </a> </p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -144,9 +217,31 @@
                                     Surat Keputusan Izin Trayek </span>
                                 </label>
                                 <div class="col-sm-7">
-                                    <a href="{{asset('assets/admin/images/image01.jpg')}}" class="btn btn-file"
-                                        target="_blank" title="Lihat Dokumen">
-                                        <i class="clip-file-2"> | Surat Keputusan Izin Trayek</i></a>
+                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                                        <div class="input-group">
+                                            <div class="form-control uneditable-input">
+                                                <i class="fa fa-file fileupload-exists"></i>
+                                                <span class="fileupload-preview"></span>
+                                            </div>
+                                            <div class="input-group-btn">
+                                                <div class="btn btn-light-grey btn-file">
+                                                    <span class="fileupload-new"><i class="fa fa-folder-open-o"></i>
+                                                        Select file</span>
+                                                    <span class="fileupload-exists"><i class="fa fa-folder-open-o"></i>
+                                                        Change</span>
+                                                    <input type="file" class="file-input" name="sertifikat_standar"
+                                                      >
+                                                </div>
+                                                <a href="#" class="btn btn-light-grey fileupload-exists"
+                                                    data-dismiss="fileupload">
+                                                    <i class="fa fa-times"></i> Remove
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <p>Dokumen yang telah terunggah pada permohonan sebelumnya <a
+                                                href="#" target="_blank">
+                                                surat-izin-trayek.pdf</i> </a> </p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -154,29 +249,31 @@
                                     Surat Kuasa </span>
                                 </label>
                                 <div class="col-sm-7">
-                                    <a href="{{asset('assets/admin/images/image01.jpg')}}" class="btn btn-file"
-                                        target="_blank" title="Lihat Dokumen">
-                                        <i class="clip-file-2"> | Surat Kuasa</i></a>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">
-                                    Konfirmasi Persyaratan <span class="symbol required"></span>
-                                </label>
-                                <div class="col-sm-7">
-                                    <select class="form-control" id="country" name="status-tahap-1" onchange="showDiv('catatan-form',this)">
-                                        <option value="">&nbsp;</option>
-                                        <option value="lengkap">Lengkap</option>
-                                        <option value="tidak-lengkap">Tidak Lengkap</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div id="catatan-form" class="form-group">
-                                <label class="col-sm-3 control-label">
-                                    Catatan <span class="symbol required"></span>
-                                </label>
-                                <div class="col-sm-7">
-                                    <textarea placeholder="Uraian" name="uraian" id="form-field-22" class="form-control" ></textarea>
+                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                                        <div class="input-group">
+                                            <div class="form-control uneditable-input">
+                                                <i class="fa fa-file fileupload-exists"></i>
+                                                <span class="fileupload-preview"></span>
+                                            </div>
+                                            <div class="input-group-btn">
+                                                <div class="btn btn-light-grey btn-file">
+                                                    <span class="fileupload-new"><i class="fa fa-folder-open-o"></i>
+                                                        Select file</span>
+                                                    <span class="fileupload-exists"><i class="fa fa-folder-open-o"></i>
+                                                        Change</span>
+                                                    <input type="file" class="file-input" name="sertifikat_standar"
+                                                      >
+                                                </div>
+                                                <a href="#" class="btn btn-light-grey fileupload-exists"
+                                                    data-dismiss="fileupload">
+                                                    <i class="fa fa-times"></i> Remove
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <p>Dokumen yang telah terunggah pada permohonan sebelumnya <a
+                                                href="#" target="_blank">
+                                                surat-izin-trayek.pdf</i> </a> </p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -201,17 +298,18 @@
 
 @push('script')
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="assets/admin/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="{{asset('assets/admin/plugins/jquery-validation/dist/jquery.validate.min.js')}}"></script>
 
-<script src="assets/admin/plugins/jquery-inputlimiter/jquery.inputlimiter.1.3.1.min.js"></script>
-<script src="assets/admin/plugins/autosize/jquery.autosize.min.js"></script>
+<script src="{{asset('assets/admin/plugins/jquery-inputlimiter/jquery.inputlimiter.1.3.1.min.js')}}"></script>
+<script src="{{asset('assets/admin/plugins/autosize/jquery.autosize.min.js')}}"></script>
 <script src="{{asset('assets/admin/plugins/select2/select2.min.js')}}"></script>
-<script src="assets/admin/plugins/jQuery-Tags-Input/jquery.tagsinput.js"></script>
-<script src="assets/admin/plugins/summernote/build/summernote.min.js"></script>
-<script src="assets/admin/plugins/ckeditor/ckeditor.js"></script>
-<script src="assets/admin/plugins/ckeditor/adapters/jquery.js"></script>
-<script src="assets/admin/js/form-elements.js"></script>
+<script src="{{asset('assets/admin/plugins/jQuery-Tags-Input/jquery.tagsinput.js')}}"></script>
+<script src="{{asset('assets/admin/plugins/summernote/build/summernote.min.js')}}"></script>
+<script src="{{asset('assets/admin/plugins/ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('assets/admin/plugins/ckeditor/adapters/jquery.js')}}"></script>
+<script src="{{asset('assets/admin/js/form-elements.js')}}"></script>
 <script src="{{asset('assets/js/ui-buttons.js')}}"></script>
+<script src="{{ asset('assets/admin/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js') }}"></script>
 
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
@@ -234,7 +332,7 @@
 <link rel="stylesheet" href="{{asset('assets/admin/plugins/select2/select2.css')}}">
 <link rel="stylesheet" href="assets/admin/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css">
 <link rel="stylesheet" href="assets/admin/plugins/jQuery-Tags-Input/jquery.tagsinput.css">
-<link rel="stylesheet" href="assets/admin/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
+<link rel="stylesheet" href="{{asset('assets/admin/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css')}}">
 <link rel="stylesheet" href="assets/admin/plugins/summernote/build/summernote.css">
 <link rel="stylesheet" href="{{asset('assets/plugins/bootstrap-social-buttons/social-buttons-3.css')}}">
 

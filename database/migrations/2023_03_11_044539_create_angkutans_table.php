@@ -15,6 +15,17 @@ class CreateAngkutansTable extends Migration
     {
         Schema::create('angkutans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('perusahaan_id')
+                    ->constrained('perusahaans')
+                    ->onUpdate('cascade');
+            $table->string('nomor_uji');
+            $table->string('merk');
+            $table->string('tipe');
+            $table->integer('tahun_pembuatan');
+            $table->string('jenis');
+            $table->string('nomor_rangka');
+            $table->string('nomor_mesin');
+            $table->string('nama_pemilik');
             $table->timestamps();
         });
     }

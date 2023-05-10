@@ -217,6 +217,7 @@
 <script>
     jQuery(document).ready(function () {
         Main.init();
+        Index.init();
         FormWizard.init();
     });
 

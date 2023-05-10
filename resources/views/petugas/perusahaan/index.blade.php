@@ -135,6 +135,7 @@
                                                             <th>NIB</th>
                                                             <th>KBLI</th>
                                                             <th>Lama permohonan</th>
+                                                            <th>Status Penerbitan</th>
                                                             <th>Action</th>
                                                             {{-- <th>Action</th> --}}
                                                         </tr>
@@ -153,16 +154,54 @@
                                                             <td>{{$item->nib}}</td>
                                                             <td>{{$item->kbli->kode}}</td>
                                                             <td>{{$numberDays+1}}</td>
+                                                            <td>belum dicetak</td>
                                                             <td><a class="btn btn-xs btn-success"
-                                                                href="{{ route('perusahaan.show', $item->id)}}"><i
-                                                                    class="fa fa-eye"></i>
-                                                                detail</a>
+                                                                    href="{{ route('perusahaan.show', $item->id)}}"><i
+                                                                        class="fa fa-eye"></i>
+                                                                    detail</a>
                                                                 <a class="btn btn-xs btn-blue" target="_blank"
                                                                     href="{{ url('cetak-surat-perusahaan', $item->id)}}"><i
                                                                         class="fa fa-file"></i>
                                                                     cetak</a>
+                                                                    <a class="btn btn-xs btn-primary" href="#konfirmasi-percetakan" data-toggle="modal"><i class="fa fa-check-square-o"></i>
+                                                                        Konfirmasi percetakan</a>
                                                             </td>
                                                         </tr>
+                                                        <div id="konfirmasi-percetakan" class="modal fade" tabindex="-1"
+                                                            data-width="360" style="display: none;">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-hidden="true">
+                                                                    &times;
+                                                                </button>
+                                                                <h4 class="modal-title">
+                                                                    <i class="bi bi-exclamation-octagon-fill"
+                                                                        style="color: red"></i>
+                                                                    Konfirmasi Percetakan Surat
+                                                                </h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <p>Apakah anda yakin untuk mengonfirmasi bahwa surat telah dicetak? status percetakan tidak dapat diubah lagi </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <form action="#" method="post"
+                                                                enctype="multipart/form-data">
+                                                                @csrf
+                                                                <div class="modal-footer">
+                                                                    <button type="button" data-dismiss="modal"
+                                                                        class="btn btn-default">
+                                                                        Batalkan
+                                                                    </button>
+                                                                    <button type="submit" class="btn btn-danger"
+                                                                        id="submit">
+                                                                        Ya
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
                                                         @endforeach
                                                     </tbody>
                                                 </table>
@@ -202,9 +241,9 @@
                                                             <td>{{$item->kbli->kode}}</td>
                                                             <td>{{$numberDays+1}}</td>
                                                             <td><a class="btn btn-xs btn-success"
-                                                                href="{{ route('perusahaan.show', $item->id)}}"><i
-                                                                    class="fa fa-eye"></i>
-                                                                detail</a></td>
+                                                                    href="{{ route('perusahaan.show', $item->id)}}"><i
+                                                                        class="fa fa-eye"></i>
+                                                                    detail</a></td>
                                                         </tr>
                                                         @endforeach
                                                     </tbody>
@@ -228,14 +267,14 @@
 @endsection
 @push('style')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/plugins/select2/select2.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/admin/plugins/DataTables/media/css/DT_bootstrap.css') }}" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
 <link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css') }}" rel="stylesheet"
     type="text/css" />
 <link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal.css') }}" rel="stylesheet"
     type="text/css" />
 <style>
-    i {
-        padding: 2px;
+    .btn-xs {
+        margin-top: 4px;
     }
 
 </style>
@@ -244,10 +283,8 @@
 @push('script')
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script type="text/javascript" src="{{ asset('assets/admin/plugins/select2/select2.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('assets/admin/plugins/DataTables/media/js/jquery.dataTables.min.js')}}">
-</script>
-<script type="text/javascript" src="{{ asset('assets/admin/plugins/DataTables/media/js/DT_bootstrap.js')}}"></script>
-<script src="{{asset('assets/admin/js/table-data.js')}}"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js "></script>
 
 <script src="{{ asset('assets/admin/plugins/bootstrap-modal/js/bootstrap-modal.js') }}"></script>
 <script src="{{ asset('assets/admin/plugins/bootstrap-modal/js/bootstrap-modalmanager.js') }}"></script>
@@ -256,9 +293,11 @@
 <script>
     jQuery(document).ready(function () {
         Main.init();
-        TableData.init();
+        $("#sample_1").DataTable();
+        $("#sample_2").DataTable();
+        $("#sample_3").DataTable();
         Index.init();
-        $('#sample_2').TableData.init();
+        
     });
 
 </script>

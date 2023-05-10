@@ -362,7 +362,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <button class="col-sm-2 col-sm-offset-3 btn btn-blue " type="submit">Submit
+                                    </button>
+                                    {{-- <div class="form-group">
                                         <div class="col-sm-2 col-sm-offset-3">
                                             <button class="btn btn-light-grey back-step btn-block">
                                                 <i class="fa fa-circle-arrow-left"></i> Back
@@ -370,7 +372,7 @@
                                         </div>
                                         <button class="col-sm-2 col-sm-offset-3 btn btn-blue " type="submit">Submit
                                         </button>
-                                    </div>
+                                    </div> --}}
                                 </form>
                             </div>
                         </div>

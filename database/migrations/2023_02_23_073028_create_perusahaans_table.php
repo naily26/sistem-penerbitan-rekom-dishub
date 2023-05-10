@@ -32,7 +32,7 @@ class CreatePerusahaansTable extends Migration
             $table->enum('status_pengecekan_2', ['disetujui', 'ditolak', 'menunggu'])->default('menunggu');
             $table->string('surat_keterangan_perusahaan')->nullable();
             $table->string('nomort_keterangan_perusahaan')->nullable();
-            $table->enum('status_penerbitan', ['menunggu', 'diterbitkan'])->nullable();
+            $table->enum('status_penerbitan', ['menunggu', 'dicetak', 'birokrasi', 'diterbitkan', 'diambil'])->nullable();
             $table->date('tanggal_permohonan')->nullable();
             $table->date('tanggal_cetak')->nullable();
             $table->date('tanggal_penerbitan')->nullable();
