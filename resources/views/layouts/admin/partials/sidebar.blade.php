@@ -29,10 +29,10 @@
                 <span class="selected"></span>
             </a>
         </li>
-        <li>
-            <a href="javascript:void(0)">
+        <li class="{{ Request::segment(1) === 'data-tampilan' ? 'active' : '' }}">
+            <a href="{{ route('data-tampilan.index')}}" href="javascript:void(0)">
                 <i class="clip-file"></i>
-                <span class="title"> Dokumen </span>
+                <span class="title"> Tampilan </span>
                 <span class="selected"></span>
             </a>
         </li>
@@ -47,6 +47,13 @@
             <a href="{{ route('petugas.index')}}">
                 <i class="clip-user-5"></i>
                 <span class="title"> Petugas </span>
+                <span class="selected"></span>
+            </a>
+        </li>
+        <li class="{{ Request::segment(1) === 'customer-service' ? 'active' : '' }}">
+            <a href="{{ route('customer-service.index')}}">
+                <i class="clip-user-5"></i>
+                <span class="title"> Customer service </span>
                 <span class="selected"></span>
             </a>
         </li>

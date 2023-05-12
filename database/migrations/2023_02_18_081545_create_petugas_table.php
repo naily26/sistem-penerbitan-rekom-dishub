@@ -19,6 +19,7 @@ class CreatePetugasTable extends Migration
             $table->string('kode');
             $table->string('jabatan');
             $table->string('no_hp');
+            $table->string('photo')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();
         });

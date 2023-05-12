@@ -4,17 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
-class pengawas extends Model
+class customer_service extends Model
 {
     use HasFactory;
-
-    protected $table = 'pengawas';
+    protected $table = 'customer_services';
 
     protected $fillable = [
         'nama',
-        'jabatan',
-        'lembaga',
+        'no_hp',
         'user_id',
         'photo'
     ];

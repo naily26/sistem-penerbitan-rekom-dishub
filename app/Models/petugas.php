@@ -16,7 +16,8 @@ class petugas extends Model
         'nama',
         'jabatan',
         'no_hp',
-        'user_id'
+        'user_id',
+        'photo'
     ];
 
     public function user()

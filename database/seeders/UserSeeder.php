@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $users = ['admin', 'pengawas', 'petugas', 'pemohon'];
+        $users = ['admin', 'pengawas', 'petugas', 'pemohon', 'customer-service'];
 
         $faker = Faker::create();
 

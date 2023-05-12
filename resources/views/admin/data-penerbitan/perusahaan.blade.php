@@ -12,24 +12,18 @@
                 <ol class="breadcrumb">
                     
                     <li class="active">
-                        Data Pengawas
+                        Data Penerbitan Surat Keterangan Perusahaan
                     </li>
 
                 </ol>
                 <div class="page-header">
-                    <h1>Data Pengawas <small> </small></h1>
+                    <h1>Data Penerbitan <small>Surat Keterangan Perusahaan </small></h1>
                 </div>
                 <!-- end: PAGE TITLE & BREADCRUMB -->
             </div>
         </div>
         <!-- end: PAGE HEADER -->
         <!-- start: PAGE CONTENT -->
-        <div class="row">
-            <div class="col-md-12">
-                <a class="btn btn-primary" href="{{ route('pengawas.create')}}"><i class="fa fa-plus"></i>
-                    Tambah Data</a>
-            </div>
-        </div><br />
         <div class="row">
             <div class="col-md-12">
                 <!-- start: DYNAMIC TABLE PANEL -->
@@ -52,54 +46,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $no=1 ?>
-                                @foreach ($pengawas as $key => $data)
                                 <tr>
-                                    <td>{{$no}}</td>
-                                    <td class="hidden-xs">{{$data->nama}}</td>
-                                    <td>{{$data->jabatan}}</td>
-                                    <td>{{$data->lembaga}}</td>
-                                    <td>{{$data->user->email}}</td>
+                                    <td>1</td>
+                                    <td class="hidden-xs">EXO Crop</td>
+                                    <td>123232</td>
+                                    <td>4932</td>
+                                    <td>bus dalam trayek</td>
                                     <td>12345678</td>
                                     <td>
-                                        <a class="btn btn-xs btn-light-grey" href="{{ route('pengawas.edit', $data->id)}}"><i class="fa fa-edit"></i>
-                                            edit</a>
-                                        <a class="btn btn-xs btn-light-grey" data-toggle="modal" href="#delete{{$data->id}}"><i class="fa fa-trash-o"></i>
-                                            hapus</a>
+                                        -
                                     </td>
                                 </tr>
-                                <?php $no++ ?>
-                                <div id="delete{{$data->id}}" class="modal fade" tabindex="-1" data-width="360" style="display: none;">   
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                            &times;
-                                        </button>
-                                        <h4 class="modal-title">
-                                            <i class="bi bi-exclamation-octagon-fill" style="color: red"></i>
-                                            Hapus Data Pengawas?
-                                        </h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <p>Semua data yang berkaitan dengan skema ini akan terhapus juga. Apakah Anda yakin ingin menghapus?</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <form action="{{url('pengawas/'. $data->id)}}" method="post" enctype="multipart/form-data">
-                                        {{ method_field('delete') }}
-                                        @csrf
-                                    <div class="modal-footer">
-                                        <button type="button" data-dismiss="modal" class="btn btn-default">
-                                            Batalkan
-                                        </button>
-                                        <button type="submit" class="btn btn-danger" id="submit">
-                                            Ya
-                                        </button>
-                                    </div>
-                                    </form>
-                                </div>
-                                @endforeach
                             </tbody>
                         </table>
                         </div>

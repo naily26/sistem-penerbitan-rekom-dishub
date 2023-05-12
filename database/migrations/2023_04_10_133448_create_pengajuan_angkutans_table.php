@@ -19,7 +19,6 @@ return new class extends Migration
             $table->enum('keterangan', ['kendaraan-baru', 'kendaraan-mutasi', 'perpanjangan-stnk']);
             $table->string('nomor_kendaraan');
             $table->string('nomor_uji');
-            $table->string('nomor_kendaraan');
             $table->string('nomor_faktur');
             $table->date('tanggal_faktur');
             $table->string('stnkb')->nullable();
@@ -32,11 +31,10 @@ return new class extends Migration
             $table->string('surat_permohonan');
             $table->string('surat_pernyataan');
             $table->string('nomor_permohonan')->nullable();
-            $table->enum('status_pengecekan_1', ['disetujui', 'ditolak', 'menunggu'])->default('menunggu');
-            $table->enum('status_pengecekan_2', ['disetujui', 'ditolak', 'menunggu', 'tertunda'])->default('menunggu');
+            $table->enum('status_pengecekan', ['disetujui', 'ditolak', 'menunggu'])->default('menunggu');
             $table->string('surat_rekomendasi_peruntukan')->nullable();
             $table->string('nomort_rekomendasi_peruntukan')->nullable();
-            $table->enum('status_penerbitan', ['menunggu', 'dicetak', 'birokrasi', 'diterbitkan'])->nullable();
+            $table->enum('status_penerbitan', ['tertunda', 'menunggu', 'dicetak', 'birokrasi', 'diterbitkan'])->nullable();
             $table->date('tanggal_permohonan')->nullable();
             $table->date('tanggal_cetak')->nullable();
             $table->date('tanggal_penerbitan')->nullable();

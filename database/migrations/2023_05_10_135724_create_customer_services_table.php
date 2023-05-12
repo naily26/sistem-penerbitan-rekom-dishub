@@ -4,21 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePengawasTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('pengawas', function (Blueprint $table) {
+        Schema::create('customer_services', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('jabatan');
-            $table->string('lembaga');
             $table->foreignId('user_id');
+            $table->string('no_hp');
             $table->string('photo')->nullable();
             $table->timestamps();
         });
@@ -26,11 +23,9 @@ class CreatePengawasTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('pengawas');
+        Schema::dropIfExists('customer_services');
     }
-}
+};

@@ -30,9 +30,9 @@ class PerusahaanController extends Controller
         } elseif (Auth::user()->role == 'petugas') {
             $data_petugas = petugas::where('user_id', Auth::user()->id)->first();
             $today = Carbon::today()->toDateString();
-            $diproses = perusahaan::where('status_pengecekan_2', 'menunggu')->where('petugas_id', $data_petugas->id)->get();
-            $disetujui = perusahaan::where('status_pengecekan_2', 'disetujui')->where('petugas_id', $data_petugas->id)->get();
-            $ditolak = perusahaan::where('status_pengecekan_2', 'ditolak')->where('petugas_id', $data_petugas->id)->get();
+            $diproses = perusahaan::where('status_pengecekan', 'menunggu')->where('petugas_id', $data_petugas->id)->get();
+            $disetujui = perusahaan::where('status_pengecekan', 'disetujui')->where('petugas_id', $data_petugas->id)->get();
+            $ditolak = perusahaan::where('status_pengecekan', 'ditolak')->where('petugas_id', $data_petugas->id)->get();
             return view('petugas.perusahaan.index', compact('diproses', 'disetujui', 'ditolak', 'today'));
         } elseif (Auth::user()->role == 'pengawas') {
             return view('pengawas.perusahaan.index');
@@ -94,7 +94,13 @@ class PerusahaanController extends Controller
             'user_id' => Auth::user()->id,
         ]);
 
-        
+        if($perusahaan) {
+            $antrian = antrian::create([
+                'perusahaan_id' => $perusahaan->id,
+                'tanggal_permohonan' => $today,
+                'jumlah_perusahaan' => 1,
+            ]);
+        }
 
         if($perusahaan) {
             return redirect()->route('perusahaan.index')->with(['success'=>'data berhasil ditambahkan']);

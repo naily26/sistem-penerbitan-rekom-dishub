@@ -7,6 +7,9 @@ use App\Http\Controllers\PengawasController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\AngkutanController;
 use App\Http\Controllers\PerusahaanController;
+use App\Http\Controllers\CustomerserviceController;
+use App\Http\Controllers\DataTampilanController;
+use App\Http\Controllers\DataPenerbitanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +67,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('kbli', KbliController::class);
     Route::resource('petugas', PetugasController::class);
     Route::resource('pengawas', PengawasController::class);
+    Route::resource('customer-service', CustomerServiceController::class);
+    Route::resource('data-tampilan', DataTampilanController::class);
+    Route::get('/penerbitan-perusahaan', [App\Http\Controllers\DataPenerbitanController::class, 'indexPerusahaan'])->name('indexPerusahaan');
 });
 
 Route::resource('angkutan', AngkutanController::class);

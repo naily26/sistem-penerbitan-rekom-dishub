@@ -12,12 +12,12 @@
                 <ol class="breadcrumb">
                     
                     <li class="active">
-                        Data Pengawas
+                        Data Customer Service
                     </li>
 
                 </ol>
                 <div class="page-header">
-                    <h1>Data Pengawas <small> </small></h1>
+                    <h1>Data Customer Service <small> </small></h1>
                 </div>
                 <!-- end: PAGE TITLE & BREADCRUMB -->
             </div>
@@ -26,7 +26,7 @@
         <!-- start: PAGE CONTENT -->
         <div class="row">
             <div class="col-md-12">
-                <a class="btn btn-primary" href="{{ route('pengawas.create')}}"><i class="fa fa-plus"></i>
+                <a class="btn btn-primary" href="{{ route('customer-service.create')}}"><i class="fa fa-plus"></i>
                     Tambah Data</a>
             </div>
         </div><br />
@@ -43,9 +43,8 @@
                                 <tr>
                                     <th>No</th>
                                     <th class="hidden-xs">Nama</th>
-                                    <th>Jabatan</th>
-                                    <th>Lembaga</th>
                                     <th>E-mail</th>
+                                    <th>No Handphone</th>
                                     <th>Password</th>
                                     <th>Action</th>
                                     {{-- <th>Action</th> --}}
@@ -53,16 +52,15 @@
                             </thead>
                             <tbody>
                                 <?php $no=1 ?>
-                                @foreach ($pengawas as $key => $data)
+                                @foreach ($cs as $key => $data)
                                 <tr>
                                     <td>{{$no}}</td>
                                     <td class="hidden-xs">{{$data->nama}}</td>
-                                    <td>{{$data->jabatan}}</td>
-                                    <td>{{$data->lembaga}}</td>
                                     <td>{{$data->user->email}}</td>
+                                    <td>{{$data->no_hp}}</td>
                                     <td>12345678</td>
                                     <td>
-                                        <a class="btn btn-xs btn-light-grey" href="{{ route('pengawas.edit', $data->id)}}"><i class="fa fa-edit"></i>
+                                        <a class="btn btn-xs btn-light-grey" href="{{ route('customer-service.edit', $data->id)}}"><i class="fa fa-edit"></i>
                                             edit</a>
                                         <a class="btn btn-xs btn-light-grey" data-toggle="modal" href="#delete{{$data->id}}"><i class="fa fa-trash-o"></i>
                                             hapus</a>
@@ -76,7 +74,7 @@
                                         </button>
                                         <h4 class="modal-title">
                                             <i class="bi bi-exclamation-octagon-fill" style="color: red"></i>
-                                            Hapus Data Pengawas?
+                                            Hapus Data Petugas?
                                         </h4>
                                     </div>
                                     <div class="modal-body">
@@ -86,7 +84,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <form action="{{url('pengawas/'. $data->id)}}" method="post" enctype="multipart/form-data">
+                                    <form action="{{url('customer-service/'. $data->id)}}" method="post" enctype="multipart/form-data">
                                         {{ method_field('delete') }}
                                         @csrf
                                     <div class="modal-footer">
@@ -129,10 +127,11 @@
 
 @push('script')
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script type="text/javascript" src="{{asset('assets/admin/plugins/DataTables/media/js/jquery.dataTables.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets/admin/plugins/DataTables/media/js/DT_bootstrap.js')}}"></script>
-<script src="{{asset('assets/admin/js/table-data.js')}}"></script>
-<script src="{{asset('assets/admin/js/index.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/admin/plugins/select2/select2.min.js')}}"></script>
+<script type="text/javascript" src="assets/admin/plugins/DataTables/media/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="assets/admin/plugins/DataTables/media/js/DT_bootstrap.js"></script>
+<script src="assets/admin/js/table-data.js"></script>
+<script src="assets/admin/js/index.js"></script>
 <script src="{{ asset('assets/admin/plugins/bootstrap-modal/js/bootstrap-modal.js') }}"></script>
     <script src="{{ asset('assets/admin/plugins/bootstrap-modal/js/bootstrap-modalmanager.js') }}"></script>
     <script src="{{ asset('assets/admin/js/ui-modals.js') }}"></script>
