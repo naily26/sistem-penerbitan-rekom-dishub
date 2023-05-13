@@ -90,7 +90,7 @@
                                                             <th>NIB</th>
                                                             <th>KBLI</th>
                                                             <th>Lama permohonan</th>
-                                                            <th>Action</th>
+                                                            <th>Petugas</th>
                                                             {{-- <th>Action</th> --}}
                                                         </tr>
                                                     </thead>
@@ -108,12 +108,7 @@
                                                             <td>{{$item->nib}}</td>
                                                             <td>{{$item->kbli->kode}}</td>
                                                             <td>{{$numberDays+1}}</td>
-                                                            <td>
-                                                                <a class="btn btn-xs btn-primary"
-                                                                    href="{{route('perusahaan.edit', $item->id)}}"><i
-                                                                        class="fa fa-check-square-o"></i>
-                                                                    konfirmasi status</a>
-                                                            </td>
+                                                            <td>{{$item->petugas->nama}} </td>
                                                         </tr>
                                                         @endforeach
                                                     </tbody>

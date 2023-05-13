@@ -10,6 +10,7 @@ use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\CustomerserviceController;
 use App\Http\Controllers\DataTampilanController;
 use App\Http\Controllers\DataPenerbitanController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,8 +70,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('pengawas', PengawasController::class);
     Route::resource('customer-service', CustomerServiceController::class);
     Route::resource('data-tampilan', DataTampilanController::class);
-    Route::get('/penerbitan-perusahaan', [App\Http\Controllers\DataPenerbitanController::class, 'indexPerusahaan'])->name('indexPerusahaan');
+    Route::get('/report', [App\Http\Controllers\ReportController::class, 'index'])->name('index');
 });
+
+Route::get('/penerbitan-perusahaan', [App\Http\Controllers\DataPenerbitanController::class, 'indexPerusahaan'])->name('indexPerusahaan');
+Route::get('/penerbitan-angkutan', [App\Http\Controllers\DataPenerbitanController::class, 'indexAngkutan'])->name('indexAngkutan');
 
 Route::resource('angkutan', AngkutanController::class);
 Route::resource('perusahaan', PerusahaanController::class);

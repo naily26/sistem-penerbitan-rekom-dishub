@@ -16,46 +16,43 @@
                 <span class="title"> Dashboard </span><span class="selected"></span>
             </a>
         </li>
-        <li class="menu-header">
-            <a class="menu-header">
-                <span class="title"> Data Master </span>
+        <li class="{{ Request::segment(1) === 'kbli' || Request::segment(1) === 'data-tampilan' || Request::segment(1) === 'pengawas' || Request::segment(1) === 'petugas' || Request::segment(1) === 'customer-service' ? 'active' : '' }}">
+            <a href="javascript:void(0)"><i class="clip-code"></i>
+                <span class="title">Data Master</span><i class="icon-arrow"></i>
                 <span class="selected"></span>
             </a>
-        </li>
-        <li class="{{ Request::segment(1) === 'kbli' ? 'active' : '' }}">
-            <a href="{{ route('kbli.index') }}">
-                <i class="clip-code"></i>
-                <span class="title"> Kode KBLI </span>
-                <span class="selected"></span>
-            </a>
-        </li>
-        <li class="{{ Request::segment(1) === 'data-tampilan' ? 'active' : '' }}">
-            <a href="{{ route('data-tampilan.index')}}" href="javascript:void(0)">
-                <i class="clip-file"></i>
-                <span class="title"> Tampilan </span>
-                <span class="selected"></span>
-            </a>
-        </li>
-        <li class="{{ Request::segment(1) === 'pengawas' ? 'active' : '' }}">
-            <a href="{{ route('pengawas.index')}}">
-                <i class="clip-user-4"></i>
-                <span class="title"> Pengawas </span>
-                <span class="selected"></span>
-            </a>
-        </li>
-        <li class="{{ Request::segment(1) === 'petugas' ? 'active' : '' }}">
-            <a href="{{ route('petugas.index')}}">
-                <i class="clip-user-5"></i>
-                <span class="title"> Petugas </span>
-                <span class="selected"></span>
-            </a>
-        </li>
-        <li class="{{ Request::segment(1) === 'customer-service' ? 'active' : '' }}">
-            <a href="{{ route('customer-service.index')}}">
-                <i class="clip-user-5"></i>
-                <span class="title"> Customer service </span>
-                <span class="selected"></span>
-            </a>
+            <ul class="sub-menu">
+                <li class="{{ Request::segment(1) === 'kbli' ? 'active' : '' }}">
+                    <a href="{{ route('kbli.index') }}">
+                        <span class="title"> Kode KBLI </span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+                <li class="{{ Request::segment(1) === 'data-tampilan' ? 'active' : '' }}">
+                    <a href="{{ route('data-tampilan.index')}}" href="javascript:void(0)">
+                        <span class="title"> Tampilan </span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+                <li class="{{ Request::segment(1) === 'pengawas' ? 'active' : '' }}">
+                    <a href="{{ route('pengawas.index')}}">
+                        <span class="title"> Pengawas </span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+                <li class="{{ Request::segment(1) === 'petugas' ? 'active' : '' }}">
+                    <a href="{{ route('petugas.index')}}">
+                        <span class="title"> Petugas </span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+                <li class="{{ Request::segment(1) === 'customer-service' ? 'active' : '' }}">
+                    <a href="{{ route('customer-service.index')}}">
+                        <span class="title"> Customer service </span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li class="menu-header">
             <a class="menu-header">
@@ -74,9 +71,27 @@
                 <span class="title"> Angkutan </span><span class="selected"></span>
             </a>
         </li>
-        <li class="menu-header">
-            <a class="menu-header">
-                <span class="title"> Data Penerbitan </span>
+        <li class="{{ Request::segment(1) === 'penerbitan-angkutan' || Request::segment(1) === 'penerbitan-perusahaan' ? 'active' : '' }}">
+            <a href="javascript:void(0)"><i class="clip-file"></i>
+                <span class="title">Data Penerbitan</span><i class="icon-arrow"></i>
+                <span class="selected"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="{{ Request::segment(1) === 'penerbitan-perusahaan' ? 'active' : '' }}">
+                    <a href="{{url('/penerbitan-perusahaan')}}">
+                        <span class="title">Perusahaan</span>
+                    </a>
+                </li>
+                <li class="{{ Request::segment(1) === 'penerbitan-angkutan' ? 'active' : '' }}">
+                    <a href="{{url('/penerbitan-angkutan')}}">
+                        <span class="title">Angkutan</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="{{ Request::segment(1) === 'report' ? 'active' : '' }}">
+            <a href="{{url('/report')}}"><i class="clip-pencil"></i>
+                <span class="title"> Laporan </span>
                 <span class="selected"></span>
             </a>
         </li>
@@ -133,6 +148,32 @@
             </a>
         </li>
         <!-- end: PENGAWAS -->
+
+        @elseif (Auth::user()->role == 'customer-service')
+        <!-- start: CUSTOMER-SERVICE -->
+        <li class="{{ Request::segment(1) === 'home' ? 'active' : '' }}">
+            <a href="{{route('home')}}"><i class="clip-home-3"></i>
+                <span class="title"> Dashboard </span><span class="selected"></span>
+            </a>
+        </li>
+        <li class="menu-header">
+            <a class="menu-header">
+                <span class="title"> Data Penerbitan Surat</span>
+                <span class="selected"></span>
+            </a>
+        </li>
+        <li class="{{ Request::segment(1) === 'penerbitan-perusahaan' ? 'active' : '' }}">
+            <a href="{{url('/penerbitan-perusahaan')}}"><i class="clip-pencil"></i>
+                <span class="title"> Perusahaan </span>
+                <span class="selected"></span>
+            </a>
+        </li>
+        <li class="{{ Request::segment(1) === 'penerbitan-angkutan' ? 'active' : '' }}">
+            <a href="{{url('/penerbitan-angkutan')}}"><i class="clip-truck"></i>
+                <span class="title"> Angkutan </span><span class="selected"></span>
+            </a>
+        </li>
+        <!-- end: CUSTOMER-SERVICE -->
 
         @elseif (Auth::user()->role == 'pemohon')
         <!-- start: PEMOHON -->

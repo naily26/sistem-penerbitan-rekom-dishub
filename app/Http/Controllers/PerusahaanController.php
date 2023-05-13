@@ -38,9 +38,9 @@ class PerusahaanController extends Controller
             return view('pengawas.perusahaan.index');
         } elseif (Auth::user()->role == 'admin') {
             $today = Carbon::today()->toDateString();
-            $diproses = perusahaan::where('status_pengecekan_1', 'menunggu')->get();
-            $disetujui = perusahaan::where('status_pengecekan_1', 'disetujui')->get();
-            $ditolak = perusahaan::where('status_pengecekan_1', 'ditolak')->get();
+            $diproses = perusahaan::where('status_pengecekan', 'menunggu')->get();
+            $disetujui = perusahaan::where('status_pengecekan', 'disetujui')->get();
+            $ditolak = perusahaan::where('status_pengecekan', 'ditolak')->get();
             return view('admin.perusahaan.index', compact('diproses', 'disetujui', 'ditolak', 'today'));
         }
     }

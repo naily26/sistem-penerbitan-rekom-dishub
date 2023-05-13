@@ -12,12 +12,12 @@
                 <ol class="breadcrumb">
                     
                     <li class="active">
-                        Data Penerbitan Surat Keterangan Perusahaan
+                        Data Penerbitan Surat Rekomendasi Peruntukan Angkutan Umum
                     </li>
 
                 </ol>
                 <div class="page-header">
-                    <h1>Data Penerbitan <small>Surat Keterangan Perusahaan </small></h1>
+                    <h1>Data Penerbitan <small>Surat Rekomendasi Peruntukan Angkutan Umum </small></h1>
                 </div>
                 <!-- end: PAGE TITLE & BREADCRUMB -->
             </div>
@@ -40,13 +40,7 @@
                                     <th >Nama Pimpinan</th>
                                     <th>NIB</th>
                                     <th>Kode KBLI</th>
-                                    <th>Keterangan</th>
-                                    <th>Tanggal NIB</th>
-                                    <th>Petugas</th>
-                                    <th>Email Pemohon</th>
-                                    <th>Tanggal Permohonan</th>
-                                    <th>Tanggal Penerbitan</th>
-                                    {{-- <th>Action</th> --}}
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,13 +50,49 @@
                                     <td>123232</td>
                                     <td>4932</td>
                                     <td>bus dalam trayek</td>
-                                    <td>12345678</td>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat quam, nisi earum nesciunt illum nobis officiis iusto ex accusamus dolorum totam eveniet ut recusandae, commodi corrupti nam dolorem, nihil nemo?</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
+                                    <td><a class="btn btn-xs btn-primary"
+                                        href="#konfirmasi-pengambilan" data-toggle="modal"><i
+                                            class="fa  fa-check-square-o"></i>
+                                        konfirmasi pengambilan</a></td>
                                 </tr>
+                                <div id="konfirmasi-pengambilan" class="modal fade" tabindex="-1"
+                                data-width="360" style="display: none;">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <h4 class="modal-title">
+                                        <i class="bi bi-exclamation-octagon-fill"
+                                            style="color: red"></i>
+                                        Konfirmasi Pengambilan Surat
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p>Apakah anda yakin untuk mengonfirmasi bahwa
+                                                surat telah diambil oleh pemohon?
+                                                status pengambilan tidak dapat diubah lagi
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="#" method="post"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="modal-footer">
+                                        <button type="button" data-dismiss="modal"
+                                            class="btn btn-default">
+                                            Batalkan
+                                        </button>
+                                        <button type="submit" class="btn btn-danger"
+                                            id="submit">
+                                            Ya
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                             </tbody>
                         </table>
                         </div>

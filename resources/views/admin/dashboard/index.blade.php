@@ -72,50 +72,6 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-4">
-                <div class="core-box">
-                    <div class="heading">
-                        <i class="clip-user-5 circle-icon circle-bricky"></i>
-                        <h2>Manage Pengawas</h2>
-                    </div>
-                    <div class="content">
-                        Pada halaman ini, anda dapat menambahkan data petugas untuk membuat akun petugas
-                    </div>
-                    <a class="view-more" href="#">
-                        View More <i class="clip-arrow-right-2"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="core-box">
-                    <div class="heading">
-                        <i class="clip-home circle-icon circle-teal"></i>
-                        <h2>Export Perusahaan</h2>
-                    </div>
-                    <div class="content">
-                        Pada halaman ini, anda dapat melakukan export data penerbitan surat keteranga perusahaan yang telah diterbitkan. 
-                    </div>
-                    <a class="view-more" href="#">
-                        View More <i class="clip-arrow-right-2"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="core-box">
-                    <div class="heading">
-                        <i class="clip-truck circle-icon circle-green"></i>
-                        <h2>Export Angkutan</h2>
-                    </div>
-                    <div class="content">
-                        Pada halaman ini, anda dapat melakukan export data surat rekomendasi peruntukan angkutan yang telah diterbitkan. 
-                    </div>
-                    <a class="view-more" href="#">
-                        View More <i class="clip-arrow-right-2"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-sm-12">
                 <div class="row space12">
                     <ul class="mini-stats col-sm-12">

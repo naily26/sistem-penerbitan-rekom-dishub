@@ -47,6 +47,10 @@ class HomeController extends Controller
             return view('petugas.dashboard.index', compact('antrian', 'today'));
         }
 
+        else if(Auth::user()->role == 'customer-service') {
+            return view('customer-service.dashboard.index');
+        }
+
         else {
             return view('home');
         }
