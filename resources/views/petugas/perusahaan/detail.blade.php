@@ -59,12 +59,12 @@
                             <tr>
                                 <td class="column-left">KBLI</td>
                                 <td class="column-right">
-                                    {{$data->nib}}</td>
+                                    {{$data->kbli->kode}} - {{$data->kbli->keterangan}}</td>
                             </tr>
                             <tr>
                                 <td class="column-left">NIB</td>
                                 <td class="column-right">
-                                    {{$data->kbli->kode}} - {{$data->kbli->keterangan}}</td>
+                                    {{$data->nib}}</td>
                             </tr>
                             <tr>
                                 <td class="column-left">Dokumen NIB</td>
@@ -94,37 +94,26 @@
                             </tr>
                             @endif
                             <tr>
-                                <td class="column-left">Tanggal Permohonan</td>
-                                <td class="column-right">
-                                    {{$data->tanggal_permohonan}}</td>
-                            </tr>
-                            <tr>
                                 <td class="column-left">Surat Permohonan</td>
-                                <td class="column-right"><a href="{{$data->surat_permohonan}}" target="_blank">
+                                <td class="column-right"><a href="{{$data->pengajuan_perusahaan->surat_permohonan}}" target="_blank">
                                     <span class="label label-primary"><i class="clip-file-pdf" style="color: blue"> | Surat Permohonan</i></span></a>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="column-left">Surat pernyataan memenuhi persyaratan</td>
-                                <td class="column-right"><a href="{{$data->surat_pernyataan}}" target="_blank">
+                                <td class="column-right"><a href="{{$data->pengajuan_perusahaan->surat_pernyataan}}" target="_blank">
                                     <span class="label label-primary"><i class="clip-file-pdf" style="color: blue"> | Surat Pernyataan</i></span></a>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="column-left">Status Pengecekan</td>
                                 <td class="column-right">
-                                    @if ($data->status_pengecekan_1 == 'menunggu')
+                                    @if ($data->pengajuan_perusahaan->status_pengecekan == 'menunggu')
                                             <span class="label label-primary">Menunggu persetujuan admin</span>
-                                        @elseif ($data->status_pengecekan_1 == 'ditolak')
+                                        @elseif ($data->pengajuan_perusahaan->status_pengecekan == 'ditolak')
                                             <span class="label label-danger">ditolak oleh admin</span>
-                                        @elseif ($data->status_pengecekan_1 == 'disetujui')
-                                            @if ($data->status_pengecekan_2 == 'menunggu')
-                                                <span class="label label-primary">Menunggu persetujuan petugas</span>
-                                            @elseif ($data->status_pengecekan_2 == 'ditolak')
-                                                <span class="label label-danger">ditolak oleh petugas</span>
-                                            @elseif ($data->status_pengecekan_2 == 'disetujui')
-                                                <span class="label label-danger">disetujui</span>
-                                            @endif
+                                        @elseif ($data->pengajuan_perusahaan->status_pengecekan == 'disetujui')
+                                            <span class="label label-success">disetujui</span>
                                         @endif
                                 </td>
                             </tr>
@@ -134,45 +123,51 @@
                                 <td>
                                     <div data-original-title="Enter notes" data-toggle="manual" data-type="wysihtml5"
                                         data-pk="1" id="note" class="editable" tabindex="-1" style="display: block;">
-                                        @if ($data->status_pengecekan_1 == 'menunggu')
-                                            @if ($data->catatan)
+                                        @if ($data->pengajuan_perusahaan->status_pengecekan == 'menunggu')
+                                            @if ($data->pengajuan_perusahaan->catatan)
                                             Data Permohonan anda ditolak oleh admin dengan catatan berikut:
                                             <ul>
                                                 <li>
-                                                {{$data->catatan}}
+                                                {{$data->pengajuan_perusahaan->catatan}}
                                                 </li>
                                             </ul>
                                             @else
                                             Tidak ada catatan. Permohonan anda sedang dalam proses pengecekan oleh admin.
                                             @endif
-                                        @elseif ($data->status_pengecekan_1 == 'ditolak')
+                                        @elseif ($data->pengajuan_perusahaan->status_pengecekan == 'ditolak')
                                             Data Permohonan anda ditolak oleh admin dengan catatan berikut:
                                             <ul>
                                                 <li>
-                                                {{$data->catatan}}
+                                                {{$data->pengajuan_perusahaan->catatan}}
                                                 </li>
                                             </ul>
-                                        @elseif ($data->status_pengecekan_1 == 'disetujui')
-                                            @if ($data->status_pengecekan_2 == 'menunggu')
-                                                Tidak ada catatan. Permohaonan anda telah disetujui admin. Tahap berikutnya, menunggu proses pengecekan oleh petugas.
-                                            @elseif ($data->status_pengecekan_2 == 'ditolak')
-                                                Data Permohonan anda ditolak oleh petugas mohon perhatikan catatan berikut:
-                                                <ul>
-                                                    <li>
-                                                    {{$data->catatan}}
-                                                    </li>
-                                                </ul>
-                                            @elseif ($data->status_pengecekan_2 == 'disetujui')
-                                                @if ($data->status_penerbitan == 'diterbitkan')
-                                                    Surat keterengan perusahaan telah diterbitkan
-                                                @else
-                                                    Tidak ada catatan. Permohonan anda telah disetujui, silahkan menunggu proses penerbitan surat.
-                                                @endif
-                                            @endif
+                                        @elseif ($data->pengajuan_perusahaan->status_pengecekan == 'disetujui')
+                                            Tidak ada catatan. Permohonan anda telah disetujui, silahkan menunggu proses penerbitan surat.
                                         @endif
                                        
                                     </div>
                                 </td>
+                                <tr>
+                                    <td class="column-left">Tanggal Permohonan</td>
+                                    <td class="column-right">
+                                        {{$data->pengajuan_perusahaan->tanggal_permohonan}}</td>
+                                </tr>
+                                @if ($data->pengajuan_perusahaan->status_pengecekan == 'disetujui')
+                                <td class="column-left">Status Penerbitan</td>
+                                <td class="column-right">
+                                    @if ($data->pengajuan_perusahaan->status_penerbitan == 'menunggu')
+                                        belum dicetak
+                                    @elseif ($data->pengajuan_perusahaan->status_penerbitan == 'dicetak')
+                                        Surat telah dicetak pada tanggal {{$data->pengajuan_perusahaan->tanggal_cetak}}. Tahap berikutnya adalah menunggu surat dinaikkan ke pimpinan.
+                                    @elseif ($data->pengajuan_perusahaan->status_penerbitan == 'birokrasi')
+                                        Surat telah dinaikkan ke pimpinan pada tanggal {{$data->pengajuan_perusahaan->tanggal_birokrasi}}. Tahap berikutnya adalah menunggu surat ditandatangani oleh pimpinan.
+                                    @elseif ($data->pengajuan_perusahaan->status_penerbitan == 'diterbitkan')
+                                        Surat keterangan perusahaan anda bisa diambil secara langsung di kantor Dishub Jatim. Surat telah diterbitkan dan ditandatangani oleh pimpinan pada tanggal {{$data->pengajuan_perusahaan->tanggal_penerbitan}}. 
+                                    @elseif ($data->pengajuan_perusahaan->status_penerbitan == 'diterbitkan')
+                                        Surat keterangan perusahaan anda telah diambil secara langsung di kantor Dishub Jatim pada tanggal {{$data->pengajuan_perusahaan->tanggal_pengambilan}}. 
+                                    @endif
+                                </td>
+                                @endif
                             </tr>
                         </tbody>
                     </table>
@@ -188,17 +183,7 @@
 
 @push('script')
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="assets/admin/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
 
-<script src="assets/admin/plugins/jquery-inputlimiter/jquery.inputlimiter.1.3.1.min.js"></script>
-<script src="assets/admin/plugins/autosize/jquery.autosize.min.js"></script>
-<script src="{{asset('assets/admin/plugins/select2/select2.min.js')}}"></script>
-<script src="assets/admin/plugins/jQuery-Tags-Input/jquery.tagsinput.js"></script>
-<script src="assets/admin/plugins/summernote/build/summernote.min.js"></script>
-<script src="assets/admin/plugins/ckeditor/ckeditor.js"></script>
-<script src="assets/admin/plugins/ckeditor/adapters/jquery.js"></script>
-<script src="assets/admin/js/form-elements.js"></script>
-<script src="{{asset('assets/js/ui-buttons.js')}}"></script>
 
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
@@ -218,11 +203,6 @@
 @endpush
 
 @push('style')
-<link rel="stylesheet" href="{{asset('assets/admin/plugins/select2/select2.css')}}">
-<link rel="stylesheet" href="assets/admin/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css">
-<link rel="stylesheet" href="assets/admin/plugins/jQuery-Tags-Input/jquery.tagsinput.css">
-<link rel="stylesheet" href="assets/admin/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
-<link rel="stylesheet" href="assets/admin/plugins/summernote/build/summernote.css">
 <link rel="stylesheet" href="{{asset('assets/plugins/bootstrap-social-buttons/social-buttons-3.css')}}">
 
 <style>

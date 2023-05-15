@@ -45,7 +45,7 @@
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control" id="tanggal_permohonan"
                                         name="tanggal_permohonan" placeholder="nama perusahaan"
-                                        value="{{$data->tanggal_permohonan}}" disabled>
+                                        value="{{$data->pengajuan_perusahaan->tanggal_permohonan}}" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -63,7 +63,7 @@
                                 </label>
                                 <div class="col-sm-7">
                                     <textarea id="cattan" name="catatan" class="form-control"
-                                        disabled>{{$data->catatan}}</textarea>
+                                        disabled>{{$data->pengajuan_perusahaan->catatan}}</textarea>
                                     <p>*Mohon memperbarui data permohonan sesuai dengan catatan ini</p>
                                 </div>
 
@@ -109,7 +109,7 @@
                                     KBLI <span class="symbol required"></span>
                                 </label>
                                 <div class="col-sm-7">
-                                    <select class="form-control" name="kbli_id" onchange="showDiv(this);">
+                                    <select class="form-control" name="kbli_id" onchange="showDiv(this);" disabled>
                                         <option value="{{$data->kbli->id}}">&nbsp;</option>
                                         @foreach ($kbli as $item)
                                         <option value="{{$item->id}}" @selected($data->kbli->id ==
@@ -236,6 +236,37 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">
+                                    Surat Izin Penyelenggara <span
+                                        class="symbol required"></span>
+                                </label>
+                                <div class="col-sm-7">
+                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                                        <div class="input-group">
+                                            <div class="form-control uneditable-input">
+                                                <i class="fa fa-file fileupload-exists"></i>
+                                                <span class="fileupload-preview"></span>
+                                            </div>
+                                            <div class="input-group-btn">
+                                                <div class="btn btn-light-grey btn-file">
+                                                    <span class="fileupload-new"><i
+                                                            class="fa fa-folder-open-o"></i> Select
+                                                        file</span>
+                                                    <span class="fileupload-exists"><i
+                                                            class="fa fa-folder-open-o"></i> Change</span>
+                                                    <input type="file" class="file-input"
+                                                        name="surat_izin_penyelenggara">
+                                                </div>
+                                                <a href="#" class="btn btn-light-grey fileupload-exists"
+                                                    data-dismiss="fileupload">
+                                                    <i class="fa fa-times"></i> Remove
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             @else
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">
@@ -298,6 +329,15 @@
                                             href="{{$data->surat_pernyataan}}" target="_blank">
                                             surat-pernyataan.pdf</i> </a> </p>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">
+                                    Nomor Permohonan Surat <span class="symbol required"></span>
+                                </label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" id="nomor_permohonan"
+                                        name="nomor_permohonan" placeholder="nomor permohonan surat" value="{{$data->pengajuan_perusahaan->nomor_permohonan}}">
                                 </div>
                             </div>
                             <div class="form-group">

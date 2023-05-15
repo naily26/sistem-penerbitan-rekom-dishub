@@ -21,22 +21,10 @@ class perusahaan extends Model
         'tanggal_nib',
         'sertifikat_standar',
         'surat_izin_trayek',
+        'surat_izin_penyelenggara',
         'surat_delivery_order',
-        'surat_pernyataan',
-        'surat_permohonan',
-        'nomor_permohonan',
-       'status_pengecekan_1',
-       'status_pengecekan_2',
-        'surat_keterangan_perusahaan',
-        'nomort_keterangan_perusahaan',
-       'status_penerbitan', 
-        'tanggal_permohonan',
-        'tanggal_cetak',
-        'tanggal_penerbitan',
         'kbli_id',
         'user_id',
-        'petugas_id',
-        'catatan'
     ];
 
     public function user()
@@ -52,5 +40,10 @@ class perusahaan extends Model
     public function petugas()
     {
         return $this->belongsTo(petugas::class, 'petugas_id', 'id');
+    }
+
+    public function pengajuan_perusahaan()
+    {
+        return $this->belongsTo(pengajuan_perusahaan::class, 'id', 'perusahaan_id');
     }
 }

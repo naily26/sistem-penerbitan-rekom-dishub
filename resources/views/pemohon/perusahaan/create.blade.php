@@ -271,6 +271,37 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">
+                                                Surat Izin Penyelenggara <span
+                                                    class="symbol required"></span>
+                                            </label>
+                                            <div class="col-sm-7">
+                                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                    <div class="input-group">
+                                                        <div class="form-control uneditable-input">
+                                                            <i class="fa fa-file fileupload-exists"></i>
+                                                            <span class="fileupload-preview"></span>
+                                                        </div>
+                                                        <div class="input-group-btn">
+                                                            <div class="btn btn-light-grey btn-file">
+                                                                <span class="fileupload-new"><i
+                                                                        class="fa fa-folder-open-o"></i> Select
+                                                                    file</span>
+                                                                <span class="fileupload-exists"><i
+                                                                        class="fa fa-folder-open-o"></i> Change</span>
+                                                                <input type="file" class="file-input"
+                                                                    name="surat_izin_penyelenggara">
+                                                            </div>
+                                                            <a href="#" class="btn btn-light-grey fileupload-exists"
+                                                                data-dismiss="fileupload">
+                                                                <i class="fa fa-times"></i> Remove
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div id="angkutan-penumpang">
                                         <div class="form-group">
@@ -331,6 +362,15 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">
+                                            Nomor Permohonan Surat <span class="symbol required"></span>
+                                        </label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="nomor_permohonan"
+                                                name="nomor_permohonan" placeholder="nomor permohonan surat">
                                         </div>
                                     </div>
                                     <div class="form-group">

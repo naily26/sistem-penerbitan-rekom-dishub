@@ -92,12 +92,25 @@ class User extends Authenticatable
         }
     }
 
+    public function isCustomerService()
+    {
+        if($this->role == 'customer-service')
+        { 
+            return true; 
+        } 
+        else 
+        { 
+            return false; 
+        }
+    }
+
     public function hasRole($role) {
         switch ($role) {
             case 'admin': return \Auth::user()->isAdmin();
             case 'pemohon': return \Auth::user()->isPemohon();
             case 'pengawas': return \Auth::user()->isPengawas();
             case 'petugas': return \Auth::user()->isPetugas();
+            case 'customer-service': return \Auth::user()->isCustomerService();
         }
         return false;
     }

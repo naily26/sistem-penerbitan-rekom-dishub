@@ -105,14 +105,14 @@
                             </tr>
                             <tr>
                                 <td class="column-left">Surat Permohonan</td>
-                                <td class="column-right"><a href="{{$data->surat_permohonan}}" target="_blank">
+                                <td class="column-right"><a href="{{$data->pengajuan_perusahaan->surat_permohonan}}" target="_blank">
                                         <span class="label label-primary"><i class="clip-file-pdf" style="color: blue">
                                                 | Surat Permohonan</i></span></a>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="column-left">Surat pernyataan memenuhi persyaratan</td>
-                                <td class="column-right"><a href="{{$data->surat_pernyataan}}" target="_blank">
+                                <td class="column-right"><a href="{{$data->pengajuan_perusahaan->surat_pernyataan}}" target="_blank">
                                         <span class="label label-primary"><i class="clip-file-pdf" style="color: blue">
                                                 | Surat Pernyataan</i></span></a>
                                 </td>
@@ -120,18 +120,12 @@
                             <tr>
                                 <td class="column-left">Status Pengecekan</td>
                                 <td class="column-right">
-                                    @if ($data->status_pengecekan_1 == 'menunggu')
-                                    <span class="label label-primary">Menunggu persetujuan admin</span>
-                                    @elseif ($data->status_pengecekan_1 == 'ditolak')
-                                    <span class="label label-danger">ditolak oleh admin</span>
-                                    @elseif ($data->status_pengecekan_1 == 'disetujui')
-                                    @if ($data->status_pengecekan_2 == 'menunggu')
-                                    <span class="label label-primary">Menunggu persetujuan petugas</span>
-                                    @elseif ($data->status_pengecekan_2 == 'ditolak')
-                                    <span class="label label-danger">ditolak oleh petugas</span>
-                                    @elseif ($data->status_pengecekan_2 == 'disetujui')
-                                    <span class="label label-danger">disetujui</span>
-                                    @endif
+                                    @if ($data->pengajuan_perusahaan->status_pengecekan == 'menunggu')
+                                        <span class="label label-primary">Menunggu persetujuan petugas</span>
+                                    @elseif ($data->pengajuan_perusahaan->status_pengecekan == 'ditolak')
+                                        <span class="label label-danger">ditolak</span>
+                                    @elseif ($data->pengajuan_perusahaan->status_pengecekan == 'disetujui')
+                                        <span class="label label-danger">disetujui</span>
                                     @endif
                                 </td>
                             </tr>
@@ -195,7 +189,7 @@
                                     Konfirmasi Persyaratan <span class="symbol required"></span>
                                 </label>
                                 <div class="col-sm-7">
-                                    <select class="form-control" name="status_pengecekan_2" onchange="cekStatus(this)" required>
+                                    <select class="form-control" name="status_pengecekan" onchange="cekStatus(this)" required>
                                         <option value="">&nbsp;</option>
                                         <option value="disetujui">Setujui</option>
                                         <option value="ditolak">Tolak</option>
@@ -244,10 +238,12 @@
 <script src="{{asset('assets/admin/js/form-elements.js')}}"></script>
 <script src="{{asset('assets/admin/js/ui-buttons.js')}}"></script>
 
+
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
     jQuery(document).ready(function () {
         Main.init();
+        FormElements.init();
     });
 
 </script>

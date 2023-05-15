@@ -104,11 +104,15 @@
                                                             $numberDays = intval($numberDays);
                                                             ?>
                                                         <tr>
-                                                            <td>{{$item->nama_perusahaan}}</td>
-                                                            <td>{{$item->nib}}</td>
-                                                            <td>{{$item->kbli->kode}}</td>
+                                                            <td>{{$item->perusahaan->nama_perusahaan}}</td>
+                                                            <td>{{$item->perusahaan->nib}}</td>
+                                                            <td>{{$item->perusahaan->kbli->kode}}</td>
                                                             <td>{{$numberDays+1}}</td>
-                                                            <td>{{$item->petugas->nama}} </td>
+                                                            <td>@if (is_null($item->petugas_id))
+                                                                belum ada
+                                                            @else
+                                                                {{$item->petugas->nama}}
+                                                            @endif </td>
                                                         </tr>
                                                         @endforeach
                                                     </tbody>
@@ -131,6 +135,7 @@
                                                             <th>KBLI</th>
                                                             <th>Lama permohonan</th>
                                                             <th>Email</th>
+                                                            <th>Status Penerbitan</th>
                                                             <th>Action</th>
                                                             {{-- <th>Action</th> --}}
                                                         </tr>
@@ -145,16 +150,101 @@
                                                             $numberDays = intval($numberDays);
                                                             ?>
                                                         <tr>
-                                                            <td>{{$item->nama_perusahaan}}</td>
-                                                            <td>{{$item->nib}}</td>
-                                                            <td>{{$item->kbli->kode}}</td>
+                                                            <td>{{$item->perusahaan->nama_perusahaan}}</td>
+                                                            <td>{{$item->perusahaan->nib}}</td>
+                                                            <td>{{$item->perusahaan->kbli->kode}}</td>
                                                             <td>{{$numberDays+1}}</td>
-                                                            <td>{{$item->user->email}}</td>
+                                                            <td>{{$item->perusahaan->user->email}}</td>
+                                                            <td>{{$item->status_penerbitan}}</td>
                                                             <td><a class="btn btn-xs btn-success"
-                                                                href="{{ route('perusahaan.show', $item->id)}}"><i
+                                                                href="{{ route('perusahaan.show', $item->perusahaan_id)}}"><i
                                                                     class="fa fa-eye"></i>
-                                                                detail</a></td>
-                                                            
+                                                                detail</a>
+                                                                @if ($item->status_penerbitan == 'dicetak')
+                                                                    <a class="btn btn-xs btn-primary" href="#naik{{$item->id}}"
+                                                                    data-toggle="modal"><i class="fa fa-calendar"></i>
+                                                                    konfirmasi surat naik</a>
+                                                                @elseif ($item->status_penerbitan == 'birokrasi')
+                                                                    <a class="btn btn-xs btn-primary"
+                                                                    href="#konfirmasi-penerbitan{{$item->id}}" data-toggle="modal"><i
+                                                                        class="fa  fa-check-square-o"></i>
+                                                                    konfirmasi penerbitan</a>
+                                                                @endif
+                                                            </td>
+                                                            <div id="naik{{$item->id}}" class="modal fade" tabindex="-1"
+                                                                data-width="360" style="display: none;">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-hidden="true">
+                                                                        &times;
+                                                                    </button>
+                                                                    <h4 class="modal-title">
+                                                                        <i class="bi bi-exclamation-octagon-fill"
+                                                                            style="color: red"></i>
+                                                                        Konfirmasi Birokrasi Surat
+                                                                    </h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <p>Apakah anda yakin untuk mengonfirmasi bahwa
+                                                                                surat telah naik dan diberikan ke pimpinan?
+                                                                                status penerbitan tidak dapat diubah lagi
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <form action="{{url('/konfirmasi-birokrasi-surat', $item->id)}}" >
+                                                                    @csrf
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" data-dismiss="modal"
+                                                                            class="btn btn-default">
+                                                                            Batalkan
+                                                                        </button>
+                                                                        <button type="submit" class="btn btn-danger"
+                                                                            id="submit">
+                                                                            Ya
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div id="konfirmasi-penerbitan{{$item->id}}" class="modal fade" tabindex="-1"
+                                                                data-width="360" style="display: none;">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-hidden="true">
+                                                                        &times;
+                                                                    </button>
+                                                                    <h4 class="modal-title">
+                                                                        <i class="bi bi-exclamation-octagon-fill"
+                                                                            style="color: red"></i>
+                                                                        Konfirmasi Penerbitan Surat
+                                                                    </h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <p>Apakah anda yakin untuk mengonfirmasi bahwa
+                                                                                surat telah tertandatangani oleh pimpinan?
+                                                                                status penerbitan tidak dapat diubah lagi
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <form action="{{url('/konfirmasi-penerbitan-surat', $item->id)}}"  >
+                                                                    @csrf
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" data-dismiss="modal"
+                                                                            class="btn btn-default">
+                                                                            Batalkan
+                                                                        </button>
+                                                                        <button type="submit" class="btn btn-danger"
+                                                                            id="submit">
+                                                                            Ya
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
                                                         </tr>
                                                         @endforeach
                                                     </tbody>
@@ -190,12 +280,12 @@
                                                             $numberDays = intval($numberDays);
                                                             ?>
                                                         <tr>
-                                                            <td>{{$item->nama_perusahaan}}</td>
-                                                            <td>{{$item->nib}}</td>
-                                                            <td>{{$item->kbli->kode}}</td>
+                                                            <td>{{$item->perusahaan->nama_perusahaan}}</td>
+                                                            <td>{{$item->perusahaan->nib}}</td>
+                                                            <td>{{$item->perusahaan->kbli->kode}}</td>
                                                             <td>{{$numberDays+1}}</td>
                                                             <td><a class="btn btn-xs btn-success"
-                                                                href="{{ route('perusahaan.show', $item->id)}}"><i
+                                                                href="{{ route('perusahaan.show', $item->perusahaan_id)}}"><i
                                                                     class="fa fa-eye"></i>
                                                                 detail</a></td>
                                                         </tr>
@@ -227,8 +317,8 @@
 <link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal.css') }}" rel="stylesheet"
     type="text/css" />
 <style>
-    i {
-        padding: 5px;
+    .btn-xs {
+        padding: 2px;
     }
 
 </style>

@@ -104,13 +104,13 @@
                                                             $numberDays = intval($numberDays);
                                                             ?>
                                                         <tr>
-                                                            <td>{{$item->nama_perusahaan}}</td>
-                                                            <td>{{$item->nib}}</td>
-                                                            <td>{{$item->kbli->kode}}</td>
+                                                            <td>{{$item->perusahaan->nama_perusahaan}}</td>
+                                                            <td>{{$item->perusahaan->nib}}</td>
+                                                            <td>{{$item->perusahaan->kbli->kode}}</td>
                                                             <td>{{$numberDays+1}}</td>
                                                             <td>
                                                                 <a class="btn btn-xs btn-primary"
-                                                                    href="{{route('perusahaan.edit', $item->id)}}"><i
+                                                                    href="{{route('perusahaan.edit', $item->perusahaan_id)}}"><i
                                                                         class="fa fa-check-square-o"></i>
                                                                     konfirmasi status</a>
                                                             </td>
@@ -150,24 +150,33 @@
                                                             $numberDays = intval($numberDays);
                                                             ?>
                                                         <tr>
-                                                            <td>{{$item->nama_perusahaan}}</td>
-                                                            <td>{{$item->nib}}</td>
-                                                            <td>{{$item->kbli->kode}}</td>
+                                                            <td>{{$item->perusahaan->nama_perusahaan}}</td>
+                                                            <td>{{$item->perusahaan->nib}}</td>
+                                                            <td>{{$item->perusahaan->kbli->kode}}</td>
                                                             <td>{{$numberDays+1}}</td>
-                                                            <td>belum dicetak</td>
-                                                            <td><a class="btn btn-xs btn-success"
-                                                                    href="{{ route('perusahaan.show', $item->id)}}"><i
-                                                                        class="fa fa-eye"></i>
-                                                                    detail</a>
-                                                                <a class="btn btn-xs btn-blue" target="_blank"
-                                                                    href="{{ url('cetak-surat-perusahaan', $item->id)}}"><i
-                                                                        class="fa fa-file"></i>
-                                                                    cetak</a>
-                                                                    <a class="btn btn-xs btn-primary" href="#konfirmasi-percetakan" data-toggle="modal"><i class="fa fa-check-square-o"></i>
+                                                            <td>{{$item->status_penerbitan}}</td>
+                                                            <td>
+                                                                @if ($item->status_penerbitan == 'menunggu')
+                                                                    <a class="btn btn-xs btn-success"
+                                                                        href="{{ route('perusahaan.show', $item->perusahaan_id)}}"><i
+                                                                            class="fa fa-eye"></i>
+                                                                        detail</a>
+                                                                    <a class="btn btn-xs btn-blue" target="_blank"
+                                                                        href="{{ url('cetak-surat-perusahaan', $item->id)}}"><i
+                                                                            class="fa fa-file"></i>
+                                                                        cetak</a>
+                                                                    <a class="btn btn-xs btn-primary" href="#konfirmasi-percetakan{{$item->id}}" data-toggle="modal"><i class="fa fa-check-square-o"></i>
                                                                         Konfirmasi percetakan</a>
+                                                                @else
+                                                                    <a class="btn btn-xs btn-success"
+                                                                        href="{{ route('perusahaan.show', $item->perusahaan_id)}}"><i
+                                                                            class="fa fa-eye"></i>
+                                                                        detail</a>
+                                                                @endif
+                                                                
                                                             </td>
                                                         </tr>
-                                                        <div id="konfirmasi-percetakan" class="modal fade" tabindex="-1"
+                                                        <div id="konfirmasi-percetakan{{$item->id}}" class="modal fade" tabindex="-1"
                                                             data-width="360" style="display: none;">
                                                             <div class="modal-header">
                                                                 <button type="button" class="close" data-dismiss="modal"
@@ -187,8 +196,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <form action="#" method="post"
-                                                                enctype="multipart/form-data">
+                                                            <form action="{{url('/konfirmasi-pencetakan-surat', $item->id)}}" >
                                                                 @csrf
                                                                 <div class="modal-footer">
                                                                     <button type="button" data-dismiss="modal"
@@ -236,12 +244,12 @@
                                                             $numberDays = intval($numberDays);
                                                             ?>
                                                         <tr>
-                                                            <td>{{$item->nama_perusahaan}}</td>
-                                                            <td>{{$item->nib}}</td>
-                                                            <td>{{$item->kbli->kode}}</td>
+                                                            <td>{{$item->perusahaan->nama_perusahaan}}</td>
+                                                            <td>{{$item->perusahaan->nib}}</td>
+                                                            <td>{{$item->perusahaan->kbli->kode}}</td>
                                                             <td>{{$numberDays+1}}</td>
                                                             <td><a class="btn btn-xs btn-success"
-                                                                    href="{{ route('perusahaan.show', $item->id)}}"><i
+                                                                    href="{{ route('perusahaan.show', $item->perusahaan_id)}}"><i
                                                                         class="fa fa-eye"></i>
                                                                     detail</a></td>
                                                         </tr>

@@ -71,6 +71,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('customer-service', CustomerServiceController::class);
     Route::resource('data-tampilan', DataTampilanController::class);
     Route::get('/report', [App\Http\Controllers\ReportController::class, 'index'])->name('index');
+    Route::get('/konfirmasi-birokrasi-surat/{id}', [App\Http\Controllers\PerusahaanController::class, 'konfirmasiBirokrasiSurat'])->name('konfirmasiBirokrasiSurat');
+    Route::get('/konfirmasi-penerbitan-surat/{id}', [App\Http\Controllers\PerusahaanController::class, 'konfirmasiPenerbitanSurat'])->name('konfirmasiPenerbitanSurat');
 });
 
 Route::get('/penerbitan-perusahaan', [App\Http\Controllers\DataPenerbitanController::class, 'indexPerusahaan'])->name('indexPerusahaan');
@@ -79,6 +81,13 @@ Route::get('/penerbitan-angkutan', [App\Http\Controllers\DataPenerbitanControlle
 Route::resource('angkutan', AngkutanController::class);
 Route::resource('perusahaan', PerusahaanController::class);
 
-Route::get('/cetak-surat-perusahaan/{id}', [App\Http\Controllers\PerusahaanController::class, 'cetak_surat'])->name('cetak_surat');
-Route::get('/take-antrian/{id}', [App\Http\Controllers\HomeController::class, 'take_antrian'])->name('take_antrian');
 
+Route::middleware(['auth', 'role:petugas'])->group(function () {
+    Route::get('/cetak-surat-perusahaan/{id}', [App\Http\Controllers\PerusahaanController::class, 'cetak_surat'])->name('cetak_surat');
+    Route::get('/take-antrian/{id}', [App\Http\Controllers\HomeController::class, 'take_antrian'])->name('take_antrian');
+    Route::get('/konfirmasi-pencetakan-surat/{id}', [App\Http\Controllers\PerusahaanController::class, 'konfirmasiPencetakanSurat'])->name('konfirmasiPencetakanSurat');
+});
+
+Route::middleware(['auth', 'role:customer-service'])->group(function () {
+    Route::get('/konfirmasi-pengambilan-surat/{id}', [App\Http\Controllers\PerusahaanController::class, 'konfirmasiPengambilanSurat'])->name('konfirmasiPengambilanSurat');
+});

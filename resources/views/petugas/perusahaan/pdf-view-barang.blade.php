@@ -16,17 +16,6 @@
                 <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:100%; font-size:10pt;"><span
                         style="font-family:Arial; color:#ffffff;">&nbsp;&nbsp;</span></p>
             </td>
-            <td style="width:407.95pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
-                <p style="margin-top:3pt; margin-bottom:0pt; text-align:center; font-size:13pt;"><span style="font-family:Tahoma;
-color:#ffffff;">PEMERINTAH PROVINSI JAWA TIMUR</span></p>
-                <p style="margin-top:1pt; margin-bottom:0pt; text-align:center; font-size:14pt;"><strong><span
-                            style="font-family:Tahoma; color:#ffffff;">DINAS PERHUBUNGAN</span></strong></p>
-                <p style="margin-top:6pt; margin-bottom:0pt; text-align:center; font-size:11pt;"><span style="font-family:Tahoma;
-color:#ffffff;">Jln. Ahmad Yani No. 268 Telp. (031) 8292276, 8291530, Fax. (031) 8292433</span></p>
-                <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><span style="font-family:Tahoma;
-font-size:11pt; color:#ffffff;">Jln. Jemur Andayani I Telp. (031) 8432847, 8432616, Fax. (031) 8418187</span><u><span
-                            style="font-family:Tahoma; color:#ffffff;">&nbsp;A B A&nbsp;</span></u></p>
-            </td>
         </tr>
     </tbody>
 </table>
@@ -35,8 +24,7 @@ font-size:11pt; color:#ffffff;">Jln. Jemur Andayani I Telp. (031) 8432847, 84326
 <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:normal; font-size:13pt;"><strong><u><span
                 style="font-family:Tahoma;">PERUSAHAAN ANGKUTAN BARANG UMUM</span></u></strong></p>
 <p style="margin-top:3pt; margin-bottom:0pt; text-align:center; line-height:normal; font-size:12pt;"><span
-        style="font-family:Tahoma;">Nomor : 551.21 / 0032 / AK-02 / 113.4</span><span
-        style="font-family:Tahoma;">&nbsp;&nbsp;</span><span style="font-family:Tahoma;">/ III / 2023</span></p>
+        style="font-family:Tahoma;">Nomor : {{$detail->nomor_keterangan_perusahaan}}</span></p>
 <p style="margin-top:6pt; margin-bottom:0pt; text-indent:36pt; text-align:justify;"><span
         style="font-family:Tahoma;">Berdasarkan :
     </span></p>
@@ -76,9 +64,9 @@ family:Tahoma;">Peraturan Menteri Perhubungan Republik Indonesia Nomor 85 Tahun 
         Serta Tata Kerja Dinas Perhubungan Provinsi Jawa Timur;</li>
     <li
         style="margin-top:1pt; margin-left:14.33pt; text-align:justify; line-height:normal; padding-left:3.67pt; font-family:Tahoma;">
-        Surat permohonan Pimpinan <strong>PT. MITRA ABADI MEKAR SEJAHTERA&nbsp;</strong>Nomor:
-        <strong>01/III/MAMS/2023&nbsp;
-        </strong>tanggal&nbsp; <strong>15 Maret 2023</strong>.</li>
+        Surat permohonan Pimpinan <strong>{{$detail->perusahaan->nama_perusahaan}}&nbsp;</strong>Nomor:
+        <strong>{{$detail->nomor_permohonan}}&nbsp;
+        </strong>tanggal&nbsp; <strong><?php echo tanggal_indonesia($detail->tanggal_permohonan);?></strong>.</li>
 </ol>
 <p style="margin-top:6pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;"><span
         style="font-family:Tahoma;">Yang
@@ -96,7 +84,7 @@ family:Tahoma;">Peraturan Menteri Perhubungan Republik Indonesia Nomor 85 Tahun 
             </td>
             <td style="width:335.95pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                 <p style="margin-top:1pt; margin-bottom:0pt; text-align:justify; line-height:115%; font-size:11pt;">
-                    <strong><span style="font-family:Tahoma;">PT. MITRA ABADI MEKAR SEJAHTERA</span></strong></p>
+                    <strong><span style="font-family:Tahoma;">{{$detail->perusahaan->nama_perusahaan}}</span></strong></p>
             </td>
         </tr>
         <tr>
@@ -110,9 +98,7 @@ family:Tahoma;">Peraturan Menteri Perhubungan Republik Indonesia Nomor 85 Tahun 
             </td>
             <td style="width:335.95pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                 <p style="margin-top:1pt; margin-bottom:0pt; text-align:justify; line-height:115%; font-size:11pt;">
-                    <strong><span style="font-family:Tahoma;">JLN. BUBUTAN 136, DESA/KELURAHAN ALUN-ALUN CONTONG, KEC.
-                            BUBUTAN, KOTA SURABAYA, PROVINSI JAWA
-                            TIMUR</span></strong></p>
+                    <strong><span style="font-family:Tahoma;">{{$detail->perusahaan->alamat}}</span></strong></p>
             </td>
         </tr>
         <tr>
@@ -126,7 +112,7 @@ family:Tahoma;">Peraturan Menteri Perhubungan Republik Indonesia Nomor 85 Tahun 
             </td>
             <td style="width:335.95pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                 <p style="margin-top:1pt; margin-bottom:0pt; text-align:justify; line-height:115%; font-size:11pt;">
-                    <strong><span style="font-family:Tahoma;">LUCYANA SOEGIJANTO</span></strong></p>
+                    <strong><span style="font-family:Tahoma;">{{$detail->perusahaan->nama_pimpinan}}</span></strong></p>
             </td>
         </tr>
         <tr>
@@ -140,7 +126,7 @@ family:Tahoma;">Peraturan Menteri Perhubungan Republik Indonesia Nomor 85 Tahun 
             </td>
             <td style="width:335.95pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                 <p style="margin-top:1pt; margin-bottom:0pt; text-align:justify; line-height:115%; font-size:11pt;">
-                    <strong><span style="font-family:Tahoma;">9120001150174</span></strong></p>
+                    <strong><span style="font-family:Tahoma;">{{$detail->perusahaan->nib}}</span></strong></p>
             </td>
         </tr>
         <tr>
@@ -155,7 +141,7 @@ family:Tahoma;">Peraturan Menteri Perhubungan Republik Indonesia Nomor 85 Tahun 
             </td>
             <td style="width:335.95pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                 <p style="margin-top:1pt; margin-bottom:0pt; text-align:justify; line-height:115%; font-size:11pt;">
-                    <strong><span style="font-family:Tahoma;">52291 / JASA PENGURUSAN TRANSPORTASI (JPT)</span></strong>
+                    <strong><span style="font-family:Tahoma;">{{$detail->perusahaan->kbli->kode}} / {{$detail->perusahaan->kbli->keterangan}}</span></strong>
                 </p>
             </td>
         </tr>
@@ -181,8 +167,7 @@ family:Tahoma;">Peraturan Menteri Perhubungan Republik Indonesia Nomor 85 Tahun 
         untuk dapat dipergunakan dengan semestinya.</span></p>
 <p
     style="margin-top:9pt; margin-left:255.15pt; margin-bottom:0pt; text-align:center; line-height:normal; font-size:12pt;">
-    <span style="font-family:Tahoma; font-size:11pt;">Surabaya,&nbsp;</span><strong><span style="font-family:Tahoma;">17
-            Maret 2023</span>
+    <span style="font-family:Tahoma; font-size:11pt;">Surabaya,&nbsp;</span><strong><span style="font-family:Tahoma;"><?php echo tanggal_indonesia($today);?></span>
     </strong></p>
 <p style="margin-top:3pt; margin-left:255.15pt; margin-bottom:0pt; text-align:center; line-height:normal;"><span
         style="font-family:Tahoma;">An. KEPALA DINAS PERHUBUNGAN</span></p>
@@ -263,3 +248,31 @@ family:Tahoma;">Peraturan Menteri Perhubungan Republik Indonesia Nomor 85 Tahun 
         </span></strong></p>
 </body>
 </html>
+
+
+<?php 
+        function tanggal_indonesia($tanggal){
+        $bulan = array (
+        1 =>   'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+        );
+        
+        $pecahkan = explode('-', $tanggal);
+        
+        // variabel pecahkan 0 = tanggal
+        // variabel pecahkan 1 = bulan
+        // variabel pecahkan 2 = tahun
+         
+        return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+    }
+?>

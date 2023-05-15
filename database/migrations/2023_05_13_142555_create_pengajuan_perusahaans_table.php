@@ -11,19 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pengajuan_angkutans', function (Blueprint $table) {
+        Schema::create('pengajuan_perusahaans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('angkutan_id')
-                    ->constrained('angkutans')
+            $table->foreignId('perusahaan_id')
+                    ->constrained('perusahaans')
                     ->onUpdate('cascade');
-            $table->enum('keterangan', ['kendaraan-baru', 'kendaraan-mutasi', 'perpanjangan-stnk']);
-            $table->string('surat_permohonan');
             $table->string('surat_pernyataan');
+            $table->string('surat_permohonan');
             $table->string('nomor_permohonan')->nullable();
             $table->enum('status_pengecekan', ['disetujui', 'ditolak', 'menunggu'])->default('menunggu');
-            $table->string('surat_rekomendasi_peruntukan')->nullable();
-            $table->string('nomor_rekomendasi_peruntukan')->nullable();
-            $table->enum('status_penerbitan', ['tertunda', 'menunggu', 'dicetak', 'birokrasi', 'diterbitkan', 'diambil'])->nullable();
+            $table->string('surat_keterangan_perusahaan')->nullable();
+            $table->string('nomor_keterangan_perusahaan')->nullable();
+            $table->enum('status_penerbitan', ['menunggu', 'dicetak', 'birokrasi', 'diterbitkan', 'diambil'])->nullable();
             $table->date('tanggal_permohonan')->nullable();
             $table->date('tanggal_cetak')->nullable();
             $table->date('tanggal_birokrasi')->nullable();
@@ -40,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pengajuan_angkutans');
+        Schema::dropIfExists('pengajuan_perusahaans');
     }
 };

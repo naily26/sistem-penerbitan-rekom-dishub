@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\perusahaan;
+use App\Models\pengajuan_perusahaan;
 use App\Models\antrian;
 use App\Models\petugas;
 use Illuminate\Http\Request;
@@ -23,26 +24,25 @@ class PerusahaanController extends Controller
     {
         if (Auth::user()->role == 'pemohon') {
             $kbli = kbli::all();
-            $perusahaan = perusahaan::where('user_id', Auth::user()->id)
-                            ->orderBy('created_at','DESC')->get();
+            $perusahaan = perusahaan::where('user_id', Auth::user()->id)->get();
             return view('pemohon.perusahaan.index', compact('kbli', 'perusahaan'));
             
         } elseif (Auth::user()->role == 'petugas') {
             $data_petugas = petugas::where('user_id', Auth::user()->id)->first();
             $today = Carbon::today()->toDateString();
-            $diproses = perusahaan::where('status_pengecekan', 'menunggu')->where('petugas_id', $data_petugas->id)->get();
-            $disetujui = perusahaan::where('status_pengecekan', 'disetujui')->where('petugas_id', $data_petugas->id)->get();
-            $ditolak = perusahaan::where('status_pengecekan', 'ditolak')->where('petugas_id', $data_petugas->id)->get();
+            $diproses = pengajuan_perusahaan::where('status_pengecekan', 'menunggu')->where('petugas_id', $data_petugas->id)->get();
+            $disetujui = pengajuan_perusahaan::where('status_pengecekan', 'disetujui')->where('petugas_id', $data_petugas->id)->get();
+            $ditolak = pengajuan_perusahaan::where('status_pengecekan', 'ditolak')->where('petugas_id', $data_petugas->id)->get();
             return view('petugas.perusahaan.index', compact('diproses', 'disetujui', 'ditolak', 'today'));
         } elseif (Auth::user()->role == 'pengawas') {
             return view('pengawas.perusahaan.index');
         } elseif (Auth::user()->role == 'admin') {
             $today = Carbon::today()->toDateString();
-            $diproses = perusahaan::where('status_pengecekan', 'menunggu')->get();
-            $disetujui = perusahaan::where('status_pengecekan', 'disetujui')->get();
-            $ditolak = perusahaan::where('status_pengecekan', 'ditolak')->get();
+            $diproses = pengajuan_perusahaan::where('status_pengecekan', 'menunggu')->get();
+            $disetujui = pengajuan_perusahaan::where('status_pengecekan', 'disetujui')->get();
+            $ditolak = pengajuan_perusahaan::where('status_pengecekan', 'ditolak')->get();
             return view('admin.perusahaan.index', compact('diproses', 'disetujui', 'ditolak', 'today'));
-        }
+        } 
     }
 
     /**
@@ -72,6 +72,7 @@ class PerusahaanController extends Controller
         $file_surat_pernyataan = $request->file('surat_pernyataan') != null ? $this->uploadFile($request, 'surat_pernyataan') : null;
         $file_surat_permohonan = $request->file('surat_permohonan') != null ? $this->uploadFile($request, 'surat_permohonan') : null;
         $file_surat_izin_trayek = $request->file('surat_izin_trayek') != null ?  $this->uploadFile($request, 'surat_izin_trayek') : null;
+        $file_surat_izin_penyelenggara = $request->file('surat_izin_penyelenggara') != null ?  $this->uploadFile($request, 'surat_izin_penyelenggara') : null;
         $file_surat_delivery_order = $request->file('surat_delivery_order') != null ? $this->uploadFile($request, 'surat_delivery_order') : null;
 
 
@@ -85,24 +86,34 @@ class PerusahaanController extends Controller
             'tanggal_nib' => $request->tanggal_nib,
             'sertifikat_standar' =>  $file_sertifikat_standar,
             'surat_izin_trayek' => $file_surat_izin_trayek,
+            'surat_izin_penyelenggara' => $file_surat_izin_penyelenggara,
             'surat_delivery_order' => $file_surat_delivery_order,
-            'surat_pernyataan' => $file_surat_pernyataan,
-            'surat_permohonan' => $file_surat_permohonan,
-            'nomor_permohonan'=> $request->nomor_permohonan,
-            'tanggal_permohonan' => $today,
             'kbli_id' => $request->kbli_id,
             'user_id' => Auth::user()->id,
         ]);
 
-        if($perusahaan) {
-            $antrian = antrian::create([
-                'perusahaan_id' => $perusahaan->id,
-                'tanggal_permohonan' => $today,
-                'jumlah_perusahaan' => 1,
-            ]);
-        }
+        $antrian = null;
 
         if($perusahaan) {
+            $pengajuan = pengajuan_perusahaan::create([
+                'perusahaan_id' => $perusahaan->id,
+                'surat_pernyataan' => $file_surat_pernyataan,
+                'surat_permohonan' => $file_surat_permohonan,
+                'nomor_permohonan'=> $request->nomor_permohonan,
+                'tanggal_permohonan' => $today,
+                'status_pengecekan' => 'menunggu'
+            ]); 
+            
+            if($pengajuan){
+                $antrian = antrian::create([
+                    'perusahaan_id' => $perusahaan->id,
+                    'tanggal_permohonan' => $today,
+                    'jumlah_perusahaan' => 1,
+                ]);
+            }
+        }
+
+        if($antrian != null) {
             return redirect()->route('perusahaan.index')->with(['success'=>'data berhasil ditambahkan']);
         } else {
             return redirect()->route('perusahaan.index')->with(['gagal'=>'data gagal ditambahkan']);
@@ -124,6 +135,8 @@ class PerusahaanController extends Controller
             return view('admin.perusahaan.detail', compact('data'));
         } elseif (Auth::user()->role == 'petugas') {
             return view('petugas.perusahaan.detail', compact('data'));
+        } elseif (Auth::user()->role == 'customer-service') {
+            return view('admin.perusahaan.detail', compact('data'));
         }
        
     }
@@ -162,7 +175,7 @@ class PerusahaanController extends Controller
         if (Auth::user()->role == 'admin') {
             $data = perusahaan::where('id',$id)->first();
             $data->update([
-                'status_pengecekan_1' => $request->status_pengecekan_1,
+                'status_pengecekan' => $request->status_pengecekan,
                 'catatan' => $request->catatan,
             ]);
 
@@ -178,48 +191,39 @@ class PerusahaanController extends Controller
             $status = $data;
 
         } elseif (Auth::user()->role == 'petugas') {
-            // $status = perusahaan::where('id',$id)->update([
-            //     'status_pengecekan_2',
-            //     'catatan' ,
-            // ]);
-            $status = perusahaan::where('id',$id)->first();
+            $perusahaan = perusahaan::where('id',$id)->first();
+            $status = pengajuan_perusahaan::where('perusahaan_id', $id )->first();
             $status->update($request->all());
+            if($status->status_pengecekan == 'disetujui') {
+                $status->status_penerbitan = 'menunggu';
+                $count_perusahaan = pengajuan_perusahaan::where('status_pengecekan', 'disetujui' )->get();
+                $urut = count($count_perusahaan);
+                $tahun = Carbon::now()->format('Y');
+                $status->nomor_keterangan_perusahaan = '551.21 / '. $urut.' / '.$status->petugas->kode.' / 113.4 / II / '.$tahun;
+                $status->save();
+            }
 
         } elseif (Auth::user()->role == 'pemohon') {
 
             $find = perusahaan::where('id',$id)->first();
-            $find->update([
-                'nama_perusahaan',
-                'nama_pimpinan' ,
-                'nomor_telepon' ,
-                'alamat' ,
-                'nib',
-                'dokumen_nib' ,
-                'tanggal_nib' ,
-            ]);
+            $find->update($request->all());
 
-            if( $request->file('dokumen_nib')) {
-                $find->dokumen_nib = $this->uploadFile($request, 'dokumen_nib');
-            } 
-            if ($request->file('surat_pernyataan')) {
-                $find->surat_pernyataan = $this->uploadFile($request, 'surat_pernyataan');
-            } 
-            if ($request->file('surat_permohonan')) {
-                $find->surat_permohonan = $this->uploadFile($request, 'surat_permohonan');
-            }
-            if ($request->file('surat_izin_trayek')) {
-                $find->surat_izin_trayek = $this->uploadFile($request, 'surat_izin_trayek');
-            }
-            if ($request->file('surat_delivery_order')) {
-                $find->surat_delivery_order = $this->uploadFile($request, 'surat_delivery_order');
-            }
+            $pengajuan = pengajuan_perusahaan::where('perusahaan_id', $id )->first();
+            $pengajuan->update($request->all());
 
-            if($find->status_pengecekan_1 == 'ditolak') {$find->status_pengecekan_1 = 'menunggu'; $find->catatan = $find->catatan  .' \n telah diperbarui pada '.$today;} 
-            if($find->status_pengecekan_2 == 'ditolak')  {$find->status_pengecekan_2 = 'menunggu'; $find->catatan = $find->catatan . ' \n telah diperbarui pada '.$today;}
-            $find->catatan = $find->catatan.'telah diperbarui pada tanggal'.$today;
+            if( $request->file('dokumen_nib')) { $find->dokumen_nib = $this->uploadFile($request, 'dokumen_nib'); } 
+            if ($request->file('surat_pernyataan')) { $pengajuan->surat_pernyataan = $this->uploadFile($request, 'surat_pernyataan');} 
+            if ($request->file('surat_permohonan')) { $pengajuan->surat_permohonan = $this->uploadFile($request, 'surat_permohonan');}
+            if ($request->file('surat_izin_trayek')) {$find->surat_izin_trayek = $this->uploadFile($request, 'surat_izin_trayek');}
+            if ($request->file('surat_delivery_order')) {$find->surat_delivery_order = $this->uploadFile($request, 'surat_delivery_order');}
+            if ($request->file('surat_izin_penyelenggara')) {$find->surat_izin_penyelenggara = $this->uploadFile($request, 'surat_izin_penyelenggara');}
+            if ($request->file('sertifikat_standar')) {$find->sertifikat_standar = $this->uploadFile($request, 'sertifikat_standar');}
+
+            if($pengajuan->status_pengecekan == 'ditolak') {$pengajuan->status_pengecekan = 'menunggu'; $pengajuan->catatan = $pengajuan->catatan  .' \n telah diperbarui pada '.$today;} 
             $find->save();
+            $pengajuan->save();
+            if ($pengajuan) {$status = true;}
             
-            $status = true;
         }
         if($status) {
             return redirect()->route('perusahaan.index')->with(['success'=>'data berhasil diperbaharui']);
@@ -251,10 +255,10 @@ class PerusahaanController extends Controller
 
     public function cetak_surat($id){
         $today = Carbon::today()->toDateString();
-        $detail = perusahaan::where('id', $id)->first();
+        $detail = pengajuan_perusahaan::where('id', $id)->first();
         $view;
-        if($detail->kbli->kategori == 'angkutan-penumpang-umum') {
-            $view = 'petugas.perusahaan.pdf-view';
+        if($detail->perusahaan->kbli->kategori == 'angkutan-penumpang-umum-dalam-trayek' || $detail->perusahaan->kbli->kategori == 'angkutan-penumpang-umum-tidak-dalam-trayek') {
+            $view = 'petugas.perusahaan.pdf-view-penumpang';
         } else {
             $view = 'petugas.perusahaan.pdf-view-barang';
         }
@@ -288,6 +292,58 @@ class PerusahaanController extends Controller
                 'tanggal_permohonan' => $today,
                 'jumlah_perusahaan' => 1,
             ]);
+        }
+    }
+
+    public function konfirmasiPencetakanSurat($id){
+        $today = Carbon::today()->toDateString();
+        $pengajuan = pengajuan_perusahaan::where('id', $id)->first();
+        $pengajuan->status_penerbitan = 'dicetak';
+        $pengajuan->tanggal_cetak = $today;
+        $pengajuan->save();
+        if($pengajuan) {
+            return redirect()->route('perusahaan.index')->with(['success'=>'data berhasil diperbaharui']);
+        } else {
+            return redirect()->route('perusahaan.index')->with(['gagal'=>'data gagal diperbaharui']);
+        }
+    }
+
+    public function konfirmasiBirokrasiSurat($id){
+        $today = Carbon::today()->toDateString();
+        $pengajuan = pengajuan_perusahaan::where('id', $id)->first();
+        $pengajuan->status_penerbitan = 'birokrasi';
+        $pengajuan->tanggal_birokrasi = $today;
+        $pengajuan->save();
+        if($pengajuan) {
+            return redirect()->route('perusahaan.index')->with(['success'=>'data berhasil diperbaharui']);
+        } else {
+            return redirect()->route('perusahaan.index')->with(['gagal'=>'data gagal diperbaharui']);
+        }
+    }
+
+    public function konfirmasiPenerbitanSurat($id){
+        $today = Carbon::today()->toDateString();
+        $pengajuan = pengajuan_perusahaan::where('id', $id)->first();
+        $pengajuan->status_penerbitan = 'diterbitkan';
+        $pengajuan->tanggal_penerbitan = $today;
+        $pengajuan->save();
+        if($pengajuan) {
+            return redirect()->route('perusahaan.index')->with(['success'=>'data berhasil diperbaharui']);
+        } else {
+            return redirect()->route('perusahaan.index')->with(['gagal'=>'data gagal diperbaharui']);
+        }
+    }
+
+    public function konfirmasiPengambilanSurat($id){
+        $today = Carbon::today()->toDateString();
+        $pengajuan = pengajuan_perusahaan::where('id', $id)->first();
+        $pengajuan->status_penerbitan = 'diambil';
+        $pengajuan->tanggal_pengambilan = $today;
+        $pengajuan->save();
+        if($pengajuan) {
+            return redirect()->back()->with(['success'=>'data berhasil diperbaharui']);
+        } else {
+            return redirect()->back()->with(['gagal'=>'data gagal diperbaharui']);
         }
     }
 }

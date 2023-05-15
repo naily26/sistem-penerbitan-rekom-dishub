@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\antrian;
 use App\Models\perusahaan;
+use App\Models\pengajuan_perusahaan;
 use App\Models\petugas;
 use Auth;
 
@@ -64,13 +65,13 @@ class HomeController extends Controller
             'petugas_id' => $petugas->id
         ]);
 
-        $perusahaan = perusahaan::where('id', $antrian->perusahaan_id)->first();
-        $perusahaan->update([
+        $pengajuan_perusahaan = pengajuan_perusahaan::where('perusahaan_id', $antrian->perusahaan_id)->first();
+        $pengajuan_perusahaan->update([
             'petugas_id' => $petugas->id
         ]);
 
-        if($perusahaan && $antrian) {
-            return redirect()->route('home')->with(['success'=>'data berhasil diambil']);
+        if($pengajuan_perusahaan && $antrian) {
+            return redirect()->route('perusahaan.index')->with(['success'=>'data berhasil diambil']);
         } else {
             return redirect()->route('home')->with(['gagal'=>'data gagal diambil']);
         }

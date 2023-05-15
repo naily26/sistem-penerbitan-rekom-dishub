@@ -57,24 +57,18 @@
                                     <td>{{$item->kbli->kode}}</td>
                                     <td>{{$item->alamat}}</td>
                                     <td>
-                                        @if ($item->status_pengecekan_1 == 'menunggu')
-                                            <span class="label label-primary">Menunggu persetujuan admin</span>
-                                        @elseif ($item->status_pengecekan_1 == 'ditolak')
-                                            <span class="label label-danger">ditolak oleh admin</span>
-                                        @elseif ($item->status_pengecekan_1 == 'disetujui')
-                                            @if ($item->status_pengecekan_2 == 'menunggu')
-                                                <span class="label label-primary">Menunggu persetujuan petugas</span>
-                                            @elseif ($item->status_pengecekan_2 == 'ditolak')
-                                                <span class="label label-danger">ditolak oleh petugas</span>
-                                            @elseif ($item->status_pengecekan_2 == 'disetujui')
+                                        @if ($item->pengajuan_perusahaan->status_pengecekan == 'menunggu')
+                                            <span class="label label-primary">Menunggu persetujuan petugas</span>
+                                        @elseif ($item->pengajuan_perusahaan->status_pengecekan == 'ditolak')
+                                            <span class="label label-danger">ditolak oleh petugas</span>
+                                        @elseif ($item->pengajuan_perusahaan->status_pengecekan == 'disetujui')
                                                 <span class="label label-success">disetujui</span>
-                                            @endif
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($item->status_pengecekan_1 == 'menunggu')
+                                        @if ($item->pengajuan_perusahaan->status_pengecekan == 'menunggu')
                                             <a class="btn btn-xs btn-success" href="{{route('perusahaan.show', $item->id)}}"><i class="fa fa-eye"></i> detail</a>
-                                        @elseif ($item->status_pengecekan_1 == 'ditolak')
+                                        @elseif ($item->pengajuan_perusahaan->status_pengecekan == 'ditolak')
                                             <a class="btn btn-xs btn-warning" href="{{route('perusahaan.edit', $item->id)}}"><i
                                                 class="fa fa-edit"></i>
                                             edit</a>
@@ -82,20 +76,8 @@
                                             <a href="#hapus-data{{$item->id}}" class="btn btn-danger btn-xs" data-toggle="modal"><i
                                                 class="fa fa-trash-o"></i>
                                             hapus</a>
-                                        @elseif ($item->status_pengecekan_1 == 'disetujui')
-                                            @if ($item->status_pengecekan_2 == 'menunggu')
-                                                <a class="btn btn-xs btn-success" href="{{route('perusahaan.show', $item->id)}}"><i class="fa fa-eye"></i> detail</a>
-                                            @elseif ($item->status_pengecekan_2 == 'ditolak')
-                                                <a class="btn btn-xs btn-warning" href="{{route('perusahaan.edit', $item->id)}}"><i
-                                                    class="fa fa-edit"></i>
-                                                edit</a>
-                                                <a class="btn btn-xs btn-success" href="{{route('perusahaan.show', $item->id)}}"><i class="fa fa-eye"></i> detail</a>
-                                                <a href="#hapus-data{{$item->id}}" class="btn btn-danger btn-xs" data-toggle="modal"><i
-                                                    class="fa fa-trash-o"></i>
-                                                hapus</a>
-                                            @elseif ($item->status_pengecekan_2 == 'disetujui')
-                                                <a class="btn btn-xs btn-success" href="{{route('perusahaan.show', $item->id)}}"><i class="fa fa-eye"></i> detail</a>
-                                            @endif
+                                        @elseif ($item->pengajuan_perusahaan->status_pengecekan == 'disetujui')
+                                        <a class="btn btn-xs btn-success" href="{{route('perusahaan.show', $item->id)}}"><i class="fa fa-eye"></i> detail</a>
                                         @endif
                                         
                                     </td>
