@@ -69,97 +69,85 @@
                             <thead>
                                 <tr>
                                     <th>Nama Perusahaan</th>
-                                    <th class="hidden-xs">KBLI</th>
+                                    <th>KBLI</th>
                                     <th>Nomor Kendaraan</th>
-                                    <th>Merk</th>
-                                    <th class="hidden-xs"> Status</th>
+                                    <th>Nomor Mesin</th>
+                                    <th>Keterangan</th>
+                                    <th>Status Permohonan</th>
                                     <th>Action</th>
-                                    {{-- <th>Action</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($angkutan as $item)
                                 <tr>
-                                    <td>Amaya</td>
-                                    <td class="hidden-xs">W3C,
-                                        INRIA</td>
-                                    <td>Free</td>
-                                    <td>Pasuruan</td>
-                                    <td class="hidden-xs"><span class="label label-primary">Diproses</span></td>
+                                    <td>{{$item->perusahaan->nama_perusahaan}}</td>
+                                    <td>{{$item->perusahaan->kbli->kode}}</td>
+                                    <td>{{$item->nomor_kendaraan}}</td>
+                                    <td>{{$item->nomor_mesin}}</td>
+                                    <th>{{$item->pengajuan_angkutan->keterangan}}</th>
                                     <td>
-                                        <a class="btn btn-xs btn-success" href="#"><i class="fa fa-eye"></i>
-                                            detail</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>AOL Explorer</td>
-                                    <td class="hidden-xs">America Online, Inc</td>
-                                    <td>Free</td>
-                                    <td>Pasuruan</td>
-                                    <td class="hidden-xs"><span class="label label-danger">Ditolak</span></td>
-                                    <td>
-                                        <a class="btn btn-xs btn-warning" href="{{ route('angkutan.edit', 1)}}"><i class="fa fa-edit"></i>
-                                            edit</a>
-                                        <a class="btn btn-xs btn-danger" href="#hapus-data" data-toggle="modal"><i class="fa fa-trash-o"></i>
-                                            hapus</a>
-                                        <a class="btn btn-xs btn-success" href="{{ route('angkutan.show', 1)}}"><i class="fa fa-eye"></i>
-                                            detail</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Arora</td>
-                                    <td class="hidden-xs">Benjamin C. Meyer</td>
-                                    <td>Free</td>
-                                    <td>Pasuruan</td>
-                                    <td class="hidden-xs"><span class="label label-success">Disetujui</span></td>
-                                    <td>
-                                        <a class="btn btn-xs btn-success" href="#"><i class="fa fa-eye"></i>
-                                            detail</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Arora</td>
-                                    <td class="hidden-xs">Benjamin C. Meyer</td>
-                                    <td>Free</td>
-                                    <td>Pasuruan</td>
-                                    <td class="hidden-xs"><span class="label label-warning">Tertunda</span></td>
-                                    <td>
+                                        @if ($item->pengajuan_angkutan->status_pengecekan == 'menunggu')
+                                        <span class="label label-primary">Diproses</span></td>
+                                    @elseif ($item->pengajuan_angkutan->status_pengecekan == 'disetujui')
+                                    <span class="label label-success">Disetujui</span>
+                                    @elseif ($item->pengajuan_angkutan->status_pengecekan == 'ditolak')
+                                    <span class="label label-danger">Ditolak</span>
+                                    @endif
 
-                                        <a class="btn btn-xs btn-teal" href="{{ route('perusahaan.show', 1)}}"><i class="fa fa-info"></i>
-                                             tinjau perusahaan</a>
+                                    <td>
+                                        @if ($item->pengajuan_angkutan->status_pengecekan == 'menunggu' ||
+                                        $item->pengajuan_angkutan->status_pengecekan == 'disetujui')
+                                        <a class="btn btn-xs btn-success"
+                                            href="{{ route('angkutan.show', $item->id)}}"><i class="fa fa-eye"></i>
+                                            detail</a>
+                                        @elseif ($item->pengajuan_angkutan->status_pengecekan == 'ditolak')
+                                        <a class="btn btn-xs btn-warning"
+                                            href="{{ route('angkutan.edit', $item->id)}}"><i class="fa fa-edit"></i>
+                                            edit</a>
+                                        <a class="btn btn-xs btn-danger" href="#hapus-data{{$item->id}}"
+                                            data-toggle="modal"><i class="fa fa-trash-o"></i>
+                                            hapus</a>
+                                        <a class="btn btn-xs btn-success"
+                                            href="{{ route('angkutan.show', $item->id)}}"><i class="fa fa-eye"></i>
+                                            detail</a>
+                                        @endif
                                         <a class="btn btn-xs btn-success" href="#"><i class="fa fa-eye"></i>
                                             detail</a>
                                     </td>
                                 </tr>
-                                <div id="hapus-data" class="modal fade" tabindex="-1" data-width="360"
-                                style="display: none;">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                        &times;
-                                    </button>
-                                    <h4 class="modal-title">
-                                        <i class="bi bi-exclamation-octagon-fill" style="color: red"></i>
-                                        Konfirmasi Hapus Data
-                                    </h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <p>Apakah anda yakin untuk menghpus data ini? semua data yang berhubungan dengan data ini juga akan terhapus</p>
+                                <div id="hapus-data{{$item->id}}" class="modal fade" tabindex="-1" data-width="360"
+                                    style="display: none;">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            &times;
+                                        </button>
+                                        <h4 class="modal-title">
+                                            <i class="bi bi-exclamation-octagon-fill" style="color: red"></i>
+                                            Konfirmasi Hapus Data
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p>Apakah anda yakin untuk menghpus data ini? semua data yang
+                                                    berhubungan dengan data ini juga akan terhapus</p>
+                                            </div>
                                         </div>
                                     </div>
+                                    <form action="#" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="modal-footer">
+                                            <button type="button" data-dismiss="modal" class="btn btn-default">
+                                                Batalkan
+                                            </button>
+                                            <button type="submit" class="btn btn-danger" id="submit">
+                                                Ya
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <form action="#" method="post" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="modal-footer">
-                                        <button type="button" data-dismiss="modal" class="btn btn-default">
-                                            Batalkan
-                                        </button>
-                                        <button type="submit" class="btn btn-danger" id="submit">
-                                            Ya
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
+                                @endforeach
+                                
                             </tbody>
                         </table>
                     </div>

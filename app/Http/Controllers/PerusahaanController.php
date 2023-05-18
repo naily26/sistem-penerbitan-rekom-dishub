@@ -282,19 +282,6 @@ class PerusahaanController extends Controller
         return $result;
     }
 
-    public function cekAntrian($id) {
-        $today = Carbon::today()->toDateString();
-        $cek = antrian::where('perusahaan_id', $id)->where('tanggal_permohonan', $today)->where('petugas_id', null);
-
-        if ($cek == null ){
-            antrian::create([
-                'perusahaan_id' => $id,
-                'tanggal_permohonan' => $today,
-                'jumlah_perusahaan' => 1,
-            ]);
-        }
-    }
-
     public function konfirmasiPencetakanSurat($id){
         $today = Carbon::today()->toDateString();
         $pengajuan = pengajuan_perusahaan::where('id', $id)->first();

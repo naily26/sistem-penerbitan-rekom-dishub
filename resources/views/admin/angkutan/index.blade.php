@@ -64,40 +64,38 @@
                                                     <thead>
                                                         <tr>
                                                             <th>No</th>
-                                                            <th class="hidden-xs">Nomor Kendaraan</th>
                                                             <th>Nama Perusahaan</th>
                                                             <th>KBLI</th>
-                                                            <th>Lama Permohonan</th>
+                                                            <th>Nomor Kendaraan</th>
+                                                            <th>Nomor Mesin</th>
+                                                            <th>Keterangan</th>
+                                                            <th>Petugas</th>
                                                             <th>Action</th>
+                                                                
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td class="hidden-xs">N 4332 DD</td>
-                                                            <td>AOE Explore</td>
-                                                            <td>43212</td>
-                                                            <td>1 hari</td>
-                                                            <td>
-                                                                <a class="btn btn-xs btn-primary"
-                                                                    href="{{route('angkutan.edit', 1)}}"><i
-                                                                        class="fa fa-check-square-o"></i>
-                                                                    konfirmasi status</a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td class="hidden-xs">N 4332 DD</td>
-                                                            <td>AOE Explore</td>
-                                                            <td>43212</td>
-                                                            <td>1 hari</td>
-                                                            <td>
-                                                                <a class="btn btn-xs btn-primary"
-                                                                    href="{{route('angkutan.edit', 1)}}"><i
-                                                                        class="fa fa-check-square-o"></i>
-                                                                    konfirmasi status</a>
-                                                            </td>
-                                                        </tr>
+                                                        <?php $no=1; ?>
+                                                            @foreach ($diproses as $item)
+                                                            <tr>
+                                                                <td>{{$no}}</td>
+                                                                <td>{{$item->angkutan->perusahaan->nama_perusahaan}}</td>
+                                                                <td>{{$item->angkutan->perusahaan->kbli->kode}}</td>
+                                                                <td>{{$item->angkutan->nomor_kendaraan}}</td>
+                                                                <td>{{$item->angkutan->nomor_mesin}}</td>
+                                                                <td>{{$item->keterangan}}</td>
+                                                                <td>
+                                                                    @if ($item->petugas_id)
+                                                                    {{$item->petugas->nama}}
+                                                                    @else
+                                                                        tidak ada
+                                                                    @endif
+                                                                </td>
+                                                                <td><a class="btn btn-xs btn-success" href="{{route('angkutan.show', $item->id)}}"><i class="fa fa-eye"></i>
+                                                                    detail</a></td>
+                                                            </tr>
+                                                            <?php $no++; ?>
+                                                            @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -113,176 +111,34 @@
                                                     id="sample_2">
                                                     <thead>
                                                         <tr>
-                                                            <th>No</th>
-                                                            <th class="hidden-xs">Nomor Kendaraan</th>
-                                                            <th>Nama Perusahaan</th>
-                                                            <th>KBLI</th>
-                                                            <th>Lama Permohonan</th>
-                                                            <th>Status Penerbitan</th>
-                                                            <th>Action</th>
+                                                            <tr>
+                                                                <th>No</th>
+                                                                <th>Nama Perusahaan</th>
+                                                                <th>KBLI</th>
+                                                                <th>Nomor Kendaraan</th>
+                                                                <th>Nomor Mesin</th>
+                                                                <th>Keterangan</th>
+                                                                <th>Status Penerbitan</th>
+                                                                <th>Action</th>
+                                                            </tr>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td class="hidden-xs">N 4332 DD</td>
-                                                            <td>AOE Explore</td>
-                                                            <td>43212</td>
-                                                            <td>1 hari</td>
-                                                            <td>Belum dicetak</td>
-                                                            <td><a class="btn btn-xs btn-success"
-                                                                    href="{{ route('angkutan.show', 1)}}"><i
-                                                                        class="fa fa-eye"></i>
-                                                                    detail</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td class="hidden-xs">N 4332 DD</td>
-                                                            <td>AOE Explore</td>
-                                                            <td>43212</td>
-                                                            <td>1 hari</td>
-                                                            <td>Dicetak</td>
-                                                            <td><a class="btn btn-xs btn-primary" href="#naik"
-                                                                    data-toggle="modal"><i class="fa fa-calendar"></i>
-                                                                    naik</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td class="hidden-xs">N 4332 DD</td>
-                                                            <td>AOE Explore</td>
-                                                            <td>43212</td>
-                                                            <td>1 hari</td>
-                                                            <td>Menunggu ttd</td>
-                                                            <td><a class="btn btn-xs btn-primary"
-                                                                    href="#konfirmasi-penerbitan" data-toggle="modal"><i
-                                                                        class="fa  fa-check-square-o"></i>
-                                                                    konfirmasi penerbitan</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td class="hidden-xs">N 4332 DD</td>
-                                                            <td>AOE Explore</td>
-                                                            <td>43212</td>
-                                                            <td>1 hari</td>
-                                                            <td>bisa diambil</td>
-                                                            <td><a class="btn btn-xs btn-primary"
-                                                                    href="#konfirmasi-pengambilan" data-toggle="modal"><i
-                                                                        class="fa  fa-check-square-o"></i>
-                                                                    konfirmasi pengambilan</a></td>
-                                                        </tr>
-                                                        <div id="naik" class="modal fade" tabindex="-1" data-width="560"
-                                                            style="display: none;">
-                                                            <form action="#" method="post">
-                                                                @csrf
-                                                                {{ method_field('PUT') }}
-                                                                <div class="modal-header">
-                                                                    <button type="button" class="close"
-                                                                        data-dismiss="modal" aria-hidden="true">
-                                                                        &times;
-                                                                    </button>
-                                                                    <h4 class="modal-title">Input tanggal naik surat
-                                                                    </h4>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="row">
-                                                                        <div class="col-md-12">
-                                                                            <div class="form-group">
-                                                                                <label>Tanggal naik surat</label>
-                                                                                <input type="date" class="form-control"
-                                                                                    id="tanggal_nib" name="tanggal_nib"
-                                                                                    placeholder="tanggal naik surat">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" data-dismiss="modal"
-                                                                        class="btn btn-default">
-                                                                        Batal
-                                                                    </button>
-                                                                    <button type="submit" class="btn btn-primary"
-                                                                        id="submitEdit">
-                                                                        Simpan
-                                                                    </button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                        <div id="konfirmasi-penerbitan" class="modal fade" tabindex="-1"
-                                                            data-width="360" style="display: none;">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-hidden="true">
-                                                                    &times;
-                                                                </button>
-                                                                <h4 class="modal-title">
-                                                                    <i class="bi bi-exclamation-octagon-fill"
-                                                                        style="color: red"></i>
-                                                                    Konfirmasi Penerbitan Surat
-                                                                </h4>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <p>Apakah anda yakin untuk mengonfirmasi bahwa
-                                                                            surat telah tertandatangani oleh pimpinan?
-                                                                            status penerbitan tidak dapat diubah lagi
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <form action="#" method="post"
-                                                                enctype="multipart/form-data">
-                                                                @csrf
-                                                                <div class="modal-footer">
-                                                                    <button type="button" data-dismiss="modal"
-                                                                        class="btn btn-default">
-                                                                        Batalkan
-                                                                    </button>
-                                                                    <button type="submit" class="btn btn-danger"
-                                                                        id="submit">
-                                                                        Ya
-                                                                    </button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                        <div id="konfirmasi-pengambilan" class="modal fade" tabindex="-1"
-                                                            data-width="360" style="display: none;">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-hidden="true">
-                                                                    &times;
-                                                                </button>
-                                                                <h4 class="modal-title">
-                                                                    <i class="bi bi-exclamation-octagon-fill"
-                                                                        style="color: red"></i>
-                                                                    Konfirmasi Pengambilan Surat
-                                                                </h4>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <p>Apakah anda yakin untuk mengonfirmasi bahwa
-                                                                            surat telah diambil oleh pemohon?
-                                                                            status pengambilan tidak dapat diubah lagi
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <form action="#" method="post"
-                                                                enctype="multipart/form-data">
-                                                                @csrf
-                                                                <div class="modal-footer">
-                                                                    <button type="button" data-dismiss="modal"
-                                                                        class="btn btn-default">
-                                                                        Batalkan
-                                                                    </button>
-                                                                    <button type="submit" class="btn btn-danger"
-                                                                        id="submit">
-                                                                        Ya
-                                                                    </button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
+                                                        <?php $no2=1; ?>
+                                                            @foreach ($disetujui as $item)
+                                                            <tr>
+                                                                <td>{{$no2}}</td>
+                                                                <td>{{$item->angkutan->perusahaan->nama_perusahaan}}</td>
+                                                                <td>{{$item->angkutan->perusahaan->kbli->kode}}</td>
+                                                                <td>{{$item->angkutan->nomor_kendaraan}}</td>
+                                                                <td>{{$item->angkutan->nomor_mesin}}</td>
+                                                                <td>{{$item->keterangan}}</td>
+                                                                <td>{{$item->status_penerbitan}}</td>
+                                                                <td><a class="btn btn-xs btn-success" href="{{route('angkutan.show', $item->id)}}"><i class="fa fa-eye"></i>
+                                                                    detail</a></td>>
+                                                            </tr>
+                                                            <?php $no2++; ?>
+                                                            @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -299,48 +155,29 @@
                                                     <thead>
                                                         <tr>
                                                             <th>No</th>
-                                                            <th class="hidden-xs">Nomor Kendaraan</th>
                                                             <th>Nama Perusahaan</th>
                                                             <th>KBLI</th>
-                                                            <th>Lama Permohonan</th>
+                                                            <th>Nomor Kendaraan</th>
+                                                            <th>Nomor Mesin</th>
+                                                            <th>Keterangan</th>
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td class="hidden-xs">N 4332 DD</td>
-                                                            <td>AOE Explore</td>
-                                                            <td>43212</td>
-                                                            <td>1 hari</td>
-                                                            <td>
-                                                                <a class="btn btn-xs btn-teal"
-                                                                    href="{{ route('perusahaan.show', 1)}}"><i
-                                                                        class="fa fa-info"></i>
-                                                                    tinjau perusahaan</a>
-                                                                    <a class="btn btn-xs btn-success"
-                                                                    href="{{ route('angkutan.show', 1)}}"><i
-                                                                        class="fa fa-eye"></i>
-                                                                    detail</a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td class="hidden-xs">N 4332 DD</td>
-                                                            <td>AOE Explore</td>
-                                                            <td>43212</td>
-                                                            <td>1 hari</td>
-                                                            <td>
-                                                                <a class="btn btn-xs btn-teal"
-                                                                    href="{{ route('perusahaan.show', 1)}}"><i
-                                                                        class="fa fa-info"></i>
-                                                                    tinjau perusahaan</a>
-                                                                    <a class="btn btn-xs btn-success"
-                                                                    href="{{ route('angkutan.show', 1)}}"><i
-                                                                        class="fa fa-eye"></i>
-                                                                    detail</a>
-                                                            </td>
-                                                        </tr>
+                                                        <?php $no3=1; ?>
+                                                            @foreach ($tertunda as $item)
+                                                            <tr>
+                                                                <td>{{$no3}}</td>
+                                                                <td>{{$item->angkutan->perusahaan->nama_perusahaan}}</td>
+                                                                <td>{{$item->angkutan->perusahaan->kbli->kode}}</td>
+                                                                <td>{{$item->angkutan->nomor_kendaraan}}</td>
+                                                                <td>{{$item->angkutan->nomor_mesin}}</td>
+                                                                <td>{{$item->keterangan}}</td>
+                                                                <td><a class="btn btn-xs btn-success" href="{{route('angkutan.show', $item->id)}}"><i class="fa fa-eye"></i>
+                                                                    detail</a></td>
+                                                            </tr>
+                                                        <?php $no3++; ?>
+                                                            @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -357,40 +194,31 @@
                                                     <thead>
                                                         <tr>
                                                             <th>No</th>
-                                                            <th class="hidden-xs">Nomor Kendaraan</th>
                                                             <th>Nama Perusahaan</th>
                                                             <th>KBLI</th>
-                                                            <th>Lama Permohonan</th>
+                                                            <th>Nomor Kendaraan</th>
+                                                            <th>Nomor Mesin</th>
+                                                            <th>Keterangan</th>
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td class="hidden-xs">N 4332 DD</td>
-                                                            <td>AOE Explore</td>
-                                                            <td>43212</td>
-                                                            <td>1 hari</td>
-                                                            <td>
-                                                                <a class="btn btn-xs btn-success"
-                                                                href="{{ route('angkutan.show', 1)}}"><i
-                                                                    class="fa fa-eye"></i>
-                                                                detail</a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td class="hidden-xs">N 4332 DD</td>
-                                                            <td>AOE Explore</td>
-                                                            <td>43212</td>
-                                                            <td>1 hari</td>
-                                                            <td>
-                                                                <a class="btn btn-xs btn-success"
-                                                                href="{{ route('angkutan.show', 1)}}"><i
-                                                                    class="fa fa-eye"></i>
-                                                                detail</a>
-                                                            </td>
-                                                        </tr>
+                                                        <?php $no3=1; ?>
+                                                            @foreach ($ditolak as $item)
+                                                            <tr>
+                                                                <td>{{$no3}}</td>
+                                                                <td>{{$item->angkutan->perusahaan->nama_perusahaan}}</td>
+                                                                <td>{{$item->angkutan->perusahaan->kbli->kode}}</td>
+                                                                <td>{{$item->angkutan->nomor_kendaraan}}</td>
+                                                                <td>{{$item->angkutan->nomor_mesin}}</td>
+                                                                <td>{{$item->keterangan}}</td>
+                                                                <td><a class="btn btn-xs btn-success"
+                                                                    href="{{ route('angkutan.show', 1)}}"><i
+                                                                        class="fa fa-eye"></i>
+                                                                    detail</a></td>
+                                                            </tr>
+                                                            <?php $no3++; ?>
+                                                            @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>

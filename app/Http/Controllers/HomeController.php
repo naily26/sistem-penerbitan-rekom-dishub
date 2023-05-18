@@ -7,6 +7,8 @@ use App\Models\antrian;
 use App\Models\perusahaan;
 use App\Models\pengajuan_perusahaan;
 use App\Models\petugas;
+use App\Models\angkutan;
+use App\Models\pengajuan_angkutan;
 use Auth;
 
 use Carbon\Carbon;
@@ -65,13 +67,31 @@ class HomeController extends Controller
             'petugas_id' => $petugas->id
         ]);
 
-        $pengajuan_perusahaan = pengajuan_perusahaan::where('perusahaan_id', $antrian->perusahaan_id)->first();
-        $pengajuan_perusahaan->update([
-            'petugas_id' => $petugas->id
-        ]);
+        $pengajuan_perusahaan = pengajuan_perusahaan::where('perusahaan_id', $antrian->perusahaan_id)->where('petugas_id', null)->where('tanggal_permohonan', $antrian->tanggal_permohonan)->first();
+        if($pengajuan_perusahaan) {
+            $pengajuan_perusahaan->update([
+                'petugas_id' => $petugas->id
+            ]);
+        }
 
-        if($pengajuan_perusahaan && $antrian) {
-            return redirect()->route('perusahaan.index')->with(['success'=>'data berhasil diambil']);
+        $angkutan = angkutan::where('perusahaan_id', $antrian->perusahaan_id)->get();
+
+        foreach ($angkutan as $item) {
+            $pengajuan_angkutan = pengajuan_angkutan::where('angkutan_id', $item->id)->where('petugas_id', null)->where('tanggal_permohonan', $antrian->tanggal_permohonan)->first();
+            if($pengajuan_angkutan) {
+                $pengajuan_angkutan->update([
+                    'petugas_id' => $petugas->id
+                ]);
+            }
+        }
+        
+
+        if($antrian) {
+            if($pengajuan_perusahaan) {
+                return redirect()->route('perusahaan.index')->with(['success'=>'data berhasil diambil']);
+            } else {
+                return redirect()->route('angkutan.index')->with(['success'=>'data berhasil diambil']);
+            }
         } else {
             return redirect()->route('home')->with(['gagal'=>'data gagal diambil']);
         }

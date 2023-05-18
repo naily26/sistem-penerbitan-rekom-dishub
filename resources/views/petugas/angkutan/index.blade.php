@@ -92,40 +92,33 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
-                                                                <th class="hidden-xs">Nomor Kendaraan</th>
                                                                 <th>Nama Perusahaan</th>
                                                                 <th>KBLI</th>
+                                                                <th>Nomor Kendaraan</th>
+                                                                <th>Nomor Mesin</th>
                                                                 <th>Lama Permohonan</th>
+                                                                <th>Keterangan</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            <?php $no=1; ?>
+                                                            @foreach ($diproses as $item)
                                                             <tr>
-                                                                <td>1</td>
-                                                                <td class="hidden-xs">N 4332 DD</td>
-                                                                <td>AOE Explore</td>
-                                                                <td>43212</td>
-                                                                <td>1 hari</td>
-                                                                <td>
-																	<a class="btn btn-xs btn-primary"
-																	href="{{route('angkutan.edit', 1)}}"><i
+                                                                <td>{{$no}}</td>
+                                                                <td>{{$item->angkutan->perusahaan->nama_perusahaan}}</td>
+                                                                <td>{{$item->angkutan->perusahaan->kbli->kode}}</td>
+                                                                <td>{{$item->angkutan->nomor_kendaraan}}</td>
+                                                                <td>{{$item->angkutan->nomor_mesin}}</td>
+                                                                <td><?php echo lama($item->tanggal_permohonan);?> hari</td>
+                                                                <td>{{$item->keterangan}}</td>
+                                                                <td><a class="btn btn-xs btn-primary"
+																	href="{{route('angkutan.edit', $item->id)}}"><i
 																		class="fa fa-check-square-o"></i>
-																	konfirmasi status</a>
-                                                                </td>
+																	konfirmasi status</a></td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td class="hidden-xs">N 4332 DD</td>
-                                                                <td>AOE Explore</td>
-                                                                <td>43212</td>
-                                                                <td>1 hari</td>
-                                                                <td>
-                                                                    <a class="btn btn-xs btn-primary"
-																	href="{{url('konfirmasi-angkutan')}}"><i
-																		class="fa fa-check-square-o"></i>
-																	konfirmasi status</a>
-                                                                </td>
-                                                            </tr>
+                                                            <?php $no++; ?>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -142,69 +135,33 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
-                                                                <th class="hidden-xs">Nomor Kendaraan</th>
                                                                 <th>Nama Perusahaan</th>
                                                                 <th>KBLI</th>
+                                                                <th>Nomor Kendaraan</th>
+                                                                <th>Nomor Mesin</th>
                                                                 <th>Lama Permohonan</th>
+                                                                <th>Keterangan</th>
+                                                                <th>Status Penerbitan</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            <?php $no2=1; ?>
+                                                            @foreach ($disetujui as $item)
                                                             <tr>
-                                                                <td>1</td>
-                                                                <td class="hidden-xs">N 4332 DD</td>
-                                                                <td>AOE Explore</td>
-                                                                <td>43212</td>
-                                                                <td>1 hari</td>
-                                                                <td>
-																	<a class="btn btn-xs btn-primary" href="#konfirmasi-penerbitan-surat" data-toggle="modal">
-																		<i class="fa fa-check-square-o"></i>
-                                                                        konfirmasi penerbitan surat</a>
-                                                                </td>
+                                                                <td>{{$no2}}</td>
+                                                                <td>{{$item->angkutan->perusahaan->nama_perusahaan}}</td>
+                                                                <td>{{$item->angkutan->perusahaan->kbli->kode}}</td>
+                                                                <td>{{$item->angkutan->nomor_kendaraan}}</td>
+                                                                <td>{{$item->angkutan->nomor_mesin}}</td>
+                                                                <td><?php echo lama($item->tanggal_permohonan);?> hari</td>
+                                                                <td>{{$item->keterangan}}</td>
+                                                                <td>{{$item->status_penerbitan}}</td>
+                                                                <td><a class="btn btn-xs btn-success" href="{{route('angkutan.show', $item->id)}}"><i class="fa fa-eye"></i>
+                                                                    detail</a></td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td class="hidden-xs">N 4332 DD</td>
-                                                                <td>AOE Explore</td>
-                                                                <td>43212</td>
-                                                                <td>1 hari</td>
-                                                                <td>
-                                                                    <a class="btn btn-xs btn-primary" href="#konfirmasi-penerbitan-surat" data-toggle="modal">
-																		<i class="fa fa-check-square-o"></i>
-                                                                        konfirmasi penerbitan surat</a>
-                                                                </td>
-                                                            </tr>
-															<div id="konfirmasi-penerbitan-surat" class="modal fade" tabindex="-1" data-width="360"
-																style="display: none;">
-																<div class="modal-header">
-																	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-																		&times;
-																	</button>
-																	<h4 class="modal-title">
-																		<i class="bi bi-exclamation-octagon-fill" style="color: red"></i>
-																		Konfirmasi Penerbitan Surat
-																	</h4>
-																</div>
-																<div class="modal-body">
-																	<div class="row">
-																		<div class="col-md-12">
-																			<p>Apakah surat rekomendasi peruntukan angkutan umum telah diterbitkan?</p>
-																		</div>
-																	</div>
-																</div>
-																<form action="#" method="post"
-																	enctype="multipart/form-data">
-																	@csrf
-																	<div class="modal-footer">
-																		<button type="button" data-dismiss="modal" class="btn btn-default">
-																			Batalkan
-																		</button>
-																		<button type="submit" class="btn btn-danger" id="submit">
-																			Ya
-																		</button>
-																	</div>
-																</form>
-															</div>
+                                                            <?php $no2++; ?>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -220,37 +177,34 @@
                                                         id="sample_3">
                                                         <thead>
                                                             <tr>
-                                                                <th>No</th>
-                                                                <th class="hidden-xs">Nomor Kendaraan</th>
-                                                                <th>Nama Perusahaan</th>
-                                                                <th>KBLI</th>
-                                                                <th>Lama Permohonan</th>
-                                                                <th>Action</th>
+                                                                <tr>
+                                                                    <th>No</th>
+                                                                    <th>Nama Perusahaan</th>
+                                                                    <th>KBLI</th>
+                                                                    <th>Nomor Kendaraan</th>
+                                                                    <th>Nomor Mesin</th>
+                                                                    <th>Lama Permohonan</th>
+                                                                    <th>Keterangan</th>
+                                                                    <th>Action</th>
+                                                                </tr>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            <?php $no3=1; ?>
+                                                            @foreach ($ditolak as $item)
                                                             <tr>
-                                                                <td>1</td>
-                                                                <td class="hidden-xs">N 4332 DD</td>
-                                                                <td>AOE Explore</td>
-                                                                <td>43212</td>
-                                                                <td>1 hari</td>
-                                                                <td>
-                                                                    <a class="btn btn-xs btn-success" href="#"><i class="fa fa-eye"></i>
-																		detail</a>
-                                                                </td>
+                                                                <td>{{$no3}}</td>
+                                                                <td>{{$item->angkutan->perusahaan->nama_perusahaan}}</td>
+                                                                <td>{{$item->angkutan->perusahaan->kbli->kode}}</td>
+                                                                <td>{{$item->angkutan->nomor_kendaraan}}</td>
+                                                                <td>{{$item->angkutan->nomor_mesin}}</td>
+                                                                <td><?php echo lama($item->tanggal_permohonan);?> hari</td>
+                                                                <td>{{$item->keterangan}}</td>
+                                                                <td><a class="btn btn-xs btn-success" href="{{route('angkutan.show', $item->id)}}"><i class="fa fa-eye"></i>
+                                                                    detail</a></td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td class="hidden-xs">N 4332 DD</td>
-                                                                <td>AOE Explore</td>
-                                                                <td>43212</td>
-                                                                <td>1 hari</td>
-                                                                <td>
-                                                                    <a class="btn btn-xs btn-success" href="#"><i class="fa fa-eye"></i>
-																		detail</a>
-                                                                </td>
-                                                            </tr>
+                                                            <?php $no3++; ?>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -267,36 +221,31 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
-                                                                <th class="hidden-xs">Nomor Kendaraan</th>
                                                                 <th>Nama Perusahaan</th>
                                                                 <th>KBLI</th>
+                                                                <th>Nomor Kendaraan</th>
+                                                                <th>Nomor Mesin</th>
                                                                 <th>Lama Permohonan</th>
+                                                                <th>Keterangan</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            <?php $no4=1; ?>
+                                                            @foreach ($tertunda as $item)
                                                             <tr>
-                                                                <td>1</td>
-                                                                <td class="hidden-xs">N 4332 DD</td>
-                                                                <td>AOE Explore</td>
-                                                                <td>43212</td>
-                                                                <td>1 hari</td>
-                                                                <td>
-                                                                    <a class="btn btn-xs btn-success" href="#"><i class="fa fa-eye"></i>
-																		detail</a>
-                                                                </td>
+                                                                <td>{{$no4}}</td>
+                                                                <td>{{$item->angkutan->perusahaan->nama_perusahaan}}</td>
+                                                                <td>{{$item->angkutan->perusahaan->kbli->kode}}</td>
+                                                                <td>{{$item->angkutan->nomor_kendaraan}}</td>
+                                                                <td>{{$item->angkutan->nomor_mesin}}</td>
+                                                                <td><?php echo lama($item->tanggal_permohonan);?> hari</td>
+                                                                <td>{{$item->keterangan}}</td>
+                                                                <td><a class="btn btn-xs btn-success" href="{{route('angkutan.show', $item->id)}}"><i class="fa fa-eye"></i>
+                                                                    detail</a></td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td class="hidden-xs">N 4332 DD</td>
-                                                                <td>AOE Explore</td>
-                                                                <td>43212</td>
-                                                                <td>1 hari</td>
-                                                                <td>
-                                                                    <a class="btn btn-xs btn-success" href="#"><i class="fa fa-eye"></i>
-																		detail</a>
-                                                                </td>
-                                                            </tr>
+                                                            <?php $no4++; ?>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -314,6 +263,17 @@
         <!-- end: PAGE CONTENT-->
     </div>
 </div>
+<?php
+ function lama($val) {
+    $today = date("y-m-d");
+    $startTimeStamp = strtotime($val);
+    $endTimeStamp = strtotime($today);
+    $timeDiff = abs($endTimeStamp - $startTimeStamp);
+    $numberDays = $timeDiff/86400;  
+    $numberDays = intval($numberDays);
+    return $numberDays+1;
+ }
+ ?>
 <!-- end: PAGE -->
 @endsection
 @push('style')

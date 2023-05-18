@@ -96,18 +96,11 @@
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($diproses as $item)
-                                                        <?php
-                                                            $startTimeStamp = strtotime($item->tanggal_permohonan);
-                                                            $endTimeStamp = strtotime($today);
-                                                            $timeDiff = abs($endTimeStamp - $startTimeStamp);
-                                                            $numberDays = $timeDiff/86400;  
-                                                            $numberDays = intval($numberDays);
-                                                            ?>
                                                         <tr>
                                                             <td>{{$item->perusahaan->nama_perusahaan}}</td>
                                                             <td>{{$item->perusahaan->nib}}</td>
                                                             <td>{{$item->perusahaan->kbli->kode}}</td>
-                                                            <td>{{$numberDays+1}}</td>
+                                                            <td><?php echo lama($item->tanggal_permohonan);?></td>
                                                             <td>@if (is_null($item->petugas_id))
                                                                 belum ada
                                                             @else
@@ -142,18 +135,11 @@
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($disetujui as $item)
-                                                        <?php
-                                                            $startTimeStamp = strtotime($item->tanggal_permohonan);
-                                                            $endTimeStamp = strtotime($today);
-                                                            $timeDiff = abs($endTimeStamp - $startTimeStamp);
-                                                            $numberDays = $timeDiff/86400;  
-                                                            $numberDays = intval($numberDays);
-                                                            ?>
                                                         <tr>
                                                             <td>{{$item->perusahaan->nama_perusahaan}}</td>
                                                             <td>{{$item->perusahaan->nib}}</td>
                                                             <td>{{$item->perusahaan->kbli->kode}}</td>
-                                                            <td>{{$numberDays+1}}</td>
+                                                            <td><?php echo lama($item->tanggal_permohonan);?></td>
                                                             <td>{{$item->perusahaan->user->email}}</td>
                                                             <td>{{$item->status_penerbitan}}</td>
                                                             <td><a class="btn btn-xs btn-success"
@@ -272,18 +258,11 @@
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($ditolak as $item)
-                                                        <?php
-                                                            $startTimeStamp = strtotime($item->tanggal_permohonan);
-                                                            $endTimeStamp = strtotime($today);
-                                                            $timeDiff = abs($endTimeStamp - $startTimeStamp);
-                                                            $numberDays = $timeDiff/86400;  
-                                                            $numberDays = intval($numberDays);
-                                                            ?>
                                                         <tr>
                                                             <td>{{$item->perusahaan->nama_perusahaan}}</td>
                                                             <td>{{$item->perusahaan->nib}}</td>
                                                             <td>{{$item->perusahaan->kbli->kode}}</td>
-                                                            <td>{{$numberDays+1}}</td>
+                                                            <td><?php echo lama($item->tanggal_permohonan);?></td>
                                                             <td><a class="btn btn-xs btn-success"
                                                                 href="{{ route('perusahaan.show', $item->perusahaan_id)}}"><i
                                                                     class="fa fa-eye"></i>
@@ -307,6 +286,17 @@
         <!-- end: PAGE CONTENT-->
     </div>
 </div>
+<?php
+ function lama($val) {
+    $today = date("y-m-d");
+    $startTimeStamp = strtotime($val);
+    $endTimeStamp = strtotime($today);
+    $timeDiff = abs($endTimeStamp - $startTimeStamp);
+    $numberDays = $timeDiff/86400;  
+    $numberDays = intval($numberDays);
+    return $numberDays+1;
+ }
+ ?>
 <!-- end: PAGE -->
 @endsection
 @push('style')
@@ -342,16 +332,6 @@
         Main.init();
         Index.init();
     });
-
-</script>
-<script>
-    function get_diff(val) {
-        var date1 = new Date(val);
-        var date2 = new Date($today);
-        var Difference_In_Time = date2.getTime() - date1.getTime();
-        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-        document.getElementById("demo").innerHTML = Difference_In_Days;
-    }
 
 </script>
 
