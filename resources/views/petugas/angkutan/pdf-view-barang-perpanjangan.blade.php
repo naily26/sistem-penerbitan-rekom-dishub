@@ -22,8 +22,7 @@
                 style="font-family:'Arial Narrow';">PERUNTUKAN ANGKUTAN
                 BARANG UMUM</span></strong></p>
     <p style="margin-top:0pt; margin-bottom:12pt; text-align:center;"><strong><span
-                style="font-family:'Arial Narrow';">Nomor : 551.21 /
-                0210 / AK-02 / 113.4 / III / 2023</span></strong></p>
+                style="font-family:'Arial Narrow';">Nomor : {{$detail->nomor_rekomendasi_peruntukan}}</span></strong></p>
     <p style="margin-top:12pt; margin-bottom:0pt; text-indent:45.1pt; text-align:justify;"><span
             style="font-family:'Arial Narrow';">Yang
             bertanda tangan dibawah ini Kepala Bidang Angkutan Jalan bertindak atas nama Kepala Dinas Perhubungan
@@ -38,14 +37,13 @@ Narrow';">1.</span></p>
                 </td>
                 <td style="width:487.8pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:3pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><span style="font-family:'Arial
-Narrow';">Surat permohonan Pimpinan&nbsp;</span><strong><span style="font-family:'Arial Narrow';">PT. SINAR
-                                INDAHPERKASA</span>
+Narrow';">Surat permohonan Pimpinan&nbsp;</span><strong><span style="font-family:'Arial Narrow';">{{$detail->perusahaan->nama_perusahaan}}</span>
                         </strong><span style="font-family:'Arial Narrow';">&nbsp;nomor&nbsp;</span><strong><span style="font-family:'Arial
-Narrow';">001/SIP/ANGKUTAN/III/2023</span></strong><span style="font-family:'Arial Narrow';">&nbsp;&nbsp;</span><span
+Narrow';">{{$detail->nomor_permohonan}}</span></strong><span style="font-family:'Arial Narrow';">&nbsp;&nbsp;</span><span
                             style="fontfamily:'Arial Narrow';">tanggal</span><span
                             style="font-family:'Arial
 Narrow';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </span><strong><span style="font-family:'Arial Narrow';">12 Maret 2023</span></strong><span
+                        </span><strong><span style="font-family:'Arial Narrow';"><?php echo tanggal_indonesia($detail->tanggal_permohonan); ?></span></strong><span
                             style="font-family:'Arial Narrow';">.
                         </span></p>
                 </td>
@@ -60,10 +58,10 @@ Narrow';">2.</span></p>
 Narrow';">Nomor Induk Berusaha (NIB) Perizinan Berusaha Berbasis Risiko dari Kepala Badan Koordinasi Penanaman Modal
                             Republik
                             Indonesia Nomor&nbsp;</span><strong><span
-                                style="font-family:'Arial Narrow';">9120203741107</span></strong><span
+                                style="font-family:'Arial Narrow';">{{$detail->angkutan->perusahaan->nib}}</span></strong><span
                             style="fontfamily:'Arial Narrow';">&nbsp;&nbsp;</span><span
                             style="font-family:'Arial Narrow';">tanggal&nbsp;</span><strong><span
-                                style="fontfamily:'Arial Narrow';">16 November 2022</span></strong><span
+                                style="fontfamily:'Arial Narrow';"><?php echo tanggal_indonesia($detail->angkutan->perusahaan->tanggal_nib); ?></span></strong><span
                             style="font-family:'Arial Narrow';">.</span></p>
                 </td>
 
@@ -91,7 +89,7 @@ Narrow';">Nomor Induk Berusaha (NIB) Perizinan Berusaha Berbasis Risiko dari Kep
                 </td>
                 <td style="width:353.9pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:2pt; margin-bottom:0pt; font-size:12pt;"><strong><span
-                                style="font-family:'Arial Narrow';">L9154-UP</span></strong></p>
+                                style="font-family:'Arial Narrow';">{{$detail->angkutan->nomor_kendaraan}}</span></strong></p>
                 </td>
             </tr>
             <tr>
@@ -110,7 +108,7 @@ Narrow';">Nomor Induk Berusaha (NIB) Perizinan Berusaha Berbasis Risiko dari Kep
                 </td>
                 <td style="width:353.9pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:2pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Arial
-Narrow';">SB229221K</span></strong></p>
+Narrow';">{{$detail->angkutan->nomor_uji}}</span></strong></p>
                 </td>
             </tr>
             <tr>
@@ -130,10 +128,9 @@ Narrow';">SB229221K</span></strong></p>
                 </td>
                 <td style="width:353.9pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:2pt; margin-bottom:0pt; font-size:12pt;"><strong><span
-                                style="font-family:'Arial Narrow';">UD
-                                TRUCKS</span></strong><span
+                                style="font-family:'Arial Narrow';">{{$detail->angkutan->merk}}</span></strong><span
                             style="font-family:'Arial Narrow';">&nbsp;/&nbsp;</span><strong><span style="font-family:'Arial
-Narrow';">CDA260S</span></strong></p>
+Narrow';">{{$detail->angkutan->tipe}}</span></strong></p>
                 </td>
             </tr>
             <tr>
@@ -152,7 +149,7 @@ Narrow';">CDA260S</span></strong></p>
                 </td>
                 <td style="width:353.9pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:2pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Arial
-Narrow';">2013</span></strong></p>
+Narrow';">{{$detail->angkutan->tahun_pembuatan}}</span></strong></p>
                 </td>
             </tr>
             <tr>
@@ -172,7 +169,7 @@ Narrow';">2013</span></strong></p>
                 <td style="width:353.9pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
 
                     <p style="margin-top:2pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Arial
-Narrow';">TRONTONTANGKI / MOBIL BARANG</span></strong></p>
+Narrow';">{{$detail->angkutan->jenis}}</span></strong></p>
                 </td>
             </tr>
             <tr>
@@ -191,7 +188,7 @@ Narrow';">TRONTONTANGKI / MOBIL BARANG</span></strong></p>
                 </td>
                 <td style="width:353.9pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:2pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Arial
-Narrow';">MHPDA260SDK000006</span></strong></p>
+Narrow';">{{$detail->angkutan->nomor_rangka}}</span></strong></p>
                 </td>
             </tr>
             <tr>
@@ -210,7 +207,7 @@ Narrow';">MHPDA260SDK000006</span></strong></p>
                 </td>
                 <td style="width:353.9pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:2pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Arial
-Narrow';">FE6128694CY</span></strong></p>
+Narrow';">{{$detail->angkutan->nomor_mesin}}</span></strong></p>
                 </td>
             </tr>
             <tr>
@@ -230,8 +227,7 @@ Narrow';">FE6128694CY</span></strong></p>
                 </td>
                 <td style="width:353.9pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:2pt; margin-bottom:0pt; font-size:12pt;"><strong><span
-                                style="font-family:'Arial Narrow';">PT.
-                                SINAR INDAHPERKASA</span></strong></p>
+                                style="font-family:'Arial Narrow';">{{$detail->angkutan->perusahaan->nama_perusahaan}}</span></strong></p>
                 </td>
             </tr>
             <tr>
@@ -250,8 +246,7 @@ Narrow';">FE6128694CY</span></strong></p>
                 </td>
                 <td style="width:353.9pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:2pt; margin-bottom:0pt; font-size:12pt;"><strong><span
-                                style="font-family:'Arial Narrow';">PT.
-                                SINAR INDAH PERKASA</span></strong></p>
+                                style="font-family:'Arial Narrow';">{{$detail->angkutan->nama_pemilik}}</span></strong></p>
                 </td>
             </tr>
             <tr>
@@ -270,8 +265,7 @@ Narrow';">FE6128694CY</span></strong></p>
                 </td>
                 <td style="width:353.9pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:2pt; margin-bottom:0pt; text-align:justify; font-size:11.5pt;"><strong><span
-                                style="fontfamily:'Arial Narrow';">JL. DUPAK NO.25A, DESA/KELURAHAN GUNDIH, KEC.
-                                BUBUTAN, KOTA SURABAYA, PROVINSI JAWA TIMUR</span></strong></p>
+                                style="fontfamily:'Arial Narrow';">{{$detail->angkutan->perusahaan->alamat}}</span></strong></p>
                 </td>
             </tr>
 
@@ -310,8 +304,7 @@ Narrow';">Umum</span></strong></p>
                 </td>
                 <td style="width:353.9pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:2pt; margin-bottom:0pt; font-size:12pt;"><strong><span
-                                style="font-family:'Arial Narrow';">Warna
-                                Dasar Plat Kuning Dengan Tulisan Hitam</span></strong></p>
+                                style="font-family:'Arial Narrow';">{{$detail->angkutan->warna_tnkb}}</span></strong></p>
                 </td>
             </tr>
             <tr>
@@ -330,7 +323,7 @@ Narrow';">Peruntukan</span></p>
                 </td>
                 <td style="width:353.9pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:2pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Arial
-Narrow';">Angkutan Barang Khusus</span></strong></p>
+Narrow';">{{$detail->angkutan->perusahaan->kode->keterangan}}</span></strong></p>
                 </td>
             </tr>
             <tr>
@@ -349,7 +342,7 @@ Narrow';">Angkutan Barang Khusus</span></strong></p>
                 </td>
                 <td style="width:353.9pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:2pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Arial
-Narrow';">49432</span></strong></p>
+Narrow';">{{$detail->angkutan->perusahaan->kbli->kode}}</span></strong></p>
                 </td>
             </tr>
             <tr>
@@ -367,7 +360,7 @@ Narrow';">Keterangan</span></p>
                 </td>
                 <td style="width:353.9pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:2pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span
-                                style="fontfamily:'Arial Narrow';">Perpanjangan TNKB</span></strong></p>
+                                style="fontfamily:'Arial Narrow';">{{$detail->keterangan}}</span></strong></p>
                 </td>
             </tr>
         </tbody>
@@ -377,7 +370,7 @@ Narrow';">Keterangan</span></p>
             untuk dapat dipergunakan sebagaimana mestinya.&nbsp;</span></p>
 
     <p style="margin-top:0pt; margin-left:276.45pt; margin-bottom:6pt; text-indent:28.35pt;"><span style="font-family:'Arial
-Narrow';">Surabaya,&nbsp;</span><strong><span style="font-family:'Arial Narrow';">16 Maret 2023</span></strong></p>
+Narrow';">Surabaya,&nbsp;</span><strong><span style="font-family:'Arial Narrow';"><?php echo tanggal_indonesia($today); ?></span></strong></p>
     <p style="margin-top:6pt; margin-left:276.45pt; margin-bottom:0pt; text-align:center;"><span
             style="font-family:'Arial Narrow';">An.
             KEPALA DINAS PERHUBUNGAN</span></p>
@@ -459,3 +452,30 @@ Narrow';">NIP.&nbsp;</span><span style="font-family:'Arial Narrow'; font-size:11
 </body>
 
 </html>
+
+<?php 
+        function tanggal_indonesia($tanggal){
+        $bulan = array (
+        1 =>   'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+        );
+        
+        $pecahkan = explode('-', $tanggal);
+        
+        // variabel pecahkan 0 = tanggal
+        // variabel pecahkan 1 = bulan
+        // variabel pecahkan 2 = tahun
+         
+        return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+    }
+?>

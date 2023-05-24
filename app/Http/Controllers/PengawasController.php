@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\pengawas;
+use App\Models\petugas;
+use App\Models\customer_service;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -21,9 +23,18 @@ class PengawasController extends Controller
      public function index()
     {
         $pengawas = pengawas::all();
-        return view('admin.pengawas.index', compact('pengawas'));
+        $petugas = petugas::all();
+        $cs = customer_service::all();
+        return view('admin.pengawas.index', compact('pengawas', 'petugas', 'cs'));
     }
 
+    public function indexPegawai()
+    {
+        $pengawas = pengawas::all();
+        $petugas = petugas::all();
+        $cs = customer_service::all();
+        return view('admin.pegawai.index', compact('pengawas', 'petugas', 'cs'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -62,9 +73,9 @@ class PengawasController extends Controller
         ]);
 
         if($pengawas) {
-            return redirect()->route('pengawas.index')->with(['success'=>'data berhasil ditambahkan']);
+            return redirect()->to('/pegawai')->with(['success'=>'data berhasil ditambahkan']);
         } else {
-            return redirect()->route('pengawas.index')->with(['gagal'=>'data gagal ditambahkan']);
+            return redirect()->to('/pegawai')->with(['gagal'=>'data gagal ditambahkan']);
         }
     }
 
@@ -113,10 +124,10 @@ class PengawasController extends Controller
         ]);
 
         if($pengawas){
-            return redirect()->route('pengawas.index')->with(['success'=>'data berhasil diupdate']);
+            return redirect()->to('/pegawai')->with(['success'=>'data berhasil diupdate']);
         }
         else{
-            return redirect()->route('pengawas.index')->with(['error'=>'data error diupdate']);
+            return redirect()->to('/pegawai')->with(['error'=>'data error diupdate']);
         }
     }
 
@@ -133,9 +144,9 @@ class PengawasController extends Controller
         $user->delete();
         $cek = $pengawas->delete();
         if($cek) {
-            return redirect()->route('pengawas.index')->with('success', 'data berhasil dihapus');
+            return redirect()->to('/pegawai')->with('success', 'data berhasil dihapus');
         } else {
-            return redirect()->route('pengawas.index')->with(['gagal'=>'data gagal dihapus']);
+            return redirect()->to('/pegawai')->with(['gagal'=>'data gagal dihapus']);
         }
     }
 }

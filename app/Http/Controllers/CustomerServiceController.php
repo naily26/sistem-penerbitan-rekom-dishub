@@ -65,9 +65,9 @@ class CustomerServiceController extends Controller
         ]);
 
         if($cs) {
-            return redirect()->route('customer-service.index')->with(['success'=>'data berhasil ditambahkan']);
+            return redirect()->to('/pegawai')->with(['success'=>'data berhasil ditambahkan']);
         } else {
-            return redirect()->route('customer-service.index')->with(['gagal'=>'data gagal ditambahkan']);
+            return redirect()->to('/pegawai')->with(['gagal'=>'data gagal ditambahkan']);
         }
     }
 
@@ -105,10 +105,10 @@ class CustomerServiceController extends Controller
         ]);
 
         if($cs){
-            return redirect()->route('customer-service.index')->with(['success'=>'data berhasil diupdate']);
+            return redirect()->to('/pegawai')->with(['success'=>'data berhasil diupdate']);
         }
         else{
-            return redirect()->route('customer-service.index')->with(['error'=>'data error diupdate']);
+            return redirect()->to('/pegawai')->with(['error'=>'data error diupdate']);
         }
     }
 
@@ -122,9 +122,9 @@ class CustomerServiceController extends Controller
         $user->delete();
         $cek = $cs->delete();
         if($cek) {
-            return redirect()->route('customer-service.index')->with(['success'=> 'data berhasil dihapus']);
+            return redirect()->to('/pegawai')->with(['success'=> 'data berhasil dihapus']);
         } else {
-            return redirect()->route('customer-service.index')->with(['gagal'=>'data gagal dihapus']);
+            return redirect()->to('/pegawai')->with(['gagal'=>'data gagal dihapus']);
         }
     }
 }

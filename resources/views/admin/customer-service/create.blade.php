@@ -13,12 +13,12 @@
                 <ol class="breadcrumb">
                     <li>
                         <i class="clip-pencil"></i>
-                        <a href="{{ route('customer-service.index')}}">
-                            Data Customer Service
+                        <a href="{{ url('pegawai')}}">
+                            Data Akun Pegawai
                         </a>
                     </li>
                     <li class="active">
-                        tambah data
+                        tambah data Customer Service
                     </li>
                 </ol>
                 <div class="page-header">
@@ -91,11 +91,7 @@
 
 @push('script')
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="assets/admin/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="assets/admin/plugins/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
-<script src="assets/admin/js/form-wizard.js"></script>
 
-<script src="assets/admin/js/form-elements.js"></script>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
     jQuery(document).ready(function () {
@@ -119,8 +115,5 @@
 @endpush
 
 @push('style')
-{{-- <link rel="stylesheet" href="{{asset('assets/admin/plugins/select2/select2.css')}}">
-<link rel="stylesheet" href="assets/admin/plugins/jQuery-Tags-Input/jquery.tagsinput.css">
-<link rel="stylesheet" href="assets/admin/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
-<link rel="stylesheet" href="assets/admin/plugins/summernote/build/summernote.css"> --}}
+
 @endpush

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\perusahaan;
 use App\Models\pengajuan_perusahaan;
+use App\Models\pengajuan_angkutan;
 use Carbon\Carbon;
 
 class DataPenerbitanController extends Controller
@@ -22,10 +23,12 @@ class DataPenerbitanController extends Controller
     }
 
     public function indexAngkutan() {
+        $today = Carbon::today()->toDateString();
         if (Auth::user()->role == 'admin') {
             return view('admin.data-penerbitan.angkutan');
         } elseif (Auth::user()->role == 'customer-service') {
-            return view('customer-service.data-penerbitan.angkutan');
+            $disetujui = pengajuan_angkutan::where('status_pengecekan', 'disetujui')->where('status_penerbitan', '!=', 'tertunda')->get();
+            return view('customer-service.data-penerbitan.angkutan', compact('disetujui', 'today'));
         }
     }
 }

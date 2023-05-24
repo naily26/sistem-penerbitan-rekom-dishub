@@ -134,9 +134,96 @@
                                                                 <td>{{$item->angkutan->nomor_mesin}}</td>
                                                                 <td>{{$item->keterangan}}</td>
                                                                 <td>{{$item->status_penerbitan}}</td>
-                                                                <td><a class="btn btn-xs btn-success" href="{{route('angkutan.show', $item->id)}}"><i class="fa fa-eye"></i>
-                                                                    detail</a></td>>
+                                                                <td><a class="btn btn-xs btn-success"
+                                                                    href="{{ route('angkutan.show', $item->id)}}"><i
+                                                                        class="fa fa-eye"></i>
+                                                                    detail</a>
+                                                                    @if ($item->status_penerbitan == 'dicetak')
+                                                                        <a class="btn btn-xs btn-primary" href="#naik{{$item->id}}"
+                                                                        data-toggle="modal"><i class="fa fa-calendar"></i>
+                                                                        konfirmasi surat naik</a>
+                                                                    @elseif ($item->status_penerbitan == 'birokrasi')
+                                                                        <a class="btn btn-xs btn-primary"
+                                                                        href="#konfirmasi-penerbitan{{$item->id}}" data-toggle="modal"><i
+                                                                            class="fa  fa-check-square-o"></i>
+                                                                        konfirmasi penerbitan</a>
+                                                                    @endif</a>
+                                                                </td>
                                                             </tr>
+                                                            <div id="naik{{$item->id}}" class="modal fade" tabindex="-1"
+                                                                data-width="360" style="display: none;">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-hidden="true">
+                                                                        &times;
+                                                                    </button>
+                                                                    <h4 class="modal-title">
+                                                                        <i class="bi bi-exclamation-octagon-fill"
+                                                                            style="color: red"></i>
+                                                                        Konfirmasi Birokrasi Surat
+                                                                    </h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <p>Apakah anda yakin untuk mengonfirmasi bahwa
+                                                                                surat telah naik dan diberikan ke pimpinan?
+                                                                                status penerbitan tidak dapat diubah lagi
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <form action="{{url('/konfirmasi-birokrasi-surat-angkutan', $item->id)}}" >
+                                                                    @csrf
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" data-dismiss="modal"
+                                                                            class="btn btn-default">
+                                                                            Batalkan
+                                                                        </button>
+                                                                        <button type="submit" class="btn btn-danger"
+                                                                            id="submit">
+                                                                            Ya
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div id="konfirmasi-penerbitan{{$item->id}}" class="modal fade" tabindex="-1"
+                                                                data-width="360" style="display: none;">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-hidden="true">
+                                                                        &times;
+                                                                    </button>
+                                                                    <h4 class="modal-title">
+                                                                        <i class="bi bi-exclamation-octagon-fill"
+                                                                            style="color: red"></i>
+                                                                        Konfirmasi Penerbitan Surat
+                                                                    </h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <p>Apakah anda yakin untuk mengonfirmasi bahwa
+                                                                                surat telah tertandatangani oleh pimpinan?
+                                                                                status penerbitan tidak dapat diubah lagi
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <form action="{{url('/konfirmasi-penerbitan-surat-angkutan', $item->id)}}"  >
+                                                                    @csrf
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" data-dismiss="modal"
+                                                                            class="btn btn-default">
+                                                                            Batalkan
+                                                                        </button>
+                                                                        <button type="submit" class="btn btn-danger"
+                                                                            id="submit">
+                                                                            Ya
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
                                                             <?php $no2++; ?>
                                                             @endforeach
                                                     </tbody>

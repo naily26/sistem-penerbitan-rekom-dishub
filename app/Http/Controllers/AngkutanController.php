@@ -295,6 +295,59 @@ class AngkutanController extends Controller
         
     }
 
+    public function konfirmasiPencetakanSuratAngkutan($id){
+        $today = Carbon::today()->toDateString();
+        $pengajuan = pengajuan_angkutan::where('id', $id)->first();
+        $pengajuan->status_penerbitan = 'dicetak';
+        $pengajuan->tanggal_cetak = $today;
+        $pengajuan->save();
+        if($pengajuan) {
+            return redirect()->route('angkutan.index')->with(['success'=>'data berhasil diperbaharui']);
+        } else {
+            return redirect()->route('angkutan.index')->with(['gagal'=>'data gagal diperbaharui']);
+        }
+    }
+
+    public function konfirmasiBirokrasiSuratAngkutan($id){
+        $today = Carbon::today()->toDateString();
+        $pengajuan = pengajuan_angkutan::where('id', $id)->first();
+        $pengajuan->status_penerbitan = 'birokrasi';
+        $pengajuan->tanggal_birokrasi = $today;
+        $pengajuan->save();
+        if($pengajuan) {
+            return redirect()->route('angkutan.index')->with(['success'=>'data berhasil diperbaharui']);
+        } else {
+            return redirect()->route('angkutan.index')->with(['gagal'=>'data gagal diperbaharui']);
+        }
+    }
+
+    public function konfirmasiPenerbitanSuratAngkutan($id){
+        $today = Carbon::today()->toDateString();
+        $pengajuan = pengajuan_angkutan::where('id', $id)->first();
+        $pengajuan->status_penerbitan = 'diterbitkan';
+        $pengajuan->tanggal_penerbitan = $today;
+        $pengajuan->save();
+        if($pengajuan) {
+            return redirect()->route('angkutan.index')->with(['success'=>'data berhasil diperbaharui']);
+        } else {
+            return redirect()->route('angkutan.index')->with(['gagal'=>'data gagal diperbaharui']);
+        }
+    }
+
+    public function konfirmasiPengambilanSuratAngkutan($id){
+        $today = Carbon::today()->toDateString();
+        $pengajuan = pengajuan_angkutan::where('id', $id)->first();
+        $pengajuan->status_penerbitan = 'diambil';
+        $pengajuan->tanggal_pengambilan = $today;
+        $pengajuan->save();
+        if($pengajuan) {
+            return redirect()->back()->with(['success'=>'data berhasil diperbaharui']);
+        } else {
+            return redirect()->back()->with(['gagal'=>'data gagal diperbaharui']);
+        }
+    }
+
+
 
 }
 ?>

@@ -74,9 +74,9 @@ class PetugasController extends Controller
         ]);
 
         if($petugas) {
-            return redirect()->route('petugas.index')->with(['success'=>'data berhasil ditambahkan']);
+            return redirect()->to('/pegawai')->with(['success'=>'data berhasil ditambahkan']);
         } else {
-            return redirect()->route('petugas.index')->with(['gagal'=>'data gagal ditambahkan']);
+            return redirect()->to('/pegawai')->with(['gagal'=>'data gagal ditambahkan']);
         }
         
     }
@@ -127,10 +127,10 @@ class PetugasController extends Controller
         ]);
 
         if($petugas){
-            return redirect()->route('petugas.index')->with(['success'=>'data berhasil diupdate']);
+            return redirect()->to('/pegawai')->with(['success'=>'data berhasil diupdate']);
         }
         else{
-            return redirect()->route('petugas.index')->with(['error'=>'data error diupdate']);
+            return redirect()->to('/pegawai')->with(['error'=>'data error diupdate']);
         }
     }
 
@@ -147,9 +147,9 @@ class PetugasController extends Controller
         $user->delete();
         $cek = $petugas->delete();
         if($cek) {
-            return redirect()->route('petugas.index')->with(['success'=> 'data berhasil dihapus']);
+            return redirect()->to('/pegawai')->with(['success'=> 'data berhasil dihapus']);
         } else {
-            return redirect()->route('petugas.index')->with(['gagal'=>'data gagal dihapus']);
+            return redirect()->to('/pegawai')->with(['gagal'=>'data gagal dihapus']);
         }
     }
 

@@ -16,7 +16,10 @@
                 <span class="title"> Dashboard </span><span class="selected"></span>
             </a>
         </li>
-        <li class="{{ Request::segment(1) === 'kbli' || Request::segment(1) === 'data-tampilan' || Request::segment(1) === 'pengawas' || Request::segment(1) === 'petugas' || Request::segment(1) === 'customer-service' ? 'active' : '' }}">
+        @php
+            $segment = ['kbli', 'data-tampilan', 'pengawas', 'petugas', 'pegawai', 'customer-service'];
+        @endphp
+        <li class="{{ in_array(Request::segment(1), $segment) ? 'active' : '' }}">
             <a href="javascript:void(0)"><i class="clip-code"></i>
                 <span class="title">Data Master</span><i class="icon-arrow"></i>
                 <span class="selected"></span>
@@ -34,7 +37,16 @@
                         <span class="selected"></span>
                     </a>
                 </li>
-                <li class="{{ Request::segment(1) === 'pengawas' ? 'active' : '' }}">
+                @php
+                    $pegawai = ['pegawai', 'petugas', 'customer-service', 'pengawas']
+                @endphp
+                <li class="{{ in_array(Request::segment(1), $pegawai) ? 'active' : '' }}">
+                    <a href="{{ url('pegawai')}}">
+                        <span class="title"> Pegawai </span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+                {{-- <li class="{{ Request::segment(1) === 'pengawas' ? 'active' : '' }}">
                     <a href="{{ route('pengawas.index')}}">
                         <span class="title"> Pengawas </span>
                         <span class="selected"></span>
@@ -51,7 +63,7 @@
                         <span class="title"> Customer service </span>
                         <span class="selected"></span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </li>
         <li class="menu-header">

@@ -157,9 +157,60 @@
                                                                 <td><?php echo lama($item->tanggal_permohonan);?> hari</td>
                                                                 <td>{{$item->keterangan}}</td>
                                                                 <td>{{$item->status_penerbitan}}</td>
-                                                                <td><a class="btn btn-xs btn-success" href="{{route('angkutan.show', $item->id)}}"><i class="fa fa-eye"></i>
-                                                                    detail</a></td>
+                                                                <td>
+                                                                    @if ($item->status_penerbitan == 'menunggu')
+                                                                        <a class="btn btn-xs btn-success"
+                                                                            href="{{ route('angkutan.show', $item->id)}}"><i
+                                                                                class="fa fa-eye"></i>
+                                                                            detail</a>
+                                                                        <a class="btn btn-xs btn-blue" target="_blank"
+                                                                            href="{{ url('cetak-surat-angkutan', $item->id)}}"><i
+                                                                                class="fa fa-file"></i>
+                                                                            cetak</a>
+                                                                        <a class="btn btn-xs btn-primary" href="#konfirmasi-percetakan{{$item->id}}" data-toggle="modal"><i class="fa fa-check-square-o"></i>
+                                                                            Konfirmasi percetakan</a>
+                                                                    @else
+                                                                        <a class="btn btn-xs btn-success"
+                                                                            href="{{ route('angkutan.show', $item->id)}}"><i
+                                                                                class="fa fa-eye"></i>
+                                                                            detail</a>
+                                                                    @endif
+                                                                </td>
                                                             </tr>
+                                                            <div id="konfirmasi-percetakan{{$item->id}}" class="modal fade" tabindex="-1"
+                                                                data-width="360" style="display: none;">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-hidden="true">
+                                                                        &times;
+                                                                    </button>
+                                                                    <h4 class="modal-title">
+                                                                        <i class="bi bi-exclamation-octagon-fill"
+                                                                            style="color: red"></i>
+                                                                        Konfirmasi Percetakan Surat
+                                                                    </h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <p>Apakah anda yakin untuk mengonfirmasi bahwa surat telah dicetak? status percetakan tidak dapat diubah lagi </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <form action="{{url('/konfirmasi-pencetakan-surat-angkutan', $item->id)}}" >
+                                                                    @csrf
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" data-dismiss="modal"
+                                                                            class="btn btn-default">
+                                                                            Batalkan
+                                                                        </button>
+                                                                        <button type="submit" class="btn btn-danger"
+                                                                            id="submit">
+                                                                            Ya
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
                                                             <?php $no2++; ?>
                                                             @endforeach
                                                         </tbody>

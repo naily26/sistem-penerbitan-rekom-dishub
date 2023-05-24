@@ -70,9 +70,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('pengawas', PengawasController::class);
     Route::resource('customer-service', CustomerServiceController::class);
     Route::resource('data-tampilan', DataTampilanController::class);
+    Route::get('/pegawai', [App\Http\Controllers\PengawasController::class, 'indexPegawai'])->name('indexPegawai');
     Route::get('/report', [App\Http\Controllers\ReportController::class, 'index'])->name('index');
     Route::get('/konfirmasi-birokrasi-surat/{id}', [App\Http\Controllers\PerusahaanController::class, 'konfirmasiBirokrasiSurat'])->name('konfirmasiBirokrasiSurat');
     Route::get('/konfirmasi-penerbitan-surat/{id}', [App\Http\Controllers\PerusahaanController::class, 'konfirmasiPenerbitanSurat'])->name('konfirmasiPenerbitanSurat');
+    Route::get('/konfirmasi-birokrasi-surat-angkutan/{id}', [App\Http\Controllers\AngkutanController::class, 'konfirmasiBirokrasiSuratAngkutan'])->name('konfirmasiBirokrasiSuratAngkutan');
+    Route::get('/konfirmasi-penerbitan-surat-angkutan/{id}', [App\Http\Controllers\AngkutanController::class, 'konfirmasiPenerbitanSuratAngkutan'])->name('konfirmasiPenerbitanSuratAngkutan');
 });
 
 Route::get('/penerbitan-perusahaan', [App\Http\Controllers\DataPenerbitanController::class, 'indexPerusahaan'])->name('indexPerusahaan');
@@ -84,10 +87,13 @@ Route::resource('perusahaan', PerusahaanController::class);
 
 Route::middleware(['auth', 'role:petugas'])->group(function () {
     Route::get('/cetak-surat-perusahaan/{id}', [App\Http\Controllers\PerusahaanController::class, 'cetak_surat'])->name('cetak_surat');
+    Route::get('/cetak-surat-angkutan/{id}', [App\Http\Controllers\AngkutanController::class, 'cetak_surat'])->name('cetak_surat');
     Route::get('/take-antrian/{id}', [App\Http\Controllers\HomeController::class, 'take_antrian'])->name('take_antrian');
     Route::get('/konfirmasi-pencetakan-surat/{id}', [App\Http\Controllers\PerusahaanController::class, 'konfirmasiPencetakanSurat'])->name('konfirmasiPencetakanSurat');
+    Route::get('/konfirmasi-pencetakan-surat-angkutan/{id}', [App\Http\Controllers\AngkutanController::class, 'konfirmasiPencetakanSuratAngkutan'])->name('konfirmasiPencetakanSuratAngkutan');
 });
 
 Route::middleware(['auth', 'role:customer-service'])->group(function () {
     Route::get('/konfirmasi-pengambilan-surat/{id}', [App\Http\Controllers\PerusahaanController::class, 'konfirmasiPengambilanSurat'])->name('konfirmasiPengambilanSurat');
+    Route::get('/konfirmasi-pengambilan-surat-angkutan/{id}', [App\Http\Controllers\AngkutanController::class, 'konfirmasiPengambilanSuratAngkutan'])->name('konfirmasiPengambilanSuratAngkutan');
 });

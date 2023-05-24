@@ -13,7 +13,7 @@
 							<ol class="breadcrumb">
 								<li>
 									<i class="clip-pencil"></i>
-									<a href="{{ route('customer-service.index')}}">
+									<a href="{{ url('pegawai')}}">
 										Data Customer Service
 									</a>
 								</li>
