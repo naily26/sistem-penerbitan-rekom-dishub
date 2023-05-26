@@ -72,6 +72,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('data-tampilan', DataTampilanController::class);
     Route::get('/pegawai', [App\Http\Controllers\PengawasController::class, 'indexPegawai'])->name('indexPegawai');
     Route::get('/report', [App\Http\Controllers\ReportController::class, 'index'])->name('index');
+    //Route::get('/filter-report', [App\Http\Controllers\DataPenerbitanController::class, 'filterDataAngkutan'])->name('filter-report');
     Route::get('/konfirmasi-birokrasi-surat/{id}', [App\Http\Controllers\PerusahaanController::class, 'konfirmasiBirokrasiSurat'])->name('konfirmasiBirokrasiSurat');
     Route::get('/konfirmasi-penerbitan-surat/{id}', [App\Http\Controllers\PerusahaanController::class, 'konfirmasiPenerbitanSurat'])->name('konfirmasiPenerbitanSurat');
     Route::get('/konfirmasi-birokrasi-surat-angkutan/{id}', [App\Http\Controllers\AngkutanController::class, 'konfirmasiBirokrasiSuratAngkutan'])->name('konfirmasiBirokrasiSuratAngkutan');
@@ -79,10 +80,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 Route::get('/penerbitan-perusahaan', [App\Http\Controllers\DataPenerbitanController::class, 'indexPerusahaan'])->name('indexPerusahaan');
+Route::get('/filter-penerbitan-perusahaan', [App\Http\Controllers\DataPenerbitanController::class, 'filterDataPerusahaan'])->name('filter-penerbitan-perusahaan');
 Route::get('/penerbitan-angkutan', [App\Http\Controllers\DataPenerbitanController::class, 'indexAngkutan'])->name('indexAngkutan');
-
+Route::get('/filter-penerbitan-angkutan', [App\Http\Controllers\DataPenerbitanController::class, 'filterDataAngkutan'])->name('filter-penerbitan-angkutan');
 Route::resource('angkutan', AngkutanController::class);
 Route::resource('perusahaan', PerusahaanController::class);
+Route::post('export-perusahaan', [DataPenerbitanController::class, 'exportPerusahaan']);
+Route::post('export-angkutan', [DataPenerbitanController::class, 'exportAngkutan']);
 
 
 Route::middleware(['auth', 'role:petugas'])->group(function () {

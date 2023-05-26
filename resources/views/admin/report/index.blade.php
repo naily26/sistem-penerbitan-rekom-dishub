@@ -28,10 +28,57 @@
         <!-- end: PAGE HEADER -->
         <!-- start: PAGE CONTENT -->
         <div class="row">
-            <div class="col-sm-12" style="margin-block-end: 10px; " >
-                <button type="button" class="btn btn-teal" style="float: right;">Export <i class="fa fa-arrow-circle-up"></i></button>
+            <div class="col-md-12" style="margin-bottom: 5px">
+                <a href="#" class="btn pull-right mb-4 mr-2 btn-teal btn-sm" style="margin-left: 5px">
+                    Ekspor Data
+                    <i class="fa fa-arrow-circle-up"></i>
+                </a>
+                <a href="#filter" data-toggle="modal" class="btn pull-right mb-4 mr-2 btn-teal btn-sm">
+                    Filter Data
+                    <i class="fa fa-filter"></i>
+                </a>
             </div>
         </div>
+        <!-- start: BOOTSTRAP CREATE MODALS -->
+        <div id="filter" class="modal fade" tabindex="-1" data-width="560" style="display: none;">
+            <form action="#" method="get">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title">Filter Data</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="start">Mulai</label>
+                                <input type="date" name="start" id="start" class="form-control"
+                                    placeholder="Masukkan Bulan Mulai">
+                                <p id="error-message-start" class="validation-error-label"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="end">Selesai</label>
+                                <input type="date" name="end" id="end_month" class="form-control"
+                                    placeholder="Masukkan Bulan Selesai">
+                                <p id="error-message-end" class="validation-error-label"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-default">
+                        Batal
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        Simpan
+                    </button>
+                </div>
+            </form>
+        </div>
+        <!-- end: BOOTSTRAP CREATE MODALS -->
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default">
@@ -130,13 +177,10 @@
 
 @push('script')
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="assets/admin/plugins/flot/jquery.flot.js"></script>
-<script src="assets/admin/plugins/flot/jquery.flot.pie.js"></script>
-<script src="assets/admin/plugins/flot/jquery.flot.resize.min.js"></script>
-<script src="assets/admin/plugins/jquery.sparkline/jquery.sparkline.js"></script>
-<script src="assets/admin/plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
-<script src="assets/admin/plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
-<script src="assets/admin/plugins/fullcalendar/fullcalendar/fullcalendar.js"></script>
+
+<script src="{{ asset('assets/admin/plugins/bootstrap-modal/js/bootstrap-modal.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/bootstrap-modal/js/bootstrap-modalmanager.js') }}"></script>
+<script src="{{ asset('assets/admin/js/ui-modals.js') }}"></script>
 <script src="assets/admin/js/index.js"></script>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
@@ -146,4 +190,11 @@
     });
 
 </script>
+@endpush
+
+@push('style')
+<link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css') }}" rel="stylesheet"
+type="text/css" />
+<link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal.css') }}" rel="stylesheet"
+type="text/css" />
 @endpush

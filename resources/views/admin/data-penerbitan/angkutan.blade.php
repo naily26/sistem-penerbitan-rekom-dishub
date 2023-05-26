@@ -23,6 +23,61 @@
             </div>
         </div>
         <!-- end: PAGE HEADER -->
+        <div class="row">
+            <div class="col-md-12" style="margin-bottom: 5px">
+                <form action="{{url('export-angkutan')}}" method="post">
+                    @csrf
+                    <input type="hidden" id="custId" name="from" value="{{$from}}">
+                    <input type="hidden" id="custId" name="to" value="{{$to}}">
+                    <button class="btn pull-right mb-4 mr-2 btn-teal btn-sm" style="margin-left: 5px" type="submit"> Ekspor Data
+                        <i class="fa fa-arrow-circle-up"></i></button>
+                </form>
+                <a href="#filter" data-toggle="modal" class="btn pull-right mb-4 mr-2 btn-teal btn-sm">
+                    Filter Data
+                    <i class="fa fa-filter"></i>
+                </a>
+            </div>
+        </div>
+        <!-- start: BOOTSTRAP CREATE MODALS -->
+        <div id="filter" class="modal fade" tabindex="-1" data-width="560" style="display: none;">
+            <form action="{{url('filter-penerbitan-angkutan')}}" method="get">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title">Filter Data</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="start">Mulai</label>
+                                <input type="date" name="start" id="start" class="form-control"
+                                    placeholder="Masukkan Bulan Mulai">
+                                <p id="error-message-start" class="validation-error-label"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="end">Selesai</label>
+                                <input type="date" name="end" id="end_month" class="form-control"
+                                    placeholder="Masukkan Bulan Selesai">
+                                <p id="error-message-end" class="validation-error-label"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-default">
+                        Batal
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        Simpan
+                    </button>
+                </div>
+            </form>
+        </div>
+        <!-- end: BOOTSTRAP CREATE MODALS -->
         <!-- start: PAGE CONTENT -->
         <div class="row">
             <div class="col-md-12">
@@ -36,33 +91,32 @@
                             <thead>
                                 <tr>
                                     <th>No Penerbitan</th>
-                                    <th >Nama Perusahaan</th>
-                                    <th >Nama Pimpinan</th>
-                                    <th>NIB</th>
+                                    <th>Nama Perusahaan</th>
                                     <th>Kode KBLI</th>
+                                    <th>Nomor Kendaraan</th>
+                                    <th>Nomor Rangka</th>
                                     <th>Keterangan</th>
-                                    <th>Tanggal NIB</th>
                                     <th>Petugas</th>
                                     <th>Email Pemohon</th>
                                     <th>Tanggal Permohonan</th>
-                                    <th>Tanggal Penerbitan</th>
-                                    {{-- <th>Action</th> --}}
+                                    <th>Tanggal Pengambilan</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($data as $item)
                                 <tr>
-                                    <td>1</td>
-                                    <td>EXO Crop</td>
-                                    <td>123232</td>
-                                    <td>4932</td>
-                                    <td>bus dalam trayek</td>
-                                    <td>12345678</td>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat quam, nisi earum nesciunt illum nobis officiis iusto ex accusamus dolorum totam eveniet ut recusandae, commodi corrupti nam dolorem, nihil nemo?</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
+                                    <td>{{$item->nomor_rekomendasi_peruntukan}}</td>
+                                    <td>{{$item->angkutan->perusahaan->nama_perusahaan}}</td>
+                                    <td>{{$item->angkutan->perusahaan->kbli->kode}}</td>
+                                    <td>{{$item->angkutan->nomor_kendaraan}}</td>
+                                    <td>{{$item->angkutan->nomor_rangka}}</td>
+                                    <td>{{$item->keterangan}}</td>
+                                    <td>{{$item->petugas->kode}}</td>
+                                    <td>{{$item->angkutan->user->email}}</td>
+                                    <td>{{$item->tanggal_permohonan}}</td>
+                                    <td>{{$item->tanggal_pengambilan}}</td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                         </div>
@@ -82,12 +136,7 @@
 <link rel="stylesheet" href="{{ asset('assets/admin/plugins/DataTables/media/css/DT_bootstrap.css') }}" />
 <link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal.css') }}" rel="stylesheet" type="text/css"/>
-<style>
-    i {
-        padding: 5px;
-    }
 
-</style>
 @endpush
 
 @push('script')
