@@ -34,36 +34,37 @@
 									<table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
 										<thead>
 											<tr>
+												<th>No</th>
+												<th>No Penerbitan</th> 
 												<th>Nama Perusahaan</th>
-												<th class="hidden-xs">KBLI</th>
+												<th>KBLI</th>
 												<th>Nomor Kendaraan</th>
-                                                <th>Nomor Surat</th>
-												<th class="hidden-xs">Tanggal</th>
-												<th>Dokumen</th>
+												<th>Nomor Mesin</th>
+												<th>Keterangan</th>
+												<th>Status Penerbitan</th>
+												<th>Action</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>Amaya</td>
-												<td class="hidden-xs">W3C,
-												INRIA</td>
-												<td>Free</td>
-                                                <td>Pasuruan</td>
-												<td class="hidden-xs">19-02-2022</td>
-												<td class="i-pdf">
-													<a class="pdf" href="#"><i class="clip-file-pdf" style="color: red"></i></a>
-												</td>
-											</tr>
-											<tr>
-												<td>AOL Explorer</td>
-												<td class="hidden-xs">America Online, Inc</td>
-												<td>Free</td>
-                                                <td>Pasuruan</td>
-												<td class="hidden-xs">19-02-2022</td>
-												<td class="i-pdf">
-													<a class="pdf" href="#"><i class="clip-file-pdf" style="color: red"></i></a>
-												</td>
-											</tr>
+											<?php $no2=1; ?>
+												@foreach ($disetujui as $item)
+												<tr>
+													<td>{{$no2}}</td>
+													<td>{{$item->nomor_rekomendasi_peruntukan}}</td>
+													<td>{{$item->angkutan->perusahaan->nama_perusahaan}}</td>
+													<td>{{$item->angkutan->perusahaan->kbli->kode}}</td>
+													<td>{{$item->angkutan->nomor_kendaraan}}</td>
+													<td>{{$item->angkutan->nomor_mesin}}</td>
+													<td>{{$item->keterangan}}</td>
+													<td>{{$item->status_penerbitan}}</td>
+													<td><a class="btn btn-xs btn-success"
+														href="{{ route('angkutan.show', $item->id)}}"><i
+															class="fa fa-eye"></i>
+														detail</a>
+													</td>
+												</tr>
+												<?php $no2++; ?>
+												@endforeach
 										</tbody>
 									</table>
 								</div>
@@ -104,6 +105,7 @@ href="{{ asset('assets/admin/plugins/DataTables/media/css/DT_bootstrap.css') }}"
 			jQuery(document).ready(function() {
 				Main.init();
 				TableData.init();
+				Index.init();
 			});
 		</script>
 @endpush

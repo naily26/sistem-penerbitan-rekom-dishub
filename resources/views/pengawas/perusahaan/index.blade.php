@@ -34,36 +34,41 @@
                         <table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
                             <thead>
                                 <tr>
+                                    <th>No</th>
+                                    <th>No Penerbitan</th>
                                     <th>Nama Perusahaan</th>
-                                    <th class="hidden-xs">NIB</th>
+                                    <th>NIB</th>
                                     <th>KBLI</th>
-                                    <th>Nomor Surat</th>
-                                    <th class="hidden-xs">Tanggal</th>
-                                    <th>Dokumen</th>
+                                    <th>Lama permohonan</th>
+                                    <th>Email</th>
+                                    <th>Status Penerbitan</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $no = 1;
+                                @endphp
+                                @foreach ($disetujui as $item)
                                 <tr>
-                                    <td>Amaya</td>
-                                    <td class="hidden-xs">W3C,
-                                        INRIA</td>
-                                    <td>Free</td>
-                                    <td>Pasuruan</td>
-                                    <td class="hidden-xs">19-02-2022</td>
-                                    <td class="i-pdf">
-                                        <a class="pdf" href="#"><i class="clip-file-pdf" style="color: red"></i></a>
+                                    <td>{{$no}}</td>
+                                    <td>{{$item->nomor_keterangan_perusahaan}}</td>
+                                    <td>{{$item->perusahaan->nama_perusahaan}}</td>
+                                    <td>{{$item->perusahaan->nib}}</td>
+                                    <td>{{$item->perusahaan->kbli->kode}}</td>
+                                    <td><?php echo lama($item->tanggal_permohonan);?></td>
+                                    <td>{{$item->perusahaan->user->email}}</td>
+                                    <td>{{$item->status_penerbitan}}</td>
+                                    <td><a class="btn btn-xs btn-success"
+                                        href="{{ route('perusahaan.show', $item->perusahaan_id)}}"><i
+                                            class="fa fa-eye"></i>
+                                        detail</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>AOL Explorer</td>
-                                    <td class="hidden-xs">America Online, Inc</td>
-                                    <td>Free</td>
-                                    <td>Pasuruan</td>
-                                    <td class="hidden-xs">19-02-2022</td>
-                                    <td class="i-pdf">
-                                        <a class="pdf" href="#"><i class="clip-file-pdf" style="color: red"></i></a>
-                                    </td>
-                                </tr>
+                                @php
+                                    $no++;
+                                @endphp
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -74,6 +79,17 @@
         <!-- end: PAGE CONTENT-->
     </div>
 </div>
+<?php
+ function lama($val) {
+    $today = date("y-m-d");
+    $startTimeStamp = strtotime($val);
+    $endTimeStamp = strtotime($today);
+    $timeDiff = abs($endTimeStamp - $startTimeStamp);
+    $numberDays = $timeDiff/86400;  
+    $numberDays = intval($numberDays);
+    return $numberDays+1;
+ }
+ ?>
 <!-- end: PAGE -->
 @endsection
 @push('style')
@@ -104,6 +120,7 @@
     jQuery(document).ready(function () {
         Main.init();
         TableData.init();
+        Index.init();
     });
 
 </script>

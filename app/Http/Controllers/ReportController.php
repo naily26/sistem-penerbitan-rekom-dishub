@@ -54,6 +54,6 @@ class ReportController extends Controller
         $data['rekap_petugas'] = $arr;
         
         //dd($data);
-        return view('admin.report.index');
+        return view('admin.report.index', compact('data'));
     }
 }

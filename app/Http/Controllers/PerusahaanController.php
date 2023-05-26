@@ -40,7 +40,8 @@ class PerusahaanController extends Controller
             $ditolak = pengajuan_perusahaan::where('status_pengecekan', 'ditolak')->where('petugas_id', $data_petugas->id)->get();
             return view('petugas.perusahaan.index', compact('diproses', 'disetujui', 'ditolak', 'today'));
         } elseif (Auth::user()->role == 'pengawas') {
-            return view('pengawas.perusahaan.index');
+            $disetujui = pengajuan_perusahaan::where('status_pengecekan', 'disetujui')->get();
+            return view('pengawas.perusahaan.index', compact('disetujui'));
         } elseif (Auth::user()->role == 'admin') {
             $today = Carbon::today()->toDateString();
             $diproses = pengajuan_perusahaan::where('status_pengecekan', 'menunggu')->get();
@@ -136,7 +137,7 @@ class PerusahaanController extends Controller
         $data = perusahaan::where('id', $id)->first(); 
         if (Auth::user()->role == 'pemohon') {
             return view('pemohon.perusahaan.detail', compact('data'));
-        } elseif (Auth::user()->role == 'admin') {
+        } elseif (Auth::user()->role == 'admin' || Auth::user()->role == 'pengawas') {
             return view('admin.perusahaan.detail', compact('data'));
         } elseif (Auth::user()->role == 'petugas') {
             return view('petugas.perusahaan.detail', compact('data'));
