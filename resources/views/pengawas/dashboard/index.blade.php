@@ -39,7 +39,9 @@
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
                                         <div class="user-image">
                                             <div class="fileupload-new thumbnail"><img
-                                                    src="assets/admin/images/avatar-1-xl.jpg" alt="">
+                                                    style="max-width: 200px; max-height: 150px; line-height: 20px;"
+                                                    src="https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"
+                                                    alt="">
                                             </div>
                                             <div class="fileupload-preview fileupload-exists thumbnail"
                                                 style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
@@ -73,21 +75,17 @@
                                                 </a></td>
                                         </tr>
                                         <tr>
-                                            <td>phone:</td>
-                                            <td>(641)-734-4763</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kode</td>
+                                            <td>Lembaga:</td>
                                             <td>
-                                                peterclark82
+                                                {{Auth::user()->pengawas->lembaga}}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Jabatan:</td>
-                                            <td>Staff Angkutan Darat</td>
+                                            <td>{{Auth::user()->pengawas->jabatan}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Status</td>
+                                            <td>Status:</td>
                                             <td><span class="label label-sm label-info">Pengawas</span></td>
                                         </tr>
                                     </tbody>
@@ -96,78 +94,109 @@
                         </div>
                         <div class="col-sm-7 col-md-8">
                             <div class="row">
-                                <div class="col-sm-6" >
-                                    <a href="{{ route('perusahaan.index')}}" class="btn btn-icon btn-block">
-                                        <i class="clip-home-2" style="font-size:24px; padding: 5pt"></i>
-                                        Keterangan Perusahaan  <span class="badge badge-info"> 4 </span>
-                                    </a>
+                                <div class="col-sm-6">
+                                    <div class="core-box">
+                                        <div class="heading">
+                                            <i class="clip-user-4 circle-icon circle-green"></i>
+                                            <h2>Keterangan Perusahaan</h2>
+                                        </div>
+                                        <div class="content">
+                                            Pada halaman ini, anda dapat melihat laporan penerbitan  surat keterangan
+                                            perusahan. 
+                                        </div>
+                                        <a class="view-more" href="{{route('perusahaan.index')}}">
+                                            View More <i class="clip-arrow-right-2"></i>
+                                        </a>
+                                    </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a href="{{ route('angkutan.index')}}" class="btn btn-icon btn-block pulsate">
-                                        <i class="clip-truck" style="font-size:24px; padding: 5pt"></i>
-                                        Rekomendasi Angkutan <span class="badge badge-info"> 23 </span>
-                                    </a>
+                                    <div class="core-box">
+                                        <div class="heading">
+                                            <i class="clip-code circle-icon circle-teal"></i>
+                                            <h2>Rekomendasi Angkutan</h2>
+                                        </div>
+                                        <div class="content">
+                                            Pada halaman ini, anda dapat melihat laporan penerbitan surat rekomendasi
+                                            peruntukkan bagi angkutan.
+                                        </div>
+                                        <a class="view-more" href="{{route('angkutan.index')}}">
+                                            View More <i class="clip-arrow-right-2"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="panel panel-white">
-                                <div class="panel-heading">
-                                    <i class="clip-menu"></i>
-                                    Recent Activities
-                                </div>
-                                <div class="panel-body panel-scroll" style="height:400px">
-                                    <ul class="activities">
-                                        <li>
-                                            <a class="activity" href="javascript:void(0)">
-                                                <i class="clip-checkmark-2 circle-icon circle-green"></i>
-                                                <span class="desc">Surat keterangan perusahaan diterbitkan bulan ini.</span>
-                                                <div class="time">
-                                                    <i class="fa fa-time bigger-110"></i>
-                                                    123990
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row space12">
+                                        <ul class="mini-stats col-sm-12">
+                                            <li class="col-sm-2">
+                                                <div class="values">
+                                                    <strong>{{$data['perusahaan_diproses']?? '-'}}</strong>
+                                                    Permohonan perusahaan dalam proses
                                                 </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="activity" href="javascript:void(0)">
-                                                <i class="clip-checkmark-2 circle-icon circle-green"></i>
-                                                <span class="desc">Surat rekomendasi Pperuntukan angkutan diterbitkan bulan ini..</span>
-                                                <div class="time">
-                                                    <i class="fa fa-time bigger-110"></i>
-                                                    123990
+                                            </li>
+                                            <li class="col-sm-2">
+                                                <div class="values">
+                                                    <strong>{{$data['perusahaan_disetujui']}}</strong>
+                                                    Permohonan perusahaan disetujui
                                                 </div>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                            </li>
+                                            <li class="col-sm-2">
+                                                <div class="values">
+                                                    <strong>{{$data['perusahaan_ditolak']}}</strong>
+                                                    Permohonan perusahaan ditolak
+                                                </div>
+                                            </li>
+                                            <li class="col-sm-2">
+                                                <div class="values">
+                                                    <strong>{{$data['angkutan_diproses']}}</strong>
+                                                    Permohonan angkutan dalam proses
+                                                </div>
+                                            </li>
+                                            <li class="col-sm-2">
+                                                <div class="values">
+                                                    <strong>{{$data['angkutan_disetujui']}}</strong>
+                                                    Permohonan angkutan disetujui
+                                                </div>
+                                            </li>
+                                            <li class="col-sm-2">
+                                                <div class="values">
+                                                    <strong>{{$data['angkutan_ditolak']}}</strong>
+                                                    Permohonan angkutan ditolak
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                           
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- end: PAGE CONTENT-->
         </div>
-        <!-- end: PAGE CONTENT-->
     </div>
-</div>
-<!-- end: PAGE -->
+    <!-- end: PAGE -->
 
 
-@endsection
+    @endsection
 
-@push('script')
-<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
-<script src="assets/plugins/jquery.pulsate/jquery.pulsate.min.js"></script>
-<script src="assets/js/pages-user-profile.js"></script>
-<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script>
-    jQuery(document).ready(function () {
-        Main.init();
-        Index.init();
-    });
+    @push('script')
+    <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script src="assets/admin/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
+    <script src="assets/admin/plugins/jquery.pulsate/jquery.pulsate.min.js"></script>
+    <script src="assets/admin/js/pages-user-profile.js"></script>
+    <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script>
+        jQuery(document).ready(function () {
+            Main.init();
+            Index.init();
+        });
 
-</script>
-@endpush
+    </script>
+    @endpush
 
-@push('style')
-<link rel="stylesheet" href="assets/admin/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
-<link rel="stylesheet" href="assets/admin/plugins/bootstrap-social-buttons/social-buttons-3.css">
-@endpush
+    @push('style')
+    <link rel="stylesheet" href="assets/admin/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
+    <link rel="stylesheet" href="assets/admin/plugins/bootstrap-social-buttons/social-buttons-3.css">
+    @endpush

@@ -339,4 +339,10 @@ class PerusahaanController extends Controller
             return redirect()->back()->with(['gagal'=>'data gagal diperbaharui']);
         }
     }
+
+    public function upload() {
+        $kbli = kbli::all();
+        $nibcek = perusahaan::all('nib');
+        return view('pemohon.perusahaan.upload', compact('kbli', 'nibcek'));
+    }
 }

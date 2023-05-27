@@ -150,6 +150,20 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">
+                                            Kota / Kabupaten <span class="symbol required"></span>
+                                        </label>
+                                        <div class="col-sm-7">
+                                            <select name="kota" id="select-kota"
+                                                class="select2-container form-control search-select" required>
+                                                <option value=""></option>
+                                                @foreach ($kota as $key => $item)
+                                                <option value="{{$item->nama}}"><?= $item->nama ?></option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">
                                             Nama Pemilik Kendaraan <span class="symbol required"></span>
                                         </label>
                                         <div class="col-sm-7">
@@ -592,6 +606,20 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">
+                                                Kota / kabupaten asal <span class="symbol required"></span>
+                                            </label>
+                                            <div class="col-sm-7">
+                                                <select name="kota_asal" id="select-kota-asal"
+                                                    class="select2-container form-control search-select" required>
+                                                    <option value=""></option>
+                                                    @foreach ($kota as $key => $item)
+                                                    <option value="{{$item->nama}}"><?= $item->nama ?></option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">
                                                Alamat perusahaan lama <span class="symbol required"></span>
                                             </label>
                                             <div class="col-sm-7">
@@ -701,6 +729,12 @@
     });
     $("#select-keterangan").select2({
         placeholder: 'Pilih Keterangan', // Placeholder select
+    });
+    $("#select-kota").select2({
+        placeholder: 'Pilih Kota/Kabupaten', // Placeholder select
+    });
+    $("#select-kota-asal").select2({
+        placeholder: 'Pilih Kota/Kabupaten Asal', // Placeholder select
     });
 
 </script>

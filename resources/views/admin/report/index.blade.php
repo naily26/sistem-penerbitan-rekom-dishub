@@ -20,7 +20,7 @@
                     </li>
                 </ol>
                 <div class="page-header">
-                    <h1>Laporan <small> </small></h1>
+                    <h1>Laporan <small>{{$data['start']}} sampai {{$data['end']}}  </small></h1>
                 </div>
                 <!-- end: PAGE TITLE & BREADCRUMB -->
             </div>
@@ -84,7 +84,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="clip-checkbox"></i>
-                        Rekap Surat
+                        Rekap Surat 
                         <div class="panel-tools">
                             <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
                             </a>
@@ -95,25 +95,25 @@
                             <li>
                                 <a class="todo-actions" href="javascript:void(0)">
                                     <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah surat keterangan perusahaan yang masuk</span>
-                                    <span class="label label-danger" style="opacity: 1;"> today</span>
+                                    <span class="label label-primary" style="opacity: 1;">{{$data['perusahaanMasuk']}}</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="todo-actions" href="javascript:void(0)">
                                     <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah surat rekomendasi peruntukan angkutan yang masuk</span>
-                                    <span class="label label-danger" style="opacity: 1;"> today</span>
+                                    <span class="label label-primary" style="opacity: 1;">{{$data['angkutanMasuk']}}</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="todo-actions" href="javascript:void(0)">
                                     <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah permohonan surat keterangan perusahaan yang diterbitkan</span>
-                                    <span class="label label-danger" style="opacity: 1;"> today</span>
+                                    <span class="label label-primary" style="opacity: 1;">{{$data['perusahaanKeluar']}}</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="todo-actions" href="javascript:void(0)">
                                     <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah permohonan surat rekomendasi peruntukan angkutan yang diterbitkan</span>
-                                    <span class="label label-danger" style="opacity: 1;"> today</span>
+                                    <span class="label label-primary" style="opacity: 1;">{{$data['angkutanKeluar']}}</span>
                                 </a>
                             </li>
                         </ul>
@@ -140,26 +140,18 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($data['rekap_petugas'] as $key => $item)
                                 <tr>
-                                    <td class="center">Peter Clark</td>
-                                    <td>Memproses permohonan surat</td>
-                                    <td >342</td>
+                                    <td class="center">{{$item['nama']}}</td>
+                                    <td>Memproses permohonan surat keterangan perusahaan</td>
+                                    <td >{{$item['perusahaanPetugas']}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="center">Peter Clark</td>
-                                    <td>Memproses permohonan surat</td>
-                                    <td >342</td>
+                                    <td class="center">{{$item['nama']}}</td>
+                                    <td>Memproses permohonan surat rekomendasi peruntukan</td>
+                                    <td >{{$item['angkutanPetugas']}}</td>
                                 </tr>
-                                <tr>
-                                    <td class="center">Peter Clark</td>
-                                    <td>Memproses permohonan surat</td>
-                                    <td >342</td>
-                                </tr>
-                                <tr>
-                                    <td class="center">Peter Clark</td>
-                                    <td>Memproses permohonan surat</td>
-                                    <td >342</td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

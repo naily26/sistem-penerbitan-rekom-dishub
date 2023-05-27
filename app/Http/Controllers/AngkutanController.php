@@ -9,6 +9,7 @@ use App\Models\pengajuan_angkutan;
 use App\Models\perusahaan;
 use App\Models\kbli;
 use App\Models\petugas;
+use App\Models\kota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -58,8 +59,9 @@ class AngkutanController extends Controller
     public function create()
     {
         $kbli = kbli::all();
+        $kota = kota::all();
         $perusahaan = perusahaan::where('user_id', Auth::user()->id)->get();
-        return view('pemohon.angkutan.create', compact('kbli', 'perusahaan'));
+        return view('pemohon.angkutan.create', compact('kbli', 'perusahaan', 'kota'));
     }
 
     /**

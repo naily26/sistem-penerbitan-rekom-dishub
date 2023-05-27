@@ -77,37 +77,37 @@
                     <ul class="mini-stats col-sm-12">
                         <li class="col-sm-2">
                             <div class="values">
-                                <strong>18304</strong>
+                                <strong>{{$data['perusahaan_diproses']?? '-'}}</strong>
                                 Permohonan perusahaan dalam proses
                             </div>
                         </li>
                         <li class="col-sm-2">
                             <div class="values">
-                                <strong>3833</strong>
+                                <strong>{{$data['perusahaan_disetujui']}}</strong>
                                 Permohonan perusahaan disetujui
                             </div>
                         </li>
                         <li class="col-sm-2">
                             <div class="values">
-                                <strong>18304</strong>
+                                <strong>{{$data['perusahaan_ditolak']}}</strong>
                                 Permohonan perusahaan ditolak
                             </div>
                         </li>
                         <li class="col-sm-2">
                             <div class="values">
-                                <strong>18304</strong>
+                                <strong>{{$data['angkutan_diproses']}}</strong>
                                 Permohonan angkutan dalam proses
                             </div>
                         </li>
                         <li class="col-sm-2">
                             <div class="values">
-                                <strong>3833</strong>
+                                <strong>{{$data['angkutan_disetujui']}}</strong>
                                 Permohonan angkutan disetujui
                             </div>
                         </li>
                         <li class="col-sm-2">
                             <div class="values">
-                                <strong>18304</strong>
+                                <strong>{{$data['angkutan_ditolak']}}</strong>
                                 Permohonan angkutan ditolak
                             </div>
                         </li>
@@ -125,14 +125,9 @@
 
 @push('script')
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="assets/admin/plugins/flot/jquery.flot.js"></script>
-<script src="assets/admin/plugins/flot/jquery.flot.pie.js"></script>
-<script src="assets/admin/plugins/flot/jquery.flot.resize.min.js"></script>
-<script src="assets/admin/plugins/jquery.sparkline/jquery.sparkline.js"></script>
-<script src="assets/admin/plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
-<script src="assets/admin/plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
-<script src="assets/admin/plugins/fullcalendar/fullcalendar/fullcalendar.js"></script>
-<script src="assets/admin/js/index.js"></script>
+
+
+<script src="{{asset('assets/admin/js/index.js')}}"></script>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
     jQuery(document).ready(function () {

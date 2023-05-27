@@ -101,3 +101,6 @@ Route::middleware(['auth', 'role:customer-service'])->group(function () {
     Route::get('/konfirmasi-pengambilan-surat/{id}', [App\Http\Controllers\PerusahaanController::class, 'konfirmasiPengambilanSurat'])->name('konfirmasiPengambilanSurat');
     Route::get('/konfirmasi-pengambilan-surat-angkutan/{id}', [App\Http\Controllers\AngkutanController::class, 'konfirmasiPengambilanSuratAngkutan'])->name('konfirmasiPengambilanSuratAngkutan');
 });
+
+//pemhon
+Route::get('upload-perusahaan', [PerusahaanController::class, 'upload']);

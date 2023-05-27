@@ -38,22 +38,18 @@ class ReportController extends Controller
         $data['angkutanKeluar'] = count($angkutanKeluar);
 
         $petugas = petugas::all();
-        $arr = [];
+        $arr;
         foreach ($petugas as $key => $value) {
             $perusahaanMasukPetugas = pengajuan_perusahaan::whereBetween('tanggal_permohonan', [$from, $to])->where('petugas_id', $value->id)->get();
-            $perusahaanKeluarPetugas = pengajuan_perusahaan::whereBetween('tanggal_cetak', [$from, $to])->where('petugas_id', $value->id)->get();
             $angkutanMasukPetugas = pengajuan_angkutan::whereBetween('tanggal_permohonan', [$from, $to])->where('petugas_id', $value->id)->get();
-            $angkutanKeluarPetugas = pengajuan_angkutan::whereBetween('tanggal_cetak', [$from, $to])->where('petugas_id', $value->id)->get();
             $arr[$key]['kode'] = $value->kode; 
             $arr[$key]['nama'] = $value->nama; 
-            $arr[$key]['perusahaanMasukPetugas'] = count($perusahaanMasukPetugas);
-            $arr[$key]['perusahaanKeluarPetugas'] = count($perusahaanKeluarPetugas);
-            $arr[$key]['angkutanMasukPetugas'] = count($angkutanMasukPetugas);
-            $arr[$key]['angkutanKeluarPetugas'] = count($angkutanKeluarPetugas);
+            $arr[$key]['perusahaanPetugas'] = count($perusahaanMasukPetugas);
+            $arr[$key]['angkutanPetugas'] = count($angkutanMasukPetugas);
         }
         $data['rekap_petugas'] = $arr;
         
-        //dd($data);
+        //dd($data['rekap_petugas'][0]);
         return view('admin.report.index', compact('data'));
     }
 }

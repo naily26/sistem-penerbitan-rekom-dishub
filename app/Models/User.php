@@ -114,4 +114,19 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public function pengawas()
+    {
+        return $this->belongsTo(pengawas::class, 'id', 'user_id');
+    }
+    public function petugas()
+    {
+        return $this->belongsTo(petugas::class, 'id', 'user_id');
+    }
+    public function customer_service()
+    {
+        return $this->belongsTo(customer_service::class, 'id', 'user_id');
+    }
+
+
 }

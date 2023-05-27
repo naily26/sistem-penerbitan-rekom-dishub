@@ -33,15 +33,43 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::user()->role == 'admin') {
-            return view('admin.dashboard.index');
+            $data = $this->countingHome();
+            return view('admin.dashboard.index', compact('data'));
         }
 
         else if (Auth::user()->role == 'pemohon') {
-            return view('pemohon.dashboard.index');
+            // Counting perusahaan
+            $perusahaan = perusahaan::where('user_id', Auth::user()->id)->get();
+            $data_perusahaan = [];
+            foreach ($perusahaan as $key => $value) {
+                $data_perusahaan[$key] = $value->id;
+            }
+            $perusahaan_disetujui = pengajuan_perusahaan::whereIn('perusahaan_id', $data_perusahaan)->where('status_pengecekan', 'disetujui')->get();
+            $data['perusahaan_disetujui'] = count($perusahaan_disetujui);
+            $perusahaan_ditolak = pengajuan_perusahaan::whereIn('perusahaan_id', $data_perusahaan)->where('status_pengecekan', 'ditolak')->get();
+            $data['perusahaan_ditolak'] = count($perusahaan_ditolak);
+            $perusahaan_diproses = pengajuan_perusahaan::whereIn('perusahaan_id', $data_perusahaan)->where('status_pengecekan', 'menunggu')->get();
+            $data['perusahaan_diproses'] = count($perusahaan_diproses);
+            
+            //counting angkutan
+            $data_angkutan = [];
+            $angkutan = angkutan::where('user_id', Auth::user()->id)->get();
+            foreach ($angkutan as $key => $value) {
+                $data_angkutan[$key] = $value->id;
+            }
+            $angkutan_disetujui = pengajuan_angkutan::whereIn('angkutan_id', $data_angkutan)->where('status_pengecekan', 'disetujui')->get();
+            $data['angkutan_disetujui'] = count($angkutan_disetujui);
+            $angkutan_ditolak = pengajuan_angkutan::whereIn('angkutan_id', $data_angkutan)->where('status_pengecekan', 'ditolak')->get();
+            $data['angkutan_ditolak'] = count($angkutan_ditolak);
+            $angkutan_diproses = pengajuan_angkutan::whereIn('angkutan_id', $data_angkutan)->where('status_pengecekan', 'menunggu')->get();
+            $data['angkutan_diproses'] = count($angkutan_diproses);
+                
+            return view('pemohon.dashboard.index', compact('data'));
         }
 
         else if (Auth::user()->role == 'pengawas') {
-            return view('pengawas.dashboard.index');
+            $data = $this->countingHome();
+            return view('pengawas.dashboard.index', compact('data'));
         }
 
         else if (Auth::user()->role == 'petugas') {
@@ -51,13 +79,33 @@ class HomeController extends Controller
         }
 
         else if(Auth::user()->role == 'customer-service') {
-            return view('customer-service.dashboard.index');
+            $data = $this->countingHome();
+            return view('customer-service.dashboard.index', compact('data'));
         }
 
         else {
             return view('home');
         }
 
+    }
+
+    public function countingHome() {
+        //counting perusahaan
+        $perusahaan_disetujui = pengajuan_perusahaan::where('status_pengecekan', 'disetujui')->get();
+        $data['perusahaan_disetujui'] = count($perusahaan_disetujui);
+        $perusahaan_ditolak = pengajuan_perusahaan::where('status_pengecekan', 'ditolak')->get();
+        $data['perusahaan_ditolak'] = count($perusahaan_ditolak);
+        $perusahaan_diproses = pengajuan_perusahaan::where('status_pengecekan', 'menunggu')->get();
+        $data['perusahaan_diproses'] = count($perusahaan_diproses);
+        //counting angkutan
+        $angkutan_disetujui = pengajuan_angkutan::where('status_pengecekan', 'disetujui')->get();
+        $data['angkutan_disetujui'] = count($angkutan_disetujui);
+        $angkutan_ditolak = pengajuan_angkutan::where('status_pengecekan', 'ditolak')->get();
+        $data['angkutan_ditolak'] = count($angkutan_ditolak);
+        $angkutan_diproses = pengajuan_angkutan::where('status_pengecekan', 'menunggu')->get();
+        $data['angkutan_diproses'] = count($angkutan_diproses);
+
+        return $data;
     }
 
     public function take_antrian($id) {

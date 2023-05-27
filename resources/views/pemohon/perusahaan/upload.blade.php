@@ -79,6 +79,9 @@
                                         Silahkan persiapkan beberapa dokumen berikut ini:
                                         <ul>
                                             <li>
+                                                Surat Keterangan Perusahaan yang sudah pernah diterbitkan
+                                            </li>
+                                            <li>
                                                 Dokumen NIB (Nomor Induk Berusaha)
                                             </li>
                                             <li>
@@ -91,13 +94,12 @@
                                                 Rekapitulasi surat jalan (bagi perusahaan barang umum)
                                             </li>
                                             <li>
-                                                Surat permohonan dari Perusahaan
+                                                Surat permohonan
                                             </li>
                                             <li>
-                                                Surat pernyataan akan memenuhi ketentuan persyaratan
+                                                Surat pernyataan
                                             </li>
                                         </ul>
-                                       Silahkan mengikuti tutorial berikut untuk scan dokumen <a target="_blank" href="https://www.medcom.id/teknologi/tips-trik/dN6aqWRK-cara-scan-dokumen-ke-pdf-di-android-tanpa-aplikasi-lain-cuma-google-drive-di-hape">tutorial-link</a>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -165,7 +167,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">
-                                            Nomor Induk Berusaha (NIB) <span class="symbol required"></span>
+                                            NIB <span class="symbol required"></span>
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="nib" name="nib"
@@ -181,6 +183,34 @@
                                         <div class="col-sm-7">
                                             <input type="date" class="form-control" id="tanggal_nib" name="tanggal_nib"
                                                 placeholder="tanggal NIB">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">
+                                            Surat Keterangan Perusahaan yang sudah pernah diterbitkan <span class="symbol required"></span>
+                                        </label>
+                                        <div class="col-sm-7">
+                                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                <div class="input-group">
+                                                    <div class="form-control uneditable-input">
+                                                        <i class="fa fa-file fileupload-exists"></i>
+                                                        <span class="fileupload-preview"></span>
+                                                    </div>
+                                                    <div class="input-group-btn">
+                                                        <div class="btn btn-light-grey btn-file">
+                                                            <span class="fileupload-new"><i
+                                                                    class="fa fa-folder-open-o"></i> Select file</span>
+                                                            <span class="fileupload-exists"><i
+                                                                    class="fa fa-folder-open-o"></i> Change</span>
+                                                            <input type="file" class="file-input" name="dokumen_nib">
+                                                        </div>
+                                                        <a href="#" class="btn btn-light-grey fileupload-exists"
+                                                            data-dismiss="fileupload">
+                                                            <i class="fa fa-times"></i> Remove
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -211,9 +241,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group" id="sertifikat-standar">
+                                    <div class="form-group">
                                         <label class="col-sm-3 control-label">
-                                            Sertifikat Standar Berbasis Risiko OSS-RBA <span class="symbol required"></span>
+                                            Sertifikat Standar <span class="symbol required"></span>
                                         </label>
                                         <div class="col-sm-7">
                                             <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -307,7 +337,7 @@
                                     <div id="angkutan-penumpang">
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">
-                                               Surat Izin Trayek dari DPM-PTSP <span class="symbol required"></span>
+                                                Surat Izin Trayek <span class="symbol required"></span>
                                             </label>
                                             <div class="col-sm-7">
                                                 <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -338,7 +368,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">
-                                            Surat pernyataan akan memenuhi ketentuan persyaratan <span class="symbol required"></span>
+                                            Surat Pernyataan <span class="symbol required"></span>
                                         </label>
                                         <div class="col-sm-7">
                                             <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -376,7 +406,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">
-                                            Surat permohonan dari Perusahaan <span class="symbol required"></span>
+                                            Surat Permohonan <span class="symbol required"></span>
                                         </label>
                                         <div class="col-sm-7">
                                             <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -462,11 +492,6 @@
         document.getElementById("angkutan-barang").style.display = kate == 'angkutan-barang-umum' ? 'block' : 'none';
         document.getElementById("angkutan-penumpang").style.display = kate == 'angkutan-penumpang-umum-dalam-trayek' ||
             kate == 'angkutan-penumpang-umum-tidak-dalam-trayek' ? 'block' : 'none';
-        
-        if(kate == 'angkutan-barang-umum'){
-            $('#sertifikat-standar').hide();
-            $("[name='sertifikat-standar']").prop("required", false);
-        }
     }
 
     function checkNIB(element) {

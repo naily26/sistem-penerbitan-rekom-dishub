@@ -26,6 +26,20 @@
         <!-- start: PAGE CONTENT -->
         <div class="row">
             <div class="col-md-12">
+                <div class="alert alert-block alert-info fade in">
+                    <h4 class="alert-heading"><i class="fa fa-info-circle"></i> Info!</h4>
+                    <p>
+                        Jika anda telah mengajukan surat keterangan perusahaan secara offline, anda dapat menggunggahnya dengan klik tombol dibawah ini.
+                    </p>
+                    <p>
+                        <a href="{{url('upload-perusahaan')}}" class="btn btn-sm btn-light-grey">
+                            <i class="fa fa-upload" aria-hidden="true"></i>
+                            Unggah Surat Keterangan Perusahaan
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-12">
                 <a class="btn btn-primary" href="{{route('perusahaan.create')}}"><i class="fa fa-plus"></i>
                     Buat Permohonan</a>
             </div>
