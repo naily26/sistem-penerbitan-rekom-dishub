@@ -73,14 +73,15 @@ class PerusahaanController extends Controller
     {
 
         $today = Carbon::today()->toDateString();
-        $file_dokumen_nib = $request->file('dokumen_nib') != null ?  $this->uploadFile($request, 'dokumen_nib') : null;
-        $file_sertifikat_standar = $request->file('sertifikat_standar') != null ? $this->uploadFile($request, 'sertifikat_standar') : null ;
-        $file_surat_pernyataan = $request->file('surat_pernyataan') != null ? $this->uploadFile($request, 'surat_pernyataan') : null;
-        $file_surat_permohonan = $request->file('surat_permohonan') != null ? $this->uploadFile($request, 'surat_permohonan') : null;
-        $file_surat_izin_trayek = $request->file('surat_izin_trayek') != null ?  $this->uploadFile($request, 'surat_izin_trayek') : null;
-        $file_surat_izin_penyelenggara = $request->file('surat_izin_penyelenggara') != null ?  $this->uploadFile($request, 'surat_izin_penyelenggara') : null;
-        $file_surat_delivery_order = $request->file('surat_delivery_order') != null ? $this->uploadFile($request, 'surat_delivery_order') : null;
-
+        $docs = ['dokumen_nib', 'sertifikat_standar', 'surat_pernyataan', 'surat_permohonan', 'surat_izin_trayek', 'surat_izin_penyelenggara_trayek','surat_delivery_order', 'surat_izin_penyelenggara_muat' ];
+        $convert = [];
+        foreach ($docs as $key => $value) {
+            $name = 'file_'.$value;
+            $convert[$name] = $request->file($value) != null ?  $this->uploadFile($request, $value) : null;
+        }
+        if (!is_null($convert['file_surat_izin_penyelenggara_trayek'])) {$convert['file_surat_izin_penyelenggara'] = $convert['file_surat_izin_penyelenggara_trayek'];}
+        if (!is_null($convert['file_surat_izin_penyelenggara_muat'])) {$convert['file_surat_izin_penyelenggara'] = $convert['file_surat_izin_penyelenggara_muat'];}
+        else if (is_null($convert['file_surat_izin_penyelenggara_muat']) || is_null($convert['file_surat_izin_penyelenggara_trayek'])) {$convert['file_surat_izin_penyelenggara'] = null;}
 
         $perusahaan = perusahaan::create([
             'nama_perusahaan' => $request->nama_perusahaan,
@@ -88,12 +89,14 @@ class PerusahaanController extends Controller
             'nomor_telepon' => $request->nomor_telepon,
             'alamat' => $request->alamat,
             'nib' => $request->nib,
-            'dokumen_nib' => $file_dokumen_nib,
+            'nomor_izin_trayek' => $request->nomor_izin_trayek,
+            'tanggal_izin_trayek' => $request->tanggal_izin_trayek,
+            'dokumen_nib' => $convert['file_dokumen_nib'],
             'tanggal_nib' => $request->tanggal_nib,
-            'sertifikat_standar' =>  $file_sertifikat_standar,
-            'surat_izin_trayek' => $file_surat_izin_trayek,
-            'surat_izin_penyelenggara' => $file_surat_izin_penyelenggara,
-            'surat_delivery_order' => $file_surat_delivery_order,
+            'sertifikat_standar' =>  $convert['file_sertifikat_standar'],
+            'surat_izin_trayek' => $convert['file_surat_izin_trayek'],
+            'surat_izin_penyelenggara' => $convert['file_surat_izin_penyelenggara'],
+            'surat_delivery_order' => $convert['file_surat_delivery_order'],
             'kbli_id' => $request->kbli_id,
             'user_id' => Auth::user()->id,
         ]);
@@ -103,8 +106,8 @@ class PerusahaanController extends Controller
         if($perusahaan) {
             $pengajuan = pengajuan_perusahaan::create([
                 'perusahaan_id' => $perusahaan->id,
-                'surat_pernyataan' => $file_surat_pernyataan,
-                'surat_permohonan' => $file_surat_permohonan,
+                'surat_pernyataan' => $convert['file_surat_pernyataan'],
+                'surat_permohonan' => $convert['file_surat_permohonan'],
                 'nomor_permohonan'=> $request->nomor_permohonan,
                 'tanggal_permohonan' => $today,
                 'status_pengecekan' => 'menunggu'
@@ -344,5 +347,45 @@ class PerusahaanController extends Controller
         $kbli = kbli::all();
         $nibcek = perusahaan::all('nib');
         return view('pemohon.perusahaan.upload', compact('kbli', 'nibcek'));
+    }
+
+    public function storeUpload(Request $request) 
+    {
+
+        $today = Carbon::today()->toDateString();
+        $docs = ['dokumen_nib', 'sertifikat_standar', 'surat_izin_trayek', 'surat_izin_penyelenggara_trayek','surat_delivery_order', 'surat_izin_penyelenggara_muat' , 'surat_keterangan_perusahaan'];
+        $convert = [];
+        foreach ($docs as $key => $value) {
+            $name = 'file_'.$value;
+            $convert[$name] = $request->file($value) != null ?  $this->uploadFile($request, $value) : null;
+        }
+        if (!is_null($convert['file_surat_izin_penyelenggara_trayek'])) {$convert['file_surat_izin_penyelenggara'] = $convert['file_surat_izin_penyelenggara_trayek'];}
+        else if (!is_null($convert['file_surat_izin_penyelenggara_muat'])) {$convert['file_surat_izin_penyelenggara'] = $convert['file_surat_izin_penyelenggara_muat'];}
+        else if (is_null($convert['file_surat_izin_penyelenggara_muat']) || is_null($convert['file_surat_izin_penyelenggara_trayek'])) {$convert['file_surat_izin_penyelenggara'] = null;}
+
+        $perusahaan = perusahaan::create([
+            'nama_perusahaan' => $request->nama_perusahaan,
+            'nama_pimpinan' => $request->nama_pimpinan,
+            'nomor_telepon' => $request->nomor_telepon,
+            'alamat' => $request->alamat,
+            'nib' => $request->nib,
+            'nomor_izin_trayek' => $request->nomor_izin_trayek,
+            'tanggal_izin_trayek' => $request->tanggal_izin_trayek,
+            'dokumen_nib' => $convert['file_dokumen_nib'],
+            'tanggal_nib' => $request->tanggal_nib,
+            'sertifikat_standar' =>  $convert['file_sertifikat_standar'],
+            'surat_izin_trayek' => $convert['file_surat_izin_trayek'],
+            'surat_izin_penyelenggara' => $convert['file_surat_izin_penyelenggara'],
+            'surat_delivery_order' => $convert['file_surat_delivery_order'],
+            'surat_keterangan_perusahaan' => $convert['file_surat_keterangan_perusahaan'],
+            'kbli_id' => $request->kbli_id,
+            'user_id' => Auth::user()->id,
+        ]);
+
+        if($perusahaan) {
+            return redirect()->route('perusahaan.index')->with(['success'=>'data berhasil ditambahkan']);
+        } else {
+            return redirect()->route('perusahaan.index')->with(['gagal'=>'data gagal ditambahkan']);
+        }
     }
 }

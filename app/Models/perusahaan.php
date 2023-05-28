@@ -25,6 +25,9 @@ class perusahaan extends Model
         'surat_delivery_order',
         'kbli_id',
         'user_id',
+        'tanggal_izin_trayek',
+        'nomor_izin_trayek',
+        'surat_keterangan_perusahaan'
     ];
 
     public function user()

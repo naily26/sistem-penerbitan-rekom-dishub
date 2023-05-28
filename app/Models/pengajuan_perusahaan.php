@@ -27,6 +27,7 @@ class pengajuan_perusahaan extends Model
         'tanggal_pengambilan',
         'petugas_id',
         'catatan',
+        
     ];
 
     public function perusahaan()

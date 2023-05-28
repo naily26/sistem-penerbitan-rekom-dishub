@@ -97,7 +97,8 @@
                                                 Surat pernyataan akan memenuhi ketentuan persyaratan
                                             </li>
                                         </ul>
-                                       Silahkan mengikuti tutorial berikut untuk scan dokumen <a target="_blank" href="https://www.medcom.id/teknologi/tips-trik/dN6aqWRK-cara-scan-dokumen-ke-pdf-di-android-tanpa-aplikasi-lain-cuma-google-drive-di-hape">tutorial-link</a>
+                                        Silahkan mengikuti tutorial berikut untuk scan dokumen <a target="_blank"
+                                            href="https://www.medcom.id/teknologi/tips-trik/dN6aqWRK-cara-scan-dokumen-ke-pdf-di-android-tanpa-aplikasi-lain-cuma-google-drive-di-hape">tutorial-link</a>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -112,14 +113,15 @@
                                 <form action="{{ route('perusahaan.store')}}" role="form" method="post"
                                     class="smart-wizard form-horizontal" id="form" enctype="multipart/form-data">
                                     @csrf
-                                    <h2 class="StepTitle">Step 2 Pengisian nform permohonan</h2>
+                                    <h2 class="StepTitle">Step 2 Pengisian form permohonan</h2>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">
                                             Nama Perusahaan <span class="symbol required"></span>
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="nama_perusahaan"
-                                                name="nama_perusahaan" placeholder="nama perusahaan">
+                                                name="nama_perusahaan" placeholder="nama perusahaan"
+                                                oninput="this.value = this.value.toUpperCase()" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -128,7 +130,8 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="nama_pimpinan"
-                                                name="nama_pimpinan" placeholder="nama pimpinan">
+                                                name="nama_pimpinan" placeholder="nama pimpinan"
+                                                oninput="this.value = this.value.toUpperCase()" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -137,7 +140,8 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="nomor_telepon"
-                                                name="nomor_telepon" placeholder="nomor telepon">
+                                                name="nomor_telepon" placeholder="nomor telepon"
+                                                onkeypress="hanyaAngka(event)" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -146,6 +150,7 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <textarea placeholder="alamat" name="alamat" id="alamat"
+                                                oninput="this.value = this.value.toUpperCase()" required
                                                 class="form-control"></textarea>
                                         </div>
                                     </div>
@@ -154,7 +159,8 @@
                                             KBLI <span class="symbol required"></span>
                                         </label>
                                         <div class="col-sm-7">
-                                            <select class="form-control" name="kbli_id" onchange="showDiv(this);">
+                                            <select class="form-control" name="kbli_id" onchange="showDiv(this);"
+                                                required>
                                                 <option value="">&nbsp;</option>
                                                 @foreach ($kbli as $item)
                                                 <option value="{{$item->id}}">{{$item->kode}} - {{$item->keterangan}}
@@ -169,9 +175,9 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="nib" name="nib"
-                                                placeholder="nomor induk berusaha" onchange="checkNIB(this);">
-                                                {{-- <p class="alert alert-danger" id="duplicate"></p> --}}
-                                           
+                                                placeholder="nomor induk berusaha" onchange="checkNIB(this);" required>
+                                            {{-- <p class="alert alert-danger" id="duplicate"></p> --}}
+
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -180,7 +186,7 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="date" class="form-control" id="tanggal_nib" name="tanggal_nib"
-                                                placeholder="tanggal NIB">
+                                                placeholder="tanggal NIB" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -200,7 +206,8 @@
                                                                     class="fa fa-folder-open-o"></i> Select file</span>
                                                             <span class="fileupload-exists"><i
                                                                     class="fa fa-folder-open-o"></i> Change</span>
-                                                            <input type="file" class="file-input" name="dokumen_nib">
+                                                            <input type="file" class="file-input" name="dokumen_nib"
+                                                                required>
                                                         </div>
                                                         <a href="#" class="btn btn-light-grey fileupload-exists"
                                                             data-dismiss="fileupload">
@@ -211,9 +218,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group" id="sertifikat-standar">
+                                    <div class="form-group" id="sertifikat_standar">
                                         <label class="col-sm-3 control-label">
-                                            Sertifikat Standar Berbasis Risiko OSS-RBA <span class="symbol required"></span>
+                                            Sertifikat Standar Berbasis Risiko OSS-RBA <span
+                                                class="symbol required"></span>
                                         </label>
                                         <div class="col-sm-7">
                                             <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -229,7 +237,7 @@
                                                             <span class="fileupload-exists"><i
                                                                     class="fa fa-folder-open-o"></i> Change</span>
                                                             <input type="file" class="file-input"
-                                                                name="sertifikat_standar">
+                                                                name="sertifikat_standar" required>
                                                         </div>
                                                         <a href="#" class="btn btn-light-grey fileupload-exists"
                                                             data-dismiss="fileupload">
@@ -241,7 +249,7 @@
                                         </div>
                                     </div>
                                     <div id="angkutan-barang">
-                                        <div class="form-group">
+                                        <div class="form-group" id="surat_delivery_order">
                                             <label class="col-sm-3 control-label">
                                                 Rekapitulasi Surat Jalan (Delivery Order) <span
                                                     class="symbol required"></span>
@@ -272,10 +280,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                    </div>
+                                    <div id="angkutan-barang-khusus">
+                                        <div class="form-group" id="surat_izin_penyelenggara_muat">
                                             <label class="col-sm-3 control-label">
-                                                Surat Izin Penyelenggara <span
-                                                    class="symbol required"></span>
+                                                SK Izin Muat barang khusus <span class="symbol required"></span>
                                             </label>
                                             <div class="col-sm-7">
                                                 <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -292,7 +301,7 @@
                                                                 <span class="fileupload-exists"><i
                                                                         class="fa fa-folder-open-o"></i> Change</span>
                                                                 <input type="file" class="file-input"
-                                                                    name="surat_izin_penyelenggara">
+                                                                    name="surat_izin_penyelenggara_muat">
                                                             </div>
                                                             <a href="#" class="btn btn-light-grey fileupload-exists"
                                                                 data-dismiss="fileupload">
@@ -305,9 +314,9 @@
                                         </div>
                                     </div>
                                     <div id="angkutan-penumpang">
-                                        <div class="form-group">
+                                        <div class="form-group" id="surat_izin_trayek">
                                             <label class="col-sm-3 control-label">
-                                               Surat Izin Trayek dari DPM-PTSP <span class="symbol required"></span>
+                                                Surat Izin Trayek dari DPM-PTSP <span class="symbol required"></span>
                                             </label>
                                             <div class="col-sm-7">
                                                 <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -335,10 +344,63 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="form-group" id="nomor_izin_trayek">
+                                            <label class="col-sm-3 control-label">
+                                                Nomor Surat Izin Trayek dari DPM-PTSP <span
+                                                    class="symbol required"></span>
+                                            </label>
+                                            <div class="col-sm-7">
+                                                <input type="text" class="form-control" name="nomor_izin_trayek"
+                                                    placeholder="Nomor Surat Izin Trayek dari DPM-PTSP"
+                                                    oninput="this.value = this.value.toUpperCase()">
+                                            </div>
+                                        </div>
+                                        <div class="form-group" id="tanggal_izin_trayek">
+                                            <label class="col-sm-3 control-label">
+                                                Tanggal Surat Izin Trayek dari DPM-PTSP <span
+                                                    class="symbol required"></span>
+                                            </label>
+                                            <div class="col-sm-7">
+                                                <input type="date" class="form-control" name="tanggal_izin_trayek"
+                                                    placeholder="Tanggal Surat Izin Trayek dari DPM-PTSP">
+                                            </div>
+                                        </div>
+                                        <div class="form-group" id="surat_izin_penyelenggara_trayek">
+                                            <label class="col-sm-3 control-label">
+                                                SK Pelaksanaan Izin Trayek dari Kadishub <span
+                                                    class="symbol required"></span>
+                                            </label>
+                                            <div class="col-sm-7">
+                                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                    <div class="input-group">
+                                                        <div class="form-control uneditable-input">
+                                                            <i class="fa fa-file fileupload-exists"></i>
+                                                            <span class="fileupload-preview"></span>
+                                                        </div>
+                                                        <div class="input-group-btn">
+                                                            <div class="btn btn-light-grey btn-file">
+                                                                <span class="fileupload-new"><i
+                                                                        class="fa fa-folder-open-o"></i> Select
+                                                                    file</span>
+                                                                <span class="fileupload-exists"><i
+                                                                        class="fa fa-folder-open-o"></i> Change</span>
+                                                                <input type="file" class="file-input"
+                                                                    name="surat_izin_penyelenggara_trayek">
+                                                            </div>
+                                                            <a href="#" class="btn btn-light-grey fileupload-exists"
+                                                                data-dismiss="fileupload">
+                                                                <i class="fa fa-times"></i> Remove
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">
-                                            Surat pernyataan akan memenuhi ketentuan persyaratan <span class="symbol required"></span>
+                                            Surat pernyataan akan memenuhi ketentuan persyaratan <span
+                                                class="symbol required"></span>
                                         </label>
                                         <div class="col-sm-7">
                                             <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -371,7 +433,8 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="nomor_permohonan"
-                                                name="nomor_permohonan" placeholder="nomor permohonan surat">
+                                                name="nomor_permohonan" placeholder="nomor permohonan surat"
+                                                oninput="this.value = this.value.toUpperCase()" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -447,6 +510,27 @@
 </script>
 
 <script>
+    function hanyaAngka(evt) {
+        var theEvent = evt || window.event;
+
+        // Handle paste
+        if (theEvent.type === 'paste') {
+            key = event.clipboardData.getData('text/plain');
+        } else {
+            // Handle key press
+            var key = theEvent.keyCode || theEvent.which;
+            key = String.fromCharCode(key);
+        }
+        var regex = /[0-9]|\./;
+        if (!regex.test(key)) {
+            theEvent.returnValue = false;
+            if (theEvent.preventDefault) theEvent.preventDefault();
+        }
+    }
+
+</script>
+
+<script>
     function showDiv(element) {
         var kate;
         var resdata = @json($kbli);
@@ -459,14 +543,24 @@
             }
         }
 
-        document.getElementById("angkutan-barang").style.display = kate == 'angkutan-barang-umum' ? 'block' : 'none';
-        document.getElementById("angkutan-penumpang").style.display = kate == 'angkutan-penumpang-umum-dalam-trayek' ||
-            kate == 'angkutan-penumpang-umum-tidak-dalam-trayek' ? 'block' : 'none';
-        
-        if(kate == 'angkutan-barang-umum'){
-            $('#sertifikat-standar').hide();
-            $("[name='sertifikat-standar']").prop("required", false);
+        document.getElementById("angkutan-barang").style.display = kate.includes('barang') ? 'block' : 'none';
+        document.getElementById("angkutan-penumpang").style.display = kate.includes('penumpang') ? 'block' : 'none';
+        document.getElementById("angkutan-barang-khusus").style.display = kate.includes('barang-khusus') ? 'block' :
+            'none';
+        document.getElementById("sertifikat_standar").style.display = kate.includes('barang-khusus') ? 'none' : 'block';
+
+        if (kate.includes('barang')) {
+            $('#surat_delivery_order').prop('required', true);
+        } else if (kate.includes('penumpang')) {
+            $('#surat_izin_trayek').prop('required', true);
+            $('#nomor_izin_trayek').prop('required', true);
+            $('#tanggal_izin_trayek').prop('required', true);
+            $('#surat_izin_penyelenggara_trayek').prop('required', true);
+        } else if (kate.includes('barang-khusus')) {
+            $('#surat_izin_penyelenggara_muat').prop('required', true);
+            $('#sertifikat_standar').prop('required', false);
         }
+
     }
 
     function checkNIB(element) {
@@ -494,6 +588,10 @@
 
 <style>
     #angkutan-barang {
+        display: none
+    }
+
+    #angkutan-barang-khusus {
         display: none
     }
 

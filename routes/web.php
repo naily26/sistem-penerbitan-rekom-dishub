@@ -104,3 +104,4 @@ Route::middleware(['auth', 'role:customer-service'])->group(function () {
 
 //pemhon
 Route::get('upload-perusahaan', [PerusahaanController::class, 'upload']);
+Route::post('store-upload', [PerusahaanController::class, 'storeUpload']);
