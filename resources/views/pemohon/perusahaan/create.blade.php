@@ -159,7 +159,7 @@
                                             KBLI <span class="symbol required"></span>
                                         </label>
                                         <div class="col-sm-7">
-                                            <select class="form-control" name="kbli_id" onchange="showDiv(this);"
+                                            <select class="select2-container form-control search-select" name="kbli_id" onchange="showDiv(this);" id="select-kbli"
                                                 required>
                                                 <option value="">&nbsp;</option>
                                                 @foreach ($kbli as $item)
@@ -499,14 +499,34 @@
 
 <script src="{{ asset('assets/admin/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js') }}"></script>
 <script src="{{asset('assets/admin/js/form-elements.js')}}"></script>
+<script type="text/javascript" src="{{ asset('assets/admin/plugins/select2/select2.min.js') }}">
+</script>
 
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
     jQuery(document).ready(function () {
         Main.init();
         FormWizard.init();
+        Index.init();
     });
 
+    $("#select-kbli").select2({
+        placeholder: 'Pilih KBLI', // Placeholder select
+    });
+
+    var file_pdf = ['dokumen_nib', 'sertifikat_standar', 'surat_delivery_order', 'surat_izin_penyelenggara_muat', 'surat_izin_trayek', 'surat_izin_penyelenggara_trayek', 'surat_pernyataan', 'surat_permohonan'];
+    $.each(file_pdf, function (index, val) {
+        nama = "[name='"+val+"']";
+        $(nama).change(function () {
+            var val = $(this).val().toLowerCase(),
+                regex = new RegExp("(.*?)\.(pdf)$");
+
+            if (!(regex.test(val))) {
+                $(this).val('');
+                alert('Anda hanya bisa menggungah dokumen berformat .pdf');
+            }
+        });
+    });
 </script>
 
 <script>
@@ -587,6 +607,7 @@
 
 @push('style')
 <link rel="stylesheet" href="{{ asset('assets/admin/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/plugins/select2/select2.css') }}" />
 
 <style>
     #angkutan-barang {

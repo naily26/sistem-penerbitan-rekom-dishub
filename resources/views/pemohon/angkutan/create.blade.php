@@ -128,10 +128,11 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <select name="perusahaan_id" id="select-perusahaan"
-                                                class="select2-container form-control search-select" onchange="cek(this)" required>
+                                                class="select2-container form-control search-select"
+                                                onchange="cek(this)" required>
                                                 <option value=""></option>
                                                 @foreach ($perusahaan as $key => $item)
-                                                <option value="{{$item->id}}" ><?= $item->nama_perusahaan ?></option>
+                                                <option value="{{$item->id}}"><?= $item->nama_perusahaan ?></option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -232,8 +233,9 @@
                                             Tahun Pembuatan <span class="symbol required"></span>
                                         </label>
                                         <div class="col-sm-7">
-                                            <input type="text" class="form-control" id="tahun_pembuatan"
-                                                name="tahun_pembuatan" placeholder="tahun pembuatan" required>
+                                            <input type="number" class="form-control" id="tahun_pembuatan" min="1900"
+                                                max="{{date("Y")}}" name="tahun_pembuatan" placeholder="tahun pembuatan"
+                                                required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -271,7 +273,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                     <div class="form-group" id="stnkb">
@@ -631,7 +633,7 @@
                                             </label>
                                             <div class="col-sm-7">
                                                 <select name="kota_asal" id="select-kota-asal"
-                                                    class="select2-container form-control search-select" >
+                                                    class="select2-container form-control search-select">
                                                     <option value=""></option>
                                                     @foreach ($kota as $key => $item)
                                                     <option value="{{$item->nama}}"><?= $item->nama ?></option>
@@ -759,6 +761,34 @@
     $("#select-kota-asal").select2({
         placeholder: 'Pilih Kota/Kabupaten Asal', // Placeholder select
     });
+    var file_pdf = ['kps', 'stnkb', 'buku_uji_berkala', 'surat_pernyataan', 'surat_permohonan', 'surat_faktur_intern',
+        'surat_registrasi_uji_tipe', 'surat_fiskal'
+    ];
+    $.each(file_pdf, function (index, val) {
+        nama = "[name='"+val+"']";
+        $(nama).change(function () {
+            var val = $(this).val().toLowerCase(),
+                regex = new RegExp("(.*?)\.(pdf)$");
+
+            if (!(regex.test(val))) {
+                $(this).val('');
+                alert('Anda hanya bisa menggungah dokumen berformat .pdf');
+            }
+        });
+    });
+    var file_photo = ['foto_depan', 'foto_belakang', 'foto_kanan', 'foto_kiri'];
+    $.each(file_photo, function (index, val) {
+        nama = "[name='"+val+"']";
+        $(nama).change(function () {
+            var val = $(this).val().toLowerCase(),
+                regex = new RegExp("(.*?)\.(png|jpg|jpeg)$");
+
+            if (!(regex.test(val))) {
+                $(this).val('');
+                alert('Anda hanya bisa menggungah dokumen berupa gambar (berformat .png, .jpg, dan .jpeg');
+            }
+        });
+    });
 
 </script>
 
@@ -803,8 +833,8 @@
     }
 
     function cek(element) {
-        var data = <?php echo json_encode($khusus); ?>;
-        
+        var data = < ? php echo json_encode($khusus); ? > ;
+
 
         var resdata = @json($perusahaan);
         var msg;
@@ -812,18 +842,17 @@
         for (const key in resdata) {
             if (resdata.hasOwnProperty.call(resdata, key)) {
                 if (resdata[key].id == element.value) {
-                    msg = resdata[key].kbli_id ;
+                    msg = resdata[key].kbli_id;
                 }
             }
         }
 
-        if(data.includes(msg)) {
-            document.getElementById("kps").style.display = 'block'  ;
+        if (data.includes(msg)) {
+            document.getElementById("kps").style.display = 'block';
             $("[name='kps']").prop("required", true);
         }
-       
-    }
 
+    }
 
 </script>
 
