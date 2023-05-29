@@ -237,7 +237,7 @@
                                                             <span class="fileupload-exists"><i
                                                                     class="fa fa-folder-open-o"></i> Change</span>
                                                             <input type="file" class="file-input"
-                                                                name="sertifikat_standar" required>
+                                                                name="sertifikat_standar" >
                                                         </div>
                                                         <a href="#" class="btn btn-light-grey fileupload-exists"
                                                             data-dismiss="fileupload">
@@ -551,14 +551,16 @@
 
         if (kate.includes('barang')) {
             $('#surat_delivery_order').prop('required', true);
+            $('#sertifikat_standar').prop('required', true);
         } else if (kate.includes('penumpang')) {
             $('#surat_izin_trayek').prop('required', true);
             $('#nomor_izin_trayek').prop('required', true);
             $('#tanggal_izin_trayek').prop('required', true);
+            $('#sertifikat_standar').prop('required', true);
             $('#surat_izin_penyelenggara_trayek').prop('required', true);
         } else if (kate.includes('barang-khusus')) {
             $('#surat_izin_penyelenggara_muat').prop('required', true);
-            $('#sertifikat_standar').prop('required', false);
+            
         }
 
     }

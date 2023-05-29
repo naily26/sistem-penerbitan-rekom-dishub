@@ -31,7 +31,8 @@ class pengajuan_angkutan extends Model
         'foto_depan',
         'foto_belakang',
         'foto_kanan',
-        'foto_kiri'
+        'foto_kiri',
+        'tembusan'
     ];
 
     public function angkutan()

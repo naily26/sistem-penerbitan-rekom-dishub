@@ -32,6 +32,7 @@ class angkutan extends Model
         'surat_registrasi_uji_tipe',
         'nomor_srut',
         'tanggal_srut',
+        'kps'
     ];
 
     public function user()

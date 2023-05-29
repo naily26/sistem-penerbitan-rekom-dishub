@@ -60,8 +60,13 @@ class AngkutanController extends Controller
     {
         $kbli = kbli::all();
         $kota = kota::all();
+        $kbli_khusus = kbli::where('kategori', 'angkutan-barang-khusus')->get();
+        $khusus = [];
+        foreach($kbli_khusus as $key => $value) {
+            $khusus[$key] = $value->id;
+        }
         $perusahaan = perusahaan::where('user_id', Auth::user()->id)->get();
-        return view('pemohon.angkutan.create', compact('kbli', 'perusahaan', 'kota'));
+        return view('pemohon.angkutan.create', compact('kbli', 'perusahaan', 'kota', 'khusus'));
     }
 
     /**
@@ -73,18 +78,12 @@ class AngkutanController extends Controller
     public function store(Request $request)
     {
         $today = Carbon::today()->toDateString();
-        $file_stnkb = $request->file('stnkb') != null ?  $this->uploadFile($request, 'stnkb') : null;
-        $file_buku_uji_berkala = $request->file('buku_uji_berkala') != null ?  $this->uploadFile($request, 'buku_uji_berkala') : null;
-        $file_surat_faktur_intern = $request->file('surat_faktur_intern') != null ?  $this->uploadFile($request, 'surat_faktur_intern') : null;
-        $file_surat_registrasi_uji_tipe = $request->file('surat_registrasi_uji_tipe') != null ?  $this->uploadFile($request, 'surat_registrasi_uji_tipe') : null;
-        $file_surat_permohonan = $request->file('surat_permohonan') != null ?  $this->uploadFile($request, 'surat_permohonan') : null;
-        $file_surat_pernyataan = $request->file('surat_pernyataan') != null ?  $this->uploadFile($request, 'surat_pernyataan') : null;
-        $file_surat_kuasa = $request->file('surat_kuasa') != null ?  $this->uploadFile($request, 'surat_kuasa') : null;
-        $file_surat_fiskal = $request->file('surat_fiskal') != null ?  $this->uploadFile($request, 'surat_fiskal') : null;
-        $file_foto_depan = $request->file('foto_depan') != null ?  $this->uploadFile($request, 'foto_depan') : null;
-        $file_foto_belakang = $request->file('foto_belakang') != null ?  $this->uploadFile($request, 'foto_belakang') : null;
-        $file_foto_kanan = $request->file('foto_kanan') != null ?  $this->uploadFile($request, 'foto_kanan') : null;
-        $file_foto_kiri = $request->file('foto_kiri') != null ?  $this->uploadFile($request, 'foto_kiri') : null;
+        $file = ['stnkb', 'buku_uji_berkala', 'surat_faktur_intern', 'surat_registrasi_uji_tipe', 'surat_permohonan', 'surat_pernyataan', 'surat_kuasa', 'surat_fiskal', 'foto_depan','foto_belakang', 'foto_kanan', 'foto_kiri', 'kps'];
+        foreach ($file as $key => $value) {
+            $name = 'file_'.$value;
+            $convert[$name] = $request->file($value) != null ?  $this->uploadFile($request, $value) : null;
+        }
+
         if($request->keterangan != 'kendaraan-baru') { 
             $request->nomor_faktur = null; $request->tanggal_faktur= null; $request->tanggal_srut= null; $request->nomor_srut= null;
             
@@ -109,28 +108,29 @@ class AngkutanController extends Controller
             'tanggal_faktur'=> $request->tanggal_faktur ,
             'tanggal_srut'=> $request->tanggal_srut ,
             'warna_tnkb'=>'Warna Dasar Plat Kuning Dengan Tulisan Hitam' ,
-            'stnkb'=> $file_stnkb ,
-            'buku_uji_berkala'=> $file_buku_uji_berkala ,
-            'surat_faktur_intern'=> $file_surat_faktur_intern ,
-            'surat_registrasi_uji_tipe'=> $file_surat_registrasi_uji_tipe ,
+            'stnkb'=> $convert['file_stnkb'] ,
+            'buku_uji_berkala'=> $convert['file_buku_uji_berkala'] ,
+            'surat_faktur_intern'=> $convert['file_surat_faktur_intern'] ,
+            'surat_registrasi_uji_tipe'=> $convert['file_surat_registrasi_uji_tipe'] ,
             'nomor_srut'=> $request->nomor_srut ,
-            
+            'kps' => $convert['file_kps']
         ]);
 
         $petugas = $this->cekAntrian($angkutan->perusahaan_id);
         $pengajuan = pengajuan_angkutan::create([
             'angkutan_id' => $angkutan->id,
             'keterangan' => $request->keterangan,
-            'surat_permohonan' => $file_surat_permohonan,
-            'surat_pernyataan' =>$file_surat_pernyataan,
+            'surat_permohonan' => $convert['file_surat_permohonan'],
+            'surat_pernyataan' =>$convert['file_surat_pernyataan'],
             'status_pengecekan' => 'menunggu',
             'tanggal_permohonan' => $today,
             'petugas_id' => $petugas,
-            'surat_kuasa' => $file_surat_kuasa,
-            'foto_depan' => $file_foto_depan,
-            'foto_belakang' => $file_foto_belakang,
-            'foto_kanan' => $file_foto_kanan,
-            'foto_kiri' => $file_foto_kiri
+            'surat_kuasa' => $convert['file_surat_kuasa'],
+            'foto_depan' => $convert['file_foto_depan'],
+            'foto_belakang' => $convert['file_foto_belakang'],
+            'foto_kanan' => $convert['file_foto_kanan'],
+            'foto_kiri' => $convert['file_foto_kiri'],
+            'tembusan' => $request->kota
         ]);
 
         if ($pengajuan->keterangan == "kendaraan-mutasi") {
@@ -139,9 +139,10 @@ class AngkutanController extends Controller
                 'perusahaan_lama' => $request->perusahaan_lama,
                 'alamat_lama' => $request->alamat_lama ,
                 'warna_tnkb_lama' => $request->warna_tnkb_lama,
-                'surat_fiskal' =>  $file_surat_fiskal,
+                'surat_fiskal' =>  $convert['file_surat_fiskal'],
                 'nomor_surat_fiskal' => $request->nomor_surat_fiskal,
                 'tanggal_surat_fiskal' => $request->tanggal_surat_fiskal,
+                'kota_asal' => $request->kota_asal,
             ]);
 
             if ($data_mutasi) {
