@@ -355,6 +355,13 @@ class AngkutanController extends Controller
         }
     }
 
+    public function getAngkutan() {
+        $angkutan = angkutan::where('user_id', Auth::user()->id)->get();
+        return response()->json($angkutan);
+    }
+
+    
+
 
 
 }

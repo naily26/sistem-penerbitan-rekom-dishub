@@ -171,7 +171,7 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="nama_pemilik"
-                                                name="nama_pemilik" placeholder="nama pemilik" required>
+                                                name="nama_pemilik" placeholder="nama pemilik" oninput="this.value = this.value.toUpperCase()" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -180,7 +180,7 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="nomor_kendaraan"
-                                                name="nomor_kendaraan" placeholder="Tnomor kendaraan" required>
+                                                name="nomor_kendaraan" placeholder="Tnomor kendaraan" oninput="this.value = this.value.toUpperCase()" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -189,7 +189,7 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="nomor_uji" name="nomor_uji"
-                                                placeholder="nomor uji" required>
+                                                placeholder="nomor uji" oninput="this.value = this.value.toUpperCase()" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -198,7 +198,7 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="nomor_rangka"
-                                                name="nomor_rangka" placeholder="nomor rangka" required>
+                                                name="nomor_rangka" placeholder="nomor rangka" oninput="this.value = this.value.toUpperCase()" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -207,7 +207,7 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="nomor_mesin" name="nomor_mesin"
-                                                placeholder="nomor mesin" required>
+                                                placeholder="nomor mesin" oninput="this.value = this.value.toUpperCase()" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -216,7 +216,7 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="merk" name="merk"
-                                                placeholder="merk kendaraan" required>
+                                                placeholder="merk kendaraan" oninput="this.value = this.value.toUpperCase()" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -225,7 +225,7 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="tipe" name="tipe"
-                                                placeholder="Tipe" required>
+                                                placeholder="Tipe" oninput="this.value = this.value.toUpperCase()" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -244,7 +244,7 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="jenis" name="jenis"
-                                                placeholder="jenis" required>
+                                                placeholder="jenis" oninput="this.value = this.value.toUpperCase()" required>
                                         </div>
                                     </div>
                                     <div class="form-group" id="kps">
@@ -765,7 +765,7 @@
         'surat_registrasi_uji_tipe', 'surat_fiskal'
     ];
     $.each(file_pdf, function (index, val) {
-        nama = "[name='"+val+"']";
+        nama = "[name='" + val + "']";
         $(nama).change(function () {
             var val = $(this).val().toLowerCase(),
                 regex = new RegExp("(.*?)\.(pdf)$");
@@ -778,17 +778,49 @@
     });
     var file_photo = ['foto_depan', 'foto_belakang', 'foto_kanan', 'foto_kiri'];
     $.each(file_photo, function (index, val) {
-        nama = "[name='"+val+"']";
+        nama = "[name='" + val + "']";
         $(nama).change(function () {
             var val = $(this).val().toLowerCase(),
                 regex = new RegExp("(.*?)\.(png|jpg|jpeg)$");
 
             if (!(regex.test(val))) {
                 $(this).val('');
-                alert('Anda hanya bisa menggungah dokumen berupa gambar (berformat .png, .jpg, dan .jpeg');
+                alert(
+                    'Anda hanya bisa menggungah dokumen berupa gambar (berformat .png, .jpg, dan .jpeg');
             }
         });
     });
+
+    $("[name='nomor_rangka']").change(function () {
+        var val = $(this).val().toLowerCase();
+        $.ajax({
+            type: 'get',
+            url: "{{url('/get-angkutan')}}",
+            dataType: 'json',
+            success: function (data) {
+                for (var key in data) {
+                    if (val == data[key].nomor_rangka) {
+                        console.log('find identic');
+                        $("[name='nomor_mesin']").val(data[key].nomor_mesin);
+                        $("[name='nama_pemilik']").val(data[key].nama_pemilik);
+                        $("[name='merk']").val(data[key].merk);
+                        $("[name='jenis']").val(data[key].jenis);
+                        $("[name='tipe']").val(data[key].tipe);
+                        $("[name='tahun_pembuatan']").val(data[key].tahun_pembuatan);
+                        if ( $("[name='nomor_kendaraan']").val() != 'baru') {
+                            $("[name='nomor_kendaraan']").val(data[key].nomor_kendaraan);
+                            $("[name='nomor_uji']").val(data[key].nomor_uji);
+                        }
+                    }
+                }
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+        });
+    });
+
+    
 
 </script>
 
@@ -833,9 +865,9 @@
     }
 
     function cek(element) {
-        var data = < ? php echo json_encode($khusus); ? > ;
+        //var data = < ? php echo json_encode($khusus); ? > ;
 
-
+        var data = @json($khusus);
         var resdata = @json($perusahaan);
         var msg;
 
