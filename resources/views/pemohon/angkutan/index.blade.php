@@ -95,24 +95,17 @@
                                     @endif
 
                                     <td>
-                                        @if ($item->pengajuan_angkutan->status_pengecekan == 'menunggu' ||
-                                        $item->pengajuan_angkutan->status_pengecekan == 'disetujui')
                                         <a class="btn btn-xs btn-success"
                                             href="{{ route('angkutan.show', $item->id)}}"><i class="fa fa-eye"></i>
                                             detail</a>
-                                        @elseif ($item->pengajuan_angkutan->status_pengecekan == 'ditolak')
-                                        <a class="btn btn-xs btn-warning"
-                                            href="{{ route('angkutan.edit', $item->id)}}"><i class="fa fa-edit"></i>
-                                            edit</a>
-                                        <a class="btn btn-xs btn-danger" href="#hapus-data{{$item->id}}"
-                                            data-toggle="modal"><i class="fa fa-trash-o"></i>
-                                            hapus</a>
-                                        <a class="btn btn-xs btn-success"
-                                            href="{{ route('angkutan.show', $item->id)}}"><i class="fa fa-eye"></i>
-                                            detail</a>
+                                        @if ($item->pengajuan_angkutan->status_pengecekan == 'ditolak')
+                                            <a class="btn btn-xs btn-warning"
+                                                href="{{ route('angkutan.edit', $item->pengajuan_angkutan->id)}}"><i class="fa fa-edit"></i>
+                                                edit</a>
+                                            <a class="btn btn-xs btn-danger" href="#hapus-data{{$item->id}}"
+                                                data-toggle="modal"><i class="fa fa-trash-o"></i>
+                                                hapus</a>
                                         @endif
-                                        <a class="btn btn-xs btn-success" href="#"><i class="fa fa-eye"></i>
-                                            detail</a>
                                     </td>
                                 </tr>
                                 <div id="hapus-data{{$item->id}}" class="modal fade" tabindex="-1" data-width="360"

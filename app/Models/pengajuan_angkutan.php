@@ -44,5 +44,9 @@ class pengajuan_angkutan extends Model
     {
         return $this->belongsTo(petugas::class, 'petugas_id', 'id');
     }
+    public function data_mutasi()
+    {
+        return $this->belongsTo(data_mutasi::class, 'id', 'pengajuan_angkutan_id');
+    }
    
 }

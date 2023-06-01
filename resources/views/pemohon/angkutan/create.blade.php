@@ -160,7 +160,7 @@
                                                 class="select2-container form-control search-select" required>
                                                 <option value=""></option>
                                                 @foreach ($kota as $key => $item)
-                                                <option value="{{$item->nama}}"><?= $item->nama ?></option>
+                                                <option value="{{$item->nama}}" ><?= $item->nama ?></option>
                                                 @endforeach
                                             </select>
                                         </div>
