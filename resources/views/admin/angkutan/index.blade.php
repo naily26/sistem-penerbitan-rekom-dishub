@@ -147,6 +147,9 @@
                                                                         href="#konfirmasi-penerbitan{{$item->id}}" data-toggle="modal"><i
                                                                             class="fa  fa-check-square-o"></i>
                                                                         konfirmasi penerbitan</a>
+                                                                    @elseif ($item->status_penerbitan == 'diterbitkan')
+                                                                        <a class="btn btn-xs btn-primary" href="{{url('get-notif', $item->angkutan->perusahaan->nama_perusahaan)}}"><i class="fa fa-envelope"></i>
+                                                                            Kirim Nontifikasi</a>
                                                                     @endif</a>
                                                                 </td>
                                                             </tr>

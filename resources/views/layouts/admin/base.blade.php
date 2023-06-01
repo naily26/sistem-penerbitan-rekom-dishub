@@ -77,7 +77,7 @@
     @stack('style')
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 
-    <link rel="shortcut icon" href="favicon.ico" />
+    {{-- <link rel="shortcut icon" href="favicon.ico" /> --}}
 </head>
 <!-- end: HEAD -->
 

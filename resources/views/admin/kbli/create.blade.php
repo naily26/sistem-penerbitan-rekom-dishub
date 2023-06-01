@@ -96,24 +96,11 @@
 
 @push('script')
     <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-		<script src="assets/admin/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-		<script src="assets/admin/plugins/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
-		<script src="assets/admin/js/form-wizard.js"></script>
-  
-        <script src="assets/admin/plugins/jquery-inputlimiter/jquery.inputlimiter.1.3.1.min.js"></script>
-		<script src="assets/admin/plugins/autosize/jquery.autosize.min.js"></script>
 		<script src="{{asset('assets/admin/plugins/select2/select2.min.js')}}"></script>
-		<script src="assets/admin/plugins/jquery.maskedinput/src/jquery.maskedinput.js"></script>
-		<script src="assets/admin/plugins/jquery-maskmoney/jquery.maskMoney.js"></script>
-		<script src="assets/admin/plugins/summernote/build/summernote.min.js"></script>
-		<script src="assets/admin/plugins/ckeditor/ckeditor.js"></script>
-		<script src="assets/admin/plugins/ckeditor/adapters/jquery.js"></script>
-		<script src="assets/admin/js/form-elements.js"></script>
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 		<script>
 			jQuery(document).ready(function() {
-				Main.init();
-				FormWizard.init();
+				
 			});
 		</script>
         <script>
@@ -129,11 +116,4 @@
 
 @push('style')
 <link rel="stylesheet" href="{{asset('assets/admin/plugins/select2/select2.css')}}">
-<link rel="stylesheet" href="assets/admin/plugins/datepicker/css/datepicker.css">
-<link rel="stylesheet" href="assets/admin/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css">
-<link rel="stylesheet" href="assets/admin/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css">
-<link rel="stylesheet" href="assets/admin/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css">
-<link rel="stylesheet" href="assets/admin/plugins/jQuery-Tags-Input/jquery.tagsinput.css">
-<link rel="stylesheet" href="assets/admin/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
-<link rel="stylesheet" href="assets/admin/plugins/summernote/build/summernote.css">
 @endpush

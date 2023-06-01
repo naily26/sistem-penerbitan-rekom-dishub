@@ -45,7 +45,7 @@ class PerusahaanController extends Controller
         } elseif (Auth::user()->role == 'admin') {
             $today = Carbon::today()->toDateString();
             $diproses = pengajuan_perusahaan::where('status_pengecekan', 'menunggu')->get();
-            $disetujui = pengajuan_perusahaan::where('status_pengecekan', 'disetujui')->get();
+            $disetujui = pengajuan_perusahaan::where('status_pengecekan', 'disetujui')->where('tanggal_pengambilan', null)->get();
             $ditolak = pengajuan_perusahaan::where('status_pengecekan', 'ditolak')->get();
             return view('admin.perusahaan.index', compact('diproses', 'disetujui', 'ditolak', 'today'));
         } 

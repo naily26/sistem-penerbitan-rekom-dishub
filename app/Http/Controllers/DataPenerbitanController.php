@@ -11,6 +11,8 @@ use Carbon\Carbon;
 use App\Exports\PengajuanPerusahaanExport;
 use App\Exports\PengajuanAngkutanExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NotifMail;
 
 class DataPenerbitanController extends Controller
 {
@@ -90,5 +92,17 @@ class DataPenerbitanController extends Controller
         }
         
         return Excel::download(new PengajuanAngkutanExport($data),'Export_Angkutan'.$today.'.xlsx');
+    }
+
+    public function SendMail($id) {
+        $data = Perusahaan::where('id', $id)->first();
+        $mail = $data->user->email;
+        //dd($mail);
+        $send =  Mail::to($mail)->send(new NotifMail($data));
+        if($send) {
+            return redirect()->back()->with(['success'=>'Nontifikasi berhasil dikirim']);
+        } else {
+            return redirect()->back()->with(['gagal'=>'Nontifikasi gagal dikirm']);
+        }
     }
 }

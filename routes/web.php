@@ -106,3 +106,6 @@ Route::middleware(['auth', 'role:customer-service'])->group(function () {
 Route::get('upload-perusahaan', [PerusahaanController::class, 'upload']);
 Route::post('store-upload', [PerusahaanController::class, 'storeUpload']);
 Route::get('/get-angkutan', [AngkutanController::class, 'getAngkutan']);
+
+//admin
+Route::get('/get-notif/{id}', [DataPenerbitanController::class, 'SendMail']);
