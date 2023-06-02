@@ -116,18 +116,18 @@
                                         </button>
                                         <h4 class="modal-title">
                                             <i class="bi bi-exclamation-octagon-fill" style="color: red"></i>
-                                            Konfirmasi Hapus Data
+                                            Konfirmasi Pembatalan Permohonan
                                         </h4>
                                     </div>
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <p>Apakah anda yakin untuk menghpus data ini? semua data yang
-                                                    berhubungan dengan data ini juga akan terhapus</p>
+                                                <p>Apakah anda yakin untuk membatalkan permohonan surat rekomendasi peruntukan angkutan umum ini?</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <form action="#" method="post" enctype="multipart/form-data">
+                                    <form action="{{url('angkutan/'.$item->pengajuan_angkutan->id)}}" method="post" enctype="multipart/form-data">
+                                        {{ method_field('delete') }}
                                         @csrf
                                         <div class="modal-footer">
                                             <button type="button" data-dismiss="modal" class="btn btn-default">

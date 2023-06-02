@@ -270,9 +270,18 @@ class AngkutanController extends Controller
      * @param  \App\Models\angkutan  $angkutan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(angkutan $angkutan)
+    public function destroy($id)
     {
-        //
+        $pengajuan = pengajuan_angkutan::where('id', $id)->first();
+        $angkutan = angkutan::where('id', $pengajuan->angkutan_id)->first();
+        $pengajuan->delete();
+        $angkutan->delete();
+
+        if ($angkutan) {
+            return redirect()->route('angkutan.index')->with(['success' => 'permohonan berhasil dihapus dan dibatalkan']);
+        } else {
+            return redirect()->route('angkutan.index')->with(['gagal' => 'permohonan gagal dihapus dan dibatalkan']);
+        }
     }
 
     public function cekAntrian($id)

@@ -1,5 +1,5 @@
 <!-- start: SIDEBAR -->
-<div class="main-navigation navbar-collapse collapse" >
+<div class="main-navigation navbar-collapse collapse" style="padding-top: 0.75rem !important" >
     <!-- start: MAIN MENU TOGGLER BUTTON -->
     <div class="navigation-toggler">
         <i class="clip-chevron-left"></i>

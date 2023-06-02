@@ -17,20 +17,28 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $users = ['admin', 'pengawas', 'petugas', 'pemohon', 'customer-service'];
+        // $users = ['admin', 'pengawas', 'petugas', 'pemohon', 'customer-service'];
 
-        $faker = Faker::create();
+        // $faker = Faker::create();
 
-        foreach($users as $user)
-        {
-            User::create([
-                'name' => $faker->name,
-                'email' => $user . '@mail.com',
-                'email_verified_at' => now(),
-                'password' => Hash::make($user),
-                'remember_token' => Str::random(10),
-                'role' => $user
-            ]);
-        }
+        // foreach($users as $user)
+        // {
+        //     User::create([
+        //         'name' => $faker->name,
+        //         'email' => $user . '@mail.com',
+        //         'email_verified_at' => now(),
+        //         'password' => Hash::make($user),
+        //         'remember_token' => Str::random(10),
+        //         'role' => $user
+        //     ]);
+        // }
+        User::create([
+            'name' => 'administrator',
+            'email' => 'admin@mail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('admin123'),
+            'remember_token' => Str::random(10),
+            'role' => 'admin'
+        ]);
     }
 }

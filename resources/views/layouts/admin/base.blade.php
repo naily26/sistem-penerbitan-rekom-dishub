@@ -26,11 +26,13 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/main.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/main-responsive.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/admin/plugins/iCheck/skins/all.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/admin/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css')}}">
+    <link rel="stylesheet"
+        href="{{ asset('assets/admin/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/admin/plugins/perfect-scrollbar/src/perfect-scrollbar.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/theme_light.css')}}" type="text/css" id="skin_color">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/print.css')}}" type="text/css" media="print" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <!--[if IE 7]>
 		<link rel="stylesheet" href="assets/admin/plugins/font-awesome/css/font-awesome-ie7.min.css">
 		<![endif]-->
@@ -38,6 +40,10 @@
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
     <link rel="stylesheet" href="{{ asset('assets/admin/plugins/fullcalendar/fullcalendar/fullcalendar.css')}}">
     <style>
+        ul.main-navigation-menu>li>a {
+            font-weight: 500;
+        }
+
         .label-success {
             background: #EDFCF6;
             border: 1px solid #B1E5CC;
@@ -81,7 +87,7 @@
 </head>
 <!-- end: HEAD -->
 
-<body class="navigation-small">
+<body >
 
     @yield('slot')
 
@@ -105,7 +111,8 @@
     <script src="{{ asset('assets/admin/plugins/jquery-cookie/jquery.cookie.js')}}"></script>
     <script src="{{ asset('assets/admin/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js')}}"></script>
     <script src="{{ asset('assets/admin/js/main.js')}}"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js">
+    </script>
     <!-- end: MAIN JAVASCRIPTS -->
     <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
     @stack('script')

@@ -216,7 +216,6 @@
 <script src="{{asset('assets/admin/plugins/summernote/build/summernote.min.js')}}"></script>
 <script src="{{asset('assets/admin/plugins/ckeditor/ckeditor.js')}}"></script>
 <script src="{{asset('assets/admin/plugins/ckeditor/adapters/jquery.js')}}"></script>
-<script src="{{asset('assets/admin/js/form-validation.js')}}"></script>
 <script src="{{ asset('assets/admin/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js') }}"></script>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
