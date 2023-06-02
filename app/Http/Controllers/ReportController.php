@@ -38,7 +38,7 @@ class ReportController extends Controller
         $data['angkutanKeluar'] = count($angkutanKeluar);
 
         $petugas = petugas::all();
-        $arr;
+        $arr = [];
         foreach ($petugas as $key => $value) {
             $perusahaanMasukPetugas = pengajuan_perusahaan::whereBetween('tanggal_permohonan', [$from, $to])->where('petugas_id', $value->id)->get();
             $angkutanMasukPetugas = pengajuan_angkutan::whereBetween('tanggal_permohonan', [$from, $to])->where('petugas_id', $value->id)->get();

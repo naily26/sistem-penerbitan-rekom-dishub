@@ -45,12 +45,11 @@ class CustomerServiceController extends Controller
                 'email' => 'required|email|unique:users',
         ]);
         
-        $pw = '12345678';
-        $role = ['customer-service'];
+        $pw = strtok($request->email, '@');
 
         $user = User::create([
             'name' =>$request->nama,
-            'role'  == $role,
+            'role'  == 'customer-service',
             'email' =>$request->email,
             'password' => Hash::make($pw),
             'remember_token' => Str::random(10),

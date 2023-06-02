@@ -20,7 +20,6 @@
 						<!-- start: USER DROPDOWN -->
 						<li class="dropdown current-user">
 							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
-								<img src="{{asset('assets/admin/images/avatar-1-small.jpg')}}" class="circle-img" alt="">
 								<span class="username">{{ Auth::user()->name }}</span>
 								<i class="clip-chevron-down"></i>
 							</a>

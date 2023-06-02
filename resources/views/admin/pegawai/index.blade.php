@@ -160,13 +160,14 @@
                                                     <tbody>
                                                         <?php $no=1 ?>
                                                         @foreach ($pengawas as $key => $data)
+                                                        @php $pw = strtok($data->user->email, '@'); @endphp
                                                         <tr>
                                                             <td>{{$no}}</td>
                                                             <td class="hidden-xs">{{$data->nama}}</td>
                                                             <td>{{$data->jabatan}}</td>
                                                             <td>{{$data->lembaga}}</td>
                                                             <td>{{$data->user->email}}</td>
-                                                            <td>12345678</td>
+                                                            <td>{{$pw}}</td>
                                                             <td>
                                                                 <a class="btn btn-xs btn-light-grey" href="{{ route('pengawas.edit', $data->id)}}"><i class="fa fa-edit"></i>
                                                                     edit</a>
@@ -238,12 +239,13 @@
                                                     <tbody>
                                                         <?php $no=1 ?>
                                                         @foreach ($cs as $key => $data)
+                                                        @php $pwd = strtok($data->user->email, '@'); @endphp
                                                         <tr>
                                                             <td>{{$no}}</td>
                                                             <td >{{$data->nama}}</td>
                                                             <td>{{$data->user->email}}</td>
                                                             <td>{{$data->no_hp}}</td>
-                                                            <td>12345678</td>
+                                                            <td>{{$pwd}}</td>
                                                             <td>
                                                                 <a class="btn btn-xs btn-light-grey" href="{{ route('customer-service.edit', $data->id)}}"><i class="fa fa-edit"></i>
                                                                     edit</a>

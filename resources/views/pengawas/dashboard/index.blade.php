@@ -36,28 +36,34 @@
                             <div class="user-left">
                                 <div class="center">
                                     <h4>{{ Auth::user()->name }}</h4>
-                                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                                        <div class="user-image">
-                                            <div class="fileupload-new thumbnail"><img
-                                                    style="max-width: 200px; max-height: 150px; line-height: 20px;"
-                                                    src="https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"
-                                                    alt="">
-                                            </div>
-                                            <div class="fileupload-preview fileupload-exists thumbnail"
-                                                style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                            <div class="user-image-buttons">
-                                                <span class="btn btn-teal btn-file btn-sm"><span
-                                                        class="fileupload-new"><i class="fa fa-pencil"></i></span><span
-                                                        class="fileupload-exists"><i class="fa fa-pencil"></i></span>
-                                                    <input type="file">
-                                                </span>
-                                                <a href="#" class="btn fileupload-exists btn-bricky btn-sm"
-                                                    data-dismiss="fileupload">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
+                                    <form action="{{url('upload-profile')}}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{Auth::user()->id}}">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                            <div class="user-image">
+                                                <div class="fileupload-new thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"><img
+                                                        src=" <?= Auth::user()->foto ?? asset('assets/admin/images/avatar-1-xl.jpg') ?> "
+                                                        alt="">
+                                                </div>
+                                                <div class="fileupload-preview fileupload-exists thumbnail"
+                                                    style="max-width: 200px; max-height: 150px; line-height: 20px;">
+                                                </div>
+                                                <div class="user-image-buttons">
+                                                    <span class="btn btn-teal btn-file btn-sm"><span
+                                                            class="fileupload-new"><i
+                                                                class="fa fa-pencil"></i></span><span
+                                                            class="fileupload-exists"><i
+                                                                class="fa fa-pencil"></i></span>
+                                                        <input type="file" name="foto" onchange="this.form.submit();">
+                                                    </span>
+                                                    <a href="#" class="btn fileupload-exists btn-bricky btn-sm"
+                                                        data-dismiss="fileupload">
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                     <hr>
                                 </div>
                                 <table class="table table-condensed table-hover">

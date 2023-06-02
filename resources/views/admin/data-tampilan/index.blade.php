@@ -114,7 +114,7 @@
 														Video Youtube Tutorial
 													</label>
 													<textarea class="form-control" id="video" name="video"  rows="3"> {{$data['video']}}</textarea>
-                                                    <p>*Ikuti tutorial berikut <a href="https://support.google.com/youtube/answer/171780?hl=id" target="_blank"></a></p>
+                                                    <p>*Ikuti tutorial berikut <a href="https://support.google.com/youtube/answer/171780?hl=id" target="_blank">get-link</a></p>
 												</div>
                                                 <div class="form-group">
                                                     <label class="control-label">

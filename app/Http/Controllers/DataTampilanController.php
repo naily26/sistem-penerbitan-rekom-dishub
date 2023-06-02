@@ -51,21 +51,21 @@ class DataTampilanController extends Controller
         );
         
         $data = data_tampilan::first();
-        if($data == null ) {
+        if(is_null($data)) {
             $cek =  data_tampilan::create($request->all());
             if($request->foto_persyaratan) { $cek->foto_persyaratan = $this->uploadFile($request, 'foto_persyaratan');}
             if($request->dokumen_pedoman) {$cek->dokumen_pedoman = $data_dokumen_pedoman = $this->uploadFile($request, 'dokumen_pedoman');}
             if($request->foto_lembaga) {$cek->foto_lembaga = $data_foto_lembaga = $this->uploadFile($request, 'foto_lembaga');}
             $cek->save();
         } else {
-            $cek = $data->update($request->all());
-            if($request->foto_persyaratan) { $cek->foto_persyaratan = $this->uploadFile($request, 'foto_persyaratan');}
-            if($request->dokumen_pedoman) {$cek->dokumen_pedoman = $data_dokumen_pedoman = $this->uploadFile($request, 'dokumen_pedoman');}
-            if($request->foto_lembaga) {$cek->foto_lembaga = $data_foto_lembaga = $this->uploadFile($request, 'foto_lembaga');}
+            $data->update($request->all());
+            if($request->foto_persyaratan) { $data->foto_persyaratan = $this->uploadFile($request, 'foto_persyaratan');}
+            if($request->dokumen_pedoman) {$data->dokumen_pedoman = $data_dokumen_pedoman = $this->uploadFile($request, 'dokumen_pedoman');}
+            if($request->foto_lembaga) {$data->foto_lembaga = $data_foto_lembaga = $this->uploadFile($request, 'foto_lembaga');}
             $data->save();
         }
 
-        if($cek) {
+        if($data) {
             return redirect()->route('data-tampilan.index')->with(['success'=>'data berhasil diperbarui']);
         } else {
             return redirect()->route('data-tampilan.index')->with(['gagal'=>'data gagal diperbarui']);

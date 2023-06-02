@@ -57,13 +57,14 @@ class PengawasController extends Controller
             [
                 'email' => 'required|email|unique:users',
             ]);
-        
+        $pw = strtok($request->email, '@');
         $user = User::create([
             'name' =>$request->nama,
             'role'  =>'pengawas',
             'email' =>$request->email,
-            'password'   =>bcrypt(12345678),
+            'password'   =>bcrypt($pw),
         ]);
+        $user->update([$user->role = 'pengawas']);
 
         $pengawas = pengawas::create([
             'user_id' => $user->id,
@@ -148,5 +149,33 @@ class PengawasController extends Controller
         } else {
             return redirect()->to('/pegawai')->with(['gagal'=>'data gagal dihapus']);
         }
+    }
+
+    public function uploadProfile(Request $request) {
+        $user = user::find($request->id);
+        $foto = null;
+        $foto = $this->uploadFile($request, 'foto');
+        $user->foto = $foto;
+        $user->save();
+        if(!is_null($foto)) {
+            return redirect()->back()->with('success', 'data berhasil disimpan');
+        } else {
+            return redirect()->back()->with(['gagal'=>'data gagal disimpan']);
+        }
+    }
+
+    public function uploadFile(Request $request,$oke)
+    {
+            $result ='';
+            $file = $request->file($oke);
+            $name = $file->getClientOriginalName();
+            $extension = explode('.',$name);
+            $extension = strtolower(end($extension));
+            $key = rand().'-'.$oke;
+            $tmp_file_name = "{$key}.{$extension}";
+            $tmp_file_path = "admin/".$oke."/";
+            $file->move($tmp_file_path,$tmp_file_name);
+            $result = url('/').'/'.'admin/'.$oke.''.'/'.$tmp_file_name;
+        return $result;
     }
 }

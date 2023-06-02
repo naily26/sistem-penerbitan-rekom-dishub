@@ -36,26 +36,35 @@
                             <div class="user-left">
                                 <div class="center">
                                     <h4>{{ Auth::user()->name }}</h4>
-                                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                                        <div class="user-image">
-                                            <div class="fileupload-new thumbnail"><img
-                                                    src="assets/admin/images/avatar-1-xl.jpg" alt="">
-                                            </div>
-                                            <div class="fileupload-preview fileupload-exists thumbnail"
-                                                style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                            <div class="user-image-buttons">
-                                                <span class="btn btn-teal btn-file btn-sm"><span
-                                                        class="fileupload-new"><i class="fa fa-pencil"></i></span><span
-                                                        class="fileupload-exists"><i class="fa fa-pencil"></i></span>
-                                                    <input type="file">
-                                                </span>
-                                                <a href="#" class="btn fileupload-exists btn-bricky btn-sm"
-                                                    data-dismiss="fileupload">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
+                                    <form action="{{url('upload-profile')}}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{Auth::user()->id}}">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                            <div class="user-image">
+                                                <div class="fileupload-new thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"><img
+                                                        src=" <?= Auth::user()->foto ?? asset('assets/admin/images/avatar-1-xl.jpg') ?> "
+                                                        alt="">
+                                                </div>
+                                                <div class="fileupload-preview fileupload-exists thumbnail"
+                                                    style="max-width: 200px; max-height: 150px; line-height: 20px;">
+                                                </div>
+                                                <div class="user-image-buttons">
+                                                    <span class="btn btn-teal btn-file btn-sm"><span
+                                                            class="fileupload-new"><i
+                                                                class="fa fa-pencil"></i></span><span
+                                                            class="fileupload-exists"><i
+                                                                class="fa fa-pencil"></i></span>
+                                                        <input type="file" name="foto" onchange="this.form.submit();">
+                                                    </span>
+                                                    <a href="#" class="btn fileupload-exists btn-bricky btn-sm"
+                                                        data-dismiss="fileupload">
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                     <hr>
                                 </div>
                                 <table class="table table-condensed table-hover">
@@ -72,19 +81,19 @@
                                                     {{ Auth::user()->email }}
                                                 </a></td>
                                         </tr>
-                                        <tr>
+                                        {{-- <tr>
                                             <td>phone:</td>
-                                            <td>(641)-734-4763</td>
-                                        </tr>
+                                            <td>{{ Auth::user()->petugas->no_hp }}</td>
+                                        </tr> --}}
                                         <tr>
                                             <td>Kode</td>
                                             <td>
-                                                peterclark82
+                                                {{ Auth::user()->petugas->kode }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Jabatan:</td>
-                                            <td>Staff Angkutan Darat</td>
+                                            <td>{{ Auth::user()->petugas->jabatan }}</td>
                                         </tr>
                                         <tr>
                                             <td>Status</td>
@@ -141,10 +150,11 @@
                                                         ella@example.com
                                                     </a></td>
                                                 <td class="center">
-                                                    <a class="btn btn-xs btn-blue" style="font-size: 8pt; padding-block: 2px"
+                                                    <a class="btn btn-xs btn-blue"
+                                                        style="font-size: 8pt; padding-block: 2px"
                                                         href="{{url('take-antrian', $item->id)}}"><i
                                                             class="fa fa-cog"></i>
-                                                         Proses data</a>
+                                                        Proses data</a>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -168,21 +178,19 @@
 
     @push('script')
     <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-    <script src="assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
-    <script src="assets/plugins/jquery.pulsate/jquery.pulsate.min.js"></script>
-    <script src="assets/js/pages-user-profile.js"></script>
+    <script src="{{asset('assets/admin/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js')}}"></script>
+    <script src="{{asset('assets/admin/plugins/jquery.pulsate/jquery.pulsate.min.js')}}"></script>
+    <script src="{{asset('assets/admin/js/pages-user-profile.js')}}"></script>
     <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
     <script>
         jQuery(document).ready(function () {
             Main.init();
-            Index.init();
-            TableData.init();
         });
 
     </script>
     @endpush
 
     @push('style')
-    <link rel="stylesheet" href="assets/admin/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
-    <link rel="stylesheet" href="assets/admin/plugins/bootstrap-social-buttons/social-buttons-3.css">
+    <link rel="stylesheet" href="{{asset('assets/admin/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/admin/plugins/bootstrap-social-buttons/social-buttons-3.css')}}">
     @endpush

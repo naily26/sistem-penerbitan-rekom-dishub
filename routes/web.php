@@ -109,3 +109,6 @@ Route::get('/get-angkutan', [AngkutanController::class, 'getAngkutan']);
 
 //admin
 Route::get('/get-notif/{id}', [DataPenerbitanController::class, 'SendMail']);
+
+//all
+Route::post('upload-profile', [App\Http\Controllers\PengawasController::class, 'uploadProfile']);
