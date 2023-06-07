@@ -12,7 +12,7 @@ use App\Exports\PengajuanPerusahaanExport;
 use App\Exports\PengajuanAngkutanExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\NotifMail;
+use App\Mail\NotifPerusahaan;
 
 class DataPenerbitanController extends Controller
 {

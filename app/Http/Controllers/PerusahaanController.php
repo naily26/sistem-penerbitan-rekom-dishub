@@ -9,6 +9,8 @@ use App\Models\petugas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\kbli;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NotifPerusahaan;
 
 use PDF;
 use Carbon\Carbon;
@@ -310,6 +312,7 @@ class PerusahaanController extends Controller
         $pengajuan->status_penerbitan = 'birokrasi';
         $pengajuan->tanggal_birokrasi = $today;
         $pengajuan->save();
+
         if($pengajuan) {
             return redirect()->route('perusahaan.index')->with(['success'=>'data berhasil diperbaharui']);
         } else {
@@ -323,7 +326,8 @@ class PerusahaanController extends Controller
         $pengajuan->status_penerbitan = 'diterbitkan';
         $pengajuan->tanggal_penerbitan = $today;
         $pengajuan->save();
-        if($pengajuan) {
+        $notif = $this->SendMail($pengajuan->perusahaan_id);
+        if($notif) {
             return redirect()->route('perusahaan.index')->with(['success'=>'data berhasil diperbaharui']);
         } else {
             return redirect()->route('perusahaan.index')->with(['gagal'=>'data gagal diperbaharui']);
@@ -386,6 +390,18 @@ class PerusahaanController extends Controller
             return redirect()->route('perusahaan.index')->with(['success'=>'data berhasil ditambahkan']);
         } else {
             return redirect()->route('perusahaan.index')->with(['gagal'=>'data gagal ditambahkan']);
+        }
+    }
+
+    public function SendMail($id) {
+        $data = perusahaan::where('id', $id)->first();
+        $mail = $data->user->email;
+        //dd($mail);
+        $send =  Mail::to($mail)->send(new NotifPerusahaan($data));
+        if($send) {
+            return redirect()->back()->with(['success'=>'Nontifikasi berhasil dikirim']);
+        } else {
+            return redirect()->back()->with(['gagal'=>'Nontifikasi gagal dikirm']);
         }
     }
 }

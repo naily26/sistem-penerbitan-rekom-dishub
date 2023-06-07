@@ -101,7 +101,7 @@
                             <tr>
                                 <td class="column-left">Tanggal Permohonan</td>
                                 <td class="column-right">
-                                    {{$data->tanggal_permohonan}}</td>
+                                    {{$data->pengajuan_perusahaan->tanggal_permohonan}}</td>
                             </tr>
                             <tr>
                                 <td class="column-left">Surat Permohonan</td>

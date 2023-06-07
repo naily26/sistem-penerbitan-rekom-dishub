@@ -155,9 +155,9 @@
                                                                     href="#konfirmasi-penerbitan{{$item->id}}" data-toggle="modal"><i
                                                                         class="fa  fa-check-square-o"></i>
                                                                     konfirmasi penerbitan</a>
-                                                                @elseif($item->status_penerbitan == 'diterbitkan')
+                                                                {{-- @elseif($item->status_penerbitan == 'diterbitkan')
                                                                     <a class="btn btn-xs btn-primary" href="{{url('get-notif', $item->perusahaan->id)}}"><i class="fa fa-envelope"></i>
-                                                                        Kirim Nontifikasi</a>
+                                                                        Kirim Nontifikasi</a> --}}
                                                                 @endif
                                                             </td>
                                                             <div id="naik{{$item->id}}" class="modal fade" tabindex="-1"

@@ -12,6 +12,8 @@ use App\Models\petugas;
 use App\Models\kota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NotifAngkutan;
 
 use  PDF;
 use Carbon\Carbon;
@@ -381,7 +383,8 @@ class AngkutanController extends Controller
         $pengajuan->status_penerbitan = 'diterbitkan';
         $pengajuan->tanggal_penerbitan = $today;
         $pengajuan->save();
-        if ($pengajuan) {
+        $notif = $this->SendMail($pengajuan->angkutan_id);
+        if ($notif) {
             return redirect()->route('angkutan.index')->with(['success' => 'data berhasil diperbaharui']);
         } else {
             return redirect()->route('angkutan.index')->with(['gagal' => 'data gagal diperbaharui']);
@@ -406,5 +409,17 @@ class AngkutanController extends Controller
     {
         $angkutan = angkutan::where('user_id', Auth::user()->id)->get();
         return response()->json($angkutan);
+    }
+
+    public function SendMail($id) {
+        $data = angkutan::where('id', $id)->first();
+        $mail = $data->user->email;
+        //dd($mail);
+        $send =  Mail::to($mail)->send(new NotifAngkutan($data));
+        if($send) {
+            return redirect()->back()->with(['success'=>'Nontifikasi berhasil dikirim']);
+        } else {
+            return redirect()->back()->with(['gagal'=>'Nontifikasi gagal dikirm']);
+        }
     }
 }

@@ -25,7 +25,7 @@
          </td>
          <td style="width:487.8pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
          <p style="margin-top:3pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><span style="font-family:'Arial
-        Narrow';">Surat permohonan Pimpinan&nbsp;</span><strong><span style="font-family:'Arial Narrow';">{{$detail->perusahaan->nama_perusahaan}}</span></strong><span style="font-family:'Arial Narrow';">&nbsp;Nomor :&nbsp;</span><strong><span style="font-family:'Arial
+        Narrow';">Surat permohonan Pimpinan&nbsp;</span><strong><span style="font-family:'Arial Narrow';">{{$detail->angkutan->perusahaan->nama_perusahaan}}</span></strong><span style="font-family:'Arial Narrow';">&nbsp;Nomor :&nbsp;</span><strong><span style="font-family:'Arial
         Narrow';">{{$detail->nomor_permohonan}}</span></strong><span style="font-family:'Arial Narrow';">&nbsp;&nbsp;</span><span style="fontfamily:'Arial Narrow';">tanggal&nbsp;</span><strong><span style="font-family:'Arial Narrow';"><?php echo tanggal_indonesia($detail->tanggal_permohonan); ?></span></strong></p>
          </td>
          </tr>
@@ -260,7 +260,7 @@
          </td>
          <td style="width:353.9pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
          <p style="margin-top:2pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Arial
-        Narrow';">{{$detail->angkutan->perusahaan->kode->keterangan}}</span></strong></p>
+        Narrow';">{{$detail->angkutan->perusahaan->kbli->keterangan}}</span></strong></p>
          </td>
          </tr>
          <tr>

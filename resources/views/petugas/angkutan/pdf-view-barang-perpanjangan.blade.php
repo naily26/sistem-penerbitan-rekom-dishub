@@ -37,7 +37,7 @@ Narrow';">1.</span></p>
                 </td>
                 <td style="width:487.8pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:3pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><span style="font-family:'Arial
-Narrow';">Surat permohonan Pimpinan&nbsp;</span><strong><span style="font-family:'Arial Narrow';">{{$detail->perusahaan->nama_perusahaan}}</span>
+Narrow';">Surat permohonan Pimpinan&nbsp;</span><strong><span style="font-family:'Arial Narrow';">{{$detail->angkutan->perusahaan->nama_perusahaan}}</span>
                         </strong><span style="font-family:'Arial Narrow';">&nbsp;nomor&nbsp;</span><strong><span style="font-family:'Arial
 Narrow';">{{$detail->nomor_permohonan}}</span></strong><span style="font-family:'Arial Narrow';">&nbsp;&nbsp;</span><span
                             style="fontfamily:'Arial Narrow';">tanggal</span><span
@@ -323,7 +323,7 @@ Narrow';">Peruntukan</span></p>
                 </td>
                 <td style="width:353.9pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:2pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Arial
-Narrow';">{{$detail->angkutan->perusahaan->kode->keterangan}}</span></strong></p>
+Narrow';">{{$detail->angkutan->perusahaan->kbli->keterangan}}</span></strong></p>
                 </td>
             </tr>
             <tr>

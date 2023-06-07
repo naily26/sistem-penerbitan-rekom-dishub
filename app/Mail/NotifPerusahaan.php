@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Perusahaan;
 
-class NotifMail extends Mailable
+class NotifPerusahaan extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,7 +30,7 @@ class NotifMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Notif Mail',
+            subject: 'Pengambilan Surat Keterangan Perusahaan',
         );
     }
 
@@ -40,7 +40,7 @@ class NotifMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'admin.mail.send',
+            view: 'admin.mail.perusahaan',
         );
     }
 
