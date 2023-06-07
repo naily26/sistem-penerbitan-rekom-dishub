@@ -81,26 +81,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <h2 style="text-align: right;">PP NO 5 TAHUN 2021
+                    <h2 style="text-align: right;"> {{$data->dasar_hukum}}
                     </h2>
                     <hr class="fade-left">
                     <p style="text-align: right;">
-                        1. Bagi perusahaan Angkutan Umum yang memperoleh Nomor Induk Berusaha
-                        (NIB) dan Sertifikat Standar Perizinan Berusaha Berbasis Risiko yang BELUM
-                        TERVERIFIKASI, dapat mengajukan penerbitan Tanda Nomor Kendaraan
-                        Bermotor (TNKB) untuk memperoleh insentif pajak kendaraan bermotor (PKB)
-                        dengan melampirkan dokumen Surat Keterangan Perusahaan dan
-                        Rekomendasi Peruntukan Angkutan Umum pada Dinas Perhubungan Provinsi
-                        Jawa Timur.
+                        {{$data->isi_dasar_hukum}}
                     </p>
-                    <p style="text-align: right;">
-                        2. Bagi angkutan penumpang umum yang izin trayek/penyelenggaraannya
-                        diterbitkan oleh Dinas Perhubungan Kabupaten/Kota, Surat Keterangan
-                        Perusahaan dan Rekomendasi Peruntukan Angkutan Penumpang umum
-                        diberikan oleh Dinas Perhubungan Kabupaten/Kota sesuai domisili
-                        perusahaan angkutan.
-                    </p>
-                    <hr class="fade-left">
                 </div>
                 <div class="col-sm-6">
                     <ul class="icon-list animate-group">
@@ -134,19 +120,6 @@
                                 data-animation-options='{"animation":"scaleToBottom", "duration":"300", "delay": "300"}'>
                             </div>
                             <i class="clip-stack-empty circle-icon circle-teal animate"
-                                data-animation-options='{"animation":"flipInY", "duration":"600"}'></i>
-                            <div class="icon-list-content">
-                                <h4>Petugas Mencetak Surat</h4>
-                                <p>
-                                    Jika persyaratan telah dikonfirmasi lengkap, maka petugas akan mencetak surat keterngan perusahaan dan rekomendasi peruntukan.
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline animate"
-                                data-animation-options='{"animation":"scaleToBottom", "duration":"300", "delay": "300"}'>
-                            </div>
-                            <i class="clip-paperplane circle-icon circle-green animate"
                                 data-animation-options='{"animation":"flipInY", "duration":"600"}'></i>
                             <div class="icon-list-content">
                                 <h4>Penyerahan Surat</h4>
@@ -269,7 +242,7 @@
                             </li>
                         </ul>
                         <hr class="fade-right">
-                        <a href="#" class="btn btn-default"><i class="fa fa-info"></i> Learn more...</a>
+                        
                     </div>
                 </div>
             </div>

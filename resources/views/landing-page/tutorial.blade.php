@@ -77,7 +77,7 @@
                                                 <img src="https://play-lh.googleusercontent.com/BkRfMfIRPR9hUnmIYGDgHHKjow-g18-ouP6B2ko__VnyUHSi1spcc78UtZ4sVUtBH4g" alt="">
                                             </div>
                                             <p>
-                                                <strong>Dokumen Pedoman</strong><span>Silahkan mengunduh dokumen berikut untuk tutorial penggunaan aplikasi. <br/> <a><i class="clip-file-pdf"></i> guideline-book.pdf </a></span>
+                                                <strong>Dokumen Pedoman</strong><span>Silahkan mengunduh dokumen berikut untuk tutorial penggunaan aplikasi. <br/> <a href="{{$data->dokumen_pedoman}}" target="_blank"><i class="clip-file-pdf"></i> guideline-book.pdf </a></span>
                                             </p>
                                         </div>
                                     </div>

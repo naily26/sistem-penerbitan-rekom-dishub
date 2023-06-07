@@ -55,7 +55,7 @@
             <div class="portfolio-title">
                 <div class="row">
                     <div class="col-md-12 center">
-                        <h2 class="shorter">Dinas Perhubungan Jawa Timur</h2>
+                        <h2 class="shorter">Dinas Perhubungan Provinsi Jawa Timur</h2>
                     </div>
                 </div>
             </div>
@@ -65,16 +65,7 @@
                     <div class="flexslider" data-plugin-options='{"directionNav":true}'>
                         <ul class="slides">
                             <li>
-                                <img src="assets/frontend/images/image01.jpg" />
-                            </li>
-                            <li>
-                                <img src="assets/frontend/images/image02.jpg" />
-                            </li>
-                            <li>
-                                <img src="assets/frontend/images/image03.jpg" />
-                            </li>
-                            <li>
-                                <img src="assets/frontend/images/image04.jpg" />
+                                <img src="{{$data->foto_lembaga}}" />
                             </li>
                         </ul>
                     </div>
@@ -85,17 +76,7 @@
                             <div class="col-md-12">
                                 <ul class="pull-right">
                                     <li>
-                                        <i class="fa fa-calendar"></i> 21 November 2014
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-tags"></i>
-                                        <a href="#">
-                                            PSD
-                                        </a>
-                                        ,
-                                        <a href="#">
-                                            Design
-                                        </a>
+                                        <i class="fa fa-calendar"></i> {{date('Y-m-d')}}
                                     </li>
                                 </ul>
                             </div>
@@ -103,10 +84,7 @@
                     </div>
                     <h4>Deskripsi</h4>
                     <p class="taller">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus nibh sed elimttis
-                        adipiscing. Fusce in hendrerit purus. Suspendisse potenti. Proin quis eros odio, dapibus dictum
-                        mauris. Donec nisi libero, adipiscing id pretium eget, consectetur sit amet leo. Nam at eros
-                        quis mi egestas fringilla non nec purus.
+                        {{$data->deskripsi_lembaga}}
                     </p>
                     <span data-appear-animation-delay="800" data-appear-animation="rotateInUpLeft"
                         class="arrow hlb appear-animation rotateInUpLeft appear-animation-visible"
@@ -118,10 +96,7 @@
                             </p>
                             <ul class="list list-skills icons list-unstyled list-inline">
                                 <li>
-                                    <i class="fa fa-phone"></i> 08123456789
-                                </li>
-                                <li>
-                                    <i class="fa fa-envelope"></i> Illustrator
+                                    <i class="fa fa-phone"></i> {{$data->telepon_lembaga}}
                                 </li>
                             </ul>
                         </li>
@@ -130,7 +105,7 @@
                                 <strong>Alamat:</strong>
                             </p>
                             <p>
-                                Peter Clark
+                                {{$data->alamat_lembaga}}
                             </p>
                         </li>
                     </ul>
@@ -138,7 +113,7 @@
             </div>
         </div>
     </section>
-    <section class="wrapper padding50">
+    {{-- <section class="wrapper padding50">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -204,7 +179,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 </div>
 <!-- end: MAIN CONTAINER -->
 

@@ -8,7 +8,7 @@
 </head>
 <body>
     <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Logo_Dishub.png" />
-    <h2>Yth. Pimpinan <b>{{$data_mail->nama_perusahaan}}</b>,</h2>
+    <h2>Yth. Pimpinan <b>{{$data_mail->perusahaan->nama_perusahaan}}</b>,</h2>
     <p>Dengan ini kami ingin memberitahukan bahwa status permohonan surat yang anda ajukan pada tanggal @php  echo tanggal_indonesia($data_mail->pengajuan_angkutan->tanggal_permohonan);  @endphp dengan rincian : </p>
     <table>
         <tr>
