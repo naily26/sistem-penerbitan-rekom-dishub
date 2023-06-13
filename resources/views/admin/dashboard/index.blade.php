@@ -32,13 +32,13 @@
                 <div class="core-box">
                     <div class="heading">
                         <i class="clip-user-4 circle-icon circle-green"></i>
-                        <h2>Manage Petugas</h2>
+                        <h2>Mengelola Pegawai</h2>
                     </div>
                     <div class="content">
-                        Pada halaman ini, anda dapat menambahkan data petugas untuk membuat akun petugas
+                        Pada halaman ini, anda dapat mengelola data pegawai untuk membuat akun pegawai.
                     </div>
                     <a class="view-more" href="#">
-                        View More <i class="clip-arrow-right-2"></i>
+                        Lihat <i class="clip-arrow-right-2"></i>
                     </a>
                 </div>
             </div>
@@ -46,13 +46,13 @@
                 <div class="core-box">
                     <div class="heading">
                         <i class="clip-code circle-icon circle-teal"></i>
-                        <h2>Manage KBLI</h2>
+                        <h2>Mengelola KBLI</h2>
                     </div>
                     <div class="content">
                         Pada halaman ini, anda dapat mengelola kode KBLI (menambah, mengedit dan menghapus). 
                     </div>
                     <a class="view-more" href="#">
-                        View More <i class="clip-arrow-right-2"></i>
+                        Lihat <i class="clip-arrow-right-2"></i>
                     </a>
                 </div>
             </div>
@@ -60,13 +60,13 @@
                 <div class="core-box">
                     <div class="heading">
                         <i class="clip-clip circle-icon circle-bricky"></i>
-                        <h2>Manage Landing Page</h2>
+                        <h2>Mengelola Landing Page</h2>
                     </div>
                     <div class="content">
                         Pada halaman ini, anda dapat mengelola isi konten dari landing page. 
                     </div>
                     <a class="view-more" href="#">
-                        View More <i class="clip-arrow-right-2"></i>
+                        Lihat <i class="clip-arrow-right-2"></i>
                     </a>
                 </div>
             </div>

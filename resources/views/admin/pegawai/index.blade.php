@@ -87,10 +87,10 @@
                                                             <td>{{$data->no_hp}}</td>
                                                             <td>petugas{{$data->kode}}</td>
                                                             <td>
-                                                                <a class="btn btn-xs btn-light-grey" href="{{ route('petugas.edit', $data->id)}}"><i class="fa fa-edit"></i>
-                                                                    edit</a>
-                                                                <a class="btn btn-xs btn-light-grey" data-toggle="modal" href="#delete{{$data->id}}"><i class="fa fa-trash-o"></i>
-                                                                    hapus</a>
+                                                                <a class="act" href="{{ route('petugas.edit', $data->id)}}"><i class="fa fa-edit"> edit </i>
+                                                                    </a>
+                                                                <a class="act" style="color: red" data-toggle="modal" href="#delete{{$data->id}}"><i class="fa fa-trash-o"> hapus </i>
+                                                                    </a>
                                                             </td>
                                                         </tr>
                                                         <?php $no++ ?>
@@ -169,10 +169,10 @@
                                                             <td>{{$data->user->email}}</td>
                                                             <td>{{$pw}}</td>
                                                             <td>
-                                                                <a class="btn btn-xs btn-light-grey" href="{{ route('pengawas.edit', $data->id)}}"><i class="fa fa-edit"></i>
-                                                                    edit</a>
-                                                                <a class="btn btn-xs btn-light-grey" data-toggle="modal" href="#delete{{$data->id}}"><i class="fa fa-trash-o"></i>
-                                                                    hapus</a>
+                                                                <a class="act" href="{{ route('pengawas.edit', $data->id)}}"><i class="fa fa-edit"> edit </i>
+                                                                    </a>
+                                                                <a class="act" style="color: red" data-toggle="modal" href="#delete{{$data->id}}"><i class="fa fa-trash-o"> hapus </i>
+                                                                    </a>
                                                             </td>
                                                         </tr>
                                                         <?php $no++ ?>
@@ -247,10 +247,10 @@
                                                             <td>{{$data->no_hp}}</td>
                                                             <td>{{$pwd}}</td>
                                                             <td>
-                                                                <a class="btn btn-xs btn-light-grey" href="{{ route('customer-service.edit', $data->id)}}"><i class="fa fa-edit"></i>
-                                                                    edit</a>
-                                                                <a class="btn btn-xs btn-light-grey" data-toggle="modal" href="#delete{{$data->id}}"><i class="fa fa-trash-o"></i>
-                                                                    hapus</a>
+                                                                <a class="act" href="{{ route('customer-service.edit', $data->id)}}"><i class="fa fa-edit"> edit </i>
+                                                                    </a>
+                                                                <a class="act" style="color: red" data-toggle="modal" href="#delete{{$data->id}}"><i class="fa fa-trash-o"> hapus </i>
+                                                                    </a>
                                                             </td>
                                                         </tr>
                                                         <?php $no++ ?>
@@ -314,7 +314,10 @@
 
 <style>
 
-
+.act {
+        
+        margin: 3px;
+    }
 </style>
 @endpush
 

@@ -40,8 +40,8 @@
                         <table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
                             <thead>
                                 <tr>
-                                    <th class="sorting_asc">No</th>
-                                    <th>Kode</th>
+                                    <th>No</th>
+                                    <th class="hidden-xs sorting">Kode</th>
                                     <th>Keterangan</th>
                                     <th>Kategori</th>
                                     <th>Action</th>
@@ -57,15 +57,14 @@
                                     <td>{{$data->keterangan}}</td>
                                     <td>{{$data->kategori }}</td>
                                     <td>
-                                        <a class="btn btn-xs btn-warning"
-                                            href="{{ route('kbli.edit', $data->id)}}"><i class="fa fa-edit"></i>
-                                            edit</a>
-                                        <a class="btn btn-xs btn-danger" data-toggle="modal"
-                                            href="#delete{{$data->id}}"><i class="fa fa-trash-o"></i>
-                                            hapus</a>
-                                        <a class="btn btn-xs btn-primary"
-                                            href="{{ route('kbli.show',  $data->id)}}"><i class="fa fa-eye"></i>
-                                            detail</a>
+                                        <a class="act"
+                                            href="{{ route('kbli.edit', $data->id)}}"><i class="fa fa-edit"> edit </i>
+                                            </a>
+                                        <a style="color: red;" data-toggle="modal" class="act"
+                                            href="#delete{{$data->id}}"><i class="fa fa-trash-o"> hapus </i>
+                                            </a>
+                                        <a   class="act"
+                                            href="{{ route('kbli.show',  $data->id)}}"><i class="fa fa-info-circle"> detail</i> </a>
                                     </td>
                                 </tr>
                                 <?php $no++ ?>
@@ -128,17 +127,21 @@
     .btn-xs {
         margin-top: 4px;
     }
+    .act {
+        background-color: aliceblue;
+        margin-right: 8px;
+    }
 
 </style>
 @endpush
 
 @push('script')
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script type="text/javascript" src="assets/admin/plugins/select2/select2.min.js"></script>
-<script type="text/javascript" src="assets/admin/plugins/DataTables/media/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="assets/admin/plugins/DataTables/media/js/DT_bootstrap.js"></script>
-<script src="assets/admin/js/table-data.js"></script>
-<script src="assets/admin/js/index.js"></script>
+<script type="text/javascript" src="{{asset('assets/admin/plugins/select2/select2.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/admin/plugins/DataTables/media/js/jquery.dataTables.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/admin/plugins/DataTables/media/js/DT_bootstrap.js')}}"></script>
+<script src="{{asset('assets/admin/js/table-data.js')}}"></script>
+<script src="{{asset('assets/admin/js/index.js')}}"></script>
 <script src="{{ asset('assets/admin/plugins/bootstrap-modal/js/bootstrap-modal.js') }}"></script>
 <script src="{{ asset('assets/admin/plugins/bootstrap-modal/js/bootstrap-modalmanager.js') }}"></script>
 <script src="{{ asset('assets/admin/js/ui-modals.js') }}"></script>

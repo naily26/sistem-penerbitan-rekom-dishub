@@ -85,7 +85,9 @@
                     </h2>
                     <hr class="fade-left">
                     <p style="text-align: right;">
-                        {{$data->isi_dasar_hukum}}
+                        @php
+                        echo $data->isi_dasar_hukum
+                        @endphp
                     </p>
                 </div>
                 <div class="col-sm-6">
@@ -98,7 +100,8 @@
                             <div class="icon-list-content">
                                 <h4>Pemohon Mengajukan Permohonan Surat</h4>
                                 <p>
-                                    Proses pengajuan dilakukan melalui sistem dengan cara mendaftarkan akun terlebih dahulu kemudian mengisi data dan melengkapi persyaratan.
+                                    Proses pengajuan dilakukan melalui sistem dengan cara mendaftarkan akun terlebih
+                                    dahulu kemudian mengisi data dan melengkapi persyaratan.
                                 </p>
                             </div>
                         </li>
@@ -124,7 +127,8 @@
                             <div class="icon-list-content">
                                 <h4>Penyerahan Surat</h4>
                                 <p>
-                                    Proses penyerahan surat denagn cara pengambilan secara langsung di kantor Dinas Perhubungan Jawa Timur.
+                                    Proses penyerahan surat denagn cara pengambilan secara langsung di kantor Dinas
+                                    Perhubungan Jawa Timur.
                                 </p>
                             </div>
                         </li>
@@ -149,100 +153,23 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="group1" href="assets/frontend/images/image02.jpg" title="Caption here">
-                                    <img src="assets/frontend/images/image02.jpg" />
+                                <a class="group1" href="{{$data->foto_lembaga}}" title="Caption here">
+                                    <img src="{{$data->foto_lembaga}}" />
                                     <span class="image-overlay"> <i
                                             class="clip-expand circle-icon circle-main-color"></i> </span>
                                 </a>
-                            </li>
-                            <li>
-                                <a class="group1" href="assets/frontend/images/image03.jpg" title="Caption here">
-                                    <img src="assets/frontend/images/image03.jpg" />
-                                    <span class="image-overlay"> <i
-                                            class="clip-expand circle-icon circle-main-color"></i> </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="group1" href="assets/frontend/images/image04.jpg" title="Caption here">
-                                    <img src="assets/frontend/images/image04.jpg" />
-                                    <span class="image-overlay"> <i
-                                            class="clip-expand circle-icon circle-main-color"></i> </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="group1" href="assets/frontend/images/image05.jpg" title="Caption here">
-                                    <img src="assets/frontend/images/image05.jpg" />
-                                    <span class="image-overlay"> <i
-                                            class="clip-expand circle-icon circle-main-color"></i> </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="carousel" class="flexslider animate-group"
-                        data-plugin-options='{"itemWidth": 120, "itemMargin": 5}'>
-                        <ul class="slides">
-                            <li>
-                                <img src="assets/frontend/images/image01.jpg" class="animate"
-                                    data-animation-options='{"animation":"fadeIn", "duration":"600"}' />
-                            </li>
-                            <li>
-                                <img src="assets/frontend/images/image02.jpg" class="animate"
-                                    data-animation-options='{"animation":"fadeIn", "duration":"600"}' />
-                            </li>
-                            <li>
-                                <img src="assets/frontend/images/image03.jpg" class="animate"
-                                    data-animation-options='{"animation":"fadeIn", "duration":"600"}' />
-                            </li>
-                            <li>
-                                <img src="assets/frontend/images/image04.jpg" class="animate"
-                                    data-animation-options='{"animation":"fadeIn", "duration":"600"}' />
-                            </li>
-                            <li>
-                                <img src="assets/frontend/images/image05.jpg" class="animate"
-                                    data-animation-options='{"animation":"fadeIn", "duration":"600"}' />
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="section-content">
-                        <h2>Persyaratan</h2>
                         <hr class="fade-right">
-                        <p>
-                            Lid est laborum dolo rumes fugats untras. Etha rums ser quidem rerum facilis dolores nemis
-                            onis fugats vitaes nemo minima rerums unsers sadips amets.
-                        </p>
-                        <p>
-                            Ut enim ad minim veniam, quis nostrud Neque porro quisquam est, qui dolorem ipsum quia dolor
-                            sit amet, consectetur, adipisci amets uns.
-                        </p>
-                        <p>
-                            Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums
-                            unsers sadips ameet quasi architecto beatae vitae dicta sunt explicabo
-                        </p>
-                        <ul>
-                            <li>
-                                Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae,
-                                eleifend ac, enim.
-                            </li>
-                            <li>
-                                Nulla consequat massa quis enim.
-                                Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-                            </li>
-                            <li>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy.
-                            </li>
-                            <li>
-                                Ut enim ad minim veniam, quis nostrud Neque porro quisquam est, qui dolorem ipsum quia
-                                dolor sit amet, consectetur, adipisci amets uns.
-                            </li>
-                            <li>
-                                Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums
-                                unsers sadips ameet quasi architecto beatae vitae dicta sunt explicabo.
-                            </li>
-                        </ul>
+                        @php
+                        echo $data->persyaratan
+                        @endphp
                         <hr class="fade-right">
-                        
+
                     </div>
                 </div>
             </div>
