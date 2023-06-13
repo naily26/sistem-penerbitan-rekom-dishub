@@ -48,25 +48,25 @@
 													<label class="control-label">
 														Deskripsi Lembaga <span class="symbol required"></span>
 													</label>
-													<textarea class="form-control" id="deskripsi_lembaga" name="deskripsi_lembaga"  rows="5" required>{{$data['deskripsi_lembaga']}}</textarea>
+													<textarea class="form-control" id="deskripsi_lembaga" name="deskripsi_lembaga"  rows="5" required><?= $data['deskripsi_lembaga'] ?? ''?></textarea>
 												</div>
 												<div class="form-group">
 													<label class="control-label">
 														Alamat Lembaga <span class="symbol required"></span>
 													</label>
-													<textarea class="form-control" id="alamat_lembaga" name="alamat_lembaga"  rows="3" required>{{$data['alamat_lembaga']}}</textarea>
+													<textarea class="form-control" id="alamat_lembaga" name="alamat_lembaga"  rows="3" required><?= $data['alamat_lembaga'] ?? ''?></textarea>
 												</div>
 												<div class="form-group">
 													<label class="control-label">
 														Email Lembaga<span class="symbol required"></span>
 													</label>
-													<input type="email" placeholder="Email Lembaga" class="form-control" id="email_lembaga" name="email_lembaga" value="{{$data['email_lembaga']}}" required>
+													<input type="email" placeholder="Email Lembaga" class="form-control" id="email_lembaga" name="email_lembaga" value="<?= $data['email_lembaga'] ?? ''?>" required>
 												</div>
 												<div class="form-group">
 													<label class="control-label">
 														Nomor Telepon Lembaga<span class="symbol required"></span>
 													</label>
-													<input type="text" placeholder="Nomor Telepon Lembaga" class="form-control" name="telepon_lembaga" id="telepon_lembaga" value="{{$data['telepon_lembaga']}}" required>
+													<input type="text" placeholder="Nomor Telepon Lembaga" class="form-control" name="telepon_lembaga" id="telepon_lembaga" value="<?= $data['telepon_lembaga'] ?? ''?>" required>
 												</div>
                                                 <div class="form-group">
                                                     <label class="control-label">
@@ -101,19 +101,19 @@
 													<label class="control-label">
 														Dasar Hukum Penerbitan Rekom
 													</label>
-													<input type="text" class="form-control" id="dasar_hukum" name="dasar_hukum" value="{{$data['dasar_hukum']}}" required>
+													<input type="text" class="form-control" id="dasar_hukum" name="dasar_hukum" value="<?= $data['dasar_hukum'] ?? ''?>" required>
 												</div>
 												<div class="form-group connected-group">
 													<label class="control-label">
 														Isi Dasar Hukum Penerbitan Rekom
 													</label>
-													<textarea class="form-control" id="isi_dasar_hukum" name="isi_dasar_hukum"  rows="6" required>{{$data['isi_dasar_hukum']}}</textarea>
+													<textarea class="form-control" id="isi_dasar_hukum" name="isi_dasar_hukum"  rows="6" required><?= $data['isi_dasar_hukum'] ?? ''?></textarea>
 												</div>
 												<div class="form-group connected-group">
 													<label class="control-label">
 														Video Youtube Tutorial
 													</label>
-													<textarea class="form-control" id="video" name="video"  rows="3" required> {{$data['video']}}</textarea>
+													<textarea class="form-control" id="video" name="video"  rows="3" required> <?= $data['video'] ?? ''?></textarea>
                                                     <p>*Ikuti tutorial berikut <a href="https://support.google.com/youtube/answer/171780?hl=id" target="_blank">get-link</a></p>
 												</div>
                                                 <div class="form-group">
@@ -141,7 +141,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-													<p>Berikut dokumen yang telah erungga sebelumnya <a href=" {{$data['dokumen_pedoman']}}" target="_blank">pedoman.pdf</a></p>
+													<p>Berikut dokumen yang telah erungga sebelumnya <a href=" <?= $data['dokumen_pedoman'] ?? ''?>" target="_blank">pedoman.pdf</a></p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">
@@ -178,7 +178,7 @@
 													<label class="control-label">
 														Persyaratan Permohonan <span class="symbol required"></span>
 													</label>
-													<textarea class="ckeditor form-control" id="editor2" name="persyaratan" cols="10" rows="10" required>{{$data['persyaratan']}}</textarea>
+													<textarea class="ckeditor form-control" id="editor2" name="persyaratan" cols="10" rows="10" required><?= $data['persyaratan'] ?? ''?></textarea>
 												</div>
 											</div>
 										</div>
