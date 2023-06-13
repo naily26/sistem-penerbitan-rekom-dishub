@@ -62,7 +62,7 @@
                                     Kategori
                                 </label>
                                 <div class="col-sm-9">
-                                    <select class="form-control" id="keterangan" name="kategori" required>
+                                    <select class="select2-container form-control search-select" id="select-kategori" name="kategori" required>
                                         <option value="">&nbsp;</option>
                                         <option value="angkutan-barang-umum" {{ $kbli->kategori == 'angkutan-barang-umum' ? 'selected' : ''  }}>Angkutan Barang Umum</option>
                                         <option value="angkutan-barang-khusus" {{ $kbli->kategori == 'angkutan-barang-khusus' ? 'selected' : ''  }}>Angkutan Barang Khusus</option>
@@ -101,12 +101,17 @@
 
 @push('script')
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<script src="{{asset('assets/admin/plugins/select2/select2.min.js')}}"></script>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
     jQuery(document).ready(function () {
         Main.init();
         FormWizard.init();
+       
     });
+    $("#select-kategori").select2({
+            placeholder: 'Pilih Kategori', // Placeholder select
+        });
 
 </script>
 <script>
@@ -122,4 +127,5 @@
 @endpush
 
 @push('style')
+<link rel="stylesheet" href="{{asset('assets/admin/plugins/select2/select2.css')}}">
 @endpush

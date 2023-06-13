@@ -81,12 +81,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <h2 style="text-align: right;"> {{$data->dasar_hukum}}
+                    <h2 style="text-align: right;"> {{$data->dasar_hukum ?? null}}
                     </h2>
                     <hr class="fade-left">
                     <p style="text-align: right;">
                         @php
-                        echo $data->isi_dasar_hukum
+                        echo $data->isi_dasar_hukum ?? null
                         @endphp
                     </p>
                 </div>
