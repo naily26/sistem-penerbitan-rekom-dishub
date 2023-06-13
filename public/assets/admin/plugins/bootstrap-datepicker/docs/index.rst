@@ -6,13 +6,13 @@ Bootstrap-datepicker provides a flexible datepicker widget in the Twitter bootst
 .. figure:: _static/demo_head.png
     :align: center
 
-This is a fork of Stefan Petre's `original code <http://www.eyecon.ro/bootstrap-datepicker/>`_; thanks go to him for getting this thing started!
+This is a fork of Stefan Petre's `original code <https://www.eyecon.ro/bootstrap-datepicker/>`_; thanks go to him for getting this thing started!
 
 Please note that this fork is not used on Stefan's page at this time, nor is it maintained or contributed to by him.
 
-Versions are incremented according to `semver <http://semver.org/>`_.
+Versions are incremented according to `semver <https://semver.org/>`_.
 
-`Online Demo <http://eternicode.github.io/bootstrap-datepicker/>`_
+`Online Demo <https://eternicode.github.io/bootstrap-datepicker/>`_
 
 
 Requirements
@@ -21,8 +21,8 @@ Requirements
 * `Bootstrap`_ 2.0.4+
 * `jQuery`_ 1.7.1+
 
-.. _Bootstrap: http://twitter.github.com/bootstrap/
-.. _jQuery: http://jquery.com/
+.. _Bootstrap: https://twitter.github.com/bootstrap/
+.. _jQuery: https://jquery.com/
 
 These are the specific versions bootstrap-datepicker is tested against (``js`` files) and built against (``css`` files).  Use other versions at your own risk.
 

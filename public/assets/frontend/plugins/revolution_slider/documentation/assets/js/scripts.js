@@ -1,9 +1,9 @@
 /*!
  * Documenter 2.0
- * http://rxa.li/documenter
+ * https://rxa.li/documenter
  *
  * Copyright 2011, Xaver Birsak
- * http://revaxarts.com
+ * https://revaxarts.com
  *
  */
  

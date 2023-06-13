@@ -10,7 +10,7 @@
  
  <meta name="ROBOTS" content="NOARCHIVE">
  
- <link rel="icon" type="image/vnd.microsoft.icon" href="http://www.gstatic.com/codesite/ph/images/phosting.ico">
+ <link rel="icon" type="image/vnd.microsoft.icon" href="https://www.gstatic.com/codesite/ph/images/phosting.ico">
  
  
  <script type="text/javascript">
@@ -21,7 +21,7 @@
  var codesite_token = null;
  
  
- var CS_env = {"domainName":null,"projectHomeUrl":"/p/dynatree","token":null,"relativeBaseUrl":"","assetHostPath":"http://www.gstatic.com/codesite/ph","assetVersionPath":"http://www.gstatic.com/codesite/ph/15490321151412058579","projectName":"dynatree","profileUrl":null,"loggedInUserEmail":null};
+ var CS_env = {"domainName":null,"projectHomeUrl":"/p/dynatree","token":null,"relativeBaseUrl":"","assetHostPath":"https://www.gstatic.com/codesite/ph","assetVersionPath":"https://www.gstatic.com/codesite/ph/15490321151412058579","projectName":"dynatree","profileUrl":null,"loggedInUserEmail":null};
  var _gaq = _gaq || [];
  _gaq.push(
  ['siteTracker._setAccount', 'UA-18071-1'],
@@ -33,7 +33,7 @@
  
  (function() {
  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
- ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'https://www') + '.google-analytics.com/ga.js';
  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
  })();
  
@@ -46,22 +46,22 @@
  
  Dynatree is a JavaScript dynamic tree view plugin for jQuery with support for persistence, keyboard, checkboxes, drag&#39;n&#39;drop, and lazy loading. - Google Project Hosting
  </title>
- <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/15490321151412058579/css/core.css">
+ <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/codesite/ph/15490321151412058579/css/core.css">
  
- <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/15490321151412058579/css/ph_detail.css" >
+ <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/codesite/ph/15490321151412058579/css/ph_detail.css" >
  
  
- <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/15490321151412058579/css/d_sb.css" >
+ <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/codesite/ph/15490321151412058579/css/d_sb.css" >
  
  
  
 <!--[if IE]>
- <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/15490321151412058579/css/d_ie.css" >
+ <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/codesite/ph/15490321151412058579/css/d_ie.css" >
 <![endif]-->
  <style type="text/css">
- .menuIcon.off { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -42px }
- .menuIcon.on { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -28px }
- .menuIcon.down { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 0; }
+ .menuIcon.off { background: no-repeat url(https://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -42px }
+ .menuIcon.on { background: no-repeat url(https://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -28px }
+ .menuIcon.down { background: no-repeat url(https://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 0; }
  
  
  
@@ -159,16 +159,16 @@
 <!--[if lte IE 7]>
 <div style="text-align:center;">
 Your version of Internet Explorer is not supported. Try a browser that
-contributes to open source, such as <a href="http://www.firefox.com">Firefox</a>,
-<a href="http://www.google.com/chrome">Google Chrome</a>, or
-<a href="http://code.google.com/chrome/chromeframe/">Google Chrome Frame</a>.
+contributes to open source, such as <a href="https://www.firefox.com">Firefox</a>,
+<a href="https://www.google.com/chrome">Google Chrome</a>, or
+<a href="https://code.google.com/chrome/chromeframe/">Google Chrome Frame</a>.
 </div>
 <![endif]-->
 
 
 
  <table style="padding:0px; margin: 0px 0px 10px 0px; width:100%" cellpadding="0" cellspacing="0"
- itemscope itemtype="http://schema.org/CreativeWork">
+ itemscope itemtype="https://schema.org/CreativeWork">
  <tr style="height: 58px;">
  
  
@@ -177,7 +177,7 @@ contributes to open source, such as <a href="http://www.firefox.com">Firefox</a>
  <link itemprop="url" href="/p/dynatree">
  <a href="/p/dynatree/">
  
- <img src="http://www.gstatic.com/codesite/ph/images/defaultlogo.png" alt="Logo" itemprop="image">
+ <img src="https://www.gstatic.com/codesite/ph/images/defaultlogo.png" alt="Logo" itemprop="image">
  
  </a>
  </td>
@@ -346,7 +346,7 @@ contributes to open source, such as <a href="http://www.firefox.com">Firefox</a>
  
 <style type="text/css">
 .undermouse span {
- background-image: url(http://www.gstatic.com/codesite/ph/images/comments.gif); }
+ background-image: url(https://www.gstatic.com/codesite/ph/images/comments.gif); }
 </style>
 <table class="opened" id="review_comment_area"
 ><tr>
@@ -2588,9 +2588,9 @@ id=sl_svn680_278
 </div>
 
 
-<script src="http://www.gstatic.com/codesite/ph/15490321151412058579/js/source_file_scripts.js"></script>
+<script src="https://www.gstatic.com/codesite/ph/15490321151412058579/js/source_file_scripts.js"></script>
 
- <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/15490321151412058579/js/kibbles.js"></script>
+ <script type="text/javascript" src="https://www.gstatic.com/codesite/ph/15490321151412058579/js/kibbles.js"></script>
  <script type="text/javascript">
  var lastStop = null;
  var initialized = false;
@@ -2689,7 +2689,7 @@ id=sl_svn680_278
  
  }
  </script>
-<script src="http://www.gstatic.com/codesite/ph/15490321151412058579/js/code_review_scripts.js"></script>
+<script src="https://www.gstatic.com/codesite/ph/15490321151412058579/js/code_review_scripts.js"></script>
 <script type="text/javascript">
  function showPublishInstructions() {
  var element = document.getElementById('review_instr');
@@ -2702,7 +2702,7 @@ id=sl_svn680_278
  // register our source container with the commenting code
  var paths = {'svn680': '/trunk/src/GPL-LICENSE.txt'}
  codereviews = CR_controller.setup(
- {"domainName":null,"projectHomeUrl":"/p/dynatree","token":null,"relativeBaseUrl":"","assetHostPath":"http://www.gstatic.com/codesite/ph","assetVersionPath":"http://www.gstatic.com/codesite/ph/15490321151412058579","projectName":"dynatree","profileUrl":null,"loggedInUserEmail":null}, '', 'svn680', paths,
+ {"domainName":null,"projectHomeUrl":"/p/dynatree","token":null,"relativeBaseUrl":"","assetHostPath":"https://www.gstatic.com/codesite/ph","assetVersionPath":"https://www.gstatic.com/codesite/ph/15490321151412058579","projectName":"dynatree","profileUrl":null,"loggedInUserEmail":null}, '', 'svn680', paths,
  CR_BrowseIntegrationFactory);
  
  codereviews.registerActivityListener(CR_ActivityType.REVEAL_DRAFT_PLATE, showPublishInstructions);
@@ -2723,12 +2723,12 @@ id=sl_svn680_278
  window.onload = function() {keysOnLoadHandler(); revsOnLoadHandler();};
 
 </script>
-<script type="text/javascript" src="http://www.gstatic.com/codesite/ph/15490321151412058579/js/dit_scripts.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/codesite/ph/15490321151412058579/js/dit_scripts.js"></script>
 
  
  
  
- <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/15490321151412058579/js/ph_core.js"></script>
+ <script type="text/javascript" src="https://www.gstatic.com/codesite/ph/15490321151412058579/js/ph_core.js"></script>
  
  
  
@@ -2738,12 +2738,12 @@ id=sl_svn680_278
 <div id="footer" dir="ltr">
  <div class="text">
  <a href="/projecthosting/terms.html">Terms</a> -
- <a href="http://www.google.com/privacy.html">Privacy</a> -
+ <a href="https://www.google.com/privacy.html">Privacy</a> -
  <a href="/p/support/">Project Hosting Help</a>
  </div>
 </div>
  <div class="hostedBy" style="margin-top: -20px;">
- <span style="vertical-align: top;">Powered by <a href="http://code.google.com/projecthosting/">Google Project Hosting</a></span>
+ <span style="vertical-align: top;">Powered by <a href="https://code.google.com/projecthosting/">Google Project Hosting</a></span>
  </div>
 
  

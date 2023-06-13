@@ -37,7 +37,7 @@ You can change the duration of your animations, add a delay or change the number
 *Note: be sure to replace "vendor" in the CSS with the applicable vendor prefixes (webkit, moz, etc)*
 
 ## Custom Builds
-Animate.css is powered by [Grunt](http://gruntjs.com), and you can create custom builds pretty easily. First of all, you’ll need Grunt and all other dependencies:
+Animate.css is powered by [Grunt](https://gruntjs.com), and you can create custom builds pretty easily. First of all, you’ll need Grunt and all other dependencies:
 
 ```
 $ cd path/to/animate.css/
@@ -59,7 +59,7 @@ Next, run `grunt watch` to watch for changes and compile your custom builds. For
 ```
 
 ## License
-Animate.css is licensed under the MIT license. (http://opensource.org/licenses/MIT)
+Animate.css is licensed under the MIT license. (https://opensource.org/licenses/MIT)
 
 ## Contributing
-Pull requests are the way to go here. I apologise in advance for the slow action on pull requests and issues. I only have two rules for submitting a pull request: match the naming convention (camelCase, categorised [fades, bounces, etc]) and let us see a demo of submitted animations in a [pen](http://codepen.io). That last one is important.
+Pull requests are the way to go here. I apologise in advance for the slow action on pull requests and issues. I only have two rules for submitting a pull request: match the naming convention (camelCase, categorised [fades, bounces, etc]) and let us see a demo of submitted animations in a [pen](https://codepen.io). That last one is important.

@@ -1,10 +1,10 @@
-# [jQuery Transit](http://ricostacruz.com/jquery.transit)
+# [jQuery Transit](https://ricostacruz.com/jquery.transit)
 #### Super-smooth CSS3 transformations and transitions for jQuery
 
 jQuery Transit is a plugin for to help you do CSS transformations and 
 transitions in jQuery.
 
-Refer to the [jQuery Transit website](http://ricostacruz.com/jquery.transit) for 
+Refer to the [jQuery Transit website](https://ricostacruz.com/jquery.transit) for 
 examples.
 
 Usage
@@ -123,7 +123,7 @@ __[jQuery 2D transformations](https://github.com/heygrady/transform/)__
 * Pros: Tons of transformations.
 * Cons: No CSS transition support; animates via `fx.step`.
 
-__[jQuery CSS3 rotate](http://plugins.jquery.com/project/Rotate)__
+__[jQuery CSS3 rotate](https://plugins.jquery.com/project/Rotate)__
 
 * Pros: simply provides rotation.
 * Cons: simply provides rotation. No transitions support.
@@ -132,16 +132,16 @@ Acknowledgements
 ----------------
 
 © 2011, Rico Sta. Cruz. Released under the [MIT 
-License](http://www.opensource.org/licenses/mit-license.php).
+License](https://www.opensource.org/licenses/mit-license.php).
 
 jQuery Transit is authored and maintained by [Rico Sta. Cruz][rsc] with help 
 from it's [contributors][c]. It is sponsored by my startup, [Sinefunc, Inc][sf].
 
- * [My website](http://ricostacruz.com) (ricostacruz.com)
- * [Sinefunc, Inc.](http://sinefunc.com) (sinefunc.com)
- * [Github](http://github.com/rstacruz) (@rstacruz)
- * [Twitter](http://twitter.com/rstacruz) (@rstacruz)
+ * [My website](https://ricostacruz.com) (ricostacruz.com)
+ * [Sinefunc, Inc.](https://sinefunc.com) (sinefunc.com)
+ * [Github](https://github.com/rstacruz) (@rstacruz)
+ * [Twitter](https://twitter.com/rstacruz) (@rstacruz)
 
-[rsc]: http://ricostacruz.com
-[c]:   http://github.com/rstacruz/jquery.transit/contributors
-[sf]:  http://sinefunc.com
+[rsc]: https://ricostacruz.com
+[c]:   https://github.com/rstacruz/jquery.transit/contributors
+[sf]:  https://sinefunc.com

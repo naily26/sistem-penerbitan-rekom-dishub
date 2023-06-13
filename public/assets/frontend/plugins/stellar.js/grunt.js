@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 		},
 		qunit: {
 			urls: ['1.4.3', '1.10.1', '2.0.2'].map(function(version) {
-				return 'http://localhost:<%= server.port %>/test/jquery.stellar.html?jquery=' + version;
+				return 'https://localhost:<%= server.port %>/test/jquery.stellar.html?jquery=' + version;
 			})
 		},
 		concat: {

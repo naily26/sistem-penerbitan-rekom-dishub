@@ -691,7 +691,7 @@
     },
 
   // get pageX and pageY of an element
-  // from: http://ecmanaut.blogspot.com/2010/06/elementpagex-and-elementpagey.html
+  // from: https://ecmanaut.blogspot.com/2010/06/elementpagex-and-elementpagey.html
     getViewOffset = function (node, singleFrame) {
 
       function addOffset(node, coords, view) {
@@ -826,7 +826,7 @@
    *
    * additional comments are from Ben Alman's awesome blog post
    * on jQuery special events:
-   * http://benalman.com/news/2010/03/jquery-special-events/
+   * https://benalman.com/news/2010/03/jquery-special-events/
    *
    *//*
    $.event.special["touchy-drag"] = {

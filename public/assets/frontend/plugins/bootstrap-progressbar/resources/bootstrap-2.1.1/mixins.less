@@ -16,7 +16,7 @@
     display: table;
     content: "";
     // Fixes Opera/contenteditable bug:
-    // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
+    // https://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
     line-height: 0;
   }
   &:after {
@@ -249,7 +249,7 @@
 
 // Drop shadows
 .box-shadow(@shadowA, @shadowB:X, ...){
-  // Multiple shadow solution from http://toekneestuck.com/blog/2012/05/15/less-css-arguments-variable/
+  // Multiple shadow solution from https://toekneestuck.com/blog/2012/05/15/less-css-arguments-variable/
   @props: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
   -webkit-box-shadow: @props;
      -moz-box-shadow: @props;

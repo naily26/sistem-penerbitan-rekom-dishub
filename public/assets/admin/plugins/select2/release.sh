@@ -50,7 +50,7 @@ echo "*/" >> "$mini"
 
 curl -s \
 	--data-urlencode "js_code@$js" \
-	http://marijnhaverbeke.nl/uglifyjs \
+	https://marijnhaverbeke.nl/uglifyjs \
 	>> "$mini"
 
 git add "$mini"

@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "https://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
@@ -7,7 +7,7 @@
 	<meta name="keywords" content="dynatree JavaScript JS dynamic html tree view treeview checkbox widget plugin for jQuery data structure library ajax open source free">
 	<meta name="description" content="dynatree is a JavaScript treeview plugin for jQuery with support for checkboxes and lazy loading of branches.">
 
-	<script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script>
+	<script src="https://www.google-analytics.com/ga.js" type="text/javascript"></script>
 
 	<script src="../jquery/jquery.js" type="text/javascript"></script>
 	<script src="../jquery/jquery-ui.custom.js" type="text/javascript"></script>
@@ -57,7 +57,7 @@
 	This document describes dynatree version: <strong>$Version: 1.2.4$</strong>.<br>
 	Document revision: $Revision: 636, 2013-01-26 08:26:52$.<br>
 	A current version may be found at the project site
-	<a href="http://wwwendt.de/tech/dynatree/index.html">http://wwwendt.de/tech/dynatree/index.html</a>.
+	<a href="https://wwwendt.de/tech/dynatree/index.html">https://wwwendt.de/tech/dynatree/index.html</a>.
 </div>
 <p>
 	Dynatree is a dynamic JavaScript tree view control with support for checkboxes,
@@ -67,7 +67,7 @@
 	Main features:
 </p>
 <ul>
-	<li>Open source (<a href="http://code.google.com/p/dynatree/wiki/LicenseInfo">MIT and GPL License</a>)
+	<li>Open source (<a href="https://code.google.com/p/dynatree/wiki/LicenseInfo">MIT and GPL License</a>)
 	<li>Optimized for large dynamic trees (DOM elements are only created when really needed).
 	<li>Programmable through a rich object oriented interface.
 	<li>Support for lazy loading and Ajax.
@@ -76,15 +76,15 @@
 	<li>Support for persistence.
 	<li>Keyboard aware.
 	<li>Initializes from HTML code, JSON, or JavaScript objects.
-	<li>Implemented as a <a href="http://jquery.com">jQuery</a> plugin.<br>
+	<li>Implemented as a <a href="https://jquery.com">jQuery</a> plugin.<br>
 		(Note: this doesn't mean that you have to use jQuery for your whole site.)
 </ul>
 
 <p class="info">
 	Dynatree runs best, when the HTML document is rendered in a strict mode like<br>
-	<code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"></code>.
+	<code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "https://www.w3.org/TR/html4/strict.dtd"></code>.
 	<br>
-	Avoid the <a href="http://en.wikipedia.org/wiki/Quirks_mode">quirks mode</a>.
+	Avoid the <a href="https://en.wikipedia.org/wiki/Quirks_mode">quirks mode</a>.
 </p>
 
 <!-- jquery.planize will generate a TOC here: -->
@@ -96,9 +96,9 @@
 
 <p>
 	You can download the current dynatree package at
-	<a href="http://code.google.com/p/dynatree/downloads">http://code.google.com/p/dynatree/downloads</a>.
+	<a href="https://code.google.com/p/dynatree/downloads">https://code.google.com/p/dynatree/downloads</a>.
 	It contains everything needed including the source, some documentation and examples.<br>
-	jQuery is already included, but you can check the <a href="http://www.jquery.com">jQuery site</a>
+	jQuery is already included, but you can check the <a href="https://www.jquery.com">jQuery site</a>
 	for the latest versions of jquery.js and ui.core.js.
 </p>
 
@@ -180,7 +180,7 @@
 <h2>Initializing the tree</h2>
 
 <p>
-	Dynatree is based on and made for jQuery. If you are not familiar with this, you might also want to check the <a href="http://docs.jquery.com">jQuery documentation</a>.
+	Dynatree is based on and made for jQuery. If you are not familiar with this, you might also want to check the <a href="https://docs.jquery.com">jQuery documentation</a>.
 </p>
 <p>
 	The tree is initialized in the onload event of the html document. In jQuery this is usually done by passing a function to $(..) :
@@ -490,8 +490,8 @@ onActivate: function(node) {
 <pre class="prettyprint">&lt;div id="tree">&lt;ul>
 	&lt;li class="expanded folder">Search engines
 	&lt;ul>
-		&lt;li>&lt;a href="http://www.google.com" target="_self">Google&lt;/a>
-		&lt;li>&lt;a href="http://www.bing.com">Bing&lt;/a>
+		&lt;li>&lt;a href="https://www.google.com" target="_self">Google&lt;/a>
+		&lt;li>&lt;a href="https://www.bing.com">Bing&lt;/a>
 </pre>
 	</dd>
 	<dt>data.icon
@@ -610,7 +610,7 @@ $("#tree").dynatree({
 </pre>
 
 <p>
-	The web service is expected to return a <a href="http://json.org/">valid JSON</a>
+	The web service is expected to return a <a href="https://json.org/">valid JSON</a>
 	node list, formatted like this:<br>
 	<code>[ { ... }, { ... }, ... ]</code>.
 </p>
@@ -637,8 +637,8 @@ $("#tree").dynatree({
 	For example
 </p>
 <pre class="prettyprint">
-&lt;li data="url: 'http://jquery.com'">jQuery home
-&lt;li data="url: 'http://example.com', addClass: 'customClass1'">Example page
+&lt;li data="url: 'https://jquery.com'">jQuery home
+&lt;li data="url: 'https://example.com', addClass: 'customClass1'">Example page
 </pre>
 <p class="info">
 	Note that the <code>data</code> attribute is not valid in <code>&lt;li></code> elements in
@@ -961,8 +961,8 @@ and <code>tree.isReloading()</code> to determine who generated this event.
 
 <pre class="prettyprint">
 &lt;ul>
-	&lt;li data="url: 'http://jquery.com'">jQuery home
-	&lt;li data="url: 'http://docs.jquery.com'">jQuery docs
+	&lt;li data="url: 'https://jquery.com'">jQuery home
+	&lt;li data="url: 'https://docs.jquery.com'">jQuery docs
 </pre>
 
 <p>
@@ -971,8 +971,8 @@ and <code>tree.isReloading()</code> to determine who generated this event.
 
 <pre class="prettyprint">
 children: [
-	{ title: "jQuery home", url: "http://jquery.com" },
-	{ title: "jQuery docs", url: "http://docs.jquery.com" },
+	{ title: "jQuery home", url: "https://jquery.com" },
+	{ title: "jQuery docs", url: "https://docs.jquery.com" },
 </pre>
 
 <p>
@@ -1067,7 +1067,7 @@ $("#tree").dynatree({
 </p>
 <ul>
 	<li>Mark some or all nodes as lazy, by setting the <code>isLazy</code> option to true.
-	<li>Implement a backend web service that delivers a <a href="http://json.org/">JSON</a>
+	<li>Implement a backend web service that delivers a <a href="https://json.org/">JSON</a>
 	formatted node list.
 	<li>Implement the <code>onLazyRead</code> callback to send an Ajax request,
 		create the child nodes, and set the 'ok' status.
@@ -1094,7 +1094,7 @@ $("#tree").dynatree({
 	Typically we would implement <code>onLazyRead</code> by calling the
 	<code>node.appendAjax()</code> function.<br>
 	It expects one option object argument, as described in the documentation for
-	the <a href="http://docs.jquery.com/Ajax/jQuery.ajax">jQuery.ajax()</a>	command.<br>
+	the <a href="https://docs.jquery.com/Ajax/jQuery.ajax">jQuery.ajax()</a>	command.<br>
 </p><p>
 	These options are set by default:<br>
 	<code>cache: false</code> and <code>dataType: "json"</code>.
@@ -1131,7 +1131,7 @@ $("#tree").dynatree({
 });
 </pre>
 <p>
-	The web service is expected to return a <a href="http://json.org/">valid JSON</a>
+	The web service is expected to return a <a href="https://json.org/">valid JSON</a>
 	node list, formatted like this:<br>
 	<code>[ { "title": "Node1", "isLazy": true, "key": "BC13B21636CD6D5C", &#8230; }, { &#8230; }, &#8230; ]</code><br>
 	See <a href="#nodeOptions">Node options</a> for a list of supported attributes.
@@ -1179,7 +1179,7 @@ return [ res ]
 <h4 id="lazyCustom">Loading custom formats</h4>
 <p>
 If we need more control, or if the server cannot provide JSON in Dynatree's
-native format, we could also use <a href="http://docs.jquery.com/Ajax/jQuery.ajax">jQuery.ajax()</a>
+native format, we could also use <a href="https://docs.jquery.com/Ajax/jQuery.ajax">jQuery.ajax()</a>
 to fetch the data, then transform it and call <code>node.addChild()</code>:
 </p>
 <pre class="prettyprint">
@@ -2007,7 +2007,7 @@ var dict = $("#tree").dynatree("getTree").toDict();
 <h4>Example: activate a node depending on URL</h4>
 
 This sample shows how to parse the page URL and activate a node accordingly:
-<code>http://server/_test-194.html?activate=_11</code>
+<code>https://server/_test-194.html?activate=_11</code>
 
 <pre class="prettyprint">
 // Add a helper function to parse the URL
@@ -2125,9 +2125,9 @@ $("#tree").dynatree({
 
 <h3>Credits</h3>
 <p>
-	I am using the <a href="http://prendreuncafe.com/work/jqplanize/">planize plugin</a>
+	I am using the <a href="https://prendreuncafe.com/work/jqplanize/">planize plugin</a>
 	by Nicolas Perriault for the table of contents.<br>
-	I am using <a href="http://code.google.com/p/google-code-prettify/">prettify.js</a>
+	I am using <a href="https://code.google.com/p/google-code-prettify/">prettify.js</a>
 	by Mike Samuel for syntax highlighting in the of source code samples.
 </p>
 
@@ -2137,12 +2137,12 @@ $("#tree").dynatree({
 	Any kind of feedback is very welcome :-)
 </p>
 <ul>
-	<li>A <a href="http://groups.google.com/group/dynatree">discussion forum</a> is in place to ask questions or discuss features.
-	<li>Check <a href="http://stackoverflow.com/tags/dynatree">Stack Overflow</a> for existing questions.
-	<li>Use the <a href="http://code.google.com/p/dynatree/issues/list">Issue Tracker</a> to get a list of known bugs, or vote for a feature.<br>
+	<li>A <a href="https://groups.google.com/group/dynatree">discussion forum</a> is in place to ask questions or discuss features.
+	<li>Check <a href="https://stackoverflow.com/tags/dynatree">Stack Overflow</a> for existing questions.
+	<li>Use the <a href="https://code.google.com/p/dynatree/issues/list">Issue Tracker</a> to get a list of known bugs, or vote for a feature.<br>
 		Please make sure you searched the group and issue tracker, before adding a new request.
 	<li>If you like:
-		<a href="http://wwwendt.de/freeware/donate.html">Make a donation</a>.
+		<a href="https://wwwendt.de/freeware/donate.html">Make a donation</a>.
 </ul>
 
 </body>

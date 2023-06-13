@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "https://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
@@ -40,7 +40,7 @@
 			},
 			fx: { height: "toggle", duration: 200 },
 			// initAjax is hard to fake, so we pass the children as object array:
-			initAjax: {url: "http://127.0.0.1:8001",
+			initAjax: {url: "https://127.0.0.1:8001",
 					   dataType: "jsonp", // Enable JSONP, so this sample can be run from the local file system against a localhost server
 					   timeout: 10000, // timeout, otherwise 'connection refused' is not recognized if server is not running
 					   data: {key: "",
@@ -53,7 +53,7 @@
 					   },
 			onLazyRead: function(node){
 				node.appendAjax(
-					{url: "http://127.0.0.1:8001",
+					{url: "https://127.0.0.1:8001",
 					 dataType: "jsonp", // Enable JSONP, so this sample can be run from the local file system against a localhost server
 					 data: {key: node.data.key,
 							sleep: debugDelay,
@@ -147,7 +147,7 @@
 		web service, of course).<br>
 		<br>
 		Note:<br>
-		This sample assumes that a Dynatree Web Service is running at http://127.0.0.1:8001.<br>
+		This sample assumes that a Dynatree Web Service is running at https://127.0.0.1:8001.<br>
 		See <a href="dynatree_server.py">dynatree_server.py</a> for a sample
 		server implementation.<br>
 		<br>
@@ -173,7 +173,7 @@
 	<!-- Start_Exclude: This block is not part of the sample code -->
 	<hr>
 	<p class="sample-links  no_code">
-		<a class="hideInsideFS" href="http://dynatree.googlecode.com">jquery.dynatree.js project home</a>
+		<a class="hideInsideFS" href="https://dynatree.googlecode.com">jquery.dynatree.js project home</a>
 		<a class="hideOutsideFS" href="#">Link to this page</a>
 		<a class="hideInsideFS" href="samples.html">Example Browser</a>
 		<a href="#" id="codeExample">View source code</a>

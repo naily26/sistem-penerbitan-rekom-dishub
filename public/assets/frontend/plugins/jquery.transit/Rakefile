@@ -8,7 +8,7 @@ module Compressor
     require 'net/http'
     require 'uri'
 
-    response = Net::HTTP.post_form(URI.parse('http://closure-compiler.appspot.com/compile'), {
+    response = Net::HTTP.post_form(URI.parse('https://closure-compiler.appspot.com/compile'), {
       'js_code' => jscode,
       'compilation_level' => "SIMPLE_OPTIMIZATIONS",
       'output_format' => 'text',

@@ -2,10 +2,10 @@
 /**
  * jqGrid Serbian Translation
  * Александар Миловац(Aleksandar Milovac) aleksandar.milovac@gmail.com
- * http://trirand.com/blog/
+ * https://trirand.com/blog/
  * Dual licensed under the MIT and GPL licenses:
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl.html
+ * https://www.opensource.org/licenses/mit-license.php
+ * https://www.gnu.org/licenses/gpl.html
 **/
 $.jgrid = $.jgrid || {};
 $.extend($.jgrid,{
@@ -42,7 +42,7 @@ $.extend($.jgrid,{
 			email: "није исправна имејл адреса",
 			integer: "Молим, унесите исправну целобројну вредност ",
 			date: "Молим, унесите исправан датум",
-			url: "није исправан УРЛ. Потребан је префикс ('http://' or 'https://')",
+			url: "није исправан УРЛ. Потребан је префикс ('https://' or 'https://')",
 			nodefined : " није дефинисан!",
 			novalue : " захтевана је повратна вредност!",
 			customarray : "Custom function should return array!",

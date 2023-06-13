@@ -13,17 +13,17 @@
     "version": "1.5.5",
     "author": {
         "name": "Patrick Kunka, Barrel NY",
-        "url": "http://www.barrelny.com"
+        "url": "https://www.barrelny.com"
     },
     "licenses": [
         {
             "type": "CC BY-ND",
-            "url": "http://creativecommons.org/licenses/by-nd/3.0/"
+            "url": "https://creativecommons.org/licenses/by-nd/3.0/"
         }
     ],
-    "homepage": "http://mixitup.io",
-    "docs": "http://mixitup.io",
-    "download": "http://mixitup.io",
+    "homepage": "https://mixitup.io",
+    "docs": "https://mixitup.io",
+    "download": "https://mixitup.io",
     "dependencies": {
         "jquery": ">=1.4"
     }

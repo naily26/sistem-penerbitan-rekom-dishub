@@ -8,7 +8,7 @@
     A typical web service would of course read the data from a 'real' source 
     like an SQL database or XML file, but I hope you get the idea ;-)
     
-    See: http://dynatree.googlecode.com
+    See: https://dynatree.googlecode.com
     
     Martin Wendt, 2009-2011
     
@@ -26,28 +26,28 @@
 
     This module
       - Is a standalone web server that answers URLs beginning with
-            http://127.0.0.1:8001/?...
+            https://127.0.0.1:8001/?...
         with JSON responses that conform to the Dynatree spec.
         However, we don't do error checking or anything else that would be 
         required for production environments.
         
       - Answers requests to initialize a tree using the 'initAjax: {}' option:
-            http://127.0.0.1:8001/?mode=baseFolders
+            https://127.0.0.1:8001/?mode=baseFolders
         with a list of files/directories in the configured root directory.
         
       - Answers requests to lazy-load node children using 'appendAjax({...})':
-            http://127.0.0.1:8001/?key=_25c2b6d6
+            https://127.0.0.1:8001/?key=_25c2b6d6
         with a list of files/directories in the directory that matches this key.
         
       - Supports Dynatree's 'lazy persistence':
-            http://127.0.0.1:8001/?mode=baseFolder&expandedKeyList=_41771df2%2C_4230fb68%2C...
+            https://127.0.0.1:8001/?mode=baseFolder&expandedKeyList=_41771df2%2C_4230fb68%2C...
         will return not only the base entries, but also all children inside 
         parents that are listed as expanded.       
         
       - Supports &sleep=SECONDS argument for simulating slow responses.
 
       - Supports the JSONP protocol:
-            http://127.0.0.1:8001/?mode=baseFolder&callback=jsonp1241293219729
+            https://127.0.0.1:8001/?mode=baseFolder&callback=jsonp1241293219729
         will wrap the result like this "jsonp1241293219729(<res>)".
         This is only required, if this web service is not on the same host as 
         the web page that contains the Dynatree widget.
@@ -61,7 +61,7 @@ Sample Dynatree options to use this service:
         $("#tree").dynatree({
             ...
             persist: true,
-            initAjax: {url: "http://127.0.0.1:8001",
+            initAjax: {url: "https://127.0.0.1:8001",
                        dataType: "jsonp", // Enable JSONP, so this sample can be run from the local file system against a localhost server
                        data: {key: "",
 //                              sleep: 3,
@@ -72,7 +72,7 @@ Sample Dynatree options to use this service:
                        },
             onLazyRead: function(dtnode){
                 dtnode.appendAjax(
-                    {url: "http://127.0.0.1:8001", 
+                    {url: "https://127.0.0.1:8001", 
                      dataType: "jsonp",
                      data: {key: dtnode.data.key,
                             mode: "branch"
@@ -140,7 +140,7 @@ class DynaTreeWsgiApp(object):
             print "Sleeping %s seconds..." % argDict.get("sleep")
             time.sleep(int(argDict.get("sleep")))
             
-        # Dump POST request data, if http://HOST:PORT/submit_data was requested
+        # Dump POST request data, if https://HOST:PORT/submit_data was requested
 #        print "PI", environ["PATH_INFO"]
         if environ["PATH_INFO"] == "/submit_data":
             print "Got /submit_data request, CONTENT_LENGTH=%r" % environ.get("CONTENT_LENGTH")  

@@ -1,9 +1,9 @@
 /*!
  * Documenter 1.6
- * http://rxa.li/documenter
+ * https://rxa.li/documenter
  *
  * Copyright 2011, Xaver Birsak
- * http://revaxarts.com
+ * https://revaxarts.com
  *
  */
 //if Cufon replace headings

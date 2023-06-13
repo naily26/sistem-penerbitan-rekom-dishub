@@ -17,12 +17,12 @@ Please read the following guidelines before you [report an issue][issues]:
 
 3. **Isolate the demonstrable problem** &mdash; make sure that the code in the
    project's repository is _definitely_ responsible for the issue. Create a
-   [reduced test case](http://css-tricks.com/6263-reduced-test-cases/) - an
+   [reduced test case](https://css-tricks.com/6263-reduced-test-cases/) - an
    extremely simple and immediately viewable example of the issue.
 
 4. **Include a live example** &mdash; provide a link to your reduced test case
    when appropriate (e.g. if the issue is related to (front-end technologies).
-   Please use [jsFiddle](http://jsfiddle.net) to host examples.
+   Please use [jsFiddle](https://jsfiddle.net) to host examples.
 
 Please try to be as detailed as possible in your report too. What is your
 environment? What steps will reproduce the issue? What browser(s) and OS
@@ -87,7 +87,7 @@ changes to any part of the project, please open an issue to discuss it first.
 Please follow this process; it's the best way to get your work included in the
 project:
 
-1. [Fork](http://help.github.com/fork-a-repo/) the project.
+1. [Fork](https://help.github.com/fork-a-repo/) the project.
 
 2. Clone your fork (`git clone
    https://github.com/<your-username>/html5-boilerplate.git`).
@@ -109,7 +109,7 @@ project:
    rebase](https://help.github.com/articles/interactive-rebase) feature to tidy
    up your commits before making them public. Please adhere to these [git commit
    message
-   guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+   guidelines](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
    or your pull request is unlikely be merged into the main project.
 
 8. Locally merge (or rebase) the upstream branch into your topic branch.
@@ -117,7 +117,7 @@ project:
 9. Push your topic branch up to your fork (`git push origin
    <topic-branch-name>`).
 
-10. [Open a Pull Request](http://help.github.com/send-pull-requests/) with a
+10. [Open a Pull Request](https://help.github.com/send-pull-requests/) with a
     clear title and description. Please mention which browsers you tested in.
 
 ## Acknowledgements

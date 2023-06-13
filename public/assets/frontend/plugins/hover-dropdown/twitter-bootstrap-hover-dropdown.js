@@ -9,7 +9,7 @@
  *
  * License: MIT
  *
- * http://cameronspear.com/blog/twitter-bootstrap-dropdown-on-hover-plugin/
+ * https://cameronspear.com/blog/twitter-bootstrap-dropdown-on-hover-plugin/
  */
 ;(function($, window, undefined) {
     // don't do anything if touch is supported

@@ -26,7 +26,7 @@ You are free to use MixItUp on any commercial or non-commercial project. Just be
 
 ## Getting Started
 
-For the full documentation and list of configuration options please visit out marketing site at [mixitup.io](http://mixitup.io).
+For the full documentation and list of configuration options please visit out marketing site at [mixitup.io](https://mixitup.io).
 
 MixItUp couldn't be easier to setup. Just follow these simple steps in your HTML, CSS and JavaScript:
 
@@ -117,7 +117,7 @@ Avoid applying styles such as position: absolute or float: left/right to your el
 
 MixItUp uses the jQuery JavaScript library. Make sure you have jQuery loaded into your project's head before MixItUp:
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="js/jquery.mixitup.min.js"></script>
 	...
 
@@ -131,4 +131,4 @@ MixItUp is instantiated on your container in your JavaScript like this:
 
 And we're done!
 
-As long as you use the default selectors in your HTML, MixItUp should run straight out of the box. If you're looking to do something more advanced, see our the full documentation on [mixitup.io](http://mixitup.io) for all available configuration options.
+As long as you use the default selectors in your HTML, MixItUp should run straight out of the box. If you're looking to do something more advanced, see our the full documentation on [mixitup.io](https://mixitup.io) for all available configuration options.
