@@ -185,8 +185,9 @@
 
 @push('style')
 <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
-<link rel="stylesheet" href="assets/frontend/plugins/bootstrap-social-buttons/social-buttons-3.css">
+<link rel="stylesheet" href="{{asset('assets/frontend/plugins/bootstrap-social-buttons/social-buttons-3.css')}}">
 <link rel="stylesheet" href="assets/frontend/plugins/flex-slider/flexslider.css">
+
 <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 @endpush
 

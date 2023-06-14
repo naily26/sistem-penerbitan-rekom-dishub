@@ -29,6 +29,12 @@
     <link rel="stylesheet" href="assets/frontend/css/theme_blue.css" type="text/css" id="skin_color">
     <!-- end: MAIN CSS -->
     @stack('style')
+    <style>
+       h1, h2 {
+            font-family: 'Open Sans';
+        color: #383838;
+        }
+    </style>
     <!-- start: HTML5SHIV FOR IE8 -->
     <!--[if lt IE 9]>
     <script src="assets/frontend/plugins/html5shiv.js"></script>

@@ -79,6 +79,12 @@
             color: #4C4DDC;
         }
 
+        h1,
+        h2 {
+            font-family: 'Open Sans';
+            color: #383838;
+        }
+
     </style>
     @stack('style')
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
@@ -87,7 +93,7 @@
 </head>
 <!-- end: HEAD -->
 
-<body >
+<body>
 
     @yield('slot')
 
