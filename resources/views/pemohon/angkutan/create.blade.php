@@ -109,6 +109,8 @@
                                                     Surat Keterangan Fiskal (bagi kendaraan mutasi)
                                                 </li>
                                             </ul>
+                                            Silahkan mengikuti tutorial berikut untuk scan dokumen <a target="_blank"
+                                            href="https://www.medcom.id/teknologi/tips-trik/dN6aqWRK-cara-scan-dokumen-ke-pdf-di-android-tanpa-aplikasi-lain-cuma-google-drive-di-hape">tutorial-link</a>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -132,7 +134,7 @@
                                                 onchange="cek(this)" required>
                                                 <option value=""></option>
                                                 @foreach ($perusahaan as $key => $item)
-                                                <option value="{{$item->id}}"><?= $item->nama_perusahaan ?></option>
+                                                <option value="{{$item->id}}">{{$item->nama_perusahaan}} ({{$item->kbli->kode}} - {{$item->kbli->keterangan}})</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -275,6 +277,7 @@
                                             </div>
 
                                         </div>
+                                        <p></p>
                                     </div>
                                     <div class="form-group" id="stnkb">
                                         <label class="col-sm-3 control-label">
@@ -792,14 +795,14 @@
     });
 
     $("[name='nomor_rangka']").change(function () {
-        var val = $(this).val().toLowerCase();
+        var val = $(this).val().toLowerCase();;
         $.ajax({
             type: 'get',
             url: "{{url('/get-angkutan')}}",
             dataType: 'json',
             success: function (data) {
                 for (var key in data) {
-                    if (val == data[key].nomor_rangka) {
+                    if (val = data[key].nomor_rangka) {
                         console.log('find identic');
                         $("[name='nomor_mesin']").val(data[key].nomor_mesin);
                         $("[name='nama_pemilik']").val(data[key].nama_pemilik);
@@ -811,8 +814,11 @@
                             $("[name='nomor_kendaraan']").val(data[key].nomor_kendaraan);
                             $("[name='nomor_uji']").val(data[key].nomor_uji);
                         }
+                    } else {
+                        console.log(data[key].nomor_rangka);
                     }
                 }
+              
             },
             error: function (data) {
                 console.log('Error:', data);
@@ -882,6 +888,9 @@
         if (data.includes(msg)) {
             document.getElementById("kps").style.display = 'block';
             $("[name='kps']").prop("required", true);
+        } else {
+            document.getElementById("kps").style.display = 'none';
+            $("[name='kps']").prop("required", false);
         }
 
     }

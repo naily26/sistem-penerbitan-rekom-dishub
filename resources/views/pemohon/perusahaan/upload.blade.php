@@ -103,7 +103,7 @@
                                 <form action="{{ url('store-upload')}}" role="form" method="post"
                                     class="smart-wizard form-horizontal" id="form" enctype="multipart/form-data">
                                     @csrf
-                                    <h2 class="StepTitle">Step 2 Pengisian form permohonan</h2>
+                                    <h2 class="StepTitle">Step 2 Pengisian form </h2>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">
                                             Nama Perusahaan <span class="symbol required"></span>
@@ -149,7 +149,7 @@
                                             KBLI <span class="symbol required"></span>
                                         </label>
                                         <div class="col-sm-7">
-                                            <select class="form-control" name="kbli_id" onchange="showDiv(this);"
+                                            <select class="select2-container form-control search-select" id="select-kbli" name="kbli_id" onchange="showDiv(this);"
                                                 required>
                                                 <option value="">&nbsp;</option>
                                                 @foreach ($kbli as $item)
@@ -450,12 +450,16 @@
 
 <script src="{{ asset('assets/admin/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js') }}"></script>
 <script src="{{asset('assets/admin/js/form-elements.js')}}"></script>
+<script type="text/javascript" src="{{ asset('assets/admin/plugins/select2/select2.min.js') }}"></script>
 
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
     jQuery(document).ready(function () {
         Main.init();
         FormWizard.init();
+    });
+    $("#select-kbli").select2({
+        placeholder: 'Pilih KBLI', // Placeholder select
     });
 
 </script>
@@ -536,6 +540,7 @@
 
 @push('style')
 <link rel="stylesheet" href="{{ asset('assets/admin/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/plugins/select2/select2.css') }}" />
 
 <style>
     #angkutan-barang {

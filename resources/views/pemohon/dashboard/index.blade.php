@@ -55,7 +55,7 @@
                                                                 class="fa fa-pencil"></i></span><span
                                                             class="fileupload-exists"><i
                                                                 class="fa fa-pencil"></i></span>
-                                                        <input type="file" name="foto" onchange="this.form.submit();">
+                                                        <input type="file" name="foto" accept="image/*" onchange="this.form.submit();">
                                                     </span>
                                                     <a href="#" class="btn fileupload-exists btn-bricky btn-sm"
                                                         data-dismiss="fileupload">
@@ -103,7 +103,7 @@
                                             harus mengunggah surat yang telah diterbitkan tersebut.
                                         </div>
                                         <a class="view-more" href="{{route('perusahaan.index')}}">
-                                            View More <i class="clip-arrow-right-2"></i>
+                                            Kunjungi halaman <i class="clip-arrow-right-2"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -119,7 +119,7 @@
                                             perpanjangan STNK, kendaraan mutasi dan kendaraan baru.
                                         </div>
                                         <a class="view-more" href="{{route('angkutan.index')}}">
-                                            View More <i class="clip-arrow-right-2"></i>
+                                            Kunjungi halaman <i class="clip-arrow-right-2"></i>
                                         </a>
                                     </div>
                                 </div>

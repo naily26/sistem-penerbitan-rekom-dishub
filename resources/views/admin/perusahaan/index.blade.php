@@ -62,12 +62,16 @@
                                 <ul id="myTab" class="nav nav-tabs tab-bricky">
                                     <li class="active">
                                         <a href="#data-dalam-proses" data-toggle="tab">
-                                            Data dalam proses <span class="badge badge-danger">4</span>
+                                            Data dalam proses @if ( $data['perusahaan_diproses'])
+                                            <span class="badge badge-danger">{{$data['perusahaan_diproses']}}</span>
+                                            @endif 
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#data-disetujui" data-toggle="tab">
-                                            Data disetujui
+                                            Data disetujui @if ( $data['perusahaan_menunggu'])
+                                            <span class="badge badge-danger">{{$data['perusahaan_menunggu']}}</span>
+                                            @endif 
                                         </a>
                                     </li>
                                     <li>
@@ -118,9 +122,10 @@
                                         <!-- start: DYNAMIC TABLE PANEL -->
                                         <div class="panel panel-default">
                                             <div class="panel-body">
+                                                <div style="overflow-x:auto;">
                                                 <table
                                                     class="table table-striped table-bordered table-hover table-full-width"
-                                                    id="sample_2">
+                                                    id="sample_2" >
                                                     <thead>
                                                         <tr>
                                                             <th>Nama Perusahaan</th>
@@ -154,7 +159,7 @@
                                                                     <a class="btn btn-xs btn-primary"
                                                                     href="#konfirmasi-penerbitan{{$item->id}}" data-toggle="modal"><i
                                                                         class="fa  fa-check-square-o"></i>
-                                                                    konfirmasi penerbitan</a>
+                                                                    konfirmasi surat tertandatangani</a>
                                                                 {{-- @elseif($item->status_penerbitan == 'diterbitkan')
                                                                     <a class="btn btn-xs btn-primary" href="{{url('get-notif', $item->perusahaan->id)}}"><i class="fa fa-envelope"></i>
                                                                         Kirim Nontifikasi</a> --}}
@@ -238,6 +243,7 @@
                                                         @endforeach
                                                     </tbody>
                                                 </table>
+                                                </div>
                                             </div>
                                         </div>
                                         <!-- end: DYNAMIC TABLE PANEL -->
@@ -311,7 +317,8 @@
     type="text/css" />
 <style>
     .btn-xs {
-        padding: 2px;
+        padding: 1px;
+        margin: 1px;
     }
 
 </style>

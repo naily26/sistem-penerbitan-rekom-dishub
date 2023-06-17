@@ -31,7 +31,7 @@
                 <div class="panel panel-default">
 
                     <div class="panel-body">
-                        <div class="table-responsive">
+                        <div class="table-responsive"  style="overflow-x:auto;">
                         <table class="table table-full-width table-striped table-bordered table-hover " id="sample_1" style="overflow-x:auto;">
                             <thead>
                                 <tr>
@@ -130,8 +130,8 @@
 <link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal.css') }}" rel="stylesheet" type="text/css"/>
 <style>
-    i {
-        padding: 5px;
+    .btn {
+        margin: 1px;
     }
 
 </style>

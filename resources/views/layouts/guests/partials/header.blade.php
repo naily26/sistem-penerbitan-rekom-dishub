@@ -12,7 +12,7 @@
                 </button>
                 <!-- end: RESPONSIVE MENU TOGGLER -->
                 <!-- start: LOGO -->
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="#">
                     CLIP<i class="clip-clip"></i>ONE
                 </a>
                 <!-- end: LOGO -->

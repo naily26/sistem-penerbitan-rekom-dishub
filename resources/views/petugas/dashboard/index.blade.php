@@ -55,7 +55,7 @@
                                                                 class="fa fa-pencil"></i></span><span
                                                             class="fileupload-exists"><i
                                                                 class="fa fa-pencil"></i></span>
-                                                        <input type="file" name="foto" onchange="this.form.submit();">
+                                                        <input type="file" name="foto" accept="image/*"  onchange="this.form.submit();">
                                                     </span>
                                                     <a href="#" class="btn fileupload-exists btn-bricky btn-sm"
                                                         data-dismiss="fileupload">
@@ -106,16 +106,65 @@
                         <div class="col-sm-7 col-md-8">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <a href="{{ route('perusahaan.index')}}" class="btn btn-icon btn-block">
-                                        <i class="clip-home-2" style="font-size:24px; padding: 5pt"></i>
-                                        Permohonan Perusahaan <span class="badge badge-info"> 4 </span>
-                                    </a>
+                                    <div class="core-box">
+                                        <div class="heading">
+                                            <i class="clip-user-4 circle-icon circle-green"></i>
+                                            <h2>Keterangan Perusahaan</h2>
+                                        </div>
+                                        <div class="content">
+                                            Pada halaman ini, anda dapat mengonfirmasi status permohonan dan mencetak surat keterangan perusahaan.
+                                        </div>
+                                        <a class="view-more" href="{{route('perusahaan.index')}}">
+                                            Kunjungi halaman <i class="clip-arrow-right-2"></i>
+                                        </a>
+                                    </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a href="{{ route('angkutan.index')}}" class="btn btn-icon btn-block pulsate">
-                                        <i class="clip-truck" style="font-size:24px; padding: 5pt"></i>
-                                        Permohonan Angkutan <span class="badge badge-info"> 23 </span>
-                                    </a>
+                                    <div class="core-box">
+                                        <div class="heading">
+                                            <i class="clip-code circle-icon circle-teal"></i>
+                                            <h2>Rekomendasi Angkutan</h2>
+                                        </div>
+                                        <div class="content">
+                                            Pada halaman ini, anda dapat mengonfirmasi status permohonan dan mencetak surat rekomendasi
+                                            peruntukkan bagi angkutan.
+                                        </div>
+                                        <a class="view-more" href="{{route('angkutan.index')}}">
+                                            Kunjungi halaman <i class="clip-arrow-right-2"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row space12">
+                                        <ul class="mini-stats col-sm-12">
+                                            <li class="col-sm-3">
+                                                <div class="values">
+                                                    <strong>{{$data['perusahaan_diproses']?? '-'}}</strong>
+                                                    Permohonan perusahaan menunggu persetujuan
+                                                </div>
+                                            </li>
+                                            <li class="col-sm-3">
+                                                <div class="values">
+                                                    <strong>{{$data['perusahaan_menunggu']}}</strong>
+                                                    Permohonan perusahaan untuk dicetak
+                                                </div>
+                                            </li>
+                                            <li class="col-sm-3">
+                                                <div class="values">
+                                                    <strong>{{$data['angkutan_diproses']}}</strong>
+                                                    Permohonan angkutan menunggu persetujuan
+                                                </div>
+                                            </li>
+                                            <li class="col-sm-3">
+                                                <div class="values">
+                                                    <strong>{{$data['angkutan_menunggu']}}</strong>
+                                                    Permohonan angkutan untuk dicetak
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="panel panel-white">
@@ -187,7 +236,7 @@
             Main.init();
             Index.init();
         });
-
+        
     </script>
     @endpush
 

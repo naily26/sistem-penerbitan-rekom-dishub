@@ -36,11 +36,15 @@ class PerusahaanController extends Controller
             
         } elseif (Auth::user()->role == 'petugas') {
             $data_petugas = petugas::where('user_id', Auth::user()->id)->first();
+            $perusahaan_menunggu = pengajuan_perusahaan::where('status_pengecekan', 'disetujui')->where('status_penerbitan', 'menunggu')->where('petugas_id', $data_petugas->id)->get();
+            $data['perusahaan_menunggu'] = count($perusahaan_menunggu);
+            $perusahaan_diproses = pengajuan_perusahaan::where('status_pengecekan', 'menunggu')->where('petugas_id', $data_petugas->id)->get();
+            $data['perusahaan_diproses'] = count($perusahaan_diproses);
             $today = Carbon::today()->toDateString();
             $diproses = pengajuan_perusahaan::where('status_pengecekan', 'menunggu')->where('petugas_id', $data_petugas->id)->get();
             $disetujui = pengajuan_perusahaan::where('status_pengecekan', 'disetujui')->where('petugas_id', $data_petugas->id)->get();
             $ditolak = pengajuan_perusahaan::where('status_pengecekan', 'ditolak')->where('petugas_id', $data_petugas->id)->get();
-            return view('petugas.perusahaan.index', compact('diproses', 'disetujui', 'ditolak', 'today'));
+            return view('petugas.perusahaan.index', compact('diproses', 'disetujui', 'ditolak', 'today', 'data'));
         } elseif (Auth::user()->role == 'pengawas') {
             $disetujui = pengajuan_perusahaan::where('status_pengecekan', 'disetujui')->get();
             return view('pengawas.perusahaan.index', compact('disetujui'));
@@ -49,7 +53,11 @@ class PerusahaanController extends Controller
             $diproses = pengajuan_perusahaan::where('status_pengecekan', 'menunggu')->get();
             $disetujui = pengajuan_perusahaan::where('status_pengecekan', 'disetujui')->where('tanggal_pengambilan', null)->get();
             $ditolak = pengajuan_perusahaan::where('status_pengecekan', 'ditolak')->get();
-            return view('admin.perusahaan.index', compact('diproses', 'disetujui', 'ditolak', 'today'));
+            $perusahaan_menunggu = pengajuan_perusahaan::where('status_pengecekan', 'disetujui')->whereIn('status_penerbitan', ['dicetak', 'birokrasi'])->get();
+            $data['perusahaan_menunggu'] = count($perusahaan_menunggu);
+            $perusahaan_diproses = pengajuan_perusahaan::where('status_pengecekan', 'menunggu')->get();
+            $data['perusahaan_diproses'] = count($perusahaan_diproses);
+            return view('admin.perusahaan.index', compact('diproses', 'disetujui', 'ditolak', 'today', 'data'));
         } 
     }
 

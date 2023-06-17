@@ -31,7 +31,7 @@ class KbliController extends Controller
      */
     public function create()
     {
-        return view('admin.kbli.create');
+        return view('admin.kbli.create', );
     }
 
     /**

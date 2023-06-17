@@ -62,12 +62,16 @@
                                     <ul id="myTab" class="nav nav-tabs tab-bricky">
                                         <li class="active">
                                             <a href="#data-dalam-proses" data-toggle="tab">
-                                                Data dalam proses <span class="badge badge-danger">4</span>
+                                                Data dalam proses @if ($data['angkutan_diproses'])
+                                                <span class="badge badge-danger">{{$data['angkutan_diproses']}}</span>
+                                                @endif 
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#data-disetujui" data-toggle="tab">
-                                                Data disetujui
+                                                Data disetujui @if ($data['angkutan_menunggu'])
+                                                <span class="badge badge-danger">{{$data['angkutan_menunggu']}}</span>
+                                                @endif 
                                             </a>
                                         </li>
                                         <li>

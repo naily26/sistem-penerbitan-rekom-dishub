@@ -54,7 +54,7 @@
                                                                 class="fa fa-pencil"></i></span><span
                                                             class="fileupload-exists"><i
                                                                 class="fa fa-pencil"></i></span>
-                                                        <input type="file" name="foto" onchange="this.form.submit();">
+                                                        <input type="file" name="foto" accept="image/*" onchange="this.form.submit();">
                                                     </span>
                                                     <a href="#" class="btn fileupload-exists btn-bricky btn-sm"
                                                         data-dismiss="fileupload">

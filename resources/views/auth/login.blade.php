@@ -4,7 +4,7 @@
 <div class="main-login col-sm-4 col-sm-offset-4">
     <div class="logo mb-5 mt-5">
         {{-- <img src="{{ asset('logo-big.png') }}" alt="logo" width="50%"> --}}
-        <div class="logo">CLIP<i class="clip-clip"></i>ONE</div>
+        <div class="logo">DISHUB JATIM</div>
     </div>
     <!-- start: LOGIN BOX -->
     <div class="box-login">
@@ -76,7 +76,7 @@
     <!-- end: LOGIN BOX -->
     <!-- start: COPYRIGHT -->
     <div class="copyright">
-        {{ date('Y') }} &copy; Dishub Jatim by Naily.
+        {{ date('Y') }} &copy; Sistem Penerbitan Rekom Dishub by Naily.
     </div>
     <!-- end: COPYRIGHT -->
 </div>

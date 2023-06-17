@@ -75,8 +75,19 @@ class HomeController extends Controller
         else if (Auth::user()->role == 'petugas') {
             $antrian = antrian::where('petugas_id', null)->get();
             $today = Carbon::today()->toDateString();
-            return view('petugas.dashboard.index', compact('antrian', 'today'));
-        }
+            $petugas = petugas::where('user_id', Auth::user()->id)->first();
+           //counting perusahaan
+            $perusahaan_menunggu = pengajuan_perusahaan::where('status_pengecekan', 'disetujui')->where('status_penerbitan', 'menunggu')->where('petugas_id', $petugas->id)->get();
+            $data['perusahaan_menunggu'] = count($perusahaan_menunggu);
+            $perusahaan_diproses = pengajuan_perusahaan::where('status_pengecekan', 'menunggu')->where('petugas_id', $petugas->id)->get();
+            $data['perusahaan_diproses'] = count($perusahaan_diproses);
+            //counting angkutan
+            $angkutan_menunggu = pengajuan_angkutan::where('status_pengecekan', 'disetujui')->where('status_penerbitan', 'menunggu')->where('petugas_id', $petugas->id)->get();
+            $data['angkutan_menunggu'] = count($angkutan_menunggu);
+            $angkutan_diproses = pengajuan_angkutan::where('status_pengecekan', 'menunggu')->where('petugas_id', $petugas->id)->get();
+            $data['angkutan_diproses'] = count($angkutan_diproses);
+                return view('petugas.dashboard.index', compact('antrian', 'today', 'data'));
+            }
 
         else if(Auth::user()->role == 'customer-service') {
             $data = $this->countingHome();

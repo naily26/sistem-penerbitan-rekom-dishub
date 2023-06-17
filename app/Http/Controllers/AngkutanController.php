@@ -36,11 +36,15 @@ class AngkutanController extends Controller
             return view('pemohon.angkutan.index', compact('angkutan'));
         } elseif (Auth::user()->role == 'petugas') {
             $data_petugas = petugas::where('user_id', Auth::user()->id)->first();
+            $angkutan_menunggu = pengajuan_angkutan::where('status_pengecekan', 'disetujui')->where('status_penerbitan', 'menunggu')->where('petugas_id', $data_petugas->id)->get();
+            $data['angkutan_menunggu'] = count($angkutan_menunggu);
+            $angkutan_diproses = pengajuan_angkutan::where('status_pengecekan', 'menunggu')->where('petugas_id', $data_petugas->id)->get();
+            $data['angkutan_diproses'] = count($angkutan_diproses);
             $disetujui = pengajuan_angkutan::where('petugas_id', $data_petugas->id)->where('status_pengecekan', 'disetujui')->where('status_penerbitan', '!=', 'tertunda')->get();
             $ditolak = pengajuan_angkutan::where('petugas_id', $data_petugas->id)->where('status_pengecekan', 'ditolak')->get();
             $diproses = pengajuan_angkutan::where('petugas_id', $data_petugas->id)->where('status_pengecekan', 'menunggu')->get();
             $tertunda = pengajuan_angkutan::where('petugas_id', $data_petugas->id)->where('status_penerbitan', 'tertunda')->get();
-            return view('petugas.angkutan.index', compact('disetujui', 'ditolak', 'diproses', 'tertunda'));
+            return view('petugas.angkutan.index', compact('disetujui', 'ditolak', 'diproses', 'tertunda', 'data'));
         } elseif (Auth::user()->role == 'pengawas') {
             $disetujui = pengajuan_angkutan::where('status_pengecekan', 'disetujui')->where('status_penerbitan', '!=', 'tertunda')->get();
             return view('pengawas.angkutan.index', compact('disetujui'));
@@ -49,7 +53,11 @@ class AngkutanController extends Controller
             $ditolak = pengajuan_angkutan::where('status_pengecekan', 'ditolak')->get();
             $diproses = pengajuan_angkutan::where('status_pengecekan', 'menunggu')->get();
             $tertunda = pengajuan_angkutan::where('status_penerbitan', 'tertunda')->get();
-            return view('admin.angkutan.index', compact('disetujui', 'ditolak', 'diproses', 'tertunda'));
+            $angkutan_menunggu = pengajuan_angkutan::where('status_pengecekan', 'disetujui')->whereIn('status_penerbitan', ['dicetak'. 'birokrasi'])->get();
+            $data['angkutan_menunggu'] = count($angkutan_menunggu);
+            $angkutan_diproses = pengajuan_angkutan::where('status_pengecekan', 'menunggu')->get();
+            $data['angkutan_diproses'] = count($angkutan_diproses);
+            return view('admin.angkutan.index', compact('disetujui', 'ditolak', 'diproses', 'tertunda', 'data'));
         }
     }
 
@@ -152,15 +160,15 @@ class AngkutanController extends Controller
             ]);
 
             if ($data_mutasi) {
-                return redirect()->route('angkutan.index')->with(['success' => 'data berhasil diperbaharui']);
+                return redirect()->route('angkutan.index')->with(['success' => 'data berhasil diperbarui']);
             } else {
-                return redirect()->route('angkutan.index')->with(['gagal' => 'data gagal diperbaharui']);
+                return redirect()->route('angkutan.index')->with(['gagal' => 'data gagal diperbarui']);
             }
         } else {
             if ($pengajuan) {
-                return redirect()->route('angkutan.index')->with(['success' => 'data berhasil diperbaharui']);
+                return redirect()->route('angkutan.index')->with(['success' => 'data berhasil diperbarui']);
             } else {
-                return redirect()->route('angkutan.index')->with(['gagal' => 'data gagal diperbaharui']);
+                return redirect()->route('angkutan.index')->with(['gagal' => 'data gagal diperbarui']);
             }
         }
     }
@@ -260,9 +268,9 @@ class AngkutanController extends Controller
         }
 
         if ($status) {
-            return redirect()->route('angkutan.index')->with(['success' => 'data berhasil diperbaharui']);
+            return redirect()->route('angkutan.index')->with(['success' => 'data berhasil diperbarui']);
         } else {
-            return redirect()->route('angkutan.index')->with(['gagal' => 'data gagal diperbaharui']);
+            return redirect()->route('angkutan.index')->with(['gagal' => 'data gagal diperbarui']);
         }
     }
 
@@ -356,9 +364,9 @@ class AngkutanController extends Controller
         $pengajuan->tanggal_cetak = $today;
         $pengajuan->save();
         if ($pengajuan) {
-            return redirect()->route('angkutan.index')->with(['success' => 'data berhasil diperbaharui']);
+            return redirect()->route('angkutan.index')->with(['success' => 'data berhasil diperbarui']);
         } else {
-            return redirect()->route('angkutan.index')->with(['gagal' => 'data gagal diperbaharui']);
+            return redirect()->route('angkutan.index')->with(['gagal' => 'data gagal diperbarui']);
         }
     }
 
@@ -370,9 +378,9 @@ class AngkutanController extends Controller
         $pengajuan->tanggal_birokrasi = $today;
         $pengajuan->save();
         if ($pengajuan) {
-            return redirect()->route('angkutan.index')->with(['success' => 'data berhasil diperbaharui']);
+            return redirect()->route('angkutan.index')->with(['success' => 'data berhasil diperbarui']);
         } else {
-            return redirect()->route('angkutan.index')->with(['gagal' => 'data gagal diperbaharui']);
+            return redirect()->route('angkutan.index')->with(['gagal' => 'data gagal diperbarui']);
         }
     }
 
@@ -385,9 +393,9 @@ class AngkutanController extends Controller
         $pengajuan->save();
         $notif = $this->SendMail($pengajuan->angkutan_id);
         if ($notif) {
-            return redirect()->route('angkutan.index')->with(['success' => 'data berhasil diperbaharui']);
+            return redirect()->route('angkutan.index')->with(['success' => 'data berhasil diperbarui']);
         } else {
-            return redirect()->route('angkutan.index')->with(['gagal' => 'data gagal diperbaharui']);
+            return redirect()->route('angkutan.index')->with(['gagal' => 'data gagal diperbarui']);
         }
     }
 
@@ -399,9 +407,9 @@ class AngkutanController extends Controller
         $pengajuan->tanggal_pengambilan = $today;
         $pengajuan->save();
         if ($pengajuan) {
-            return redirect()->back()->with(['success' => 'data berhasil diperbaharui']);
+            return redirect()->back()->with(['success' => 'data berhasil diperbarui']);
         } else {
-            return redirect()->back()->with(['gagal' => 'data gagal diperbaharui']);
+            return redirect()->back()->with(['gagal' => 'data gagal diperbarui']);
         }
     }
 

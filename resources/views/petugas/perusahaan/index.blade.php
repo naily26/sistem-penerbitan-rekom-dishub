@@ -62,12 +62,16 @@
                                 <ul id="myTab" class="nav nav-tabs tab-bricky">
                                     <li class="active">
                                         <a href="#data-dalam-proses" data-toggle="tab">
-                                            Data dalam proses <span class="badge badge-danger">4</span>
+                                            Data dalam proses @if ($data['perusahaan_diproses'])
+                                            <span class="badge badge-danger">{{$data['perusahaan_diproses']}}</span>
+                                            @endif 
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#data-disetujui" data-toggle="tab">
-                                            Data disetujui
+                                            Data disetujui @if ($data['perusahaan_menunggu'])
+                                            <span class="badge badge-danger">{{$data['perusahaan_menunggu']}}</span>
+                                            @endif 
                                         </a>
                                     </li>
                                     <li>
@@ -166,7 +170,7 @@
                                                                             class="fa fa-file"></i>
                                                                         cetak</a>
                                                                     <a class="btn btn-xs btn-primary" href="#konfirmasi-percetakan{{$item->id}}" data-toggle="modal"><i class="fa fa-check-square-o"></i>
-                                                                        Konfirmasi percetakan</a>
+                                                                        Konfirmasi pencetakan</a>
                                                                 @else
                                                                     <a class="btn btn-xs btn-success"
                                                                         href="{{ route('perusahaan.show', $item->perusahaan_id)}}"><i

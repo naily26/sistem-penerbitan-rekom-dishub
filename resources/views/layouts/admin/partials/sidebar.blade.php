@@ -170,7 +170,7 @@
         </li>
         <li class="menu-header">
             <a class="menu-header">
-                <span class="title"> Data Penerbitan Surat</span>
+                <span class="title"> Data Permohonan</span>
                 <span class="selected"></span>
             </a>
         </li>
@@ -208,7 +208,7 @@
         </li>
         <li class="{{ Request::segment(1) === 'angkutan' ? 'active' : '' }}">
             <a href="{{route('angkutan.index')}}"><i class="clip-truck"></i>
-                <span class="title"> kendaraan </span><span class="selected"></span>
+                <span class="title"> Angkutan </span><span class="selected"></span>
             </a>
         </li>
         <!-- end: PEMOHON -->

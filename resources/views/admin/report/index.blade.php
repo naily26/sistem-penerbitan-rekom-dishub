@@ -29,10 +29,6 @@
         <!-- start: PAGE CONTENT -->
         <div class="row">
             <div class="col-md-12" style="margin-bottom: 5px">
-                <a href="#" class="btn pull-right mb-4 mr-2 btn-teal btn-sm" style="margin-left: 5px">
-                    Ekspor Data
-                    <i class="fa fa-arrow-circle-up"></i>
-                </a>
                 <a href="#filter" data-toggle="modal" class="btn pull-right mb-4 mr-2 btn-teal btn-sm">
                     Filter Data
                     <i class="fa fa-filter"></i>
