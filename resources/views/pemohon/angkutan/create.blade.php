@@ -91,7 +91,10 @@
                                                 <li>
                                                     Surat pernyataan akan memenuhi ketentuan persyaratan khusus usaha
                                                     perizinan angkutan
-                                                    penumpang/barang umum.
+                                                    penumpang/barang umum. <a href="{{$dokumen[1]['file_template']}}">download-template.docs</a>
+                                                </li>
+                                                <li>
+                                                    Surat permohonan dari Perusahaan yang disahkan oleh Direktur Perusahaan  <a href="{{$dokumen[0]['file_template']}}">download-template.docs</a>
                                                 </li>
                                                 <li>
                                                     STNKB

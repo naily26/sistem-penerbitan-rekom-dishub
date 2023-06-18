@@ -10,6 +10,7 @@ use App\Models\perusahaan;
 use App\Models\kbli;
 use App\Models\petugas;
 use App\Models\kota;
+use App\Models\dokumen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -70,13 +71,14 @@ class AngkutanController extends Controller
     {
         $kbli = kbli::all();
         $kota = kota::all();
+        $dokumen = dokumen::all()->toArray();
         $kbli_khusus = kbli::where('kategori', 'angkutan-barang-khusus')->get();
         $khusus = [];
         foreach ($kbli_khusus as $key => $value) {
             $khusus[$key] = $value->id;
         }
         $perusahaan = perusahaan::where('user_id', Auth::user()->id)->get();
-        return view('pemohon.angkutan.create', compact('kbli', 'perusahaan', 'kota', 'khusus'));
+        return view('pemohon.angkutan.create', compact('kbli', 'perusahaan', 'kota', 'khusus', 'dokumen'));
     }
 
     /**

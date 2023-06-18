@@ -9,6 +9,7 @@ use App\Models\petugas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\kbli;
+use App\Models\dokumen;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NotifPerusahaan;
 
@@ -69,8 +70,9 @@ class PerusahaanController extends Controller
     public function create()
     {
         $kbli = kbli::all();
+        $dokumen = dokumen::all()->toArray();;
         $nibcek = perusahaan::all('nib');
-        return view('pemohon.perusahaan.create', compact('kbli', 'nibcek'));
+        return view('pemohon.perusahaan.create', compact('kbli', 'nibcek', 'dokumen'));
     }
 
     /**
