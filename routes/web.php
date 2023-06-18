@@ -85,6 +85,7 @@ Route::get('/penerbitan-perusahaan', [App\Http\Controllers\DataPenerbitanControl
 Route::get('/filter-penerbitan-perusahaan', [App\Http\Controllers\DataPenerbitanController::class, 'filterDataPerusahaan'])->name('filter-penerbitan-perusahaan');
 Route::get('/penerbitan-angkutan', [App\Http\Controllers\DataPenerbitanController::class, 'indexAngkutan'])->name('indexAngkutan');
 Route::get('/filter-penerbitan-angkutan', [App\Http\Controllers\DataPenerbitanController::class, 'filterDataAngkutan'])->name('filter-penerbitan-angkutan');
+Route::get('/filter-report', [App\Http\Controllers\ReportController::class, 'filterReport']);
 Route::resource('angkutan', AngkutanController::class);
 Route::resource('perusahaan', PerusahaanController::class);
 Route::post('export-perusahaan', [DataPenerbitanController::class, 'exportPerusahaan']);

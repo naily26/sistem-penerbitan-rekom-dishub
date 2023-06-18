@@ -37,7 +37,7 @@
         </div>
         <!-- start: BOOTSTRAP CREATE MODALS -->
         <div id="filter" class="modal fade" tabindex="-1" data-width="560" style="display: none;">
-            <form action="#" method="get">
+            <form action="{{url('filter-report')}}" method="get">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         &times;
@@ -49,7 +49,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="start">Mulai</label>
-                                <input type="date" name="start" id="start" class="form-control"
+                                <input type="date" name="from" id="start" class="form-control"
                                     placeholder="Masukkan Bulan Mulai">
                                 <p id="error-message-start" class="validation-error-label"></p>
                             </div>
@@ -57,7 +57,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="end">Selesai</label>
-                                <input type="date" name="end" id="end_month" class="form-control"
+                                <input type="date" name="to" id="end_month" class="form-control"
                                     placeholder="Masukkan Bulan Selesai">
                                 <p id="error-message-end" class="validation-error-label"></p>
                             </div>
@@ -80,7 +80,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="clip-checkbox"></i>
-                        Rekap Surat 
+                        Rekap Surat Keterangan Perusahaan
                         <div class="panel-tools">
                             <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
                             </a>
@@ -90,26 +90,78 @@
                         <ul class="todo">
                             <li>
                                 <a class="todo-actions" href="javascript:void(0)">
-                                    <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah surat keterangan perusahaan yang masuk</span>
+                                    <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah permohonan yang masuk</span>
                                     <span class="label label-primary" style="opacity: 1;">{{$data['perusahaanMasuk']}}</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="todo-actions" href="javascript:void(0)">
-                                    <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah surat rekomendasi peruntukan angkutan yang masuk</span>
+                                    <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah surat yang dicetak</span>
+                                    <span class="label label-primary" style="opacity: 1;">{{$data['perusahaanDicetak']}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="todo-actions" href="javascript:void(0)">
+                                    <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah surat yang menunggu tandatangan</span>
+                                    <span class="label label-primary" style="opacity: 1;">{{$data['perusahaanBirokrasi']}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="todo-actions" href="javascript:void(0)">
+                                    <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah surat yang tertandatangani dan menunggu diambil oleh pemohon</span>
+                                    <span class="label label-primary" style="opacity: 1;">{{$data['perusahaanTertandatangai']}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="todo-actions" href="javascript:void(0)">
+                                    <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah surat yang telah keluar (diambil oleh pemohon)</span>
+                                    <span class="label label-primary" style="opacity: 1;">{{$data['perusahaanDiambil']}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="clip-checkbox"></i>
+                        Rekap Surat Rekomendasi Peruntukan Angkutan Angkutan
+                        <div class="panel-tools">
+                            <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="panel-body panel-scroll" style="height:180px">
+                        <ul class="todo">
+                            <li>
+                                <a class="todo-actions" href="javascript:void(0)">
+                                    <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah permohonan yang masuk</span>
                                     <span class="label label-primary" style="opacity: 1;">{{$data['angkutanMasuk']}}</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="todo-actions" href="javascript:void(0)">
-                                    <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah permohonan surat keterangan perusahaan yang diterbitkan</span>
-                                    <span class="label label-primary" style="opacity: 1;">{{$data['perusahaanKeluar']}}</span>
+                                    <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah surat yang dicetak</span>
+                                    <span class="label label-primary" style="opacity: 1;">{{$data['angkutanDicetak']}}</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="todo-actions" href="javascript:void(0)">
-                                    <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah permohonan surat rekomendasi peruntukan angkutan yang diterbitkan</span>
-                                    <span class="label label-primary" style="opacity: 1;">{{$data['angkutanKeluar']}}</span>
+                                    <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah surat yang menunggu tandatangan</span>
+                                    <span class="label label-primary" style="opacity: 1;">{{$data['angkutanBirokrasi']}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="todo-actions" href="javascript:void(0)">
+                                    <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah surat yang tertandatangani dan menunggu diambil oleh pemohon</span>
+                                    <span class="label label-primary" style="opacity: 1;">{{$data['angkutanTertandatangai']}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="todo-actions" href="javascript:void(0)">
+                                    <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah surat yang telah keluar (diambil oleh pemohon)</span>
+                                    <span class="label label-primary" style="opacity: 1;">{{$data['angkutanDiambil']}}</span>
                                 </a>
                             </li>
                         </ul>
@@ -140,12 +192,12 @@
                                 <tr>
                                     <td class="center">{{$item['nama']}}</td>
                                     <td>Memproses permohonan surat keterangan perusahaan</td>
-                                    <td >{{$item['perusahaanPetugas']}}</td>
+                                    <td >{{$item['skp']}}</td>
                                 </tr>
                                 <tr>
                                     <td class="center">{{$item['nama']}}</td>
                                     <td>Memproses permohonan surat rekomendasi peruntukan</td>
-                                    <td >{{$item['angkutanPetugas']}}</td>
+                                    <td >{{$item['srpa']}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

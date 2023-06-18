@@ -20,11 +20,31 @@ class ReportController extends Controller
         $start = Carbon::now()->startOfMonth();
         $from = date($start->toDateString());
         $to = date($now->toDateString());
-        $perusahaanMasuk = pengajuan_perusahaan::whereBetween('tanggal_permohonan', [$from, $to])->get();
-        $perusahaanKeluar = pengajuan_perusahaan::whereBetween('tanggal_cetak', [$from, $to])->get();
-        $angkutanMasuk = pengajuan_angkutan::whereBetween('tanggal_permohonan', [$from, $to])->get();
-        $angkutanKeluar = pengajuan_angkutan::whereBetween('tanggal_cetak', [$from, $to])->get();
+       
+        $data = $this->counting($from, $to);
+        return view('admin.report.index', compact('data', 'from', 'to'));
+    }
 
+    public function filterReport(Request $request) {
+        $from = date($request->start);
+        $to = date($request->end);
+        //dd($request->end);
+
+        $data = $this->counting($from, $to);
+        return view('admin.report.index', compact('data', 'from', 'to'));
+    }
+
+    public function counting($from, $to) {
+        $perusahaanMasuk = pengajuan_perusahaan::whereBetween('tanggal_permohonan', [$from, $to])->get();
+        $perusahaanDicetak = pengajuan_perusahaan::whereBetween('tanggal_cetak', [$from, $to])->get();
+        $perusahaanBirokrasi = pengajuan_perusahaan::whereBetween('tanggal_birokrasi', [$from, $to])->get();
+        $perusahaanTertandatangai = pengajuan_perusahaan::whereBetween('tanggal_penerbitan', [$from, $to])->get();
+        $perusahaanDiambil = pengajuan_perusahaan::whereBetween('tanggal_pengambilan', [$from, $to])->get();
+        $angkutanMasuk = pengajuan_angkutan::whereBetween('tanggal_permohonan', [$from, $to])->get();
+        $angkutanDicetak = pengajuan_angkutan::whereBetween('tanggal_cetak', [$from, $to])->get();
+        $angkutanBirokrasi = pengajuan_angkutan::whereBetween('tanggal_birokrasi', [$from, $to])->get();
+        $angkutanTertandatangai = pengajuan_angkutan::whereBetween('tanggal_penerbitan', [$from, $to])->get();
+        $angkutanDiambil = pengajuan_angkutan::whereBetween('tanggal_pengambilan', [$from, $to])->get();
         //proses surat
 
         
@@ -33,9 +53,16 @@ class ReportController extends Controller
         $data['start'] = $from;
         $data['end'] = $to;
         $data['perusahaanMasuk'] = count($perusahaanMasuk);
-        $data['perusahaanKeluar'] = count($perusahaanKeluar);
+        $data['perusahaanDicetak'] = count($perusahaanDicetak);
+        $data['perusahaanBirokrasi'] = count($perusahaanBirokrasi);
+        $data['perusahaanTertandatangai'] = count($perusahaanTertandatangai);
+        $data['perusahaanDiambil'] = count($perusahaanDiambil);
+
         $data['angkutanMasuk'] = count($angkutanMasuk);
-        $data['angkutanKeluar'] = count($angkutanKeluar);
+        $data['angkutanDicetak'] = count($angkutanDicetak);
+        $data['angkutanBirokrasi'] = count($angkutanBirokrasi);
+        $data['angkutanTertandatangai'] = count($angkutanTertandatangai);
+        $data['angkutanDiambil'] = count($angkutanDiambil);
 
         $petugas = petugas::all();
         $arr = [];
@@ -44,12 +71,10 @@ class ReportController extends Controller
             $angkutanMasukPetugas = pengajuan_angkutan::whereBetween('tanggal_permohonan', [$from, $to])->where('petugas_id', $value->id)->get();
             $arr[$key]['kode'] = $value->kode; 
             $arr[$key]['nama'] = $value->nama; 
-            $arr[$key]['perusahaanPetugas'] = count($perusahaanMasukPetugas);
-            $arr[$key]['angkutanPetugas'] = count($angkutanMasukPetugas);
+            $arr[$key]['skp'] = count($perusahaanMasukPetugas);
+            $arr[$key]['srpa'] = count($angkutanMasukPetugas);
         }
         $data['rekap_petugas'] = $arr;
-        
-        //dd($data['rekap_petugas'][0]);
-        return view('admin.report.index', compact('data'));
+        return $data;
     }
 }
