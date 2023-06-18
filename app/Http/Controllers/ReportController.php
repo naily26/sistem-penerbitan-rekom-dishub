@@ -16,25 +16,27 @@ class ReportController extends Controller
     }
 
     public function index(){
-        $now = Carbon::now();
-        $start = Carbon::now()->startOfMonth();
-        $from = date($start->toDateString());
-        $to = date($now->toDateString());
+        $to = Carbon::now('Asia/Jakarta')->format('Y-m-d');
+        $from = Carbon::now('Asia/Jakarta')->startOfMonth()->format('Y-m-d');
+        // $from = date($start->toDateString());
+        // $to = date($now->toDateString());
        
         $data = $this->counting($from, $to);
         return view('admin.report.index', compact('data', 'from', 'to'));
     }
 
     public function filterReport(Request $request) {
-        $from = date($request->start);
-        $to = date($request->end);
+        $from = date($request->from);
+        $to = date($request->to);
         //dd($request->end);
 
         $data = $this->counting($from, $to);
         return view('admin.report.index', compact('data', 'from', 'to'));
     }
 
-    public function counting($from, $to) {
+    public function counting($start, $end) {
+        $from = Carbon::parse($start)->subDay();
+        $to = Carbon::parse($end)->addDay();
         $perusahaanMasuk = pengajuan_perusahaan::whereBetween('tanggal_permohonan', [$from, $to])->get();
         $perusahaanDicetak = pengajuan_perusahaan::whereBetween('tanggal_cetak', [$from, $to])->get();
         $perusahaanBirokrasi = pengajuan_perusahaan::whereBetween('tanggal_birokrasi', [$from, $to])->get();
@@ -50,8 +52,8 @@ class ReportController extends Controller
         
         //counting
         $data;
-        $data['start'] = $from;
-        $data['end'] = $to;
+        $data['start'] = $start;
+        $data['end'] = $end;
         $data['perusahaanMasuk'] = count($perusahaanMasuk);
         $data['perusahaanDicetak'] = count($perusahaanDicetak);
         $data['perusahaanBirokrasi'] = count($perusahaanBirokrasi);
