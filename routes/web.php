@@ -11,6 +11,7 @@ use App\Http\Controllers\CustomerserviceController;
 use App\Http\Controllers\DataTampilanController;
 use App\Http\Controllers\DataPenerbitanController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\DokumenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +67,7 @@ Route::get('/tutorial', [LandingPageController::class, 'tutorial'])->name('tutor
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('kbli', KbliController::class);
+    Route::resource('dokumen', DokumenController::class);
     Route::resource('petugas', PetugasController::class);
     Route::resource('pengawas', PengawasController::class);
     Route::resource('customer-service', CustomerServiceController::class);

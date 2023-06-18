@@ -10,7 +10,7 @@
 
                 <!-- start: PAGE TITLE & BREADCRUMB -->
                 <ol class="breadcrumb">
-                    
+
                     <li class="active">
                         Data Penerbitan Surat Keterangan Perusahaan
                     </li>
@@ -29,7 +29,8 @@
                     @csrf
                     <input type="hidden" id="custId" name="from" value="{{$from}}">
                     <input type="hidden" id="custId" name="to" value="{{$to}}">
-                    <button class="btn pull-right mb-4 mr-2 btn-teal btn-sm" style="margin-left: 5px" type="submit"> Ekspor Data
+                    <button class="btn pull-right mb-4 mr-2 btn-teal btn-sm" style="margin-left: 5px" type="submit">
+                        Ekspor Data
                         <i class="fa fa-arrow-circle-up"></i></button>
                 </form>
                 <a href="#filter" data-toggle="modal" class="btn pull-right mb-4 mr-2 btn-teal btn-sm">
@@ -86,39 +87,40 @@
                 <div class="panel panel-default">
 
                     <div class="panel-body">
-                        <div class="table-responsive">
-                        <table class="table table-full-width table-striped table-bordered table-hover " id="sample_1" style="overflow-x:auto;">
-                            <thead>
-                                <tr>
-                                    <th>No Penerbitan</th>
-                                    <th>Nama Perusahaan</th>
-                                    <th>Kode KBLI</th>
-                                    <th>Nomor Kendaraan</th>
-                                    <th>Nomor Rangka</th>
-                                    <th>Keterangan</th>
-                                    <th>Petugas</th>
-                                    <th>Email Pemohon</th>
-                                    <th>Tanggal Permohonan</th>
-                                    <th>Tanggal Pengambilan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($data as $item)
-                                <tr>
-                                    <td>{{$item->nomor_rekomendasi_peruntukan}}</td>
-                                    <td>{{$item->angkutan->perusahaan->nama_perusahaan}}</td>
-                                    <td>{{$item->angkutan->perusahaan->kbli->kode}}</td>
-                                    <td>{{$item->angkutan->nomor_kendaraan}}</td>
-                                    <td>{{$item->angkutan->nomor_rangka}}</td>
-                                    <td>{{$item->keterangan}}</td>
-                                    <td>{{$item->petugas->kode}}</td>
-                                    <td>{{$item->angkutan->user->email}}</td>
-                                    <td>{{$item->tanggal_permohonan}}</td>
-                                    <td>{{$item->tanggal_pengambilan}}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                        <div class="table-responsive" style="overflow-x:auto;">
+                            <table class="table table-full-width table-striped table-bordered table-hover "
+                                id="sample_1" style="overflow-x:auto;">
+                                <thead>
+                                    <tr>
+                                        <th>No Penerbitan</th>
+                                        <th>Nama Perusahaan</th>
+                                        <th>Kode KBLI</th>
+                                        <th>Nomor Kendaraan</th>
+                                        <th>Nomor Rangka</th>
+                                        <th>Keterangan</th>
+                                        <th>Petugas</th>
+                                        <th>Email Pemohon</th>
+                                        <th>Tanggal Permohonan</th>
+                                        <th>Tanggal Pengambilan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($data as $item)
+                                    <tr>
+                                        <td>{{$item->nomor_rekomendasi_peruntukan}}</td>
+                                        <td>{{$item->angkutan->perusahaan->nama_perusahaan}}</td>
+                                        <td>{{$item->angkutan->perusahaan->kbli->kode}}</td>
+                                        <td>{{$item->angkutan->nomor_kendaraan}}</td>
+                                        <td>{{$item->angkutan->nomor_rangka}}</td>
+                                        <td>{{$item->keterangan}}</td>
+                                        <td>{{$item->petugas->kode}}</td>
+                                        <td>{{$item->angkutan->user->email}}</td>
+                                        <td>{{$item->tanggal_permohonan}}</td>
+                                        <td>{{$item->tanggal_pengambilan}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -134,20 +136,29 @@
 @push('style')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/plugins/select2/select2.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/admin/plugins/DataTables/media/css/DT_bootstrap.css') }}" />
-<link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css') }}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css') }}" rel="stylesheet"
+    type="text/css" />
+<link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal.css') }}" rel="stylesheet"
+    type="text/css" />
+<style>
+    td,
+    th {
+        white-space: nowrap;
+    }
 
+</style>
 @endpush
 
 @push('script')
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script type="text/javascript" src="{{asset('assets/admin/plugins/DataTables/media/js/jquery.dataTables.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/admin/plugins/DataTables/media/js/jquery.dataTables.min.js')}}">
+</script>
 <script type="text/javascript" src="{{asset('assets/admin/plugins/DataTables/media/js/DT_bootstrap.js')}}"></script>
 <script src="{{asset('assets/admin/js/table-data.js')}}"></script>
 <script src="{{asset('assets/admin/js/index.js')}}"></script>
 <script src="{{ asset('assets/admin/plugins/bootstrap-modal/js/bootstrap-modal.js') }}"></script>
-    <script src="{{ asset('assets/admin/plugins/bootstrap-modal/js/bootstrap-modalmanager.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/ui-modals.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/bootstrap-modal/js/bootstrap-modalmanager.js') }}"></script>
+<script src="{{ asset('assets/admin/js/ui-modals.js') }}"></script>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
     jQuery(document).ready(function () {

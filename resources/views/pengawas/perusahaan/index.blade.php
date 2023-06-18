@@ -27,50 +27,51 @@
         <div class="row">
             <div class="col-md-12">
                 <!-- start: DYNAMIC TABLE PANEL -->
-
                 <div class="panel panel-default">
-
                     <div class="panel-body">
-                        <table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>No Penerbitan</th>
-                                    <th>Nama Perusahaan</th>
-                                    <th>NIB</th>
-                                    <th>KBLI</th>
-                                    <th>Lama permohonan</th>
-                                    <th>Email</th>
-                                    <th>Status Penerbitan</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php
+                        <div style="overflow-x:auto;">
+                            <table class="table table-striped table-bordered table-hover table-full-width"
+                                id="sample_1">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>No Penerbitan</th>
+                                        <th>Nama Perusahaan</th>
+                                        <th>NIB</th>
+                                        <th>KBLI</th>
+                                        <th>Lama permohonan</th>
+                                        <th>Email</th>
+                                        <th>Status Penerbitan</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
                                     $no = 1;
-                                @endphp
-                                @foreach ($disetujui as $item)
-                                <tr>
-                                    <td>{{$no}}</td>
-                                    <td>{{$item->nomor_keterangan_perusahaan}}</td>
-                                    <td>{{$item->perusahaan->nama_perusahaan}}</td>
-                                    <td>{{$item->perusahaan->nib}}</td>
-                                    <td>{{$item->perusahaan->kbli->kode}}</td>
-                                    <td><?php echo lama($item->tanggal_permohonan);?></td>
-                                    <td>{{$item->perusahaan->user->email}}</td>
-                                    <td>{{$item->status_penerbitan}}</td>
-                                    <td><a class="btn btn-xs btn-success"
-                                        href="{{ route('perusahaan.show', $item->perusahaan_id)}}"><i
-                                            class="fa fa-eye"></i>
-                                        detail</a>
-                                    </td>
-                                </tr>
-                                @php
+                                    @endphp
+                                    @foreach ($disetujui as $item)
+                                    <tr>
+                                        <td>{{$no}}</td>
+                                        <td>{{$item->nomor_keterangan_perusahaan}}</td>
+                                        <td>{{$item->perusahaan->nama_perusahaan}}</td>
+                                        <td>{{$item->perusahaan->nib}}</td>
+                                        <td>{{$item->perusahaan->kbli->kode}}</td>
+                                        <td><?php echo lama($item->tanggal_permohonan);?></td>
+                                        <td>{{$item->perusahaan->user->email}}</td>
+                                        <td>{{$item->status_penerbitan}}</td>
+                                        <td><a class="btn btn-xs btn-success"
+                                                href="{{ route('perusahaan.show', $item->perusahaan_id)}}"><i
+                                                    class="fa fa-eye"></i>
+                                                detail</a>
+                                        </td>
+                                    </tr>
+                                    @php
                                     $no++;
-                                @endphp
-                                @endforeach
-                            </tbody>
-                        </table>
+                                    @endphp
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <!-- end: DYNAMIC TABLE PANEL -->
@@ -96,15 +97,19 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/plugins/select2/select2.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/admin/plugins/DataTables/media/css/DT_bootstrap.css') }}" />
 <style>
-
     .pdf {
         font-size: 16px !important;
         vertical-align: middle !important;
     }
 
-	.i-pdf {
-		text-align: center;
-	}
+    .i-pdf {
+        text-align: center;
+    }
+
+    td,
+    th {
+        white-space: nowrap;
+    }
 
 </style>
 @endpush

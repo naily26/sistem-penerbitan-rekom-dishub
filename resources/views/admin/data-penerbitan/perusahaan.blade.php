@@ -29,7 +29,8 @@
                     @csrf
                     <input type="hidden" id="custId" name="from" value="{{$from}}">
                     <input type="hidden" id="custId" name="to" value="{{$to}}">
-                    <button class="btn pull-right mb-4 mr-2 btn-teal btn-sm" style="margin-left: 5px" type="submit"> Ekspor Data
+                    <button class="btn pull-right mb-4 mr-2 btn-teal btn-sm" style="margin-left: 5px" type="submit">
+                        Ekspor Data
                         <i class="fa fa-arrow-circle-up"></i></button>
                 </form>
                 <a href="#filter" data-toggle="modal" class="btn pull-right mb-4 mr-2 btn-teal btn-sm">
@@ -84,7 +85,7 @@
                 <!-- start: DYNAMIC TABLE PANEL -->
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <div class="table-responsive">
+                        <div class="table-responsive" style="overflow-x:auto;">
                             <table class="table table-full-width table-striped table-bordered table-hover "
                                 id="sample_1" style="overflow-x:auto;">
                                 <thead>
@@ -134,6 +135,13 @@
     type="text/css" />
 <link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal.css') }}" rel="stylesheet"
     type="text/css" />
+<style>
+    td,
+    th {
+        white-space: nowrap;
+    }
+
+</style>
 
 @endpush
 

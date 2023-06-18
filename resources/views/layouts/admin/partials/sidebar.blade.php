@@ -31,6 +31,12 @@
                         <span class="selected"></span>
                     </a>
                 </li>
+                <li class="{{ Request::segment(1) === 'dokumen' ? 'active' : '' }}">
+                    <a href="{{ route('dokumen.index') }}">
+                        <span class="title"> Dokumen </span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
                 <li class="{{ Request::segment(1) === 'data-tampilan' ? 'active' : '' }}">
                     <a href="{{ route('data-tampilan.index')}}" href="javascript:void(0)">
                         <span class="title"> Tampilan </span>
