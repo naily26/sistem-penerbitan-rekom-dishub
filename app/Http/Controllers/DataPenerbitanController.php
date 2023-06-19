@@ -53,7 +53,7 @@ class DataPenerbitanController extends Controller
         $to = date($request->end);
         //dd($request->end);
 
-        $data = pengajuan_perusahaan::whereBetween('tanggal_penerbitan', [$from, $to])->get();
+        $data = pengajuan_perusahaan::whereBetween('tanggal_pengambilan', [$from, $to])->get();
         return view('admin.data-penerbitan.perusahaan', compact('data', 'from', 'to'));
     }
 
@@ -62,7 +62,7 @@ class DataPenerbitanController extends Controller
         $to = date($request->end);
         //dd($request->end);
 
-        $data = pengajuan_angkutan::whereBetween('tanggal_penerbitan', [$from, $to])->get();
+        $data = pengajuan_angkutan::whereBetween('tanggal_pengambilan', [$from, $to])->get();
         return view('admin.data-penerbitan.angkutan', compact('data', 'from', 'to'));
     }
 
