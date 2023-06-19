@@ -416,7 +416,7 @@ Narrow';">NIP.&nbsp;</span><span style="font-family:'Arial Narrow'; font-size:11
                 <td style="width:219.3pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span
                             style="font-family:'Arial Narrow';">Samsat&nbsp;
-                        </span><strong><span style="font-family:'Arial Narrow';">Kota Surabaya</span></strong><span
+                        </span><strong><span style="font-family:'Arial Narrow';">{{$detail->tembusan}}</span></strong><span
                             style="font-family:'Arial Narrow';">;
                         </span></p>
                 </td>

@@ -463,7 +463,7 @@ Narrow';">{{$detail->angkutan->perusahaan->kbli->kode}}</span></strong></p>
                 </td>
                 <td style="width:219.3pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span
-                            style="font-family:'Arial Narrow';">Samsat ;
+                            style="font-family:'Arial Narrow';">Samsat {{$detail->tembusan}};
                         </span></p>
                 </td>
             </tr>

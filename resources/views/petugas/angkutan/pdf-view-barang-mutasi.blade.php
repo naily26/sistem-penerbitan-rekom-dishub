@@ -21,7 +21,7 @@
          </td>
          <td style="width:487.8pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
          <p style="margin-top:3pt; margin-bottom:0pt; text-align:justify; font-size:11.5pt;"><span style="font-family:'Arial Narrow';">Surat permohonan Pimpinan&nbsp;</span><strong><span
-        style="font-family:'Arial Narrow';">{{$detail->perusahaan->nama_perusahaan}}</span></strong><span style="font-family:'Arial Narrow';">&nbsp;Nomor&nbsp;</span><strong><span style="font-family:'Arial
+        style="font-family:'Arial Narrow';">{{$detail->angkutan->perusahaan->nama_perusahaan}}</span></strong><span style="font-family:'Arial Narrow';">&nbsp;Nomor&nbsp;</span><strong><span style="font-family:'Arial
         Narrow';">{{$detail->nomor_permohonan}}</span></strong><span style="font-family:'Arial Narrow';">&nbsp;Tanggal</span><span style="font-family:'Arial Narrow';">&nbsp;&nbsp;</span><strong><span style="fontfamily:'Arial Narrow';"><?php echo tanggal_indonesia($detail->tanggal_permohonan); ?></span></strong></p>
          </td>
          </tr>
@@ -360,8 +360,7 @@
          <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:'Arial Narrow';">2.</span></p>
          </td>
          <td style="width:219.3pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
-         <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:'Arial Narrow';">Samsat&nbsp;</span><strong><span style="font-family:'Arial Narrow';">Kab.
-        Malang</span></strong><span style="font-family:'Arial Narrow';">;</span></p>
+         <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span style="font-family:'Arial Narrow';">Samsat&nbsp;</span><strong><span style="font-family:'Arial Narrow';">{{$detail->tembusan}}</span></strong><span style="font-family:'Arial Narrow';">;</span></p>
          </td>
          </tr>
          <tr>

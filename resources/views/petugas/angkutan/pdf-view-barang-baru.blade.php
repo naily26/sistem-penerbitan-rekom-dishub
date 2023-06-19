@@ -33,7 +33,7 @@ Narrow';">1.</span></p>
                 </td>
                 <td style="width:487.8pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:3pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><span style="font-family:'Arial
-Narrow';">Surat permohonan Pimpinan&nbsp;</span><strong><span style="font-family:'Arial Narrow';">{{$detail->perusahaan->nama_perusahaan}}</span></strong>
+Narrow';">Surat permohonan Pimpinan&nbsp;</span><strong><span style="font-family:'Arial Narrow';">{{$detail->angkutan->perusahaan->nama_perusahaan}}</span></strong>
                         <span style="font-family:'Arial Narrow';">&nbsp;nomor&nbsp;</span><strong><span
                                 style="font-family:'Arial Narrow';">{{$detail->nomor_permohonan}}</span></strong><span
                             style="font-family:'Arial Narrow';">&nbsp;&nbsp;</span><span style="font-family:'Arial
@@ -459,7 +459,7 @@ Narrow';">NIP.&nbsp;</span><a name="_Hlk116282954"></a><a name="_Hlk116284027"><
                 <td style="width:219.3pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                     <p style="margin-top:0pt; margin-bottom:0pt; font-size:11pt;"><span
                             style="font-family:'Arial Narrow';">Samsat&nbsp;
-                        </span><strong><span style="font-family:'Arial Narrow';">Kab. Nganjuk</span></strong><span
+                        </span><strong><span style="font-family:'Arial Narrow';">{{$detail->tembusan}}</span></strong><span
                             style="font-family:'Arial Narrow';">;
 
                         </span></p>

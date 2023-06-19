@@ -343,7 +343,7 @@ class AngkutanController extends Controller
             } elseif ($detail->keterangan == 'kendaraan-baru') {
                 $view = 'petugas.angkutan.pdf-view-penumpang-baru';
             } elseif ($detail->keterangan == 'kendaraan-mutasi') {
-                $view = 'petugas.angkutan.pdf-view-penumpang-baru';
+                $view = 'petugas.angkutan.pdf-view-penumpang-mutasi';
             }
         } elseif (str_contains($detail->angkutan->perusahaan->kbli->kategori, 'angkutan-barang')) {
             if ($detail->keterangan == 'perpanjangan-stnk') {
@@ -351,9 +351,10 @@ class AngkutanController extends Controller
             } elseif ($detail->keterangan == 'kendaraan-baru') {
                 $view = 'petugas.angkutan.pdf-view-barang-baru';
             } elseif ($detail->keterangan == 'kendaraan-mutasi') {
-                $view = 'petugas.angkutan.pdf-view-barang-baru';
+                $view = 'petugas.angkutan.pdf-view-barang-mutasi';
             }
         }
+        //dd($detail);
         $data = PDF::loadview($view, compact('detail', 'today'));
         return $data->stream('laporan.pdf');
     }
