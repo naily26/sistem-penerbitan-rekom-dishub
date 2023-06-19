@@ -54,7 +54,7 @@ class AngkutanController extends Controller
             $ditolak = pengajuan_angkutan::where('status_pengecekan', 'ditolak')->get();
             $diproses = pengajuan_angkutan::where('status_pengecekan', 'menunggu')->get();
             $tertunda = pengajuan_angkutan::where('status_penerbitan', 'tertunda')->get();
-            $angkutan_menunggu = pengajuan_angkutan::where('status_pengecekan', 'disetujui')->whereIn('status_penerbitan', ['dicetak'. 'birokrasi'])->get();
+            $angkutan_menunggu = pengajuan_angkutan::where('status_pengecekan', 'disetujui')->whereIn('status_penerbitan', ['dicetak', 'birokrasi'])->get();
             $data['angkutan_menunggu'] = count($angkutan_menunggu);
             $angkutan_diproses = pengajuan_angkutan::where('status_pengecekan', 'menunggu')->get();
             $data['angkutan_diproses'] = count($angkutan_diproses);
