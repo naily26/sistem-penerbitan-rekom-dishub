@@ -94,15 +94,15 @@
 
 @push('style')
 <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
-<link rel="stylesheet" href="assets/frontend/plugins/bootstrap-social-buttons/social-buttons-3.css">
-<link rel="stylesheet" href="assets/frontend/plugins/flex-slider/flexslider.css">
+<link rel="stylesheet" href="{{asset('assets/frontend/plugins/bootstrap-social-buttons/social-buttons-3.css')}}">
+<link rel="stylesheet" href="{{asset('assets/frontend/plugins/flex-slider/flexslider.css')}}">
 <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 @endpush
 
 @push('script')
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="assets/frontend/plugins/flex-slider/jquery.flexslider.js"></script>
-<script src="assets/frontend/plugins/mixitup/src/jquery.mixitup.js"></script>
+<script src="{{asset('assets/frontend/plugins/flex-slider/jquery.flexslider.js')}}"></script>
+<script src="{{asset('assets/frontend/plugins/mixitup/src/jquery.mixitup.js')}}"></script>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
     jQuery(document).ready(function () {

@@ -146,14 +146,14 @@
                     <div class="flexslider" data-plugin-options='{"controlNav":false,"sync": "#carousel"}'>
                         <ul class="slides">
                             <li>
-                                <a class="group1" href="assets/frontend/images/image01.jpg" title="Caption here">
-                                    <img src="assets/frontend/images/image01.jpg" />
+                                <a class="group1" href="{{$data->foto_persyaratan}}" title="Dishub Jatim">
+                                    <img src="{{$data->foto_persyaratan}}" />
                                     <span class="image-overlay"> <i
                                             class="clip-expand circle-icon circle-main-color"></i> </span>
                                 </a>
                             </li>
                             <li>
-                                <a class="group1" href="{{$data->foto_lembaga}}" title="Caption here">
+                                <a class="group1" href="{{$data->foto_lembaga}}" title="Dishub Jatim">
                                     <img src="{{$data->foto_lembaga}}" />
                                     <span class="image-overlay"> <i
                                             class="clip-expand circle-icon circle-main-color"></i> </span>
@@ -180,20 +180,20 @@
 
 @push('style')
 <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
-<link rel="stylesheet" href="assets/frontend/plugins/revolution_slider/rs-plugin/css/settings.css">
-<link rel="stylesheet" href="assets/frontend/plugins/flex-slider/flexslider.css">
-<link rel="stylesheet" href="assets/frontend/plugins/colorbox/example2/colorbox.css">
+<link rel="stylesheet" href="{{asset('assets/frontend/plugins/revolution_slider/rs-plugin/css/settings.css')}}">
+<link rel="stylesheet" href="{{asset('assets/frontend/plugins/flex-slider/flexslider.css')}}">
+<link rel="stylesheet" href="{{asset('assets/frontend/plugins/colorbox/example2/colorbox.css')}}">
 <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 @endpush
 
 @push('script')
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="assets/frontend/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
-<script src="assets/frontend/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-<script src="assets/frontend/plugins/flex-slider/jquery.flexslider.js"></script>
-<script src="assets/frontend/plugins/stellar.js/jquery.stellar.min.js"></script>
-<script src="assets/frontend/plugins/colorbox/jquery.colorbox-min.js"></script>
-<script src="assets/frontend/js/index.js"></script>
+<script src="{{asset('assets/frontend/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.plugins.min.js')}}"></script>
+<script src="{{asset('assets/frontend/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.revolution.min.js')}}"></script>
+<script src="{{asset('assets/frontend/plugins/flex-slider/jquery.flexslider.js')}}"></script>
+<script src="{{asset('assets/frontend/plugins/stellar.js/jquery.stellar.min.js')}}"></script>
+<script src="{{asset('assets/frontend/plugins/colorbox/jquery.colorbox-min.js')}}"></script>
+<script src="{{asset('assets/frontend/js/index.js')}}"></script>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 @endpush
 @endsection

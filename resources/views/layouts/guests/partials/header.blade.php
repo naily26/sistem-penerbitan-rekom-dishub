@@ -13,7 +13,7 @@
                 <!-- end: RESPONSIVE MENU TOGGLER -->
                 <!-- start: LOGO -->
                 <a class="navbar-brand" href="#">
-                    CLIP<i class="clip-clip"></i>ONE
+                    DISHUB<i class="clip-clip"></i>JATIM
                 </a>
                 <!-- end: LOGO -->
             </div>
