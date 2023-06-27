@@ -12,24 +12,18 @@
                 <ol class="breadcrumb">
 
                     <li class="active">
-                        Data Kode KBLI
+                        Data Pemohon
                     </li>
 
                 </ol>
                 <div class="page-header">
-                    <h1>Data Kode KBLI <small> Klasifikasi Baku Lapangan Usaha Indonesia</small></h1>
+                    <h1>Data Pemohon <small>Daftar akun pemohon</small></h1>
                 </div>
                 <!-- end: PAGE TITLE & BREADCRUMB -->
             </div>
         </div>
         <!-- end: PAGE HEADER -->
         <!-- start: PAGE CONTENT -->
-        <div class="row">
-            <div class="col-md-12">
-                <a class="btn btn-primary" href="{{ route('kbli.create')}}"><i class="fa fa-plus"></i>
-                    Tambah Data</a>
-            </div>
-        </div><br />
         <div class="row">
             <div class="col-md-12">
                 <!-- start: DYNAMIC TABLE PANEL -->
