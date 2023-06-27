@@ -17,7 +17,7 @@
             </a>
         </li>
         @php
-            $segment = ['kbli', 'data-tampilan', 'pengawas', 'petugas', 'pegawai', 'customer-service'];
+            $segment = ['kbli', 'data-tampilan', 'pengawas', 'petugas', 'pegawai', 'customer-service', 'pemohon'];
         @endphp
         <li class="{{ in_array(Request::segment(1), $segment) ? 'active' : '' }}">
             <a href="javascript:void(0)"><i class="clip-code"></i>
