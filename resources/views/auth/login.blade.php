@@ -35,11 +35,11 @@
                             class="form-control @error('password') is-invalid @enderror" name="password"
                             placeholder="Password" required autocomplete="current-password">
                         <i class="fa fa-lock"></i>
-                        {{-- @if(Route::has('password.request'))
+                        @if(Route::has('password.request'))
                             <a class="forgot" href="{{ route('password.request') }}">
                                 Lupa password
                             </a>
-                        @endif --}}
+                        @endif
                     </span>
 
                     @error('password')
