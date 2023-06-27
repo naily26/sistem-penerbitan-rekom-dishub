@@ -92,6 +92,9 @@ class HomeController extends Controller
         else if(Auth::user()->role == 'customer-service') {
             $data = $this->countingHome();
             return view('customer-service.dashboard.index', compact('data'));
+        } elseif (Auth::user()->role == 'suspended') {
+            Auth::logout();
+            return redirect('/login')->with('message', 'Akun anda ditangguhkan, silahkan hubungi admin!');
         }
 
         else {

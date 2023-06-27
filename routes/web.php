@@ -71,6 +71,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('petugas', PetugasController::class);
     Route::resource('pengawas', PengawasController::class);
     Route::resource('customer-service', CustomerServiceController::class);
+    Route::get('/pemohon', [App\Http\Controllers\PemohonController::class, 'index']);
+    Route::get('/penangguhan-akun/{id}', [App\Http\Controllers\PemohonController::class, 'PenangguhanAkun']);
+    Route::get('/pemulihan-akun/{id}', [App\Http\Controllers\PemohonController::class, 'PemulihanAkun']);
     Route::resource('data-tampilan', DataTampilanController::class);
     Route::get('/pegawai', [App\Http\Controllers\PengawasController::class, 'indexPegawai'])->name('indexPegawai');
     Route::get('/report', [App\Http\Controllers\ReportController::class, 'index'])->name('index');

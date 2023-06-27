@@ -52,6 +52,12 @@
                         <span class="selected"></span>
                     </a>
                 </li>
+                <li class="{{ Request::segment(1) === 'pemohon' ? 'active' : '' }}">
+                    <a href="{{  url('pemohon') }}">
+                        <span class="title"> Pemohon </span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
                 {{-- <li class="{{ Request::segment(1) === 'pengawas' ? 'active' : '' }}">
                     <a href="{{ route('pengawas.index')}}">
                         <span class="title"> Pengawas </span>
