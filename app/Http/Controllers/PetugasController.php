@@ -118,6 +118,10 @@ class PetugasController extends Controller
             'role'  => 'petugas',
             'email' => $request->email
         ]);
+        if(!is_null($request->password)) {
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }
 
         $petugas = petugas::where('id',$id)->update([
             'nama' => $request->nama,

@@ -185,7 +185,7 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="nomor_kendaraan"
-                                                name="nomor_kendaraan" placeholder="Tnomor kendaraan" oninput="this.value = this.value.toUpperCase()" required>
+                                                name="nomor_kendaraan"  placeholder="Tnomor kendaraan" oninput="this.value = this.value.toUpperCase()" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -661,8 +661,14 @@
                                                 Warna TNKB lama <span class="symbol required"></span>
                                             </label>
                                             <div class="col-sm-7">
-                                                <input type="text" class="form-control" id="warna_tnkb_lama"
-                                                    name="warna_tnkb_lama" placeholder="Text Field">
+                                                <select class="form-control search-select" id="warna_tnkb_lama"
+                                                name="warna_tnkb_lama" >
+                                                    <option value=""></option>
+                                                    <option value="Warna Putih dengan Tulisan Warna Hitam">Warna Putih dengan Tulisan Warna Hitam</option>
+                                                    <option value="Warna Kuning dengan Tulisan Warna Hitam">Warna Kuning dengan Tulisan Warna Hitam</option>
+                                                    <option value="Warna Merah dengan Tulisan Putih">Warna Merah dengan Tulisan Putih</option>
+                                                    <option value="Warna Hijau dengan Tulisan Hitam">Warna Hijau dengan Tulisan Hitam</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -720,10 +726,10 @@
                                                 <i class="fa fa-circle-arrow-left"></i> Back
                                             </button>
                                         </div>
-
+                                        <button class="col-sm-2 col-sm-offset-3 btn btn-blue " type="submit">Submit
+                                        </button>
                                     </div>
-                                    <button class="col-sm-2 col-sm-offset-3 btn btn-blue " type="submit">Submit
-                                    </button>
+                                    
                                 </div>
                             </div>
                         </form>
@@ -766,6 +772,9 @@
     });
     $("#select-kota-asal").select2({
         placeholder: 'Pilih Kota/Kabupaten Asal', // Placeholder select
+    });
+    $("#warna_tnkb_lama").select2({
+        placeholder: 'Pilih warna tnkb lama', // Placeholder select
     });
     var file_pdf = ['kps', 'stnkb', 'buku_uji_berkala', 'surat_pernyataan', 'surat_permohonan', 'surat_faktur_intern',
         'surat_registrasi_uji_tipe', 'surat_fiskal'
