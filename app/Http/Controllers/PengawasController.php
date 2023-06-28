@@ -7,6 +7,8 @@ use App\Models\petugas;
 use App\Models\customer_service;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class PengawasController extends Controller
 {
@@ -118,6 +120,11 @@ class PengawasController extends Controller
             'email' =>$request->email
         ]);
 
+        if(!is_null($request->password)) {
+            User::where('email',$request->email)->update([
+                'password' => Hash::make($request->password)
+            ]);
+        }
         $pengawas = pengawas::where('id',$id)->update([
             'nama' => $request->nama,
             'lembaga' => $request->lembaga,

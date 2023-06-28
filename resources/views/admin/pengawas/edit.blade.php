@@ -70,6 +70,16 @@
 												<input type="email" name="email" value="{{$pengawas->user->email}}" placeholder="E-mail" id="form-field-1" class="form-control" required>
 											</div>
 										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="password">
+												Password
+											</label>
+											<div class="col-sm-9">
+												<input type="text" name="password"  placeholder="Password" 
+													id="form-field-1" class="form-control" >
+												<p>Isi kolom ini jika anda ingin mengganti password default yang telah diberikan</p>
+											</div>
+										</div>
                                         <div class="form-group">
                                             <div class="col-sm-2 col-sm-offset-9">
                                                 <button type="submit" class="btn btn-blue next-step btn-block">

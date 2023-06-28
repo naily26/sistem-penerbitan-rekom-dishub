@@ -70,7 +70,7 @@
                                                             <th>Jabatan</th>
                                                             <th>E-mail</th>
                                                             <th>No Handphone</th>
-                                                            <th>Password</th>
+                                                            <th>Password Default</th>
                                                             <th>Action</th>
                                                                 
                                                         </tr>
@@ -152,7 +152,7 @@
                                                                 <th>Jabatan</th>
                                                                 <th>Lembaga</th>
                                                                 <th>E-mail</th>
-                                                                <th>Password</th>
+                                                                <th>Password Default</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </tr>
@@ -232,7 +232,7 @@
                                                             <th >Nama</th>
                                                             <th>E-mail</th>
                                                             <th>No Handphone</th>
-                                                            <th>Password</th>
+                                                            <th>Password Default</th>
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>

@@ -119,8 +119,9 @@ class PetugasController extends Controller
             'email' => $request->email
         ]);
         if(!is_null($request->password)) {
-            $user->password = Hash::make($request->password);
-            $user->save();
+            User::where('email',$request->email)->update([
+                'password' => Hash::make($request->password)
+            ]);
         }
 
         $petugas = petugas::where('id',$id)->update([

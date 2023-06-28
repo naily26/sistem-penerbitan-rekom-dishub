@@ -18,11 +18,11 @@
                         </a>
                     </li>
                     <li class="active">
-                        tambah data
+                        Edit data
                     </li>
                 </ol>
                 <div class="page-header">
-                    <h1>Tambah Data Customer Service </h1>
+                    <h1>Edit Data Customer Service </h1>
                 </div>
 
                 <!-- end: PAGE TITLE & BREADCRUMB -->
@@ -66,6 +66,16 @@
                                 <div class="col-sm-9">
                                     <input type="email" name="email" value="{{$cs->user->email}}" placeholder="E-mail"
                                         id="form-field-1" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="password">
+                                    Password
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="password"  placeholder="Password" 
+                                        id="form-field-1" class="form-control" >
+                                    <p>Isi kolom ini jika anda ingin mengganti password default yang telah diberikan</p>
                                 </div>
                             </div>
                             <div class="form-group">

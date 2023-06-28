@@ -98,6 +98,11 @@ class CustomerServiceController extends Controller
             'email' => $request->email
         ]);
 
+        if(!is_null($request->password)) {
+            User::where('email',$request->email)->update([
+                'password' => Hash::make($request->password)
+            ]);
+        }
         $cs = customer_service::where('id',$id)->update([
             'nama' => $request->nama,
             'no_hp' => $request->no_hp,

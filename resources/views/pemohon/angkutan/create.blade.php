@@ -75,7 +75,7 @@
                                     </div>
                                 </div>
                                 <div id="step-1">
-                                    <h2 class="StepTitle">Step 1 Content</h2>
+                                    <h2 class="StepTitle">Step 1 Siapkan Dokumen</h2>
                                     <div class="row">
                                         <div class="col-md-6 col-md-offset-2">
                                             Silahkan persiapkan beberapa dokumen berikut ini:
