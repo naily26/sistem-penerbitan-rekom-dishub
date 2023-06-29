@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\kbli;
 use App\Models\dokumen;
+use App\Models\angkutan;
+use App\Models\pengajuan_angkutan;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NotifPerusahaan;
 
@@ -222,6 +224,14 @@ class PerusahaanController extends Controller
                 $tahun = Carbon::now()->format('Y');
                 $status->nomor_keterangan_perusahaan = '551.21 / '. $urut.' / '.$status->petugas->kode.' / 113.4 / II / '.$tahun;
                 $status->save();
+                $data_angkutan = angkutan::where('perusahaan_id', $id)->select('id')->get()->toArray();
+                $data_tertunda = pengajuan_angkutan::whereIn('angkutan_id', $data_angkutan)->where('status_penerbitan', 'tertunda')->get();
+                if ($data_tertunda) {
+                    foreach ($data_tertunda as $key => $value) {
+                        $value->status_penerbitan = 'menunggu';
+                        $value->save();
+                    }
+                }
             }
 
         } elseif (Auth::user()->role == 'pemohon') {
@@ -240,7 +250,7 @@ class PerusahaanController extends Controller
             if ($request->file('surat_izin_penyelenggara')) {$find->surat_izin_penyelenggara = $this->uploadFile($request, 'surat_izin_penyelenggara');}
             if ($request->file('sertifikat_standar')) {$find->sertifikat_standar = $this->uploadFile($request, 'sertifikat_standar');}
 
-            if($pengajuan->status_pengecekan == 'ditolak') {$pengajuan->status_pengecekan = 'menunggu'; $pengajuan->catatan = $pengajuan->catatan  .' \n telah diperbarui pada '.$today;} 
+            if($pengajuan->status_pengecekan == 'ditolak') {$pengajuan->status_pengecekan = 'menunggu'; $pengajuan->catatan = $pengajuan->catatan  .' <br/><i> telah diperbarui pada '.$today.'</i>';} 
             $find->save();
             $pengajuan->save();
             if ($pengajuan) {$status = true;}

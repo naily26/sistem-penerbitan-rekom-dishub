@@ -135,8 +135,10 @@
                                 <td>
                                     <div data-original-title="Enter notes" data-toggle="manual" 
                                         data-pk="1" id="note" class="editable" tabindex="-1" style="display: block;">
-                                        @if ($data->catatan)
-                                            {{$data->catatan}}
+                                        @if ($data->pengajuan_perusahaan->catatan)
+                                        @php
+                                            echo $data->pengajuan_perusahaan->catatan
+                                        @endphp
                                         @else
                                             tidak ada catatan
                                         @endif
@@ -251,10 +253,16 @@
 <script>
     function showDiv(divId, element) {
         document.getElementById(divId).style.display = element.value == divId ? 'block' : 'none';
+        
     }
 
     function cekStatus(element) {
         showDiv('ditolak', element);
+        if(element.value == 'ditolak'){
+            $("[name='catatan']").prop("required", true);
+        } else {
+            $("[name='catatan']").prop("required", false);
+        }
     }
 
 </script>

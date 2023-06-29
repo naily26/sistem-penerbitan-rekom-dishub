@@ -252,7 +252,7 @@
                                 </label>
                                 <div class="col-sm-7">
                                     <select class="form-control" name="status_pengecekan" onchange="cekStatus(this)" required>
-                                        <option value="">&nbsp;</option>
+                                        <option value="" selected disabled>&nbsp;</option>
                                         <option value="disetujui">Setujui</option>
                                         <option value="ditolak">Tolak</option>
                                     </select>
@@ -324,6 +324,8 @@
         showDiv('ditolak', element);
         if(element.value == 'ditolak'){
             $("[name='catatan']").prop("required", true);
+        } else {
+            $("[name='catatan']").prop("required", false);
         }
     }
 

@@ -84,7 +84,7 @@
                                     <div class="tab-pane in active" id="data-dalam-proses">
                                         <!-- start: DYNAMIC TABLE PANEL -->
                                         <div class="panel panel-default">
-                                            <div class="panel-body">
+                                            <div class="panel-body" style="overflow-x:auto;">
                                                 <table
                                                     class="table table-striped table-bordered table-hover table-full-width"
                                                     id="sample_1">
@@ -95,7 +95,8 @@
                                                             <th>KBLI</th>
                                                             <th>Lama permohonan</th>
                                                             <th>Petugas</th>
-                                                            {{-- <th>Action</th> --}}
+                                                            <th>Email Pemohon</th>
+                                                            <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -110,6 +111,11 @@
                                                             @else
                                                                 {{$item->petugas->nama}}
                                                             @endif </td>
+                                                            <td>{{$item->perusahaan->user->email}}</td>
+                                                            <td><a class="btn btn-xs btn-success"
+                                                                href="{{ route('perusahaan.show', $item->perusahaan_id)}}"><i
+                                                                    class="fa fa-eye"></i>
+                                                                detail</a></td>
                                                         </tr>
                                                         @endforeach
                                                     </tbody>
@@ -121,8 +127,7 @@
                                     <div class="tab-pane" id="data-disetujui">
                                         <!-- start: DYNAMIC TABLE PANEL -->
                                         <div class="panel panel-default">
-                                            <div class="panel-body">
-                                                <div style="overflow-x:auto;">
+                                            <div class="panel-body" style="overflow-x:auto;">
                                                 <table
                                                     class="table table-striped table-bordered table-hover table-full-width"
                                                     id="sample_2" >
@@ -132,7 +137,8 @@
                                                             <th>NIB</th>
                                                             <th>KBLI</th>
                                                             <th>Lama permohonan</th>
-                                                            <th>Email</th>
+                                                            <th>Petugas</th>
+                                                            <th>Email Pemohon</th>
                                                             <th>Status Penerbitan</th>
                                                             <th>Action</th>
                                                             {{-- <th>Action</th> --}}
@@ -145,6 +151,7 @@
                                                             <td>{{$item->perusahaan->nib}}</td>
                                                             <td>{{$item->perusahaan->kbli->kode}}</td>
                                                             <td><?php echo lama($item->tanggal_permohonan);?></td>
+                                                            <td> {{$item->petugas->nama}}</td>
                                                             <td>{{$item->perusahaan->user->email}}</td>
                                                             <td>{{$item->status_penerbitan}}</td>
                                                             <td><a class="btn btn-xs btn-success"
@@ -243,7 +250,6 @@
                                                         @endforeach
                                                     </tbody>
                                                 </table>
-                                                </div>
                                             </div>
                                         </div>
                                         <!-- end: DYNAMIC TABLE PANEL -->
@@ -251,7 +257,7 @@
                                     <div class="tab-pane" id="data-ditolak">
                                         <!-- start: DYNAMIC TABLE PANEL -->
                                         <div class="panel panel-default">
-                                            <div class="panel-body">
+                                            <div class="panel-body" style="overflow-x:auto;">
                                                 <table
                                                     class="table table-striped table-bordered table-hover table-full-width"
                                                     id="sample_3">
@@ -261,6 +267,8 @@
                                                             <th>NIB</th>
                                                             <th>KBLI</th>
                                                             <th>Lama permohonan</th>
+                                                            <th>Petugas</th>
+                                                            <th>Email Pemohon</th>
                                                             <th>Action</th>
                                                             {{-- <th>Action</th> --}}
                                                         </tr>
@@ -272,6 +280,8 @@
                                                             <td>{{$item->perusahaan->nib}}</td>
                                                             <td>{{$item->perusahaan->kbli->kode}}</td>
                                                             <td><?php echo lama($item->tanggal_permohonan);?></td>
+                                                            <td> {{$item->petugas->nama}}</td>
+                                                            <td>{{$item->perusahaan->user->email}}</td>
                                                             <td><a class="btn btn-xs btn-success"
                                                                 href="{{ route('perusahaan.show', $item->perusahaan_id)}}"><i
                                                                     class="fa fa-eye"></i>
@@ -319,6 +329,11 @@
     .btn-xs {
         padding: 1px;
         margin: 1px;
+    }
+
+    td,
+    th {
+        white-space: nowrap;
     }
 
 </style>

@@ -41,7 +41,7 @@ class AngkutanController extends Controller
             $data['angkutan_menunggu'] = count($angkutan_menunggu);
             $angkutan_diproses = pengajuan_angkutan::where('status_pengecekan', 'menunggu')->where('petugas_id', $data_petugas->id)->get();
             $data['angkutan_diproses'] = count($angkutan_diproses);
-            $disetujui = pengajuan_angkutan::where('petugas_id', $data_petugas->id)->where('status_pengecekan', 'disetujui')->where('status_penerbitan', '!=', 'tertunda')->get();
+            $disetujui = pengajuan_angkutan::where('petugas_id', $data_petugas->id)->where('status_pengecekan', 'disetujui')->whereNotIn('status_penerbitan',  ['tertunda', 'diambil'])->get();
             $ditolak = pengajuan_angkutan::where('petugas_id', $data_petugas->id)->where('status_pengecekan', 'ditolak')->get();
             $diproses = pengajuan_angkutan::where('petugas_id', $data_petugas->id)->where('status_pengecekan', 'menunggu')->get();
             $tertunda = pengajuan_angkutan::where('petugas_id', $data_petugas->id)->where('status_penerbitan', 'tertunda')->get();
@@ -50,7 +50,7 @@ class AngkutanController extends Controller
             $disetujui = pengajuan_angkutan::where('status_pengecekan', 'disetujui')->where('status_penerbitan', '!=', 'tertunda')->get();
             return view('pengawas.angkutan.index', compact('disetujui'));
         } elseif (Auth::user()->role == 'admin') {
-            $disetujui = pengajuan_angkutan::where('status_pengecekan', 'disetujui')->where('status_penerbitan', '!=', 'tertunda')->get();
+            $disetujui = pengajuan_angkutan::where('status_pengecekan', 'disetujui')->whereNotIn('status_penerbitan',  ['tertunda', 'diambil'])->get();
             $ditolak = pengajuan_angkutan::where('status_pengecekan', 'ditolak')->get();
             $diproses = pengajuan_angkutan::where('status_pengecekan', 'menunggu')->get();
             $tertunda = pengajuan_angkutan::where('status_penerbitan', 'tertunda')->get();

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->enum('status_pengecekan', ['disetujui', 'ditolak', 'menunggu'])->default('menunggu');
             $table->string('surat_keterangan_perusahaan')->nullable();
             $table->string('nomor_keterangan_perusahaan')->nullable();
-            $table->enum('status_penerbitan', ['menunggu', 'dicetak', 'birokrasi', 'diterbitkan', 'diambil'])->nullable();
+            $table->enum('status_penerbitan', ['menunggu', 'dicetak', 'birokrasi', 'diterbitkan', 'diambil', 'offline'])->nullable();
             $table->date('tanggal_permohonan')->nullable();
             $table->date('tanggal_cetak')->nullable();
             $table->date('tanggal_birokrasi')->nullable();
