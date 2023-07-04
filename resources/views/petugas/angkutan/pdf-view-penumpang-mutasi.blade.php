@@ -233,7 +233,7 @@
      <p style="margin-top:2pt; margin-bottom:0pt; font-size:11.5pt;"><span style="font-family:'Arial Narrow';">:</span></p>
      </td>
      <td style="width:353.9pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
-     <p style="margin-top:2pt; margin-bottom:0pt; font-size:11.5pt;"><strong><span style="font-family:'Arial Narrow';">Angkutan Karyawan</span></strong></p>
+     <p style="margin-top:2pt; margin-bottom:0pt; font-size:11.5pt;"><strong><span style="font-family:'Arial Narrow';">{{$detail->angkutan->perusahaan->kbli->keterangan}}</span></strong></p>
      </td>
      </tr>
      </tbody>

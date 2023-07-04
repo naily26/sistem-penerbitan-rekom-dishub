@@ -247,6 +247,7 @@ class AngkutanController extends Controller
             foreach ($file_pengajuan as $key => $item) {
                 if( $request->file($item)) { $pengajuan->$item = $this->uploadFile($request, $item); } 
             }
+            $pengajuan->status_pengecekan = 'menunggu';
             $pengajuan->save();
             //angkutan
             $angkutan = angkutan::where('id', $pengajuan->angkutan_id)->first();
