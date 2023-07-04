@@ -276,8 +276,7 @@
      </td>
      <td style="width:89.75pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
      <p style="margin-top:2pt; margin-bottom:0pt; font-size:11.5pt;"><span style="font-family:'Arial Narrow';">Peruntukan</span><span style="font-family:'Arial
-    Narrow';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
-    </span></p>
+    Narrow';"></p>
      </td>
      <td style="width:7.2pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
      <p style="margin-top:2pt; margin-bottom:0pt; font-size:11.5pt;"><span style="font-family:'Arial Narrow';">:</span></p>

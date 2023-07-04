@@ -18,11 +18,11 @@
                         </a>
                     </li>
                     <li class="active">
-                        tambah data
+                        edit data
                     </li>
                 </ol>
                 <div class="page-header">
-                    <h1>Tambah Data Dokumen </h1>
+                    <h1>Edit Data Dokumen </h1>
                 </div>
 
                 <!-- end: PAGE TITLE & BREADCRUMB -->

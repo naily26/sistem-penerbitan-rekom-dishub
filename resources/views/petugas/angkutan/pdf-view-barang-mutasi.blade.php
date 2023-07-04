@@ -161,7 +161,7 @@
          <p style="margin-top:2pt; margin-bottom:0pt; font-size:11.5pt;"><span style="font-family:'Arial Narrow';">:</span></p>
          </td>
          <td style="width:353.9pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
-         <p style="margin-top:2pt; margin-bottom:0pt; font-size:11.5pt;"><strong><span style="font-family:'Arial Narrow';">{{$detail->angkutan->perusahaan->nama_perusahaan}}</span></strong></p>
+         <p style="margin-top:2pt; margin-bottom:0pt; font-size:11.5pt;"><strong><span style="font-family:'Arial Narrow';">{{$detail->data_mutasi->perusahaan_lama}}</span></strong></p>
          </td>
          </tr>
          <tr>
@@ -189,7 +189,7 @@
          <p style="margin-top:2pt; margin-bottom:0pt; font-size:11.5pt;"><span style="font-family:'Arial Narrow';">:</span></p>
          </td>
          <td style="width:353.9pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
-         <p style="margin-top:2pt; margin-bottom:0pt; text-align:justify; font-size:11.5pt;"><strong><span style="font-family:'Arial Narrow';">{{$detail->angkutan->perusahaan->alamat}}</span></strong></p>
+         <p style="margin-top:2pt; margin-bottom:0pt; text-align:justify; font-size:11.5pt;"><strong><span style="font-family:'Arial Narrow';">{{$detail->data_mutasi->alamat_lama}}</span></strong></p>
          </td>
          </tr>
          <tr>
@@ -275,9 +275,7 @@
          <p style="margin-top:2pt; margin-bottom:0pt; font-size:11.5pt;"><span style="font-family:'Arial Narrow';">c.</span></p>
          </td>
          <td style="width:89.75pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
-         <p style="margin-top:2pt; margin-bottom:0pt; font-size:11.5pt;"><span style="font-family:'Arial Narrow';">Peruntukan</span><span style="font-family:'Arial
-        Narrow';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
-        </span></p>
+         <p style="margin-top:2pt; margin-bottom:0pt; font-size:11.5pt;"><span style="font-family:'Arial Narrow';">Peruntukan</span></p>
          </td>
          <td style="width:7.2pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
          <p style="margin-top:2pt; margin-bottom:0pt; font-size:11.5pt;"><span style="font-family:'Arial Narrow';">:</span></p>

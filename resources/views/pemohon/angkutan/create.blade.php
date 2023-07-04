@@ -635,6 +635,15 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">
+                                                Nama pemilik lama <span class="symbol required"></span>
+                                            </label>
+                                            <div class="col-sm-7">
+                                                <input type="text" class="form-control" id="pemilik_lama"
+                                                    name="pemilik_lama" placeholder="nama pemilik lama">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">
                                                 Kota / kabupaten asal <span class="symbol required"></span>
                                             </label>
                                             <div class="col-sm-7">
@@ -807,14 +816,14 @@
     });
 
     $("[name='nomor_rangka']").change(function () {
-        var val = $(this).val().toLowerCase();;
+        var val = $(this).val().toLowerCase();
         $.ajax({
             type: 'get',
             url: "{{url('/get-angkutan')}}",
             dataType: 'json',
             success: function (data) {
                 for (var key in data) {
-                    if (val = data[key].nomor_rangka) {
+                    if (val == data[key].nomor_rangka) {
                         console.log('find identic');
                         $("[name='nomor_mesin']").val(data[key].nomor_mesin);
                         $("[name='nama_pemilik']").val(data[key].nama_pemilik);
@@ -827,7 +836,7 @@
                             $("[name='nomor_uji']").val(data[key].nomor_uji);
                         }
                     } else {
-                        console.log(data[key].nomor_rangka);
+                        console.log('no identic');
                     }
                 }
               

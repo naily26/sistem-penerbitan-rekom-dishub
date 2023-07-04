@@ -18,7 +18,8 @@ class data_mutasi extends Model
        'surat_fiskal',
        'nomor_surat_fiskal',
        'tanggal_surat_fiskal',
-       'kota_asal'
+       'kota_asal',
+       'pemilik_lama'
     ];
 
     public function pengajuan_angkutan()

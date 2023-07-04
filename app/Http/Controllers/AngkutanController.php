@@ -153,6 +153,7 @@ class AngkutanController extends Controller
             $data_mutasi = data_mutasi::create([
                 'pengajuan_angkutan_id' => $pengajuan->id,
                 'perusahaan_lama' => $request->perusahaan_lama,
+                'pemilik_lama' => $request->pemilik_lama,
                 'alamat_lama' => $request->alamat_lama,
                 'warna_tnkb_lama' => $request->warna_tnkb_lama,
                 'surat_fiskal' =>  $convert['file_surat_fiskal'],
