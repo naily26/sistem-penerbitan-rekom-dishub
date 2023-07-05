@@ -91,10 +91,13 @@
                                                 <li>
                                                     Surat pernyataan akan memenuhi ketentuan persyaratan khusus usaha
                                                     perizinan angkutan
-                                                    penumpang/barang umum. <a href="{{$dokumen[1]['file_template']}}">download-template.docs</a>
+                                                    penumpang/barang umum. <a
+                                                        href="{{$dokumen[1]['file_template']}}">download-template.docs</a>
                                                 </li>
                                                 <li>
-                                                    Surat permohonan dari Perusahaan yang disahkan oleh Direktur Perusahaan  <a href="{{$dokumen[0]['file_template']}}">download-template.docs</a>
+                                                    Surat permohonan dari Perusahaan yang disahkan oleh Direktur
+                                                    Perusahaan <a
+                                                        href="{{$dokumen[0]['file_template']}}">download-template.docs</a>
                                                 </li>
                                                 <li>
                                                     STNKB
@@ -113,7 +116,7 @@
                                                 </li>
                                             </ul>
                                             Silahkan mengikuti tutorial berikut untuk scan dokumen <a target="_blank"
-                                            href="https://www.medcom.id/teknologi/tips-trik/dN6aqWRK-cara-scan-dokumen-ke-pdf-di-android-tanpa-aplikasi-lain-cuma-google-drive-di-hape">tutorial-link</a>
+                                                href="https://www.medcom.id/teknologi/tips-trik/dN6aqWRK-cara-scan-dokumen-ke-pdf-di-android-tanpa-aplikasi-lain-cuma-google-drive-di-hape">tutorial-link</a>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -137,7 +140,8 @@
                                                 onchange="cek(this)" required>
                                                 <option value=""></option>
                                                 @foreach ($perusahaan as $key => $item)
-                                                <option value="{{$item->id}}">{{$item->nama_perusahaan}} ({{$item->kbli->kode}} - {{$item->kbli->keterangan}})</option>
+                                                <option value="{{$item->id}}">{{$item->nama_perusahaan}}
+                                                    ({{$item->kbli->kode}} - {{$item->kbli->keterangan}})</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -165,7 +169,7 @@
                                                 class="select2-container form-control search-select" required>
                                                 <option value=""></option>
                                                 @foreach ($kota as $key => $item)
-                                                <option value="{{$item->nama}}" ><?= $item->nama ?></option>
+                                                <option value="{{$item->nama}}"><?= $item->nama ?></option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -176,7 +180,8 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="nama_pemilik"
-                                                name="nama_pemilik" placeholder="nama pemilik" oninput="this.value = this.value.toUpperCase()" required>
+                                                name="nama_pemilik" placeholder="nama pemilik"
+                                                oninput="this.value = this.value.toUpperCase()" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -185,7 +190,8 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="nomor_kendaraan"
-                                                name="nomor_kendaraan"  placeholder="Tnomor kendaraan" oninput="this.value = this.value.toUpperCase()" required>
+                                                name="nomor_kendaraan" placeholder="Tnomor kendaraan"
+                                                oninput="this.value = this.value.toUpperCase()" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -194,7 +200,8 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="nomor_uji" name="nomor_uji"
-                                                placeholder="nomor uji" oninput="this.value = this.value.toUpperCase()" required>
+                                                placeholder="nomor uji" oninput="this.value = this.value.toUpperCase()"
+                                                required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -203,7 +210,8 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="nomor_rangka"
-                                                name="nomor_rangka" placeholder="nomor rangka" oninput="this.value = this.value.toUpperCase()" required>
+                                                name="nomor_rangka" placeholder="nomor rangka"
+                                                oninput="this.value = this.value.toUpperCase()" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -212,7 +220,8 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="nomor_mesin" name="nomor_mesin"
-                                                placeholder="nomor mesin" oninput="this.value = this.value.toUpperCase()" required>
+                                                placeholder="nomor mesin"
+                                                oninput="this.value = this.value.toUpperCase()" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -221,7 +230,8 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="merk" name="merk"
-                                                placeholder="merk kendaraan" oninput="this.value = this.value.toUpperCase()" required>
+                                                placeholder="merk kendaraan"
+                                                oninput="this.value = this.value.toUpperCase()" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -230,7 +240,8 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="tipe" name="tipe"
-                                                placeholder="Tipe" oninput="this.value = this.value.toUpperCase()" required>
+                                                placeholder="Tipe" oninput="this.value = this.value.toUpperCase()"
+                                                required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -249,7 +260,8 @@
                                         </label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="jenis" name="jenis"
-                                                placeholder="jenis" oninput="this.value = this.value.toUpperCase()" required>
+                                                placeholder="jenis" oninput="this.value = this.value.toUpperCase()"
+                                                required>
                                         </div>
                                     </div>
                                     <div class="form-group" id="kps">
@@ -671,12 +683,16 @@
                                             </label>
                                             <div class="col-sm-7">
                                                 <select class="form-control search-select" id="warna_tnkb_lama"
-                                                name="warna_tnkb_lama" >
+                                                    name="warna_tnkb_lama">
                                                     <option value=""></option>
-                                                    <option value="Warna Putih dengan Tulisan Warna Hitam">Warna Putih dengan Tulisan Warna Hitam</option>
-                                                    <option value="Warna Kuning dengan Tulisan Warna Hitam">Warna Kuning dengan Tulisan Warna Hitam</option>
-                                                    <option value="Warna Merah dengan Tulisan Putih">Warna Merah dengan Tulisan Putih</option>
-                                                    <option value="Warna Hijau dengan Tulisan Hitam">Warna Hijau dengan Tulisan Hitam</option>
+                                                    <option value="Warna Putih dengan Tulisan Warna Hitam">Warna Putih
+                                                        dengan Tulisan Warna Hitam</option>
+                                                    <option value="Warna Kuning dengan Tulisan Warna Hitam">Warna Kuning
+                                                        dengan Tulisan Warna Hitam</option>
+                                                    <option value="Warna Merah dengan Tulisan Putih">Warna Merah dengan
+                                                        Tulisan Putih</option>
+                                                    <option value="Warna Hijau dengan Tulisan Hitam">Warna Hijau dengan
+                                                        Tulisan Hitam</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -738,7 +754,7 @@
                                         <button class="col-sm-2 col-sm-offset-3 btn btn-blue " type="submit">Submit
                                         </button>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </form>
@@ -810,7 +826,8 @@
             if (!(regex.test(val))) {
                 $(this).val('');
                 alert(
-                    'Anda hanya bisa menggungah dokumen berupa gambar (berformat .png, .jpg, dan .jpeg');
+                    'Anda hanya bisa menggungah dokumen berupa gambar (berformat .png, .jpg, dan .jpeg'
+                    );
             }
         });
     });
@@ -831,7 +848,7 @@
                         $("[name='jenis']").val(data[key].jenis);
                         $("[name='tipe']").val(data[key].tipe);
                         $("[name='tahun_pembuatan']").val(data[key].tahun_pembuatan);
-                        if ( $("[name='nomor_kendaraan']").val() != 'baru') {
+                        if ($("[name='nomor_kendaraan']").val() != 'baru') {
                             $("[name='nomor_kendaraan']").val(data[key].nomor_kendaraan);
                             $("[name='nomor_uji']").val(data[key].nomor_uji);
                         }
@@ -839,15 +856,13 @@
                         console.log('no identic');
                     }
                 }
-              
+
             },
             error: function (data) {
                 console.log('Error:', data);
             }
         });
     });
-
-    
 
 </script>
 
@@ -889,6 +904,23 @@
             $("[name='nomor_kendaraan']").val(null);
             $("[name='nomor_uji']").val(null);
         }
+        var kolom_baru = ['surat_faktur_intern', 'surat_registrasi_uji_tipe', 'nomor_faktur', 'tanggal_faktur',
+            'nomor_srut', 'tanggal_srut'
+        ];
+        var kolom_mutasi = ['alamat_lama', 'perusahaan_lama', 'warna_tnkb_lama', 'surat_fiskal', 'nomor_surat_fiskal',
+            'tanggal_surat_fiskal'
+        ];
+        if (element.value != 'kendaraan-baru') {
+            $.each(kolom_baru, function (index, val) {
+                $("[name="+val+"]").prop("required", false);
+            });
+        }
+        if (element.value != 'kendaraan-mutasi') {
+            $.each(kolom_mutasi, function (index, val) {
+                $("[name="+val+"]").prop("required", false);
+            });
+        }
+
     }
 
     function cek(element) {
