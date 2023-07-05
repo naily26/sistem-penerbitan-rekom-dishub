@@ -38,11 +38,14 @@ class ReportController extends Controller
         $from = Carbon::parse($start)->subDay();
         $to = Carbon::parse($end)->addDay();
         $perusahaanMasuk = pengajuan_perusahaan::whereBetween('tanggal_permohonan', [$from, $to])->get();
+        $perusahaanDitolak = pengajuan_perusahaan::whereBetween('tanggal_permohonan', [$from, $to])->where('status_pengecekan', 'ditolak')->get();
         $perusahaanDicetak = pengajuan_perusahaan::whereBetween('tanggal_cetak', [$from, $to])->get();
         $perusahaanBirokrasi = pengajuan_perusahaan::whereBetween('tanggal_birokrasi', [$from, $to])->get();
         $perusahaanTertandatangai = pengajuan_perusahaan::whereBetween('tanggal_penerbitan', [$from, $to])->get();
         $perusahaanDiambil = pengajuan_perusahaan::whereBetween('tanggal_pengambilan', [$from, $to])->get();
+
         $angkutanMasuk = pengajuan_angkutan::whereBetween('tanggal_permohonan', [$from, $to])->get();
+        $angkutanDitolak = pengajuan_angkutan::whereBetween('tanggal_permohonan', [$from, $to])->where('status_pengecekan', 'ditolak')->get();
         $angkutanDicetak = pengajuan_angkutan::whereBetween('tanggal_cetak', [$from, $to])->get();
         $angkutanBirokrasi = pengajuan_angkutan::whereBetween('tanggal_birokrasi', [$from, $to])->get();
         $angkutanTertandatangai = pengajuan_angkutan::whereBetween('tanggal_penerbitan', [$from, $to])->get();
@@ -55,12 +58,14 @@ class ReportController extends Controller
         $data['start'] = $start;
         $data['end'] = $end;
         $data['perusahaanMasuk'] = count($perusahaanMasuk);
+        $data['perusahaanDitolak'] = count($perusahaanDitolak);
         $data['perusahaanDicetak'] = count($perusahaanDicetak);
         $data['perusahaanBirokrasi'] = count($perusahaanBirokrasi);
         $data['perusahaanTertandatangai'] = count($perusahaanTertandatangai);
         $data['perusahaanDiambil'] = count($perusahaanDiambil);
 
         $data['angkutanMasuk'] = count($angkutanMasuk);
+        $data['angkutanDitolak'] = count($angkutanDitolak);
         $data['angkutanDicetak'] = count($angkutanDicetak);
         $data['angkutanBirokrasi'] = count($angkutanBirokrasi);
         $data['angkutanTertandatangai'] = count($angkutanTertandatangai);

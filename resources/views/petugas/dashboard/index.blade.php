@@ -194,10 +194,7 @@
                                             <tr>
                                                 <td>{{$item->perusahaan->nama_perusahaan}}</td>
                                                 <td>{{$numberDays+1}} hari</td>
-                                                <td class="hidden-xs">
-                                                    <a href="#" rel="nofollow" target="_blank">
-                                                        ella@example.com
-                                                    </a></td>
+                                                <td >{{$item->jumlah_angkutan}}</td>
                                                 <td class="center">
                                                     <a class="btn btn-xs btn-blue"
                                                         style="font-size: 8pt; padding-block: 2px"

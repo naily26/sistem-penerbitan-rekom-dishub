@@ -58,7 +58,8 @@
                                     <th >NIB</th>
                                     <th>KBLI</th>
                                     <th>Alamat</th>
-                                    <th> Status</th>
+                                    <th>Status Pengecekan</th>
+                                    <th>Status Penerbitan</th>
                                     <th>Action</th>
                                     {{-- <th>Action</th> --}}
                                 </tr>
@@ -83,6 +84,25 @@
                                             @endif
                                         @endif
                                         
+                                    </td>
+                                    <td>
+                                        @if (is_null($item->pengajuan_perusahaan))
+                                            <span class="label label-primary">Diajukan secara offline</span>
+                                        @else
+                                            @if ($item->pengajuan_perusahaan->status_penerbitan == 'menunggu')
+                                                <span class="label label-primary">Menunggu dicetak</span>
+                                            @elseif ($item->pengajuan_perusahaan->status_penerbitan == 'dicetak')
+                                                <span class="label label-primary">Menunggu dinaikkan</span>
+                                            @elseif ($item->pengajuan_perusahaan->status_penerbitan == 'birokrasi')
+                                                <span class="label label-primary">Menunggu ttd</span>
+                                            @elseif ($item->pengajuan_perusahaan->status_penerbitan == 'diterbitkan')
+                                                    <span class="label label-success">bisa diambil</span>
+                                            @elseif ($item->pengajuan_perusahaan->status_penerbitan == 'diambil')
+                                                    <span class="label label-success">sudah diambil</span>
+                                            @elseif (is_null($item->pengajuan_perusahaan->status_penerbitan)) 
+                                                 <span class="label label-warning">menunggu persetujuan</span>
+                                            @endif
+                                        @endif
                                     </td>
                                     <td>
                                         @if (is_null($item->pengajuan_perusahaan))

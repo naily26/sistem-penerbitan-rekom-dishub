@@ -74,6 +74,7 @@
                                     <th>Nomor Mesin</th>
                                     <th>Keterangan</th>
                                     <th>Status Permohonan</th>
+                                    <th>Status Penerbitan</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -84,7 +85,7 @@
                                     <td>{{$item->perusahaan->kbli->kode}}</td>
                                     <td>{{$item->nomor_kendaraan}}</td>
                                     <td>{{$item->nomor_mesin}}</td>
-                                    <th>{{$item->pengajuan_angkutan->keterangan}}</th>
+                                    <td>{{$item->pengajuan_angkutan->keterangan}}</td>
                                     <td>
                                         @if ($item->pengajuan_angkutan->status_pengecekan == 'menunggu')
                                         <span class="label label-primary">Diproses</span></td>
@@ -93,7 +94,22 @@
                                     @elseif ($item->pengajuan_angkutan->status_pengecekan == 'ditolak')
                                     <span class="label label-danger">Ditolak</span>
                                     @endif
-
+                                    </td>
+                                    <td>
+                                        @if ($item->pengajuan_angkutan->status_penerbitan == 'menunggu')
+                                                <span class="label label-primary">Menunggu dicetak</span>
+                                            @elseif ($item->pengajuan_angkutan->status_penerbitan == 'dicetak')
+                                                <span class="label label-primary">Menunggu dinaikkan</span>
+                                            @elseif ($item->pengajuan_angkutan->status_penerbitan == 'birokrasi')
+                                                <span class="label label-primary">Menunggu ttd</span>
+                                            @elseif ($item->pengajuan_angkutan->status_penerbitan == 'diterbitkan')
+                                                    <span class="label label-success">bisa diambil</span>
+                                            @elseif ($item->pengajuan_angkutan->status_penerbitan == 'diambil')
+                                                    <span class="label label-success">sudah diambil</span>
+                                            @elseif (is_null($item->pengajuan_angkutan->status_penerbitan)) 
+                                                 <span class="label label-warning">menunggu persetujuan</span>
+                                            @endif
+                                    </td>
                                     <td>
                                         <a class="btn btn-xs btn-success"
                                             href="{{ route('angkutan.show', $item->id)}}"><i class="fa fa-eye"></i>

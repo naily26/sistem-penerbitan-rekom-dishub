@@ -96,6 +96,12 @@
                             </li>
                             <li>
                                 <a class="todo-actions" href="javascript:void(0)">
+                                    <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah permohonan yang ditolak</span>
+                                    <span class="label label-primary" style="opacity: 1;">{{$data['perusahaanDitolak']}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="todo-actions" href="javascript:void(0)">
                                     <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah surat yang dicetak</span>
                                     <span class="label label-primary" style="opacity: 1;">{{$data['perusahaanDicetak']}}</span>
                                 </a>
@@ -138,6 +144,12 @@
                                 <a class="todo-actions" href="javascript:void(0)">
                                     <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah permohonan yang masuk</span>
                                     <span class="label label-primary" style="opacity: 1;">{{$data['angkutanMasuk']}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="todo-actions" href="javascript:void(0)">
+                                    <span class="desc" style="opacity: 1; text-decoration: none;"> Jumlah permohonan yang ditolak</span>
+                                    <span class="label label-primary" style="opacity: 1;">{{$data['angkutanDitolak']}}</span>
                                 </a>
                             </li>
                             <li>

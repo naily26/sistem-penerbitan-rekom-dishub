@@ -56,7 +56,9 @@
                 <div class="col-md-6">
                     <!-- BEGIN VIDEO -->
                     {{-- <iframe src="https://youtu.be/HavTlSmzmmI" height="300" style="width:100%; border:0" allowFullScreen></iframe> --}}
-                    <iframe height="300" style="width:100%; border:0" src="https://www.youtube.com/embed/HavTlSmzmmI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                   @php
+                       echo $data->video
+                   @endphp
                     <!-- END VIDEO -->
                 </div>
                 <div class="col-md-6">

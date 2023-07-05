@@ -163,11 +163,56 @@
                                         Surat telah dinaikkan ke pimpinan pada tanggal {{$data->pengajuan_perusahaan->tanggal_birokrasi}}. Tahap berikutnya adalah menunggu surat ditandatangani oleh pimpinan.
                                     @elseif ($data->pengajuan_perusahaan->status_penerbitan == 'diterbitkan')
                                         Surat keterangan perusahaan anda bisa diambil secara langsung di kantor Dishub Jatim. Surat telah diterbitkan dan ditandatangani oleh pimpinan pada tanggal {{$data->pengajuan_perusahaan->tanggal_penerbitan}}. 
-                                    @elseif ($data->pengajuan_perusahaan->status_penerbitan == 'diterbitkan')
+                                    @elseif ($data->pengajuan_perusahaan->status_penerbitan == 'diambil')
                                         Surat keterangan perusahaan anda telah diambil secara langsung di kantor Dishub Jatim pada tanggal {{$data->pengajuan_perusahaan->tanggal_pengambilan}}. 
                                     @endif
                                 </td>
                                 @endif
+                            </tr>
+                            <tr>
+                                <td>Pelacakan</td>
+                                <td>
+                                    <ul class="todo">
+                                        <li>
+                                            <a class="todo-actions" >
+                                                <span class="desc" style="opacity: 1; text-decoration: none;">Permohonan masuk</span>
+                                                <span class="label label-primary" style="opacity: 1;">{{$data->pengajuan_perusahaan->tanggal_permohonan}}</span>
+                                            </a>
+                                        </li>
+                                        @if ($data->pengajuan_perusahaan->tanggal_cetak)
+                                        <li>
+                                            <a class="todo-actions" >
+                                                <span class="desc" style="opacity: 1; text-decoration: none;">Surat dicetak</span>
+                                                <span class="label label-primary" style="opacity: 1;">{{$data->pengajuan_perusahaan->tanggal_cetak}}</span>
+                                            </a>
+                                        </li>
+                                        @endif
+                                        @if ($data->pengajuan_perusahaan->tanggal_birokrasi)
+                                        <li>
+                                            <a class="todo-actions" >
+                                                <span class="desc" style="opacity: 1; text-decoration: none;">Surat naik ke pimpinan</span>
+                                                <span class="label label-primary" style="opacity: 1;">{{$data->pengajuan_perusahaan->tanggal_birokrasi}}</span>
+                                            </a>
+                                        </li>
+                                        @endif
+                                        @if ($data->pengajuan_perusahaan->tanggal_penerbitan)
+                                        <li>
+                                            <a class="todo-actions" >
+                                                <span class="desc" style="opacity: 1; text-decoration: none;">Surat sudah tertandatangani dan bisa diambil</span>
+                                                <span class="label label-primary" style="opacity: 1;">{{$data->pengajuan_perusahaan->tanggal_penerbitan}}</span>
+                                            </a>
+                                        </li>
+                                        @endif
+                                        @if ($data->pengajuan_perusahaan->tanggal_pengambilan)
+                                        <li>
+                                            <a class="todo-actions" >
+                                                <span class="desc" style="opacity: 1; text-decoration: none;">Surat diambil oleh pemohon</span>
+                                                <span class="label label-primary" style="opacity: 1;">{{$data->pengajuan_perusahaan->tanggal_pengambilan}}</span>
+                                            </a>
+                                        </li>
+                                        @endif
+                                    </ul>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

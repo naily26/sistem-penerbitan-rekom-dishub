@@ -234,6 +234,51 @@
                                     @endif
                                 </div></td>
                             </tr>
+                            <tr>
+                                <td>Pelacakan</td>
+                                <td>
+                                    <ul class="todo">
+                                        <li>
+                                            <a class="todo-actions" >
+                                                <span class="desc" style="opacity: 1; text-decoration: none;">Permohonan masuk</span>
+                                                <span class="label label-primary" style="opacity: 1;">{{$pengajuan->tanggal_permohonan}}</span>
+                                            </a>
+                                        </li>
+                                        @if ($pengajuan->tanggal_cetak)
+                                        <li>
+                                            <a class="todo-actions" >
+                                                <span class="desc" style="opacity: 1; text-decoration: none;">Surat dicetak</span>
+                                                <span class="label label-primary" style="opacity: 1;">{{$pengajuan->tanggal_cetak}}</span>
+                                            </a>
+                                        </li>
+                                        @endif
+                                        @if ($pengajuan->tanggal_birokrasi)
+                                        <li>
+                                            <a class="todo-actions" >
+                                                <span class="desc" style="opacity: 1; text-decoration: none;">Surat naik ke pimpinan</span>
+                                                <span class="label label-primary" style="opacity: 1;">{{$pengajuan->tanggal_birokrasi}}</span>
+                                            </a>
+                                        </li>
+                                        @endif
+                                        @if ($pengajuan->tanggal_penerbitan)
+                                        <li>
+                                            <a class="todo-actions" >
+                                                <span class="desc" style="opacity: 1; text-decoration: none;">Surat sudah tertandatangani dan bisa diambil</span>
+                                                <span class="label label-primary" style="opacity: 1;">{{$pengajuan->tanggal_penerbitan}}</span>
+                                            </a>
+                                        </li>
+                                        @endif
+                                        @if ($pengajuan->tanggal_pengambilan)
+                                        <li>
+                                            <a class="todo-actions" >
+                                                <span class="desc" style="opacity: 1; text-decoration: none;">Surat diambil oleh pemohon</span>
+                                                <span class="label label-success" style="opacity: 1;">{{$pengajuan->tanggal_pengambilan}}</span>
+                                            </a>
+                                        </li>
+                                        @endif
+                                    </ul>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <br />
