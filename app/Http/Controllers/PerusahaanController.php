@@ -376,7 +376,7 @@ class PerusahaanController extends Controller
     public function storeUpload(Request $request) 
     {
 
-        $today = Carbon::today()->toDateString();
+        $today = Carbon::now('Asia/Jakarta')->toDateString();
         $docs = ['dokumen_nib', 'sertifikat_standar', 'surat_izin_trayek', 'surat_izin_penyelenggara_trayek','surat_delivery_order', 'surat_izin_penyelenggara_muat' , 'surat_keterangan_perusahaan'];
         $convert = [];
         foreach ($docs as $key => $value) {
@@ -405,8 +405,17 @@ class PerusahaanController extends Controller
             'kbli_id' => $request->kbli_id,
             'user_id' => Auth::user()->id,
         ]);
+        $pengajuan = pengajuan_perusahaan::create([
+            'perusahaan_id' => $perusahaan->id, 
+            'surat_pernyataan' => 'offline',
+            'surat_permohonan' => 'offline',
+            'status_pengecekan' => 'disetujui', 
+            'surat_keterangan_perusahaan' => $convert['file_surat_keterangan_perusahaan'],
+            'status_penerbitan' => 'offline', 
+        ]);
 
-        if($perusahaan) {
+
+        if($pengajuan) {
             return redirect()->route('perusahaan.index')->with(['success'=>'data berhasil ditambahkan']);
         } else {
             return redirect()->route('perusahaan.index')->with(['gagal'=>'data gagal ditambahkan']);
