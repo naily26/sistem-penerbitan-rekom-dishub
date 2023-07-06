@@ -89,12 +89,12 @@
                                                             <td>
                                                                 <a class="act" href="{{ route('petugas.edit', $data->id)}}"><i class="fa fa-edit"> edit </i>
                                                                     </a>
-                                                                <a class="act" style="color: red" data-toggle="modal" href="#delete{{$data->id}}"><i class="fa fa-trash-o"> hapus </i>
-                                                                    </a>
+                                                                {{-- <a class="act" style="color: red" data-toggle="modal" href="#delete{{$data->id}}"><i class="fa fa-trash-o"> hapus </i>
+                                                                    </a> --}}
                                                             </td>
                                                         </tr>
                                                         <?php $no++ ?>
-                                                        <div id="delete{{$data->id}}" class="modal fade" tabindex="-1" data-width="360" style="display: none;">   
+                                                        {{-- <div id="delete{{$data->id}}" class="modal fade" tabindex="-1" data-width="360" style="display: none;">   
                                                             <div class="modal-header">
                                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                                                                     &times;
@@ -123,7 +123,7 @@
                                                                 </button>
                                                             </div>
                                                             </form>
-                                                        </div>
+                                                        </div> --}}
                                                         @endforeach
                                                     </tbody>
                                                 </table>
