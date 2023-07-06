@@ -478,6 +478,16 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">
+                                    Nama Pemilik Kendaraan <span class="symbol required"></span>
+                                </label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" id="pemilik_lama"
+                                        name="pemilik_lama" placeholder="nama pemilik"
+                                        oninput="this.value = this.value.toUpperCase()" value="{{$pengajuan->data_mutasi->pemilik_lama}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">
                                     Alamat perusahaan lama <span class="symbol required"></span>
                                 </label>
                                 <div class="col-sm-7">

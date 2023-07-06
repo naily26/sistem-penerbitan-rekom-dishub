@@ -476,8 +476,10 @@
                                                 <i class="fa fa-circle-arrow-left"></i> Back
                                             </button>
                                         </div>
-                                        <button class="col-sm-2 col-sm-offset-3 btn btn-blue " type="submit">Submit
-                                        </button>
+                                        <div class="col-sm-2 col-sm-offset-3">
+                                            <button class="btn btn-blue btn-block" type="submit">Submit
+                                            </button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>

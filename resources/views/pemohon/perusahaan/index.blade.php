@@ -51,7 +51,7 @@
 
                 <div class="panel panel-default">
 
-                    <div class="panel-body">
+                    <div class="panel-body" style="overflow-x:auto;">
                         <table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
                             <thead>
                                 <tr>

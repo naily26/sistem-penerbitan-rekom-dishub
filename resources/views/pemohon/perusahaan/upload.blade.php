@@ -149,8 +149,8 @@
                                             KBLI <span class="symbol required"></span>
                                         </label>
                                         <div class="col-sm-7">
-                                            <select class="select2-container form-control search-select" id="select-kbli" name="kbli_id" onchange="showDiv(this);"
-                                                required>
+                                            <select class="select2-container form-control search-select"
+                                                id="select-kbli" name="kbli_id" onchange="showDiv(this);" required>
                                                 <option value="">&nbsp;</option>
                                                 @foreach ($kbli as $item)
                                                 <option value="{{$item->id}}">{{$item->kode}} - {{$item->keterangan}}
@@ -425,8 +425,10 @@
                                                 <i class="fa fa-circle-arrow-left"></i> Back
                                             </button>
                                         </div>
-                                        <button class="col-sm-2 col-sm-offset-3 btn btn-blue " type="submit">Submit
-                                        </button>
+                                        <div class="col-sm-2 col-sm-offset-3">
+                                            <button class="btn btn-blue btn-block" type="submit">Submit
+                                            </button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>

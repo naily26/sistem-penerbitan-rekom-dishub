@@ -618,7 +618,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">
-                                                Nomor faktur <span class="symbol required"></span>
+                                                Nomor Surat registrasi uji tipe <span class="symbol required"></span>
                                             </label>
                                             <div class="col-sm-7">
                                                 <input type="text" class="form-control" id="nomor_srut"
@@ -627,7 +627,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">
-                                                Tanggal Faktur <span class="symbol required"></span>
+                                                Tanggal Surat registrasi uji tipe <span class="symbol required"></span>
                                             </label>
                                             <div class="col-sm-7">
                                                 <input type="date" class="form-control" id="tanggal_srut"
@@ -751,8 +751,10 @@
                                                 <i class="fa fa-circle-arrow-left"></i> Back
                                             </button>
                                         </div>
-                                        <button class="col-sm-2 col-sm-offset-3 btn btn-blue " type="submit">Submit
-                                        </button>
+                                        <div class="col-sm-2 col-sm-offset-3">
+                                            <button class="btn btn-blue btn-block" type="submit">Submit
+                                            </button>
+                                        </div>
                                     </div>
 
                                 </div>

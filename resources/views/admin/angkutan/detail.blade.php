@@ -77,7 +77,7 @@
                             <tr>
                                 <td class="column-left">Surat Izin Trayek</td>
                                 <td class="column-right">
-                                    <span class="label label-primary"><a href="#"><i class="clip-file-pdf" style="color: blue"> | Izin Trayek</i></a></span>
+                                    <span class="label label-primary"><a href="{{$pengajuan->angkutan->perusahaan->surat_izin_trayek}}" target="_blank"><i class="clip-file-pdf" style="color: blue"> | Izin Trayek</i></a></span>
                                 </td>
                             </tr>
                             @elseif (str_contains($pengajuan->angkutan->perusahaan->kbli->kategori, 'angkutan-barang'))
@@ -144,47 +144,85 @@
                             <tr>
                                 <td class="column-left">Surat Faktur Intern dari Dealer</td>
                                 <td class="column-right">
-                                    <span class="label label-primary"><a href="{{$pengajuan->angkutan->surat_faktur_intern}}"><i class="clip-file-pdf" style="color: blue"> | Surat Faktur</i></a></span>
+                                    <span class="label label-primary"><a href="{{$pengajuan->angkutan->surat_faktur_intern}}" target="_blank"><i class="clip-file-pdf" style="color: blue"> | Surat Faktur</i></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="column-left">Sertifikat Registrasi Uji Tipe (SRUT)</td>
                                 <td class="column-right">
-                                    <span class="label label-primary"><a href="{{$pengajuan->angkutan->surat_registrasi_uji_tipe}}"><i class="clip-file-pdf" style="color: blue"> | SRUT</i></a></span>
+                                    <span class="label label-primary"><a href="{{$pengajuan->angkutan->surat_registrasi_uji_tipe}}" target="_blank"><i class="clip-file-pdf" style="color: blue"> | SRUT</i></a></span>
                                 </td>
                             </tr>
                             @else
                             <tr>
                                 <td class="column-left">STNKB</td>
                                 <td class="column-right">
-                                    <span class="label label-primary"><a href="{{$pengajuan->angkutan->stnk}}"><i class="clip-file-pdf" style="color: blue"> | STNKB</i></a></span>
+                                    <span class="label label-primary"><a href="{{$pengajuan->angkutan->stnkb}}" target="_blank"><i class="clip-file-pdf" style="color: blue"> | STNKB</i></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="column-left">Buku Uji Berkala</td>
                                 <td class="column-right">
-                                    <span class="label label-primary"><a href="{{$pengajuan->angkutan->buku_uji_berkala}}"><i class="clip-file-pdf" style="color: blue"> | Buku Uji Berkala</i></a></span>
+                                    <span class="label label-primary"><a href="{{$pengajuan->angkutan->buku_uji_berkala}}" target="_blank"><i class="clip-file-pdf" style="color: blue"> | Buku Uji Berkala</i></a></span>
                                 </td>
                             </tr>
                             @if ($pengajuan->keterangan == 'kendaraan-mutasi')
                             <tr>
                                 <td class="column-left">Surat Keterangan Fiskal</td>
                                 <td class="column-right">
-                                    <span class="label label-primary"><a href="{{$pengajuan->angkutan->surat_fiskal}}"><i class="clip-file-pdf" style="color: blue"> | Keterangan Fiskal</i></a></span>
+                                    <span class="label label-primary"><a href="{{$pengajuan->data_mutasi->surat_fiskal}}" target="_blank"><i class="clip-file-pdf" style="color: blue"> | Keterangan Fiskal</i></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="column-left">Perusahaan lama</td>
+                                <td class="column-right">
+                                    {{$pengajuan->data_mutasi->perusahaan_lama}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="column-left">Pemilik lama</td>
+                                <td class="column-right">
+                                    {{$pengajuan->data_mutasi->pemilik_lama}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="column-left">Kota asal</td>
+                                <td class="column-right">
+                                    {{$pengajuan->data_mutasi->kota_asal}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="column-left">Alamat lama</td>
+                                <td class="column-right">
+                                    {{$pengajuan->data_mutasi->alamat_lama}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="column-left">Warna TNKB lama</td>
+                                <td class="column-right">
+                                    {{$pengajuan->data_mutasi->warna_tnkb_lama}}
                                 </td>
                             </tr>
                             @endif
                             @endif
+                            @if ($pengajuan->angkutan->kps)
+                            <tr>
+                                <td class="column-left">Kartu pengawasan</td>
+                                <td class="column-right">
+                                    <span class="label label-primary"><a href="{{$pengajuan->angkutan->kps}}" target="_blank"><i class="clip-file-pdf" style="color: blue"> | kps</i></a></span>
+                                </td>
+                            </tr>
+                            @endif
                             <tr>
                                 <td class="column-left">Surat Permohonan dari Pimpinan</td>
                                 <td class="column-right">
-                                    <span class="label label-primary"><a href="{{$pengajuan->angkutan->surat_permohonan}}"><i class="clip-file-pdf" style="color: blue"> | Keterangan Fiskal</i></a></span>
+                                    <span class="label label-primary"><a href="{{$pengajuan->surat_permohonan}}" target="_blank"><i class="clip-file-pdf" style="color: blue"> | surat permohonan</i></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="column-left">Surat Pernyataan Memenuhi Persyaratan</td>
                                 <td class="column-right">
-                                    <span class="label label-primary"><a href="{{$pengajuan->angkutan->surat_pernyataan}}"><i class="clip-file-pdf" style="color: blue"> | Keterangan Fiskal</i></a></span>
+                                    <span class="label label-primary"><a href="{{$pengajuan->surat_pernyataan}}" target="_blank"><i class="clip-file-pdf" style="color: blue"> | surat pernyataan</i></a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -221,7 +259,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Catatan <i class="fa fa-pencil"></i>
+                                <td>Catatan <a id="pencil" href="#"><i class="fa fa-pencil"></i></a>
                                </td>
                                 <td>
                                 <div data-original-title="Enter notes" data-toggle="manual" data-type="wysihtml5" data-pk="1" id="note" class="editable" tabindex="-1" style="display: block;">
@@ -233,6 +271,48 @@
                                         {{$pengajuan->catatan}}
                                     @endif
                                 </div></td>
+                            </tr>
+                            <tr>
+                                <td class="column-left">Status Pengecekan</td>
+                                <td class="column-right">
+                                    @if ($pengajuan->status_pengecekan == 'menunggu')
+                                    <span class="label label-primary">Menunggu persetujuan admin</span>
+                                    @elseif ($pengajuan->status_pengecekan == 'ditolak')
+                                    <span class="label label-danger">ditolak oleh admin</span>
+                                    @elseif ($pengajuan->status_pengecekan == 'disetujui')
+                                    <span class="label label-success">disetujui</span>
+                                    @endif
+                                </td>
+                            </tr>
+                            @if ($pengajuan->status_pengecekan == 'disetujui')
+                            <tr>
+                                <td class="column-left">Status Penerbitan</td>
+                                <td class="column-right">
+                                    @if ($pengajuan->status_penerbitan == 'menunggu')
+                                    belum dicetak
+                                    @elseif ($pengajuan->status_penerbitan == 'dicetak')
+                                    menunggu surat dinaikkan ke pimpinan.
+                                    @elseif ($pengajuan->status_penerbitan == 'birokrasi')
+                                    menunggu surat ditandatangani oleh pimpinan.
+                                    @elseif ($pengajuan->status_penerbitan == 'diterbitkan')
+                                    Surat telah ditandatangani oleh pimpinan dan bisa diambil
+                                    @elseif ($pengajuan->status_penerbitan == 'diambil')
+                                    telah diambil oleh pemohon
+                                    @else
+                                    {{$pengajuan->status_penerbitan}}
+                                    @endif
+                                </td>
+                            </tr>
+                            @endif
+                            <tr>
+                                <td class="column-left">Petugas</td>
+                                <td class="column-right">
+                                    @if ($pengajuan->petugas_id)
+                                        {{$pengajuan->petugas->nama}}
+                                    @else
+                                        Belum ada
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <td>Pelacakan</td>
@@ -272,7 +352,7 @@
                                         <li>
                                             <a class="todo-actions" >
                                                 <span class="desc" style="opacity: 1; text-decoration: none;">Surat diambil oleh pemohon</span>
-                                                <span class="label label-primary" style="opacity: 1;">{{$pengajuan->tanggal_pengambilan}}</span>
+                                                <span class="label label-success" style="opacity: 1;">{{$pengajuan->tanggal_pengambilan}}</span>
                                             </a>
                                         </li>
                                         @endif

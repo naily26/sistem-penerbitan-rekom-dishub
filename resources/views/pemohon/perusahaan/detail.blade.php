@@ -160,8 +160,8 @@
                                     </div>
                                 </td>
                             </tr>
+                            @if ($data->pengajuan_perusahaan->status_pengecekan == 'disetujui')
                             <tr>
-                                @if ($data->pengajuan_perusahaan->status_pengecekan == 'disetujui')
                                 <td class="column-left">Status Penerbitan</td>
                                 <td class="column-right">
                                     @if ($data->pengajuan_perusahaan->status_penerbitan == 'menunggu')
@@ -187,8 +187,8 @@
                                     {{$data->pengajuan_perusahaan->status_penerbitan}}
                                     @endif
                                 </td>
-                                @endif
                             </tr>
+                            @endif
                             @if ($data->pengajuan_perusahaan->status_penerbitan != 'offline')
                             <tr>
                                 <td>Pelacakan</td>

@@ -64,7 +64,7 @@
 
                 <div class="panel panel-default">
 
-                    <div class="panel-body">
+                    <div class="panel-body" style="overflow-x:auto;">
                         <table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
                             <thead>
                                 <tr>
@@ -120,7 +120,7 @@
                                                 edit</a>
                                             <a class="btn btn-xs btn-danger" href="#hapus-data{{$item->id}}"
                                                 data-toggle="modal"><i class="fa fa-trash-o"></i>
-                                                hapus</a>
+                                                batalkan</a>
                                         @endif
                                     </td>
                                 </tr>
