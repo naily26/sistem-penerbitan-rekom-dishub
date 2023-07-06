@@ -47,7 +47,7 @@ class AngkutanController extends Controller
             $tertunda = pengajuan_angkutan::where('petugas_id', $data_petugas->id)->where('status_penerbitan', 'tertunda')->get();
             return view('petugas.angkutan.index', compact('disetujui', 'ditolak', 'diproses', 'tertunda', 'data'));
         } elseif (Auth::user()->role == 'pengawas') {
-            $disetujui = pengajuan_angkutan::where('status_pengecekan', 'disetujui')->where('status_penerbitan', '!=', 'tertunda')->get();
+            $disetujui = pengajuan_angkutan::where('status_pengecekan', 'disetujui')->where('status_penerbitan', 'diambil')->get();
             return view('pengawas.angkutan.index', compact('disetujui'));
         } elseif (Auth::user()->role == 'admin') {
             $disetujui = pengajuan_angkutan::where('status_pengecekan', 'disetujui')->whereNotIn('status_penerbitan',  ['tertunda', 'diambil'])->get();

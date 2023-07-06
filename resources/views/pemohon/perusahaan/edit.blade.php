@@ -44,7 +44,7 @@
                                 </label>
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control" id="tanggal_permohonan"
-                                        name="tanggal_permohonan" placeholder="nama perusahaan"
+                                        name="tanggal_permohonan" placeholder="tanggal permohonan"
                                         value="{{$data->pengajuan_perusahaan->tanggal_permohonan}}" disabled>
                                 </div>
                             </div>
