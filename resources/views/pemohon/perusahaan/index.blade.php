@@ -29,7 +29,8 @@
                 <div class="alert alert-block alert-info fade in">
                     <h4 class="alert-heading"><i class="fa fa-info-circle"></i> Info!</h4>
                     <p>
-                        Jika anda telah mengajukan surat keterangan perusahaan secara offline, anda dapat menggunggahnya dengan klik tombol dibawah ini.
+                        Jika anda telah mengajukan surat keterangan perusahaan secara offline, anda dapat menggunggahnya
+                        dengan klik tombol dibawah ini.
                     </p>
                     <p>
                         <a href="{{url('upload-perusahaan')}}" class="btn btn-sm btn-light-grey">
@@ -55,7 +56,7 @@
                             <thead>
                                 <tr>
                                     <th>Nama Perusahaan</th>
-                                    <th >NIB</th>
+                                    <th>NIB</th>
                                     <th>KBLI</th>
                                     <th>Alamat</th>
                                     <th>Status Pengecekan</th>
@@ -73,54 +74,55 @@
                                     <td>{{$item->alamat}}</td>
                                     <td>
                                         @if (is_null($item->pengajuan_perusahaan))
-                                            <span class="label label-success">disetujui secara offline</span>
+                                        <span class="label label-success">disetujui secara offline</span>
                                         @else
-                                            @if ($item->pengajuan_perusahaan->status_pengecekan == 'menunggu')
-                                                <span class="label label-primary">Menunggu persetujuan petugas</span>
-                                            @elseif ($item->pengajuan_perusahaan->status_pengecekan == 'ditolak')
-                                                <span class="label label-danger">ditolak oleh petugas</span>
-                                            @elseif ($item->pengajuan_perusahaan->status_pengecekan == 'disetujui')
-                                                    <span class="label label-success">disetujui</span>
-                                            @endif
+                                        @if ($item->pengajuan_perusahaan->status_pengecekan == 'menunggu')
+                                        <span class="label label-primary">Menunggu persetujuan petugas</span>
+                                        @elseif ($item->pengajuan_perusahaan->status_pengecekan == 'ditolak')
+                                        <span class="label label-danger">ditolak oleh petugas</span>
+                                        @elseif ($item->pengajuan_perusahaan->status_pengecekan == 'disetujui')
+                                        <span class="label label-success">disetujui</span>
                                         @endif
-                                        
+                                        @endif
+
                                     </td>
                                     <td>
-                                        @if (is_null($item->pengajuan_perusahaan))
-                                            <span class="label label-primary">Diajukan secara offline</span>
+                                        @if ($item->pengajuan_perusahaan->status_penerbitan == 'menunggu')
+                                        <span class="label label-primary">Menunggu dicetak</span>
+                                        @elseif ($item->pengajuan_perusahaan->status_penerbitan == 'dicetak')
+                                        <span class="label label-primary">Menunggu dinaikkan</span>
+                                        @elseif ($item->pengajuan_perusahaan->status_penerbitan == 'birokrasi')
+                                        <span class="label label-primary">Menunggu ttd</span>
+                                        @elseif ($item->pengajuan_perusahaan->status_penerbitan == 'diterbitkan')
+                                        <span class="label label-success">bisa diambil</span>
+                                        @elseif ($item->pengajuan_perusahaan->status_penerbitan == 'diambil')
+                                        <span class="label label-success">sudah diambil</span>
+                                        @elseif (is_null($item->pengajuan_perusahaan->status_penerbitan))
+                                        <span class="label label-warning">menunggu persetujuan</span>
                                         @else
-                                            @if ($item->pengajuan_perusahaan->status_penerbitan == 'menunggu')
-                                                <span class="label label-primary">Menunggu dicetak</span>
-                                            @elseif ($item->pengajuan_perusahaan->status_penerbitan == 'dicetak')
-                                                <span class="label label-primary">Menunggu dinaikkan</span>
-                                            @elseif ($item->pengajuan_perusahaan->status_penerbitan == 'birokrasi')
-                                                <span class="label label-primary">Menunggu ttd</span>
-                                            @elseif ($item->pengajuan_perusahaan->status_penerbitan == 'diterbitkan')
-                                                    <span class="label label-success">bisa diambil</span>
-                                            @elseif ($item->pengajuan_perusahaan->status_penerbitan == 'diambil')
-                                                    <span class="label label-success">sudah diambil</span>
-                                            @elseif (is_null($item->pengajuan_perusahaan->status_penerbitan)) 
-                                                 <span class="label label-warning">menunggu persetujuan</span>
-                                            @endif
+                                        <span
+                                            class="label label-success">{{$item->pengajuan_perusahaan->status_penerbitan}}</span>
                                         @endif
                                     </td>
                                     <td>
-                                        @if (is_null($item->pengajuan_perusahaan))
-                                        diajukan secara offline
-                                        @else
-                                            @if ($item->pengajuan_perusahaan->status_pengecekan == 'menunggu')
-                                                <a class="btn btn-xs btn-success" href="{{route('perusahaan.show', $item->id)}}"><i class="fa fa-eye"></i> detail</a>
-                                            @elseif ($item->pengajuan_perusahaan->status_pengecekan == 'ditolak')
-                                                <a class="btn btn-xs btn-warning" href="{{route('perusahaan.edit', $item->id)}}"><i
-                                                    class="fa fa-edit"></i>
-                                                edit</a>
-                                                <a class="btn btn-xs btn-success" href="{{route('perusahaan.show', $item->id)}}"><i class="fa fa-eye"></i> detail</a>
-                                                <a href="#hapus-data{{$item->id}}" class="btn btn-danger btn-xs" data-toggle="modal"><i
-                                                    class="fa fa-trash-o"></i>
-                                                hapus</a>
-                                            @elseif ($item->pengajuan_perusahaan->status_pengecekan == 'disetujui')
-                                            <a class="btn btn-xs btn-success" href="{{route('perusahaan.show', $item->id)}}"><i class="fa fa-eye"></i> detail</a>
-                                            @endif
+                                        <a class="btn btn-xs btn-success"
+                                            href="{{route('perusahaan.show', $item->id)}}"><i class="fa fa-eye"></i>
+                                            detail</a>
+                                        @if ($item->pengajuan_perusahaan->status_pengecekan == 'ditolak')
+                                        <a class="btn btn-xs btn-warning"
+                                            href="{{route('perusahaan.edit', $item->id)}}"><i class="fa fa-edit"></i>
+                                            edit</a>
+                                        <a href="#hapus-data{{$item->id}}" class="btn btn-danger btn-xs"
+                                            data-toggle="modal"><i class="fa fa-trash-o"></i>
+                                            batalkan</a>
+                                        @endif
+                                        @if ($item->pengajuan_perusahaan->status_penerbitan == 'offline')
+                                        <a class="btn btn-xs btn-warning"
+                                            href="{{route('perusahaan.edit', $item->id)}}"><i class="fa fa-edit"></i>
+                                            edit</a>
+                                        <a href="#hapus-data{{$item->id}}" class="btn btn-danger btn-xs"
+                                            data-toggle="modal"><i class="fa fa-trash-o"></i>
+                                            hapus</a>
                                         @endif
                                     </td>
                                 </tr>
@@ -138,11 +140,14 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <p>Apakah anda yakin untuk menghpus data ini? permohonan surat keterangan perusahaan akan otomatis terhapus dan semua data angkutan yang berhubungan dengan data ini juga akan terhapus</p>
+                                                <p>Apakah anda yakin untuk menghpus data ini? permohonan surat
+                                                    keterangan perusahaan akan otomatis terhapus dan semua data angkutan
+                                                    yang berhubungan dengan data ini juga akan terhapus</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <form action="{{url('perusahaan/'.$item->id)}}" method="post" enctype="multipart/form-data">
+                                    <form action="{{url('perusahaan/'.$item->id)}}" method="post"
+                                        enctype="multipart/form-data">
                                         {{ method_field('delete') }}
                                         @csrf
                                         <div class="modal-footer">
@@ -177,11 +182,12 @@
 <link href="{{ asset('assets/admin/plugins/bootstrap-modal/css/bootstrap-modal.css') }}" rel="stylesheet"
     type="text/css" />
 
-    <style>
-        .btn-xs {
-            margin-top: 5px;
-        }
-    </style>
+<style>
+    .btn-xs {
+        margin-top: 5px;
+    }
+
+</style>
 @endpush
 
 @push('script')

@@ -49,12 +49,12 @@ class PerusahaanController extends Controller
             $ditolak = pengajuan_perusahaan::where('status_pengecekan', 'ditolak')->where('petugas_id', $data_petugas->id)->get();
             return view('petugas.perusahaan.index', compact('diproses', 'disetujui', 'ditolak', 'today', 'data'));
         } elseif (Auth::user()->role == 'pengawas') {
-            $disetujui = pengajuan_perusahaan::where('status_pengecekan', 'disetujui')->get();
+            $disetujui = pengajuan_perusahaan::where('status_pengecekan', 'disetujui')->where('status_penerbitan', 'diambil')->get();
             return view('pengawas.perusahaan.index', compact('disetujui'));
         } elseif (Auth::user()->role == 'admin') {
             $today = Carbon::today()->toDateString();
             $diproses = pengajuan_perusahaan::where('status_pengecekan', 'menunggu')->get();
-            $disetujui = pengajuan_perusahaan::where('status_pengecekan', 'disetujui')->where('tanggal_pengambilan', null)->get();
+            $disetujui = pengajuan_perusahaan::where('status_pengecekan', 'disetujui')->where('status_penerbitan', '!=', 'offline')->where('tanggal_pengambilan', null)->get();
             $ditolak = pengajuan_perusahaan::where('status_pengecekan', 'ditolak')->get();
             $perusahaan_menunggu = pengajuan_perusahaan::where('status_pengecekan', 'disetujui')->whereIn('status_penerbitan', ['dicetak', 'birokrasi'])->get();
             $data['perusahaan_menunggu'] = count($perusahaan_menunggu);
@@ -274,11 +274,18 @@ class PerusahaanController extends Controller
     public function destroy($id)
     {
         $data = perusahaan::where('id', $id)->first();
-        $data->delete();
-        if($data) {
-            return redirect()->route('perusahaan.index')->with(['success'=>'data berhasil dihapus']);
+        $pengajuan = pengajuan_perusahaan::where('perusahaan_id', $data->id)->first();
+        $cek_data = angkutan::where('perusahaan_id', $data->id)->get();
+        if (!$cek_data) {
+            $pengajuan->delete();
+            $data->delete();
+            if($data) {
+                return redirect()->route('perusahaan.index')->with(['success'=>'data berhasil dihapus']);
+            } else {
+                return redirect()->route('perusahaan.index')->with(['gagal'=>'data gagal dihapus']);
+            }
         } else {
-            return redirect()->route('perusahaan.index')->with(['gagal'=>'data gagal dihapus']);
+            return redirect()->route('perusahaan.index')->with(['gagal'=>'data gagal dihapus, dikarenakan terdapat data angkutan yang berkaitan']);
         }
 
     }

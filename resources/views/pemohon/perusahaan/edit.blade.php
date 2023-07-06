@@ -54,7 +54,7 @@
                                 </label>
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control" id="status_permohonan"
-                                        placeholder="nama perusahaan" value="ditolak" disabled>
+                                        placeholder="nama perusahaan" value="{{$data->pengajuan_perusahaan->status_pengecekan}}" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -300,6 +300,7 @@
                                 </div>
                             </div>
                             @endif
+                            @if ($data->pengajuan_perusahaan->status_penerbitan != 'offline')
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">
                                     Surat Pernyataan <span class="symbol required"></span>
@@ -371,6 +372,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
                             <button class="col-sm-2 col-sm-offset-3 btn btn-blue " type="submit">Submit
                             </button>
                             <div class="form-group">
