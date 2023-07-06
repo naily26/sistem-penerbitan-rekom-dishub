@@ -64,14 +64,14 @@
                                         <a href="#data-dalam-proses" data-toggle="tab">
                                             Data dalam proses @if ( $data['perusahaan_diproses'])
                                             <span class="badge badge-danger">{{$data['perusahaan_diproses']}}</span>
-                                            @endif 
+                                            @endif
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#data-disetujui" data-toggle="tab">
                                             Data disetujui @if ( $data['perusahaan_menunggu'])
                                             <span class="badge badge-danger">{{$data['perusahaan_menunggu']}}</span>
-                                            @endif 
+                                            @endif
                                         </a>
                                     </li>
                                     <li>
@@ -108,14 +108,14 @@
                                                             <td><?php echo lama($item->tanggal_permohonan);?></td>
                                                             <td>@if (is_null($item->petugas_id))
                                                                 belum ada
-                                                            @else
+                                                                @else
                                                                 {{$item->petugas->nama}}
-                                                            @endif </td>
+                                                                @endif </td>
                                                             <td>{{$item->perusahaan->user->email}}</td>
                                                             <td><a class="btn btn-xs btn-success"
-                                                                href="{{ route('perusahaan.show', $item->perusahaan_id)}}"><i
-                                                                    class="fa fa-eye"></i>
-                                                                detail</a></td>
+                                                                    href="{{ route('perusahaan.show', $item->perusahaan_id)}}"><i
+                                                                        class="fa fa-eye"></i>
+                                                                    detail</a></td>
                                                         </tr>
                                                         @endforeach
                                                     </tbody>
@@ -130,7 +130,7 @@
                                             <div class="panel-body" style="overflow-x:auto;">
                                                 <table
                                                     class="table table-striped table-bordered table-hover table-full-width"
-                                                    id="sample_2" >
+                                                    id="sample_2">
                                                     <thead>
                                                         <tr>
                                                             <th>Nama Perusahaan</th>
@@ -151,32 +151,41 @@
                                                             <td>{{$item->perusahaan->nib}}</td>
                                                             <td>{{$item->perusahaan->kbli->kode}}</td>
                                                             <td><?php echo lama($item->tanggal_permohonan);?></td>
-                                                            <td> {{$item->petugas->nama}}</td>
+                                                            <td>
+                                                                @if ($item->petugas_id)
+                                                                {{$item->petugas->nama}}
+                                                                @else
+                                                                Belum ada
+                                                                @endif
+                                                            </td>
                                                             <td>{{$item->perusahaan->user->email}}</td>
                                                             <td>{{$item->status_penerbitan}}</td>
                                                             <td><a class="btn btn-xs btn-success"
-                                                                href="{{ route('perusahaan.show', $item->perusahaan_id)}}"><i
-                                                                    class="fa fa-eye"></i>
-                                                                detail</a>
+                                                                    href="{{ route('perusahaan.show', $item->perusahaan_id)}}"><i
+                                                                        class="fa fa-eye"></i>
+                                                                    detail</a>
                                                                 @if ($item->status_penerbitan == 'dicetak')
-                                                                    <a class="btn btn-xs btn-primary" href="#naik{{$item->id}}"
-                                                                    data-toggle="modal"><i class="fa fa-calendar"></i>
+                                                                <a class="btn btn-xs btn-primary"
+                                                                    href="#naik{{$item->id}}" data-toggle="modal"><i
+                                                                        class="fa fa-calendar"></i>
                                                                     konfirmasi surat naik</a>
                                                                 @elseif ($item->status_penerbitan == 'birokrasi')
-                                                                    <a class="btn btn-xs btn-primary"
-                                                                    href="#konfirmasi-penerbitan{{$item->id}}" data-toggle="modal"><i
+                                                                <a class="btn btn-xs btn-primary"
+                                                                    href="#konfirmasi-penerbitan{{$item->id}}"
+                                                                    data-toggle="modal"><i
                                                                         class="fa  fa-check-square-o"></i>
                                                                     konfirmasi surat tertandatangani</a>
                                                                 {{-- @elseif($item->status_penerbitan == 'diterbitkan')
-                                                                    <a class="btn btn-xs btn-primary" href="{{url('get-notif', $item->perusahaan->id)}}"><i class="fa fa-envelope"></i>
-                                                                        Kirim Nontifikasi</a> --}}
+                                                                    <a class="btn btn-xs btn-primary" href="{{url('get-notif', $item->perusahaan->id)}}"><i
+                                                                    class="fa fa-envelope"></i>
+                                                                Kirim Nontifikasi</a> --}}
                                                                 @endif
                                                             </td>
                                                             <div id="naik{{$item->id}}" class="modal fade" tabindex="-1"
                                                                 data-width="360" style="display: none;">
                                                                 <div class="modal-header">
-                                                                    <button type="button" class="close" data-dismiss="modal"
-                                                                        aria-hidden="true">
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-hidden="true">
                                                                         &times;
                                                                     </button>
                                                                     <h4 class="modal-title">
@@ -188,14 +197,18 @@
                                                                 <div class="modal-body">
                                                                     <div class="row">
                                                                         <div class="col-md-12">
-                                                                            <p>Apakah anda yakin untuk mengonfirmasi bahwa
-                                                                                surat telah naik dan diberikan ke pimpinan?
-                                                                                status penerbitan tidak dapat diubah lagi
+                                                                            <p>Apakah anda yakin untuk mengonfirmasi
+                                                                                bahwa
+                                                                                surat telah naik dan diberikan ke
+                                                                                pimpinan?
+                                                                                status penerbitan tidak dapat diubah
+                                                                                lagi
                                                                             </p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <form action="{{url('/konfirmasi-birokrasi-surat', $item->id)}}" >
+                                                                <form
+                                                                    action="{{url('/konfirmasi-birokrasi-surat', $item->id)}}">
                                                                     @csrf
                                                                     <div class="modal-footer">
                                                                         <button type="button" data-dismiss="modal"
@@ -209,11 +222,12 @@
                                                                     </div>
                                                                 </form>
                                                             </div>
-                                                            <div id="konfirmasi-penerbitan{{$item->id}}" class="modal fade" tabindex="-1"
-                                                                data-width="360" style="display: none;">
+                                                            <div id="konfirmasi-penerbitan{{$item->id}}"
+                                                                class="modal fade" tabindex="-1" data-width="360"
+                                                                style="display: none;">
                                                                 <div class="modal-header">
-                                                                    <button type="button" class="close" data-dismiss="modal"
-                                                                        aria-hidden="true">
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-hidden="true">
                                                                         &times;
                                                                     </button>
                                                                     <h4 class="modal-title">
@@ -225,14 +239,18 @@
                                                                 <div class="modal-body">
                                                                     <div class="row">
                                                                         <div class="col-md-12">
-                                                                            <p>Apakah anda yakin untuk mengonfirmasi bahwa
-                                                                                surat telah tertandatangani oleh pimpinan?
-                                                                                status penerbitan tidak dapat diubah lagi
+                                                                            <p>Apakah anda yakin untuk mengonfirmasi
+                                                                                bahwa
+                                                                                surat telah tertandatangani oleh
+                                                                                pimpinan?
+                                                                                status penerbitan tidak dapat diubah
+                                                                                lagi
                                                                             </p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <form action="{{url('/konfirmasi-penerbitan-surat', $item->id)}}"  >
+                                                                <form
+                                                                    action="{{url('/konfirmasi-penerbitan-surat', $item->id)}}">
                                                                     @csrf
                                                                     <div class="modal-footer">
                                                                         <button type="button" data-dismiss="modal"
@@ -280,12 +298,18 @@
                                                             <td>{{$item->perusahaan->nib}}</td>
                                                             <td>{{$item->perusahaan->kbli->kode}}</td>
                                                             <td><?php echo lama($item->tanggal_permohonan);?></td>
-                                                            <td> {{$item->petugas->nama}}</td>
+                                                            <td>
+                                                                @if ($item->petugas_id)
+                                                                {{$item->petugas->nama}}
+                                                                @else
+                                                                Belum ada
+                                                                @endif
+                                                            </td>
                                                             <td>{{$item->perusahaan->user->email}}</td>
                                                             <td><a class="btn btn-xs btn-success"
-                                                                href="{{ route('perusahaan.show', $item->perusahaan_id)}}"><i
-                                                                    class="fa fa-eye"></i>
-                                                                detail</a></td>
+                                                                    href="{{ route('perusahaan.show', $item->perusahaan_id)}}"><i
+                                                                        class="fa fa-eye"></i>
+                                                                    detail</a></td>
                                                         </tr>
                                                         @endforeach
                                                     </tbody>
