@@ -182,7 +182,7 @@ class PengawasController extends Controller
             $tmp_file_name = "{$key}.{$extension}";
             $tmp_file_path = "admin/".$oke."/";
             $file->move($tmp_file_path,$tmp_file_name);
-            $result = url('/').'/'.'admin/'.$oke.''.'/'.$tmp_file_name;
+            $result = '/'.'admin/'.$oke.''.'/'.$tmp_file_name;
         return $result;
     }
 }

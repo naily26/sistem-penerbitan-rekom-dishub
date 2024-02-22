@@ -34,9 +34,9 @@ class UserSeeder extends Seeder
         // }
         User::create([
             'name' => 'administrator',
-            'email' => 'admin@mail.com',
+            'email' => 'admin@sistemrekom.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('admin123'),
+            'password' => Hash::make('sistemrekom123'),
             'remember_token' => Str::random(10),
             'role' => 'admin'
         ]);
